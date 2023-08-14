@@ -1,0 +1,17 @@
+.glass_corner,
+.glassSurface-onHover {
+    background-color: transparent;
+    border: 1px solid transparent;  
+    transition: 1500ms ease;
+}
+
+.glass_corner:hover,
+.glassSurface {
+    background-color: hsla(0, 0%, 100%, 0.103);
+    border: 1px solid hsla(0, 0%, 97%, 0.212);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 0 10px hsla(199, 100%, 59%, 0.493),
+        inset 0 0 10px hsla(199, 100%, 59%, 0.267);
+    transition: 150ms ease;
+}

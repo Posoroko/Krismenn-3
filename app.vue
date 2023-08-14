@@ -4,22 +4,24 @@
 
 <template>
   <div id="appBox" class="appBox">
-    <BackgroundImage />
+    <StructureBackgroundImage />
 
-    <AppGridMain>
-        <template #topBar> <WidgetMainTitle /> </template>
-        <template #page> <NuxtPage /> </template>
-        <template #bottomRightBox> <SettingsMain /> </template>
-    </AppGridMain>
+    <StructureHeaderMain />
+
+    <StructureMainMain />
+
+    <StructureFooterMain />
   </div>
 </template>
 
 <style scoped>
 #appBox {
-    width: 400px;
-    height: 600px;
+    /* width: 400px;
+    height: 600px; */
+    width: 100%;
+    height: 100%;
     position: relative;
-    animation: grow 2s  2s ease forwards;
+    /* animation: grow 2s  2s ease forwards; */
 }
 @keyframes grow {
     0% {

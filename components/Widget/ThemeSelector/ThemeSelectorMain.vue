@@ -1,10 +1,5 @@
 <script setup>
-const theme = useState('theme', '');
 
-onMounted(() => {
-    theme.value = 1;
-    console.log(theme.value)
-});
 
 </script>
 

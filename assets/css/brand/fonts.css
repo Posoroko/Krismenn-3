@@ -39,8 +39,9 @@ html {
     --kTitle: 'avant-garde-gothic-2-bold-1', sans-serif;
 }
 
-h1 {
+.topBarTitle {
     font-family: var(--kTitle);
+    color: white;
 }
 
 .kText {

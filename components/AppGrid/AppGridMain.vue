@@ -1,55 +1,63 @@
+<script setup>
+const props = defineProps({
+    component: String
+})
+</script>
+
 <template>
-    <nav class="full">
-        <ul class="appGrid">
-                <li class="topLeftBox relative ">
-                
-                </li>
-                
-            <li class="topBar">
-                <slot name="topBar"></slot>
-            </li>
+    <div class="appGrid">
+        <div class="box corner topLeftBox">
+            <slot name="topLeft"></slot>
+        </div>
 
-                <li class="topRightBox"></li>
+        <div class="box topCenterBox">
+            <slot name="topCenter"></slot>
+        </div>
 
-            <li class="leftBar">
-                
-            </li>
+        <div class="box corner topRightBox">
+            <slot name="topRight"></slot>
+        </div>
 
-            <li class="mainBox">
-                <slot name="page"></slot>
-            </li>
+        <div class="box centerLeftBox">
+            <slot name="centerLeft"></slot>
+        </div>
 
-            <li class="rightBar">
+        <div class="box centerCenterBox">
+            <slot name="centerCenter"></slot>
+        </div>
 
-            </li>
+        <div class="box centerRightBox">
+            <slot name="centerRight"></slot>
+        </div>
 
-                <li class="bottomLeftBox"></li>
+        <div class="box corner bottomLeftBox">
+            <slot name="bottomLeft"></slot>
+        </div>
 
-            <li class="bottomBar">
-                
-            </li>
+        <div class="box bottomCenterBox">
+            <slot name="bottomCenter"></slot>
+        </div>
 
-                <li class="bottomRightBox">
-                    <slot name="bottomRightBox"></slot>
-                </li>
-
-        </ul>
-    </nav>
+        <div class="box corner bottomRightBox">
+            <slot name="bottomRight"></slot>
+        </div>
+    </div>
 </template>
 
 <style scoped>
-.appGrid {
+appGrid {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: var(--gutter-thickness) auto var(--gutter-thickness);
     grid-template-rows: var(--gutter-thickness) auto var(--gutter-thickness);
-    grid-template-areas: 
-        "topLeftBox topBar topRightBox"
-        "leftBar mainBox rightBar"
-        "bottomLeftBox bottomBar bottomRightBox";
+    grid-template-areas:
+        "topLeftBox topCenterBox topRightBox"
+        "centerLeftBox centerCenterBox centerRightBox"
+        "bottomLeftBox bottomCenterBox bottomRightBox";
 }
-li {
+
+.box {
     border: 1px solid red;
 }
 </style>

@@ -1,16 +1,15 @@
 <script setup>
 const menuIsOpen = ref(false);
 
-
 </script>
 
 <template>
     <div class="full relative">
-        <Button48Icon class="wheel" :class="{ 'spinning' : menuIsOpen}" @click="menuIsOpen = !menuIsOpen">
-            <template #iconName>settings</template>
-        </Button48Icon>
+        <button @click="menuIsOpen = !menuIsOpen" class="centered full glass_corner pointer">
+            <WidgetIcon name="settings" :size="24" type="homePageNavButton"/>
+        </button>
 
-        <div class="menuBox glass flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
+        <div class="menuBox glassSurface flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
             <div class="content">
                 <WidgetThemeSelectorMain />
             </div>
