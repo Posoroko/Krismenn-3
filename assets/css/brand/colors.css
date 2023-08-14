@@ -1,0 +1,57 @@
+:root {
+    --light-color: #faeaa8;
+    --dark-color: #131614;
+
+    --textColor: white;
+
+    --shadow-color: rgba(0, 0, 0, 0.488);
+}
+
+
+.lightText {
+    color: var(--light-color);
+}
+.darkText {
+    color: var(--dark-color);
+}
+
+
+.shadow {
+    box-shadow: 0px 0px 6px  var(--shadow-color);
+}
+
+.actionButton {
+    transition: 300ms ease;
+}
+.actionButton:hover {
+    filter: brightness(1.2);
+}
+.actionButton:active {
+    filter: brightness(0.8);
+}
+
+.glass {
+    background-color: #ffffff1d;
+    
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.208); */
+    animation: glowing 4000ms linear infinite;
+}
+
+@keyframes glowing {
+    0% {
+        border: 1px solid #ffffffa9;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.208);
+    }
+
+    50% {
+        border: 1px solid #ffffffe2;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.49);
+    }
+
+    100% {
+        border: 1px solid #ffffffa5;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.208);
+    }
+}
