@@ -3,11 +3,17 @@
 </script>
  
 <template>
-    <div class="absoluteFull flex alignEnd noEvents_kidsEvents">
-        <footer>
-            <div class="leftBox box"></div>
-            <div class="centerBox box"></div>
-            <div class="rightBox box">
+    <div class="absoluteFull flex alignEnd noEvents">
+        <footer class="noEvents">
+            <div class="leftBox box glassSurface-onHover allEvents pointer">
+                <StructureFooterInfoBoxMain />
+            </div>
+
+            <div class="centerBox box noEvents">
+
+            </div>
+
+            <div class="rightBox box allEvents">
                 <SettingsMain />
             </div>
         </footer>

@@ -3,17 +3,14 @@
 @import url('@/assets/css/brand/main.css');
 @import url('@/assets/css/base/main.css');
 
+
+
+
 html {
     overflow: hidden;
-    background-color: #1d1d1d;
+    background-color: #1d1d1d;   
 }
 
 * {
     user-select: none;
-}
-#__nuxt {
-    height: 100vh;
-    
-    display: grid;
-    place-items: center;
 }

@@ -3,7 +3,7 @@ const pageTitle = usePageTitle();
 </script>
 
 <template>
-    <h1 class="topBarTitle pointer">{{ pageTitle }}</h1>
+    <h1 class="topBarTitle pointer">KRISMENN</h1>
     
 </template>
 

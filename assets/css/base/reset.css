@@ -16,7 +16,9 @@ button {
 ul {
     list-style: none;
 }
-
+li {
+    all: unset;
+}
 address {
     font-style: normal;
 }

@@ -16,23 +16,10 @@
 
 <style scoped>
 #appBox {
-    /* width: 400px;
-    height: 600px; */
-    width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
-    /* animation: grow 2s  2s ease forwards; */
 }
-@keyframes grow {
-    0% {
-        width: 400px;
-        height: 600px;
-    }
-    100% {
-        width: 100vw;
-        height: 100vh;
-    }
-}
+
 .backgroundImage {
     position: absolute;
     width: 100%;

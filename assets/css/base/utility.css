@@ -55,7 +55,7 @@
 
 .centered {display: grid;place-items: center;}
 
-.r {border: 2px solid red;}
+.r {border: 1px solid red;}
 .rr {background-color: red;}
 .b {border: 1px solid blue;}
 .bb {background-color: blue;}
@@ -149,6 +149,9 @@
 
 .noEvents {
     pointer-events: none;
+}
+.allEvents {
+    pointer-events: all;
 }
 .noEvents_kidsEvents  {
     pointer-events: none;
