@@ -8,7 +8,12 @@
 
     <StructureHeaderMain />
 
-    <StructureMainMain />
+    <StructureMainMain>
+         <NuxtPage :transition="{
+             name: 'fade',
+             mode: 'out-in'
+         }" />
+    </StructureMainMain>
 
     <StructureFooterMain />
   </div>
@@ -28,5 +33,18 @@
     z-index: -1;
     top: 0;
     left: 0;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
 }
 </style>

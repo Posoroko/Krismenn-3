@@ -1,5 +1,7 @@
 <script setup>
+const pageTitles = usePageTitles();
 
+console.log(pageTitles.value)
 </script>
 
 <template>

@@ -11,6 +11,7 @@ const menuIsOpen = ref(false);
 
         <div class="menuBox glassSurface flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
             <div class="content">
+                <WidgetLanguageSelectorMain />
                 <WidgetThemeSelectorMain />
             </div>
         </div>

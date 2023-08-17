@@ -1,38 +1,52 @@
 <script setup>
+const props = defineProps({
+    title: String,
+    subtitle: String,
+    drawerPosition: String
+})
+
 
 </script>
 
 <template>
-    <div class="panel glassSurface allEvents relative flex">
-        <PanelCloseButton />
+    <div class="box full" :class="drawerPosition">
+        <div class="panel glassSurface allEvents relative flex">
+            <PanelCloseButton />
 
-        <div class="frame relative">
-            <img class="stripeImage" src="/images/autoportrait-stripe.webp" alt="Krismenn">
-        </div>
-
-        <div class="content relative grow flex column">
-            <div class="panelTitle centered">
-                ABOUT
+            <div class="frame relative">
+                <img class="stripeImage" src="/images/autoportrait-stripe.webp" alt="Krismenn">
             </div>
 
-            <div class="scrollBox w100">
-                <p class="panelSubtitle ">
-                    Un artiste mystérieux
-                </p>
-                <p class="panelTextContent kText ">
-                    Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte
-                </p>
+            <div class="content relative grow flex column">
+                <div class="panelTitle centered">
+                    {{ title }}
+                </div>
+
+                <div class="scrollBox w100">
+                    <p class="panelSubtitle ">
+                        {{ subtitle }}
+                    </p>
+                    <div class="panelTextContent kText ">
+                        <slot name="content"></slot>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+.box {
+    display: flex;
+}
+.box.right {
+    justify-content: flex-end;
+}
+
 .panel {
-    width: min(700px, 100%);
+    width: min( calc((100vw - (var(--gutter-thickness) * 2 )) / 2 ) , 100%);
     /* width: fit-content; */
     height: 100%;
-    margin-left: 10vw;
 }
 .frame {
     min-width: 100px;
@@ -62,11 +76,11 @@
     top: 1px;
     opacity: 0.9;
     transition: opacity 0.5s ease;
-    animation: grow 1s  1 forwards ;
-    animation-timing-function: cubic-bezier(.18,.9,.64,1.01);
+    /* animation: grow 1s  1 forwards ; */
+    /* animation-timing-function: cubic-bezier(.18,.9,.64,1.01); */
 }
 
-@keyframes grow {
+/* @keyframes grow {
     0% {
         opacity: 0;
         width: 0px;
@@ -75,7 +89,7 @@
         opacity: 0.9;
         width: 100%;
     }
-}
+} */
 .panelTitle {
     height: 48px;
     font-size: 28px;
