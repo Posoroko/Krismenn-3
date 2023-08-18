@@ -38,8 +38,8 @@ img {
     object-position: center;
     transition: 600ms ease;
 }
-/* img.dark {
+img.dark {
     filter: brightness(0.6) contrast(1.4) saturate(0.5);
     transition: 600ms ease;
-} */
+}
 </style>
