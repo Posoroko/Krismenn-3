@@ -1,6 +1,12 @@
 <script setup>
 const pageTitle = usePageTitle();
 
+definePageMeta({
+    pageTransition: {
+        name: 'slideFromBottom'
+    }
+})
+
 pageTitle.value = "CONTACT";
 </script>
 

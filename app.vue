@@ -9,10 +9,7 @@
     <StructureHeaderMain />
 
     <StructureMainMain>
-         <NuxtPage :transition="{
-             name: 'fade',
-             mode: 'out-in'
-         }" />
+        <NuxtPage />
     </StructureMainMain>
 
     <StructureFooterMain />
@@ -24,27 +21,77 @@
     height: 100vh;
     position: relative;
 }
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
 
-/* .backgroundImage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    top: 0;
-    left: 0;
-} */
 
-.fade-enter-from,
-.fade-leave-to {
+
+
+.slideFromRight-enter-from,
+.slideFromRight-leave-to {
+    filter: blur(10px);
     opacity: 0;
+    transform: translateX(100%);
 }
-.fade-enter-to,
-.fade-leave-from {
+.slideFromRight-enter-to,
+.slideFromRight-leave-from {
+    filter: blur(0px);
     opacity: 1;
+    transform: translateX(0%);
 }
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
+
+
+
+.slideFromLeft-enter-from,
+.slideFromLeft-leave-to {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateX(-100%);
 }
+.slideFromLeft-enter-to,
+.slideFromLeft-leave-from {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+
+.slideFromBottom-enter-from,
+.slideFromBottom-leave-to {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(100%);
+}
+.slideFromBottom-enter-to,
+.slideFromBottom-leave-from {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+
+
+
+
+.slideFromLeft-enter-active,
+.slideFromBottom-enter-active,
+.slideFromRight-enter-active
+ {
+    transition: 300ms ease;
+}
+
+.slideFromLeft-leave-active,
+.slideFromBottom-leave-active,
+.slideFromRight-leave-active {
+    transition: 300ms ease;
+}
+
+
+
 </style>

@@ -2,6 +2,12 @@
 const pageTitle = usePageTitle();
 
 pageTitle.value = "NEWS";
+
+definePageMeta({
+    pageTransition: {
+        name: 'slideFromRight'
+    }
+})
 </script>
 
 <template>

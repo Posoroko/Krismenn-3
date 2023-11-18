@@ -2,51 +2,60 @@
 const props = defineProps({
     title: String,
     subtitle: String,
-    drawerPosition: String
+    drawerPosition: String,
+    pageName: String
 })
 
 
 </script>
 
 <template>
-    <div class="box full" :class="drawerPosition">
-        <div class="panel glassSurface allEvents relative flex">
-            <PanelCloseButton />
 
-            <div class="frame relative">
-                <img class="stripeImage" src="/images/autoportrait-stripe.webp" alt="Krismenn">
+    <div class="panel glassSurface allEvents relative flex" :class="drawerPosition">
+        <PanelCloseButton />
+
+        <div class="frame relative">
+            <img class="stripeImage" src="/images/autoportrait-stripe.webp" alt="Krismenn">
+        </div>
+
+        <div class="content relative grow flex column">
+            <div class="panelTitle centered">
+                {{ title }}
             </div>
 
-            <div class="content relative grow flex column">
-                <div class="panelTitle centered">
-                    {{ title }}
-                </div>
-
-                <div class="scrollBox w100">
-                    <p class="panelSubtitle ">
-                        {{ subtitle }}
-                    </p>
-                    <div class="panelTextContent kText ">
-                        <slot name="content"></slot>
-                    </div>
+            <div class="scrollBox w100">
+                <p class="panelSubtitle ">
+                    {{ subtitle }}
+                </p>
+                <div class="panelTextContent kText ">
+                    <slot name="content"></slot>
                 </div>
             </div>
         </div>
     </div>
+
 </template>
 
 <style scoped>
-.box {
-    display: flex;
+.panel.right {
+    right: 0;
 }
-.box.right {
-    justify-content: flex-end;
+.panel.left {
+    left: 0;
 }
-
 .panel {
-    width: min( calc((100vw - (var(--gutter-thickness) * 2 )) / 2 ) , 100%);
-    /* width: fit-content; */
+    width: 50%;
+
     height: 100%;
+    position: absolute;
+    top: 0;
+    /* transform: translateX(100%); */
+    background-color: rgba(47, 91, 92, 0.451);
+}
+@media (orientation: portrait) or (width < 850px) {
+    .panel {
+        width: 100%;
+    }
 }
 .frame {
     min-width: 100px;
