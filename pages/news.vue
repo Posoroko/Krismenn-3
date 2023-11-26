@@ -1,7 +1,5 @@
 <script setup>
-const pageTitle = usePageTitle();
-
-pageTitle.value = "NEWS";
+const { locale } = useI18n();
 
 definePageMeta({
     pageTransition: {
@@ -11,7 +9,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain :title="pageTitle" subtitle="Les dernières nouvelles" drawerPosition="right">
+    <PanelMain page="news" drawerPosition="right">
             <template #content>
                 <p>
                     Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte

@@ -1,5 +1,6 @@
 <script setup>
-
+const pageTitles = usePageTitles();
+const { locale } = useI18n();
 </script>
 
 <template>
@@ -9,13 +10,13 @@
 
     <li class="leftBarTop tabTitle glassSurface-onHover">
         <NuxtLink to="/teams">
-            TEAMS
+            {{ pageTitles.teams.title[locale].toUpperCase() }}
         </NuxtLink>
     </li>
 
     <li class="leftBarBottom tabTitle glassSurface-onHover">
         <NuxtLink to="/projects">
-            PROJECTS
+            {{ pageTitles.projects.title[locale].toUpperCase() }}
         </NuxtLink>
     </li>
 </template>

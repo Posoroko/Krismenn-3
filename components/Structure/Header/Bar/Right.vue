@@ -1,14 +1,26 @@
+<script setup>
+const pageTitles = usePageTitles();
+const { locale } = useI18n();
+</script>
+
+
 <template>
     <li class="rightBarTop tabTitle glassSurface-onHover">
-        <NuxtLink to="/agenda">AGENDA</NuxtLink>
+        <NuxtLink to="/agenda">
+            {{ pageTitles.agenda.title[locale].toUpperCase() }}
+        </NuxtLink>
     </li>
 
     <li class="rightBarTop tabTitle glassSurface-onHover">
-        <NuxtLink to="/listen">LISTEN</NuxtLink>
+        <NuxtLink to="/listen">
+            {{ pageTitles.listen.title[locale].toUpperCase() }}
+        </NuxtLink>
     </li>
 
     <li class="rightBarBottom tabTitle glassSurface-onHover">
-        <NuxtLink to="/news">NEWS</NuxtLink>
+        <NuxtLink to="/news">
+            {{ pageTitles.news.title[locale].toUpperCase() }}
+        </NuxtLink>
     </li>
 </template>
 

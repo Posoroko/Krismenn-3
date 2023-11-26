@@ -1,19 +1,18 @@
 <script setup>
 const pageTitles = usePageTitles();
-
-console.log(pageTitles.value)
+const { locale } = useI18n();
 </script>
 
 <template>
     <li class="header_tab_about tabTitle centered pointer glassSurface-onHover">
         <NuxtLink to="/about">
-            ABOUT
+            {{ pageTitles.about.title[locale].toUpperCase() }}
         </NuxtLink>
     </li>
 
     <li class="header_tab_about tabTitle centered pointer glassSurface-onHover">
         <NuxtLink to="/contact">
-            CONTACT
+            {{ pageTitles.contact.title[locale].toUpperCase() }}
         </NuxtLink>
     </li>
 </template>

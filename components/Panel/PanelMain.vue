@@ -1,16 +1,19 @@
 <script setup>
+const { locale } = useI18n();
+
+const themes = useThemes();
+const activeThemeId = useActiveThemeId();
+const pageTitles = usePageTitles();
+
 const props = defineProps({
-    title: String,
-    subtitle: String,
+    page: String,
     drawerPosition: String,
     pageName: String
 })
 
-
 </script>
 
 <template>
-
     <div class="panel glassSurface allEvents relative flex" :class="drawerPosition">
         <PanelCloseButton />
 
@@ -19,22 +22,22 @@ const props = defineProps({
         </div>
 
         <div class="content relative grow flex column">
-            <div class="panelTitle centered">
-                {{ title }}
-            </div>
+            <h1 class="panelTitle centered">
+                {{ pageTitles[page].title[locale] }}
+            </h1>
 
             <div class="scrollBox w100">
-                <p class="panelSubtitle ">
-                    {{ subtitle }}
-                </p>
-                <div class="panelTextContent kText ">
+                <h2 class="panelSubtitle">
+                    {{ pageTitles[page].subtitle[locale] }}
+                </h2>
+                <div class="panelTextContent kText w100 ">
                     <slot name="content"></slot>
                 </div>
             </div>
         </div>
     </div>
-
 </template>
+
 
 <style scoped>
 .panel.right {
@@ -44,13 +47,17 @@ const props = defineProps({
     left: 0;
 }
 .panel {
-    width: 50%;
+    width: min(50vw + 1px, 100% + 0.1px);
 
     height: 100%;
     position: absolute;
     top: 0;
     /* transform: translateX(100%); */
-    background-color: rgba(47, 91, 92, 0.451);
+    background-color: rgba(255, 255, 255, 0.164);
+    /* background-color: rgba(47, 91, 92, 0.451); */
+    overflow: hidden;
+
+    --frame-width: min(10vw, 100px);
 }
 @media (orientation: portrait) or (width < 850px) {
     .panel {
@@ -58,12 +65,13 @@ const props = defineProps({
     }
 }
 .frame {
-    min-width: 100px;
+    width: min(10vw, 100px);
+    /* width: 300px; */
     height: 100%;
     overflow: hidden;
     align-content: flex-start;
     box-shadow: 
-        inset 0 0 20px 5px rgba(211, 253, 255, 0.164);
+        v-bind("themes[activeThemeId].insetShadowColor");
 }
 .stripeImage {
     position: absolute;
@@ -72,21 +80,22 @@ const props = defineProps({
     object-fit: cover;
     z-index: -1;
 }
-
+.content {
+    width: calc(100% - var(--frame-width));
+}
 .content:before {
     content: "";
     width: 100%;
-    border: 3px solid rgba(255, 255, 255, 0.986);
+    border: 3px solid rgb(255, 255, 255);
 
 
     filter: blur(2px);
-    box-shadow: 0 0 10px 5px rgba(114, 248, 255, 0.568);
+    box-shadow: v-bind("themes[activeThemeId].shadowColor");
     position: absolute;
     top: 1px;
     opacity: 0.9;
     transition: opacity 0.5s ease;
-    /* animation: grow 1s  1 forwards ; */
-    /* animation-timing-function: cubic-bezier(.18,.9,.64,1.01); */
+    
 }
 
 /* @keyframes grow {
@@ -101,17 +110,17 @@ const props = defineProps({
 } */
 .panelTitle {
     height: 48px;
-    font-size: 28px;
+    font-size: clamp(2.4rem, 1.5vw + 1rem, 2.8rem);
+     /* font-size: 28px; */
     font-family: 'Raleway', sans-serif;
     color: white;
     font-weight: 200;
     /* margin-top: 10px; */
     padding-top: 10px;
-    background: linear-gradient(0deg, transparent 0%, rgba(70, 180, 253, 0.274) 100%);
+    background: v-bind("themes[activeThemeId].panelTitleBackgroundColor");
 }
 .panelSubtitle {
-    height: 48px;
-    font-size: 32px;
+    font-size: clamp(2rem, 1.5vw + 1rem, 2.6rem);
     font-family: 'Raleway', sans-serif;
     color: white;
     font-weight: 100;
@@ -119,14 +128,13 @@ const props = defineProps({
     margin-top: 10px;
 }
 .scrollBox {
-    height: 40em;
     overflow-y: scroll;
-    padding: 0 50px;
-    margin-top: 100px;
+    padding: 0 min(3vw, 30px);
+    margin-top: min(5vw, 40px);
     flex-grow: 1;
 }
 .panelTextContent {
-    /* max-width: 40ch; */
-    margin-top: 30px;
+    /* width: 50%; */
+    margin-top: 20px;
 }
 </style>

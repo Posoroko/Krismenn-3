@@ -1,7 +1,4 @@
 <script setup>
-const pageTitle = usePageTitle();
-
-pageTitle.value = "KRISMENN";
 
 
 </script>

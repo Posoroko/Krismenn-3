@@ -1,7 +1,5 @@
 <script setup>
-const pageTitle = usePageTitle();
-
-pageTitle.value = "LISTEN";
+const { locale } = useI18n();
 
 definePageMeta({
     pageTransition: {
@@ -11,13 +9,28 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain :title="pageTitle" subtitle="Ecoutez sur les plateformes" drawerPosition="right">
+    <PanelMain page="listen" drawerPosition="right">
         <template #content>
             <p>
-                Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte
+                Vous pouvez écouter les albums de Krismenn sur les plateformes de streaming suivantes :
             </p>
+            <nav class="r w100">
+                <ul class="w100 flex">
+                    <li class="r">
+                        <a href="https://open.spotify.com/artist/1Z4Z8QZ4Qx0Q8QZQZQZQZQ?si=8e2e9e9f0b5c4f9d" target="_blank">
+                            spotify
+                        </a>
+
+                        <WidgetIcon name="spotify" type="homePageNavButton" size="24"/>
+                    </li>
+                </ul>
+            </nav>
         </template>
     </PanelMain>
 </template>
 
-<style scoped></style>
+<style scoped>
+p {
+    /* max-width: 50%; */
+}
+</style>

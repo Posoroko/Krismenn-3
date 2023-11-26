@@ -1,14 +1,12 @@
 <script setup>
 const route = useRoute();
 
-console.log(route.path);
 const themes = useThemes();
-
-const activeTheme = useActiveTheme();
+const activeThemeId = useActiveThemeId();
 
 
 const image = computed(() => {
-    return themes.value[activeTheme.value].backgroundImage;
+    return themes.value[activeThemeId.value].backgroundImage;
 });
 
 
@@ -16,7 +14,6 @@ const image = computed(() => {
 
 <template>
     <div class="frame">
-        <!-- <img class="" :src="`/images/background/${folder}/${image}.webp`" alt="Krismenn"> -->
         <img class="" :src="`/images/background/x-large/${image}`" alt="Krismenn" :class="{ 'dark' : route.path.length > 4}">
     </div>
 </template>

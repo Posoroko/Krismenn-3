@@ -2,3 +2,8 @@
     --gutter-thickness: 48px;
 }
 
+@media (max-width: 500px) {
+    :root {
+        --gutter-thickness: 36px;
+    }
+}

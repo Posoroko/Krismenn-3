@@ -5,7 +5,7 @@ const menuIsOpen = ref(false);
 
 <template>
     <div class="full relative">
-        <button @click="menuIsOpen = !menuIsOpen" class="centered full glass_corner pointer">
+        <button @click="menuIsOpen = !menuIsOpen" class="centered full glass_corner pointer ">
             <WidgetIcon name="settings" :size="24" type="homePageNavButton"/>
         </button>
 
@@ -19,18 +19,6 @@ const menuIsOpen = ref(false);
 </template>
 
 <style scoped>
-.wheel {
-    opacity: 0.5;
-}
-.wheel:hover,
-.wheel.spinning {
-    animation: spin 10s linear infinite;
-}
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
 .menuBox {    
     position: absolute;
     bottom: 50%;

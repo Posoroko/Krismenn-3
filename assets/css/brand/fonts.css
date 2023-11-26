@@ -31,7 +31,7 @@ html {
 }
 .tabTitle {
     font-family: var(--kText);
-    font-size: clamp(1.6rem, 2vw + 0.1rem, 2rem);
+    font-size: clamp(1.5rem, 0.9vw + 0.1rem, 2rem);
     color: white;
 }
 
