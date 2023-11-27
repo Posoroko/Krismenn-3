@@ -1,6 +1,6 @@
 <script setup>
 const { locale } = useI18n();
-
+const route = useRoute();
 definePageMeta({
     pageTransition: {
     name: 'slideFromBottom'

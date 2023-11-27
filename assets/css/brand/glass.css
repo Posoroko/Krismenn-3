@@ -7,7 +7,8 @@
 
 .glass_corner:hover,
 .glassSurface,
-.glassSurface-onHover:hover {
+.glassSurface-onHover:hover,
+.glassSurface_selected {
     background-color: hsla(0, 0%, 100%, 0.103);
     border: 1px solid hsla(0, 0%, 97%, 0.212);
     backdrop-filter: blur(10px);
