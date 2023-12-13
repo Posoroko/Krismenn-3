@@ -1,6 +1,8 @@
 <script setup>
-const dateToFrench = useDateToFrench();
 const { locale } = useI18n();
+
+const dateToLocale = useDateToLocale();
+
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
 
@@ -24,11 +26,11 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain class="panel" page="agenda" drawerPosition="right">
+    <PanelMain class="panel" page="agenda" drawerPosition="right" >
         <template #content>
             <div v-if="dates">
                 <div v-for="date in dates" :key="date.id" class="card">
-                    <p>{{ dateToFrench(date.date) }}</p>
+                    <p>{{ dateToLocale(locale, date.date) }}</p>
                     <p>{{ date.city.name }}</p>
                     <p>{{ date.project.name }}</p>
                 </div>

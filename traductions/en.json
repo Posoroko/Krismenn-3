@@ -1,0 +1,32 @@
+{
+    "pages": {
+        "home": {
+            "title": "Home"
+        },
+        "agenda": {
+            "title": "Agenda"
+        },
+        "listen": {
+            "title": "Contact"
+        },
+        "news": {
+            "title": "News",
+            "introText": ""
+        },
+        "contact": {
+            "title": "Contact"
+        },
+        "about": {
+            "title": "About"
+        },
+        "projects": {
+            "title": "Projects"
+        },
+        "teams": {
+            "title": "Teams"
+        },
+        "bastard": {
+            "title": "Bastard"
+        }
+    }
+}

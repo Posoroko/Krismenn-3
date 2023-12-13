@@ -2,6 +2,13 @@
 import { useI18n, useLocalePath } from '#imports'
 const { locale, locales } = useI18n()
 
+const props = defineProps({
+    bzhButton: {
+        type: Boolean,
+        default: false
+    }
+})
+
 const switchLocalePath = useSwitchLocalePath()
 
 const availableLocales = computed(() => {
@@ -14,10 +21,16 @@ function toggleLanguage(e) {
 </script>
 
 <template>
-    <div class="languageBox flex gap10">
+    <div class="languageBox flex gap10" v-if="!bzhButton">
         <NuxtLink v-for="loc in availableLocales" :key="loc.code" :to="switchLocalePath(loc.code)" class="langBtn pointer"
             :class="{ activeLangBtn: locale == loc.code }">
             {{ loc.code }}
+        </NuxtLink>
+    </div>
+
+    <div class="languageBox flex gap10" v-else>
+        <NuxtLink :to="switchLocalePath('bzh')" class="langBtn pointer">
+            bzh
         </NuxtLink>
     </div>
 </template>

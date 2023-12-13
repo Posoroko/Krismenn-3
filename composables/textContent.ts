@@ -61,6 +61,11 @@ export const usePageTitles = () => {
                 en: "",
                 fr: "",
                 bzh: ""
+            },
+            introText: {
+                en: "",
+                fr: "Suivez moi dans mon travail et ma vie de tous les jours.  Je vous raconte mes projets, mes idées, mes envies, mes coups de coeur, mes coups de gueule, ...",
+                bzh: ""
             }
         },
     }

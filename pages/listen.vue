@@ -29,7 +29,5 @@ definePageMeta({
 </template>
 
 <style scoped>
-p {
-    /* max-width: 50%; */
-}
+
 </style>

@@ -1,5 +1,6 @@
 <script setup>
 const { locale } = useI18n();
+const appConfig = useAppConfig();
 
 const themes = useThemes();
 const activeThemeId = useActiveThemeId();
@@ -8,8 +9,10 @@ const pageTitles = usePageTitles();
 const props = defineProps({
     page: String,
     drawerPosition: String,
-    pageName: String
+    pageName: String,
+    stripeImageDirectusUrl: String,
 })
+
 
 </script>
 
@@ -18,7 +21,7 @@ const props = defineProps({
         <PanelCloseButton />
 
         <div class="frame relative">
-            <img class="stripeImage" src="/images/autoportrait-stripe.webp" alt="Krismenn">
+            <PanelStripeImage :fileName="appConfig.panelStripeImages[page]" :stripeImageDirectusUrl="stripeImageDirectusUrl" />
         </div>
 
         <div class="content relative grow flex column">
@@ -42,6 +45,7 @@ const props = defineProps({
 <style scoped>
 .panel.right {
     right: 0;
+    flex-direction: row-reverse;
 }
 .panel.left {
     left: 0;
@@ -52,9 +56,7 @@ const props = defineProps({
     height: 100%;
     position: absolute;
     top: 0;
-    /* transform: translateX(100%); */
     background-color: rgba(255, 255, 255, 0.164);
-    /* background-color: rgba(47, 91, 92, 0.451); */
     overflow: hidden;
 
     --frame-width: min(10vw, 100px);
@@ -66,7 +68,6 @@ const props = defineProps({
 }
 .frame {
     width: min(10vw, 100px);
-    /* width: 300px; */
     height: 100%;
     overflow: hidden;
     align-content: flex-start;
@@ -98,16 +99,6 @@ const props = defineProps({
     
 }
 
-/* @keyframes grow {
-    0% {
-        opacity: 0;
-        width: 0px;
-    }
-    100% {
-        opacity: 0.9;
-        width: 100%;
-    }
-} */
 .panelTitle {
     height: 48px;
     font-size: clamp(2.4rem, 1.5vw + 1rem, 2.8rem);
@@ -134,7 +125,6 @@ const props = defineProps({
     flex-grow: 1;
 }
 .panelTextContent {
-    /* width: 50%; */
     margin-top: 20px;
 }
 </style>

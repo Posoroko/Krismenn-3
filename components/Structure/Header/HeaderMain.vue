@@ -14,7 +14,9 @@
             
                 <div class="box topCenterBox"></div>
             
-                <div class="box corner topRightBox"></div>
+                <div class="box corner topRightBox">
+                    <WidgetLanguageSelectorBzhButton />
+                </div>
 
                 <div class="box centerLeftBox flex column">
                     <StructureHeaderBarLeft />

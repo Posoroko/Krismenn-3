@@ -36,7 +36,7 @@ img {
     transition: 600ms ease;
 }
 img.dark {
-    filter: brightness(0.6) contrast(1.4) saturate(0.5);
+    filter: brightness(0.3) contrast(1.3) saturate(0.5);
     transition: 600ms ease;
 }
 </style>

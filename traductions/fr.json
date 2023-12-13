@@ -1,0 +1,32 @@
+{
+    "pages": {
+        "home": {
+            "title": "Accueil"
+        },
+        "listen": {
+            "title": "Écouter"
+        },
+        "agenda": {
+            "title": "Agenda"
+        },
+        "news": {
+            "title": "Actualités",
+            "introText": "Suivez moi dans mon travail et ma vie de tous les jours.  Voyages, concerts, résidences, créations, ... "
+        },
+        "contact": {
+            "title": "Contact"
+        },
+        "about": {
+            "title": "A propos"
+        },
+        "projects": {
+            "title": "Projets"
+        },
+        "teams": {
+            "title": "Formations"
+        },
+        "bastard": {
+            "title": "Bastard"
+        }
+    }
+}

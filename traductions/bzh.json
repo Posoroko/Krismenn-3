@@ -1,0 +1,32 @@
+{
+    "panels": {
+        "home": {
+            "title": "Ger"
+        },
+        "agenda": {
+            "title": "Implij amzer"
+        },
+        "listen": {
+            "title": "Contact"
+        },
+        "news": {
+            "title": "Keloù",
+            "introText": ""
+        },
+        "contact": {
+            "title": "Pelgomz"
+        },
+        "about": {
+            "title": "Diwar-benn"
+        },
+        "projects": {
+            "title": "Raktressoù"
+        },
+        "teams": {
+            "title": "Stroladoù"
+        },
+        "bastard": {
+            "title": "Bastard"
+        }
+    }
+}
