@@ -1,13 +1,9 @@
 <script setup>
 onMounted(() => {
-    window.addEventListener("load", function () {
-        setTimeout(function () {
-            // This will scroll the page down 1px, then back up 1px.
-            // This should hide the address bar, unless the user has interacted with it.
-            window.scrollTo(0, 1);
-            window.scrollTo(0, 0);
-        }, 5000);
-    });
+    setTimeout(function () {
+        //scroll up 100px
+        window.scrollTo(0, 100);
+    }, 5000);
 })
 </script>
 
