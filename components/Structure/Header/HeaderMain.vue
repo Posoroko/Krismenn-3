@@ -1,5 +1,14 @@
 <script setup>
-
+onMounted(() => {
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            // This will scroll the page down 1px, then back up 1px.
+            // This should hide the address bar, unless the user has interacted with it.
+            window.scrollTo(0, 1);
+            window.scrollTo(0, 0);
+        }, 5000);
+    });
+})
 </script>
 
 <template>
@@ -14,7 +23,7 @@
             
                 <div class="box topCenterBox"></div>
             
-                <div class="box corner topRightBox">
+                <div class="box corner topRightBox centered">
                     <WidgetLanguageSelectorBzhButton />
                 </div>
 

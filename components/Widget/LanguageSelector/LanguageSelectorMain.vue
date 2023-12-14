@@ -36,9 +36,6 @@ function toggleLanguage(e) {
 </template>
 
 <style scoped>
-.languageBox {
-    padding: 10px;
-}
 
 .langBtn {
     color: rgb(120, 120, 120);
