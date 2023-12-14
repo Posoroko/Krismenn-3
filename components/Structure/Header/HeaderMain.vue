@@ -1,10 +1,26 @@
 <script setup>
-onMounted(() => {
-    setTimeout(function () {
-        //scroll up 100px
+let isPageFocused = true;
+
+window.onblur = function () {
+    isPageFocused = false;
+}
+
+window.onfocus = function () {
+    isPageFocused = true;
+}
+
+let timer = null;
+window.onresize = function () {
+    if(!isPageFocused) {
+        return;
+    }
+    if (timer !== null) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(function () {
         window.scrollTo(0, 100);
-    }, 5000);
-})
+    }, 1000);
+}
 </script>
 
 <template>
