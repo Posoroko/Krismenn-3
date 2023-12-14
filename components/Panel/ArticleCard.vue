@@ -26,11 +26,13 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="articleBox panelCard flex" :class="[{ 'active': active }, { 'fullPage': articlePage }]" >
+    <div class="articleBox flex relative" :class="[{ 'active': active }, { 'fullPage': articlePage }]" >
 
+        
         <div class="tinyFrame" v-if="!articlePage">
-            <img class="objectFitCover" :src="`${directusAssets}${article.image}`" alt="">
+            //two tinyFrames for animation to work. With only one, height problem occure in the flex container
         </div>
+        
 
         <div class="contentBox">
             <h2 class="title kTitle">{{ article[locale].title }}</h2>
@@ -41,6 +43,10 @@ const props = defineProps({
                 <NuxtLink v-if="!articlePage" :to="`/news/${article.id}`" class="readMore">Lire la suite</NuxtLink>
             </div>
         </div>
+        
+        <div class="tinyFrame centered absolute" v-if="!articlePage">
+            <img class="objectFitCover" :src="`${directusAssets}${article.image}`" alt="">
+        </div>
     </div>
 </template>
 
@@ -50,7 +56,7 @@ const props = defineProps({
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px rgba(27, 1, 88, 0.253);
     background-color: #ffffff09;
-    margin-top: 40px;
+    margin: 40px 0;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -85,14 +91,24 @@ const props = defineProps({
     --contenBoxLeftPAddingTransition: padding-left 2500ms ease-out;
 }
 .tinyFrame {
-    width: 150px;
+    width: 60%;
     flex-shrink: 0;
-    filter:  contrast(1.3) blur(0.5px) brightness(0.5);
-    transition: var(--tinyFrameTransition)
+    filter:  contrast(1.1) blur(0.5px) brightness(0.7);
+    transition: var(--tinyFrameTransition);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.tinyFrame.absolute {
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
 .articleBox.active .tinyFrame {
     width: 0px;
-    transition: var(--tinyFrameTransition)
+    transition: var(--tinyFrameTransition);
 }
 .articleBox:nth-child(1){
     margin-top: 0px;
@@ -101,8 +117,13 @@ const props = defineProps({
 .contentBox {
     width: 100%;
     flex-shrink: 0;
-    color: rgb(212, 212, 212);
+    color: rgba(212, 212, 212, 0.493);
     padding: 30px;
+    transition: var(--contenBoxLeftPAddingTransition);
+}
+.articleBox.active .contentBox {
+    color: rgb(212, 212, 212);
+    transition: var(--contenBoxLeftPAddingTransition);
 }
 
 h2 {

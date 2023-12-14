@@ -27,7 +27,7 @@ const props = defineProps({
                 {{ pageTitles[page].title[locale] }}
             </h1>
 
-            <div class="scrollBox w100">
+            <div class="scrollBox w100 ">
                 <h2 class="panelSubtitle">
                     {{ pageTitles[page].subtitle[locale] }}
                 </h2>
@@ -99,15 +99,25 @@ const props = defineProps({
 }
 
 .panelTitle {
-    height: 48px;
+    height: 75px;
     font-size: clamp(2.4rem, 1.5vw + 1rem, 2.8rem);
-     /* font-size: 28px; */
     font-family: 'Raleway', sans-serif;
     color: white;
     font-weight: 200;
-    /* margin-top: 10px; */
+    flex-shrink: 0;
     padding-top: 10px;
     background: v-bind("themes[activeThemeId].panelTitleBackgroundColor");
+    position: relative;
+}
+.panelTitle:after {
+    width: 100%;
+    height: 20px;
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(25, 40, 44, 0.39) 100%);
+    z-index: -1;
 }
 .panelSubtitle {
     font-size: clamp(2rem, 1.5vw + 1rem, 2.6rem);
@@ -120,9 +130,11 @@ const props = defineProps({
 .scrollBox {
     overflow-y: scroll;
     padding: 0 min(3vw, 30px);
-    margin-top: min(5vw, 40px);
     flex-grow: 1;
+    position: relative;
+    box-shadow: inset ;
 }
+
 .panelTextContent {
     margin-top: 20px;
 }
