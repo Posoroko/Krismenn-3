@@ -62,7 +62,13 @@ const props = defineProps({
 }
 @media (orientation: portrait) or (width < 850px) {
     .panel {
-        width: 100%;
+        width: 100vw;
+        translate: var(--gutter-thickness) var(--gutter-thickness);
+    }
+}
+@media (orientation: portrait) or (width < 599px) {
+    .frame {
+        display: none;
     }
 }
 .frame {

@@ -110,6 +110,12 @@ const props = defineProps({
     width: 0px;
     transition: var(--tinyFrameTransition);
 }
+@media (orientation: portrait) or (width < 599px) {
+    .articleBox.active .tinyFrame {
+    width: 10%;
+    transition: var(--tinyFrameTransition);
+}
+}
 .articleBox:nth-child(1){
     margin-top: 0px;
 }
@@ -148,6 +154,15 @@ h2 {
     overflow: hidden;
     white-space: pre-wrap;
 }
+@media (orientation: portrait) or (width < 599px) {
+    .articleBox.active .tinyFrame {
+        width: 10%;
+        /* transition: var(--tinyFrameTransition); */
+    }
+    .contentBox {
+        width: 90%;
+    }
+}
 .articleBox.fullPage .content {
     height: auto;
     transition: color 120ms ease-out;
@@ -159,6 +174,7 @@ h2 {
     padding: 10px 20px;
     border: 1px solid rgba(255, 255, 255, 0.185);
     border-radius: 5px;
+    margin-top: 20px;
     translate: 50px;
     transition: transition 300ms cubic-bezier(.3,1.01,.8,1.01);
 }
