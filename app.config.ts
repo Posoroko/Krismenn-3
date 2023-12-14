@@ -4,6 +4,8 @@ export default defineAppConfig({
         assets: "https://krismenn.monsieuredgar.com/assets/",
     },
     panelStripeImages: {
+        teams: "louise.webp",
+        projects: "brown2.webp",
         agenda: "scene-god-rays.webp",
         listen: "folklore.webp",
         contact: "brown.webp"

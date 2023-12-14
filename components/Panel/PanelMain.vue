@@ -18,8 +18,6 @@ const props = defineProps({
 
 <template>
     <div class="panel glassSurface allEvents relative flex" :class="drawerPosition">
-        <PanelCloseButton />
-
         <div class="frame relative">
             <PanelStripeImage :fileName="appConfig.panelStripeImages[page]" :stripeImageDirectusUrl="stripeImageDirectusUrl" />
         </div>
@@ -33,14 +31,15 @@ const props = defineProps({
                 <h2 class="panelSubtitle">
                     {{ pageTitles[page].subtitle[locale] }}
                 </h2>
-                <div class="panelTextContent kText w100 ">
+                <div class="panelTextContent">
                     <slot name="content"></slot>
                 </div>
             </div>
+
+            <PanelCloseButton />
         </div>
     </div>
 </template>
-
 
 <style scoped>
 .panel.right {
@@ -51,7 +50,7 @@ const props = defineProps({
     left: 0;
 }
 .panel {
-    width: min(50vw + 1px, 100% + 0.1px);
+    width: min(900px, 100% + 0.1px);
 
     height: 100%;
     position: absolute;
