@@ -1,4 +1,11 @@
 {
+    "global": {
+        "readMore": "Read more"
+    },
+    "info": {
+        "legal": "Legal notice",
+        "credits": "Photo credits"
+    },
     "pages": {
         "home": {
             "title": "Home"
@@ -11,7 +18,7 @@
         },
         "news": {
             "title": "News",
-            "introText": ""
+            "introText": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première."
         },
         "contact": {
             "title": "Contact"

@@ -1,30 +1,9 @@
 <script setup>
-let isPageFocused = true;
-
-window.onblur = function () {
-    isPageFocused = false;
-}
-
-window.onfocus = function () {
-    isPageFocused = true;
-}
-
-let timer = null;
-window.onresize = function () {
-    if(!isPageFocused) {
-        return;
-    }
-    if (timer !== null) {
-        clearTimeout(timer);
-    }
-    timer = setTimeout(function () {
-        window.scrollTo(0, 100);
-    }, 1000);
-}
+const route = useRoute();
 </script>
 
 <template>
-    <header class="absoluteFull">
+    <header class="absoluteFull" :class="{ 'panelOpen': route.path.length > 4 }" >
         <nav class="w100 h100">
             <ul class="w100 h100">
                 <li class="box corner topLeftBox centered">
@@ -60,9 +39,23 @@ window.onresize = function () {
         </nav>
     </header>
 </template>
+<style>
+.tabLinkText,
+header.panelOpen .tabLinkText:hover {
+    color: rgb(225, 237, 245);
+    transition: 150ms ease;
+}
+
+header.panelOpen .tabLinkText {
+    color: black;
+    transition: 300ms ease;
+}
+
+</style>
 
 <style scoped>
 ul {
+
     display: grid;
     grid-template-columns: var(--gutter-thickness) auto var(--gutter-thickness);
     grid-template-rows: var(--gutter-thickness) auto var(--gutter-thickness);
@@ -71,6 +64,5 @@ ul {
         "centerLeftBox centerCenterBox centerRightBox"
         "bottomLeftBox bottomCenterBox bottomRightBox";
 }
-
 
 </style>

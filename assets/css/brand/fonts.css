@@ -27,7 +27,7 @@ html {
 .topBarTitle {
     font-family: var(--kTitle);
     font-size: clamp(2.4rem, 4vw + 0.1rem, 3rem);
-    color: white;
+    color: var(--tabs-text-color);
 }
 .tabTitle {
     font-family: var(--kText);

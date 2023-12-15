@@ -1,4 +1,7 @@
 <script setup>
+import { useI18n } from '#imports';
+const { t } = useI18n();
+
 const menuIsOpen = ref(false);
 </script>
 
@@ -10,8 +13,8 @@ const menuIsOpen = ref(false);
 
         <div class="menuBox glassSurface flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
             <div class="content kText">
-                <p>mentions légales</p>
-                <p>copyright photos</p>
+                <p>{{ $t('info.legal') }}</p>
+                <p>{{ $t('info.credits') }}</p>
                 <p>posoroko.com</p>
             </div>
         </div>

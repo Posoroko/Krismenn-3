@@ -4,12 +4,27 @@ const props = defineProps({
     stripeImageDirectusUrl: String
 })
 
+const imageTransformKey=  computed(() => {
+    switch (window.innerHeight) {
+
+        case window.innerHeight <= 999 :
+            return 'stripe-300x1000';        
+        default: 
+            return 'stripe-300x1000';
+    }
+})
+
 </script>
 
 <template>
     <div class="full" >
-        <div class="image directusImage full" v-if="stripeImageDirectusUrl" :style="{ backgroundImage: `url(${stripeImageDirectusUrl})` }"></div>
-        <div class="image localImage full" v-if="fileName">{{ stripeImageDirectusUrl }}</div>
+        <div 
+            v-if="stripeImageDirectusUrl" 
+            class="image directusImage full" 
+            :style="{ backgroundImage: `url(${stripeImageDirectusUrl}?key=${imageTransformKey})` }">
+        </div>
+        
+        <div class="image localImage full" v-if="fileName">{{ `stripeImageDirectusUrl` }}</div>
     </div>
     
 </template>

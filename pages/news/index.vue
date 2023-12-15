@@ -1,4 +1,6 @@
 <script setup>
+
+
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
 const directusAssets = appConfig.directus.assets;
@@ -58,7 +60,13 @@ function handleArticleSelection(e) {
 </script>
 
 <template>
-    <PanelMain page="news" drawerPosition="right" v-if="activeImageUrl" :stripeImageDirectusUrl="activeImageUrl">
+    <PanelMain 
+        v-if="activeImageUrl"
+        page="news" 
+        drawerPosition="right"  
+        :stripeImageDirectusUrl="activeImageUrl"
+        showIntroText>
+
         <template #content>
             <PanelArticleCard 
                 v-for="article in news" :key="article.id" 
@@ -66,7 +74,8 @@ function handleArticleSelection(e) {
                 :class="{ 'active': activeArticle_id == article.id }"
                 @click="handleArticleSelection" 
                 :data-id="article.id" 
-                :data-image="article.image"/>
+                :data-image="article.image"
+                />
         </template>
     </PanelMain>
 </template>

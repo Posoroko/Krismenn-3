@@ -1,5 +1,12 @@
 {
-    "panels": {
+    "global": {
+        "readMore": "Lenn muioc’h"
+    },
+    "info": {
+        "legal": "Kemennadenn lezennel",
+        "credits": "Crédits photos"
+    },
+    "pages": {
         "home": {
             "title": "Ger"
         },
@@ -11,7 +18,7 @@
         },
         "news": {
             "title": "Keloù",
-            "introText": ""
+            "introText":  "Oberit mat ganeoc’h e-barzh ma labour ha ma buhez bevañ bep devezh. Abadennoù, hentadoù, lec’hioù-staliañ, me a ra kont ha kinnig a-raok ar re all."
         },
         "contact": {
             "title": "Pelgomz"

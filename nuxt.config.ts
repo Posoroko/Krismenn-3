@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
     app: {
         pageTransition: { name: 'page', mode: 'out-in' }
@@ -7,38 +8,37 @@ export default defineNuxtConfig({
     css: ['@/assets/css/main.css'],
     ssr: false,
     modules: [
-        '@nuxtjs/i18n',
+        '@nuxtjs/i18n'
     ],
-    
     i18n: {
-        baseUrl: 'https://krismenn.netlify.app',
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'kouingig',
-            redirectOn: 'root',  // recommended
-        },
-        strategy: 'prefix_and_default',
-        defaultLocale: 'en',
-        locale: 'En',
+        lazy: true,
+        // legacy: false,
+        // locale: 'en',
         locales: [
             {
                 code: 'en',
                 name: 'English',
                 iso: 'en-US',
+                file: 'en.json'
             },
             {
                 code: 'fr',
                 name: 'Français',
                 iso: 'fr-FR',
+                file: 'fr.json'
             },
             {
                 code: 'bzh',
                 name: 'Brezhoneg',
                 iso: 'bzh-BZH',
+                file: 'bzh.json'
             },
         ],
-        customRoutes: 'config',
-        vueI18nLoader: true,
+        defaultLocale: 'en',
+        langDir: 'locales',
+        // vueI18n: {
+        //     fallbackLocale: 'en'
+        // },
         pages: {
             home: { en: '/', fr: '/', bzh: '/' },
             about: { en: '/about', fr: '/a-propos', bzh: '/diwar-benn' },
@@ -48,7 +48,13 @@ export default defineNuxtConfig({
             agenda: { en: '/agenda', fr: '/agenda', bzh: '/kalendar' },
             listen: { en: '/listen', fr: '/ecouter', bzh: '/selaou' },
             news: { en: '/news', fr: '/actualites', bzh: '/nevez-amzer' },
-        }
-    },
-    
+        },
+        customRoutes: 'config',
+        strategy: 'prefix_and_default',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'kouingig',
+            redirectOn: 'root',  // recommended
+        },
+    }
 })

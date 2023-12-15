@@ -1,18 +1,19 @@
 <script setup>
-const { locale } = useI18n();
-const appConfig = useAppConfig();
+import { useI18n } from '#imports';
+const { t } = useI18n();
 
+const appConfig = useAppConfig();
+const route = useRoute();
 const themes = useThemes();
 const activeThemeId = useActiveThemeId();
-const pageTitles = usePageTitles();
 
 const props = defineProps({
     page: String,
     drawerPosition: String,
     pageName: String,
     stripeImageDirectusUrl: String,
+    showIntroText: Boolean
 })
-
 
 </script>
 
@@ -24,13 +25,13 @@ const props = defineProps({
 
         <div class="content relative grow flex column">
             <h1 class="panelTitle centered">
-                {{ pageTitles[page].title[locale] }}
+                {{ $t( `pages.${page}.title`) }}
             </h1>
 
-            <div class="scrollBox w100 ">
-                <h2 class="panelSubtitle">
-                    {{ pageTitles[page].subtitle[locale] }}
-                </h2>
+            <div class="scrollBox w100">
+                <p class="panelSubtitle" v-if="showIntroText">
+                    {{ $t(`pages.${page}.introText`) }}
+                </p>
                 <div class="panelTextContent">
                     <slot name="content"></slot>
                 </div>
@@ -50,7 +51,7 @@ const props = defineProps({
     left: 0;
 }
 .panel {
-    width: min(900px, 100% + 0.1px);
+    width: min(900px, 100% - 0.1px);
 
     height: 100%;
     position: absolute;
@@ -63,7 +64,8 @@ const props = defineProps({
 @media (orientation: portrait) or (width < 850px) {
     .panel {
         width: 100vw;
-        translate: var(--gutter-thickness) var(--gutter-thickness);
+        height: calc(100vh - var(--gutter-thickness));
+        translate: var(--gutter-thickness) ;
     }
 }
 @media (orientation: portrait) or (width < 599px) {
@@ -78,6 +80,13 @@ const props = defineProps({
     align-content: flex-start;
     box-shadow: 
         v-bind("themes[activeThemeId].insetShadowColor");
+}
+
+/* FOR HIGH RES SCREENS - NEDDS TESTING */
+@media (screen) and (height > 2000) {
+    .frame {
+         width: 300px;
+    }
 }
 .stripeImage {
     position: absolute;
@@ -126,11 +135,15 @@ const props = defineProps({
     z-index: -1;
 }
 .panelSubtitle {
-    font-size: clamp(2rem, 1.5vw + 1rem, 2.6rem);
+    font-size: clamp(1.4rem, 1vw + 1rem, 1.6rem);
     font-family: 'Raleway', sans-serif;
     color: white;
-    font-weight: 100;
-    letter-spacing: 4px;
+    font-weight: 500;
+    line-height: 2.4rem;
+    letter-spacing: 1px;
+    padding: 10px 40px;
+    width: min(50ch, 100%);
+    margin: auto;
     margin-top: 10px;
 }
 .scrollBox {

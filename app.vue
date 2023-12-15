@@ -1,5 +1,26 @@
 <script setup>
+let isPageFocused = true;
 
+window.onblur = function () {
+    isPageFocused = false;
+}
+
+window.onfocus = function () {
+    isPageFocused = true;
+}
+
+let timer = null;
+window.onresize = function () {
+    if (!isPageFocused) {
+        return;
+    }
+    if (timer !== null) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(function () {
+        window.scrollTo(0, 100);
+    }, 1000);
+}
 </script>
 
 <template>
@@ -19,8 +40,9 @@
 <style>
 #appBox {
     height: 100vh;
+    
+    /* height: 100dvh; */
     height: 100svh;
-    height: 100dvh;
     position: relative;
 }
 .page-enter-active,

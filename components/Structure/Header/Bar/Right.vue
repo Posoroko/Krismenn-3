@@ -1,26 +1,27 @@
 <script setup>
+import { useI18n } from '#imports';
+const { t, locale } = useI18n();
+
 const pageTitles = usePageTitles();
-const { locale } = useI18n();
 const route = useRoute();
 </script>
 
-
 <template>
     <li class="rightBarTop tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.agenda.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/agenda" class="full centered">
-            {{ pageTitles.agenda.title[locale].toUpperCase() }}
+        <NuxtLink to="/agenda" class="tabLinkText full centered">
+            {{ $t('pages.agenda.title').toUpperCase() }}
         </NuxtLink>
     </li>
 
-    <li class="rightBarTop tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.listen.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/listen" class="full centered">
-            {{ pageTitles.listen.title[locale].toUpperCase() }}
+    <li class="rightBarTop tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/$t{pageTitles.listen.title[locale].toLowerCase()}` }">
+        <NuxtLink to="/listen" class="tabLinkText full centered">
+            {{ $t('pages.contact.title').toUpperCase() }}
         </NuxtLink>
     </li>
 
     <li class="rightBarBottom tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.news.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/news" class="full centered">
-            {{ pageTitles.news.title[locale].toUpperCase() }}
+        <NuxtLink to="/news" class="tabLinkText full centered">
+            {{ $t('pages.news.title').toUpperCase() }}
         </NuxtLink>
     </li>
 </template>
@@ -36,5 +37,8 @@ li {
     writing-mode: vertical-lr;
     text-orientation: sideways-right;
     cursor: pointer;
+}
+.link {
+    /* color: red; */
 }
 </style>
