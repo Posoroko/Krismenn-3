@@ -9,13 +9,13 @@ const route = useRoute();
 
 <template>
     <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected' : route.fullPath == `/${pageTitles.about.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/about" class="tabLinkText full centered">
+        <NuxtLink to="/about" class="tabLinkText">
             {{ $t('pages.about.title').toUpperCase() }}
         </NuxtLink>
     </li>
 
     <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.contact.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/contact" class="tabLinkText full centered">
+        <NuxtLink to="/contact" class="tabLinkText">
             {{ $t('pages.contact.title').toUpperCase() }}
         </NuxtLink>
     </li>

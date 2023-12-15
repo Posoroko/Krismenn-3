@@ -8,35 +8,26 @@ const route = useRoute();
 
 <template>
     <li class="box glassSurface-onHover" >
-        <a href="https://bastard.krismenn.com" class="tabLinkText full flex justifyCenter alignCenter gap20 ">
+        <a href="https://bastard.krismenn.com" class="tabLinkText gap20 ">
             <span>BASTARD</span>
             <WidgetIcon class="linkIcon" name="externalLink" type="homePageNavButton" size="24"/>
         </a>
     </li>
 
     <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.teams.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/teams" class="tabLinkText full centered">
+        <NuxtLink to="/teams" class="tabLinkText">
             {{ $t('pages.teams.title').toUpperCase() }}
         </NuxtLink>
     </li>
 
     <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.projects.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/projects" class="tabLinkText full centered">
+        <NuxtLink to="/projects" class="tabLinkText">
             {{ $t('pages.projects.title').toUpperCase() }}
         </NuxtLink>
     </li>
 </template>
 
 <style scoped>
-.glassSurface-onHover:hover .linkIcon {
-    opacity: 1;
-    transition: opacity 150ms ease;
-}
-.linkIcon {
-    opacity: 0;
-    rotate: 180deg;
-    transition: opacity 1500ms ease;
-}
 
 li.box {
     writing-mode: vertical-lr;

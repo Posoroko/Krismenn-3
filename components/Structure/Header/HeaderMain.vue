@@ -49,9 +49,14 @@ header li.box {
 }
 
 header .tabLinkText {
+    width: 100%;
+    height: 100%;
     font-family: var(--kText);
     font-size: clamp(1.5rem, 0.9vw + 0.1rem, 2rem);
     color: rgb(225, 237, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 150ms ease;
 }
 
@@ -64,7 +69,15 @@ header.panelOpen .tabLinkText:hover {
     color: rgb(225, 237, 245);
     transition: 150ms ease;
 }
-
+.glassSurface-onHover:hover .linkIcon {
+    opacity: 1;
+    transition: opacity 150ms ease;
+}
+.linkIcon {
+    opacity: 0;
+    rotate: 180deg;
+    transition: opacity 1500ms ease;
+}
 </style>
 
 <style scoped>
