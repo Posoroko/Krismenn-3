@@ -30,8 +30,7 @@ html {
     color: var(--tabs-text-color);
 }
 .tabTitle {
-    font-family: var(--kText);
-    font-size: clamp(1.5rem, 0.9vw + 0.1rem, 2rem);
+    
     color: white;
 }
 

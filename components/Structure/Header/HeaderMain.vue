@@ -39,9 +39,18 @@ const route = useRoute();
         </nav>
     </header>
 </template>
+
 <style>
-.tabLinkText,
-header.panelOpen .tabLinkText:hover {
+header li.box {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+header .tabLinkText {
+    font-family: var(--kText);
+    font-size: clamp(1.5rem, 0.9vw + 0.1rem, 2rem);
     color: rgb(225, 237, 245);
     transition: 150ms ease;
 }
@@ -49,6 +58,11 @@ header.panelOpen .tabLinkText:hover {
 header.panelOpen .tabLinkText {
     color: black;
     transition: 300ms ease;
+}
+
+header.panelOpen .tabLinkText:hover {
+    color: rgb(225, 237, 245);
+    transition: 150ms ease;
 }
 
 </style>

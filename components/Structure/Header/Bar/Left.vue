@@ -7,20 +7,20 @@ const route = useRoute();
 </script>
 
 <template>
-    <li class="leftBarTop tabTitle glassSurface-onHover" >
+    <li class="box glassSurface-onHover" >
         <a href="https://bastard.krismenn.com" class="tabLinkText full flex justifyCenter alignCenter gap20 ">
             <span>BASTARD</span>
             <WidgetIcon class="linkIcon" name="externalLink" type="homePageNavButton" size="24"/>
         </a>
     </li>
 
-    <li class="leftBarTop tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.teams.title[locale].toLowerCase()}` }">
+    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.teams.title[locale].toLowerCase()}` }">
         <NuxtLink to="/teams" class="tabLinkText full centered">
             {{ $t('pages.teams.title').toUpperCase() }}
         </NuxtLink>
     </li>
 
-    <li class="leftBarBottom tabTitle glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.projects.title[locale].toLowerCase()}` }">
+    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.projects.title[locale].toLowerCase()}` }">
         <NuxtLink to="/projects" class="tabLinkText full centered">
             {{ $t('pages.projects.title').toUpperCase() }}
         </NuxtLink>
@@ -37,15 +37,10 @@ const route = useRoute();
     rotate: 180deg;
     transition: opacity 1500ms ease;
 }
-li {
-    flex-grow: 1;
-    display: grid;
-    place-items: center;
-}
-.tabTitle {
+
+li.box {
     writing-mode: vertical-lr;
     text-orientation: sideways-right;
     rotate: 180deg;
-    cursor: pointer;
 }
 </style>
