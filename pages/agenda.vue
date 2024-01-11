@@ -28,13 +28,7 @@ definePageMeta({
 <template>
     <PanelMain class="panel" page="agenda" drawerPosition="right" >
         <template #content>
-            <div v-if="dates">
-                <div v-for="date in dates" :key="date.id" class="card">
-                    <p>{{ dateToLocale(locale, date.date) }}</p>
-                    <p>{{ date.city.name }}</p>
-                    <p>{{ date.project.name }}</p>
-                </div>
-            </div>
+            
         </template>
     </PanelMain>
 </template>

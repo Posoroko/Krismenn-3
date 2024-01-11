@@ -61,7 +61,7 @@ function handleArticleSelection(e) {
 
 <template>
     <PanelMain 
-        v-if="activeImageUrl"
+        v-if="news"
         page="news" 
         drawerPosition="right"  
         :stripeImageDirectusUrl="activeImageUrl"

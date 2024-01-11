@@ -62,9 +62,16 @@ const props = defineProps({
     --frame-width: min(10vw, 100px);
 }
 @media (orientation: portrait) or (width < 850px) {
+    /* Full with when on mobile.  Otherwize, the tabs make
+    the UI overcrowded and confusing */
     .panel {
         width: 100vw;
         height: calc(100vh - var(--gutter-thickness));
+    }
+    .panel.left {
+        translate: calc( var(--gutter-thickness) * -1 ) ;
+    }
+    .panel.right {
         translate: var(--gutter-thickness) ;
     }
 }

@@ -13,3 +13,35 @@ export const useDateToLocale = () => {
 
     }
 };
+
+export const useFormatItems = () => {
+    return (items: any[], key: string) => {
+        let formatedItems: [] = [];
+        items.forEach((item) => {
+
+            let temp: object = {
+                id: `${item.id}`,
+                name: item.name,
+                slug: item.slug,
+                logo: item.logo,
+                image: item.image,
+                fr: {},
+                en: {},
+                bzh: {}
+            }
+
+            item.translations.forEach((translation: object) => {
+                let keys = Object.keys(translation);
+                
+                keys.forEach((key) => {
+                    temp[translation.language_key][key] = translation[key];
+                })
+
+            })
+
+            formatedItems.push(temp);
+        })
+
+        return formatedItems;
+    }
+}

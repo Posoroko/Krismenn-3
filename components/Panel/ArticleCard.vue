@@ -22,11 +22,10 @@ const props = defineProps({
     }
 })
 
-
 </script>
 
 <template>
-    <div class="articleBox flex relative" :class="[{ 'active': active }, { 'fullPage': articlePage }]" >        
+    <div class="card articleBox flex relative" :class="[{ 'active': active }, { 'fullPage': articlePage }]" >        
         <div class="tinyFrame" v-if="!articlePage">
             <!-- //two tinyFrames for animation to work. With only one, height problem occure in the flex container -->
         </div>

@@ -69,15 +69,7 @@ header.panelOpen .tabLinkText:hover {
     color: rgb(225, 237, 245);
     transition: 150ms ease;
 }
-.glassSurface-onHover:hover .linkIcon {
-    opacity: 1;
-    transition: opacity 150ms ease;
-}
-.linkIcon {
-    opacity: 0;
-    rotate: 180deg;
-    transition: opacity 1500ms ease;
-}
+
 </style>
 
 <style scoped>
