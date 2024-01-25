@@ -55,7 +55,7 @@ const props = defineProps({
     color: white;
 }
 .contactButton {
-    padding: 10px;
+    padding: 10px 20px 10px 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 100px;
     margin-block: 5px;

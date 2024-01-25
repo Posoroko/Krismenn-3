@@ -44,7 +44,7 @@ img {
     transition: 600ms ease;
 }
 .emptyBGI.active {
-    filter: brightness(0.6) contrast(1) saturate(1);
+    /* filter: brightness(0.6) contrast(1) saturate(1); */
     transition: 600ms ease;
     opacity: 1;
     transition: 600ms ease;

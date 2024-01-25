@@ -1,35 +1,36 @@
 <script setup>
-
+const { t, locale } = useI18n();
 
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
 const directusAssets = appConfig.directus.assets;
 
+const fetchUrl = `${directusItems}News`;
+const fetchOptions = {
+    query: {
+        fields: ["*, translations.*"]
+    }
+}
+
 const { data: news } = await useAsyncData(
     "news",
     async () => {
-        const items = await $fetch(`${directusItems}News?fields=id,date_published,image,translations.*`);
-        let _items = items.data;
-        let formatedItems = [];
+        const _items = await $fetch(fetchUrl, fetchOptions)
+        let items = _items.data;
 
-        _items.forEach((item) => {
-            let temp = {
-                id: `${item.id}`,
-                date: item.date_published,
-                image: item.image,
-                fr: {},
-                en: {},
-                bzh: {}
-            }
+        items.forEach(item => {
 
-            item.translations.forEach((translation) => {
-                temp[translation.languages_code] = translation;
+            let _translations = {};
+
+            item.translations.forEach(obj => {
+                _translations[obj.languages_code] = obj;
+
             })
+            item.translations = _translations;
 
-            formatedItems.push(temp);
         })
 
-        return formatedItems;
+        return items;
     }
     ,
     { server: true }
@@ -41,21 +42,6 @@ definePageMeta({
     }
 })
 
-const activeArticle_id = ref(null);
-const activeImageUrl = ref(null);
-
-onMounted(()=> {
-    activeArticle_id.value = news.value[0].id;
-    activeImageUrl.value = `${directusAssets}${news.value[0].image}`;
-})
-
-function handleArticleSelection(e) {
-    if (activeArticle_id.value == e.currentTarget.dataset.id) {
-        return;
-    }
-    activeArticle_id.value = e.currentTarget.dataset.id;
-    activeImageUrl.value = `${directusAssets}${e.currentTarget.dataset.image}`;
-}
 
 </script>
 
@@ -68,12 +54,23 @@ function handleArticleSelection(e) {
         showIntroText>
 
         <template #content>
-            
+            <ul>
+                <li v-for="n in news" :key="n.id">
+                    <PanelCardMain>
+                        <p class="cardTitle_format">{{ n.translations[locale].title }}</p>
+                    </PanelCardMain>
+                </li>
+            </ul>
         </template>
     </PanelMain>
 </template>
 
 <style scoped>
-
+p {
+    font-family: 'Nimbus Mono PS', 'Courier New', monospace; 
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
 
 </style>

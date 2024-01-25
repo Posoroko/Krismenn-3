@@ -1,7 +1,8 @@
 <script setup>
 const props = defineProps({
     fileName: String,
-    stripeImageDirectusUrl: String
+    stripeImageDirectusUrl: String,
+    src: String
 })
 
 const imageTransformKey=  computed(() => {
@@ -17,14 +18,8 @@ const imageTransformKey=  computed(() => {
 </script>
 
 <template>
-    <div class="full" >
-        <div 
-            v-if="stripeImageDirectusUrl" 
-            class="image directusImage full" 
-            :style="{ backgroundImage: `url(${stripeImageDirectusUrl}?key=${imageTransformKey})` }">
-        </div>
-        
-        <div class="image localImage full" v-if="fileName">{{ `stripeImageDirectusUrl` }}</div>
+    <div class="h100" v-if="src">        
+        <img class="image" :src="src" alt="">
     </div>
     
 </template>
@@ -32,35 +27,21 @@ const imageTransformKey=  computed(() => {
 <style scoped>
 
 .image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: block;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-width: 1px;
-    border-style: solid;
+    object-fit: cover;
+    object-position: center;
+
+    -webkit-filter: 
+        hue-rotate(90deg)
+        /* grayscale(100%)   */
+        contrast(1.5) 
+        brightness(1.5);
     filter: 
-        grayscale(1);
-    mix-blend-mode: difference;
-}
-@media screen and (max-height: 600px) {
-    .localImage {
-        background-image: v-bind("`url('/images/stripes/sm/${fileName}')`");
-    }
-}
-
-@media screen and (max-height: 1100px) {
-    .localImage {
-        background-image: v-bind("stripeImageDirectusUrl || `url('/images/stripes/md/${fileName}')`");
-    }
-}
-
-@media screen and (max-height: 2200px) {
-    .localImage {
-        background-image: v-bind("stripeImageDirectusUrl || `url('/images/stripes/xl/${fileName}')`");
-    }
+        grayscale(100%)          
+        contrast(1.2) 
+        brightness(1.4);
+    opacity: 0.5;
 }
 </style>

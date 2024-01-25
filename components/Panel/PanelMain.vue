@@ -4,14 +4,14 @@ const { t } = useI18n();
 
 const appConfig = useAppConfig();
 const route = useRoute();
-// const activeTheme = appConfig.themes.blue;
 
 const props = defineProps({
     page: String,
     drawerPosition: String,
     pageName: String,
     stripeImageDirectusUrl: String,
-    showIntroText: Boolean
+    showIntroText: Boolean,
+    stripeImageSrc: String
 })
 
 </script>
@@ -19,7 +19,7 @@ const props = defineProps({
 <template>
     <div class="panel glassSurface allEvents relative flex" :class="drawerPosition">
         <div class="frame relative">
-            <PanelStripeImage :fileName="appConfig.panelStripeImages[page]" :stripeImageDirectusUrl="stripeImageDirectusUrl" />
+            <PanelStripeImage :src="stripeImageSrc" />
         </div>
 
         <div class="content relative grow flex column">

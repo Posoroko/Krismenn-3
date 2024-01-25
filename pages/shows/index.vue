@@ -7,6 +7,7 @@ const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
 const directusAssets = appConfig.directus.assets;
 
+const fetchUrl = `${directusItems}Shows`;
 const fetchOptions = {
     query: {
         fields: ["*, translations.*"]
@@ -16,7 +17,7 @@ const fetchOptions = {
 const { data: shows } = await useAsyncData(
     "shows",
     async () => {
-        const _items = await $fetch(`${directusItems}Shows`, fetchOptions)
+        const _items = await $fetch(fetchUrl, fetchOptions)
         let items = _items.data;
 
         items.forEach(item => {
@@ -45,8 +46,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain page="shows" drawerPosition="left"
-        stripeImageDirectusUrl="/images/stripes/xl/brown.webp">
+    <PanelMain page="shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
 
         <template #content>
             <p>
