@@ -7,7 +7,7 @@ const route = useRoute();
     <div class="frame">
         <img class="" src="/images/background/xx-large/blue.webp" alt="Krismenn">
         <img 
-            class="emptyBGI absolute full top0 left0" 
+            class="emptyBGI" 
             :class="{ 'active': route.path.length > 4 }"
             src="/images/background/empty-blue.png" 
             alt="">
@@ -24,14 +24,21 @@ const route = useRoute();
     left: 0;
 }
 img {
- 
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     transition: 600ms ease;
 }
-.emptyBGI {
+
+img.emptyBGI {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
     transition: 600ms ease;
 }
