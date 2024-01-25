@@ -1,27 +1,27 @@
 <script setup>
 import { useI18n } from '#imports';
-const { t, locale } = useI18n();
 
-const pageTitles = usePageTitles();
+const { t, locale } = useI18n();
+const appConfig = useAppConfig();
+const routes = appConfig.routes;
+
 const route = useRoute();
+
+const tabs = [
+    { id: 0, key: 'agenda'},
+    { id: 1, key: 'listen'},
+    { id: 2, key: 'news'}
+];
+
 </script>
 
 <template>
-    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.agenda.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/agenda" class="tabLinkText">
-            {{ $t('pages.agenda.title').toUpperCase() }}
-        </NuxtLink>
-    </li>
-
-    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/$t{pageTitles.listen.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/listen" class="tabLinkText">
-            {{ $t('pages.contact.title').toUpperCase() }}
-        </NuxtLink>
-    </li>
-
-    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.news.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/news" class="tabLinkText">
-            {{ $t('pages.news.title').toUpperCase() }}
+    <li v-for="tab in tabs" :key="tab.id"
+        :data-test="tab.id"
+        class="box glassSurface-onHover" 
+        :class="{ 'glassSurface_selected': route.fullPath.includes(routes[tab.key][locale]) }">
+        <NuxtLink :to="`/${tab.key}`" class="tabLinkText">
+            {{ $t(`pages.${tab.key}.title`).toUpperCase() }}
         </NuxtLink>
     </li>
 </template>

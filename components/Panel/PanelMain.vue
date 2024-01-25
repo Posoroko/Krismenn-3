@@ -4,8 +4,7 @@ const { t } = useI18n();
 
 const appConfig = useAppConfig();
 const route = useRoute();
-const themes = useThemes();
-const activeThemeId = useActiveThemeId();
+// const activeTheme = appConfig.themes.blue;
 
 const props = defineProps({
     page: String,
@@ -56,7 +55,6 @@ const props = defineProps({
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.164);
     overflow: hidden;
 
     --frame-width: min(10vw, 100px);
@@ -85,8 +83,8 @@ const props = defineProps({
     height: 100%;
     overflow: hidden;
     align-content: flex-start;
-    box-shadow: 
-        v-bind("themes[activeThemeId].insetShadowColor");
+    /* box-shadow:  */
+        /* v-bind("activeTheme.insetShadowColor"); */
 }
 
 /* FOR HIGH RES SCREENS - NEDDS TESTING */
@@ -108,11 +106,11 @@ const props = defineProps({
 .content:before {
     content: "";
     width: 100%;
-    border: 3px solid rgb(255, 255, 255);
+    /* border: 3px solid rgba(255, 255, 255, 0.292); */
 
 
     filter: blur(2px);
-    box-shadow: v-bind("themes[activeThemeId].shadowColor");
+    /* box-shadow: v-bind("activeTheme.shadowColor"); */
     position: absolute;
     top: 1px;
     opacity: 0.9;
@@ -123,12 +121,11 @@ const props = defineProps({
 .panelTitle {
     height: 75px;
     font-size: clamp(2.4rem, 1.5vw + 1rem, 2.8rem);
-    font-family: 'Raleway', sans-serif;
-    color: white;
-    font-weight: 200;
+    color: rgb(205, 220, 222);
+    font-weight: 700;
     flex-shrink: 0;
     padding-top: 10px;
-    background: v-bind("themes[activeThemeId].panelTitleBackgroundColor");
+    /* background: v-bind("activeTheme.panelTitleBackgroundColor"); */
     position: relative;
 }
 .panelTitle:after {
@@ -143,7 +140,7 @@ const props = defineProps({
 }
 .panelSubtitle {
     font-size: clamp(1.4rem, 1vw + 1rem, 1.6rem);
-    font-family: 'Raleway', sans-serif;
+
     color: white;
     font-weight: 500;
     line-height: 2.4rem;

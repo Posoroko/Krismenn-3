@@ -1,5 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 export default defineNuxtConfig({
     app: {
         pageTransition: { name: 'page', mode: 'out-in' }
@@ -12,8 +10,6 @@ export default defineNuxtConfig({
     ],
     i18n: {
         lazy: true,
-        // legacy: false,
-        // locale: 'en',
         locales: [
             {
                 code: 'en',
@@ -36,25 +32,54 @@ export default defineNuxtConfig({
         ],
         defaultLocale: 'en',
         langDir: 'locales',
-        // vueI18n: {
-        //     fallbackLocale: 'en'
-        // },
         pages: {
-            home: { en: '/', fr: '/', bzh: '/' },
-            about: { en: '/about', fr: '/a-propos', bzh: '/diwar-benn' },
-            contact: { en: '/contact', fr: '/contact', bzh: '/kevreañ' },
-            teams: { en: '/teams', fr: '/equipes', bzh: '/skouerien' },
-            projects: { en: '/projects', fr: '/projets', bzh: '/projedoù' },
-            agenda: { en: '/agenda', fr: '/agenda', bzh: '/kalendar' },
-            listen: { en: '/listen', fr: '/ecouter', bzh: '/selaou' },
-            news: { en: '/news', fr: '/actualites', bzh: '/nevez-amzer' },
+            index: {
+                en: "/",
+                fr: "/",
+                bzh: "/"
+            },
+            bastard: {
+                en: "/bastard",
+                fr: "/bastard",
+                bzh: "/bastard"
+            },
+            about: {
+                en: "/about",
+                fr: "/a-propos",
+                bzh: "/diwar-benn"
+            },
+            contact: {
+                en: "/contact",
+                fr: "/contact",
+                bzh: "/darempred"
+            },
+            shows: {
+                en: "/shows",
+                fr: "/spectacles",
+                bzh: "/abadennou"
+            },
+            agenda: {
+                en: "/agenda",
+                fr: "/agenda",
+                bzh: "/deiziataer"
+            },
+            listen: {
+                en: "/listen",
+                fr: "/ecouter",
+                bzh: "/selaou"
+            },
+            news: {
+                en: "/news",
+                fr: "/actualites",
+                bzh: "/keleier"
+            }
         },
         customRoutes: 'config',
         strategy: 'prefix_and_default',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'kouingig',
-            redirectOn: 'root',  // recommended
-        },
+            redirectOn: 'root'
+        }
     }
 })

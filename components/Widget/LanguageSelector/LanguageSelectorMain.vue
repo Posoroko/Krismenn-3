@@ -1,36 +1,20 @@
 <script setup>
-import { useI18n, useLocalePath } from '#imports'
+import { useI18n } from '#imports'
 const { locale, locales } = useI18n()
 
-const props = defineProps({
-    bzhButton: {
-        type: Boolean,
-        default: false
-    }
-})
-
-const switchLocalePath = useSwitchLocalePath()
+const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = computed(() => {
+    console.log((locales.value).filter(i => i.code !== locale.value));
     return (locales.value).filter(i => i.code !== locale.value)
 })
 
-function toggleLanguage(e) {
-    language.value = e.currentTarget.innerText
-}
 </script>
 
 <template>
-    <div class="languageBox flex gap10" v-if="!bzhButton">
-        <NuxtLink v-for="loc in availableLocales" :key="loc.code" :to="switchLocalePath(loc.code)" class="langBtn pointer"
-            :class="{ activeLangBtn: locale == loc.code }">
+    <div class="languageBox full flex column alignCenter justifyEvenly">
+        <NuxtLink v-for="loc in availableLocales" :key="loc.code" :to="switchLocalePath(loc.code)" class="langBtn pointer">
             {{ loc.code }}
-        </NuxtLink>
-    </div>
-
-    <div class="languageBox flex gap10" v-else>
-        <NuxtLink :to="switchLocalePath('bzh')" class="langBtn pointer">
-            bzh
         </NuxtLink>
     </div>
 </template>
@@ -40,10 +24,5 @@ function toggleLanguage(e) {
 .langBtn {
     color: rgb(120, 120, 120);
     font-size: 12px;
-}
-
-.activeLangBtn {
-    color: white;
-    /* border-bottom: 1px solid white; */
 }
 </style>

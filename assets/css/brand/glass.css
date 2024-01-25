@@ -9,7 +9,7 @@
 .glassSurface,
 .glassSurface-onHover:hover,
 .glassSurface_selected {
-    background-color: hsla(0, 0%, 100%, 0.103);
+    background-color: hsla(206, 25%, 36%, 0.199);
     border: 1px solid hsla(0, 0%, 97%, 0.212);
     backdrop-filter: blur(10px);
     box-shadow: 

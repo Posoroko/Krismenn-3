@@ -42,7 +42,9 @@ const imageTransformKey=  computed(() => {
     left: 0;
     border-width: 1px;
     border-style: solid;
-    filter: blur(1px) brightness(0.8) saturate(1.05) contrast(1.2);
+    filter: 
+        grayscale(1);
+    mix-blend-mode: difference;
 }
 @media screen and (max-height: 600px) {
     .localImage {

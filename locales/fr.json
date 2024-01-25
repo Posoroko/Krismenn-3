@@ -1,6 +1,7 @@
 {
     "global": {
-        "readMore": "Lire la suite"
+        "readMore": "Lire la suite",
+        "infoAndContact": "Infos et contact"
     },
     "info": {
         "legal": "Mentions légales",
@@ -8,32 +9,45 @@
     },
     "pages": {
         "home": {
-            "title": "Accueil"
+            "title": "Accueil",
+            "url": "/" 
         },
         "listen": {
-            "title": "Écouter"
+            "title": "Écouter",
+            "url": "/ecouter"
         },
         "agenda": {
-            "title": "Agenda"
+            "title": "Agenda",
+            "url": "/agenda"
         },
         "news": {
             "title": "Actualités",
-            "introText": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première."
+            "introText": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première.",
+            "url": "/actualites"
         },
         "contact": {
-            "title": "Contact"
+            "title": "Contact",
+            "url": "/contact"
         },
         "about": {
-            "title": "A propos"
+            "title": "A propos",
+            "url": "/a-propos"
         },
         "projects": {
-            "title": "Projets"
+            "title": "Projets",
+            "url": "/projets"
         },
         "teams": {
-            "title": "Formations"
+            "title": "Formations",
+            "url": "/formations"
+        },
+        "shows": {
+            "title": "spectacles",
+            "url": "/spectacles"
         },
         "bastard": {
-            "title": "Bastard"
+            "title": "Bastard",
+            "url": "/bastard"
         }
     }
 }

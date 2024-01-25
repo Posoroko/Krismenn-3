@@ -68,14 +68,7 @@ function handleArticleSelection(e) {
         showIntroText>
 
         <template #content>
-            <PanelArticleCard 
-                v-for="article in news" :key="article.id" 
-                :article="article"
-                :class="{ 'active': activeArticle_id == article.id }"
-                @click="handleArticleSelection" 
-                :data-id="article.id" 
-                :data-image="article.image"
-                />
+            
         </template>
     </PanelMain>
 </template>

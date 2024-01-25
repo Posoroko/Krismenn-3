@@ -12,10 +12,12 @@ const route = useRoute();
                     </NuxtLink>
                 </li>
             
-                <div class="box topCenterBox"></div>
+                <div class="box topCenterBox centered">
+                    <StructureMainPageTitle />
+                </div>
             
                 <div class="box corner topRightBox centered">
-                    <WidgetLanguageSelectorBzhButton />
+
                 </div>
 
                 <div class="box centerLeftBox flex column">
@@ -61,7 +63,7 @@ header .tabLinkText {
 }
 
 header.panelOpen .tabLinkText {
-    color: black;
+    color: rgba(225, 237, 245, 0.496);
     transition: 300ms ease;
 }
 

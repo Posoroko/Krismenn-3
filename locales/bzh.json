@@ -1,6 +1,7 @@
 {
     "global": {
-        "readMore": "Lenn muioc’h"
+        "readMore": "Lenn muioc’h",
+        "infoAndContact": "Info ha kontakt"
     },
     "info": {
         "legal": "Kemennadenn lezennel",
@@ -8,32 +9,45 @@
     },
     "pages": {
         "home": {
-            "title": "Ger"
+            "title": "Ger",
+            "url": "/"
         },
         "agenda": {
-            "title": "Implij amzer"
+            "title": "Implij amzer",
+            "url": "/implij-amzer"
         },
         "listen": {
-            "title": "Contact"
+            "title": "Selaoù",
+            "url": "/selaou"
         },
         "news": {
             "title": "Keloù",
-            "introText":  "Oberit mat ganeoc’h e-barzh ma labour ha ma buhez bevañ bep devezh. Abadennoù, hentadoù, lec’hioù-staliañ, me a ra kont ha kinnig a-raok ar re all."
+            "introText":  "Oberit mat ganeoc’h e-barzh ma labour ha ma buhez bevañ bep devezh. Abadennoù, hentadoù, lec’hioù-staliañ, me a ra kont ha kinnig a-raok ar re all.",
+            "url": "/kelou"
         },
         "contact": {
-            "title": "Pelgomz"
+            "title": "Kontaxt",
+            "url": "/kontakt"
         },
         "about": {
-            "title": "Diwar-benn"
+            "title": "Diwar-benn",
+            "url": "/diwar-benn"
         },
         "projects": {
-            "title": "Raktressoù"
+            "title": "Raktressoù",
+            "url": "/raktressou"
         },
         "teams": {
-            "title": "Stroladoù"
+            "title": "Stroladoù",
+            "url": "/stroladou"
+        },
+        "shows": {
+            "title": "abadennoù",
+            "url": "/abadennou"
         },
         "bastard": {
-            "title": "Bastard"
+            "title": "Bastard",
+            "url": "/bastard"
         }
     }
 }

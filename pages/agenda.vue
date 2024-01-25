@@ -1,5 +1,5 @@
 <script setup>
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const dateToLocale = useDateToLocale();
 

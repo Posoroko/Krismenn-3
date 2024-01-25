@@ -4,7 +4,6 @@ const route = useRoute();
 const themes = useThemes();
 const activeThemeId = useActiveThemeId();
 
-
 const image = computed(() => {
     return themes.value[activeThemeId.value].backgroundImage;
 });
@@ -14,7 +13,12 @@ const image = computed(() => {
 
 <template>
     <div class="frame">
-        <img class="" :src="`/images/background/x-large/${image}`" alt="Krismenn" :class="{ 'dark' : route.path.length > 4}">
+        <img class="" :src="`/images/background/x-large/${image}`" alt="Krismenn">
+        <img 
+            class="emptyBGI absolute full top0 left0" 
+            :class="{ 'active': route.path.length > 4 }"
+            src="/images/background/empty-blue.png" 
+            alt="">
     </div>
 </template>
 
@@ -35,8 +39,14 @@ img {
     object-position: center;
     transition: 600ms ease;
 }
-img.dark {
-    filter: brightness(0.3) contrast(1.3) saturate(0.5);
+.emptyBGI {
+    opacity: 0;
+    transition: 600ms ease;
+}
+.emptyBGI.active {
+    filter: brightness(0.6) contrast(1) saturate(1);
+    transition: 600ms ease;
+    opacity: 1;
     transition: 600ms ease;
 }
 </style>

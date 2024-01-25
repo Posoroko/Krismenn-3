@@ -27,4 +27,7 @@ path {
 .homePageNavButton {
     fill: rgba(255, 255, 255, 0.699);
 }
+.contactIcon {
+    fill: white;
+}
 </style>

@@ -4,10 +4,10 @@
 </script>
 
 <template>
-    <main class="absoluteFull noEvents flex column">
-        <div class="topBar centered noEvents_kidsEvents">
+    <main class="absoluteFull noEvents flex column ">
+        <!-- <div class="topBar centered noEvents_kidsEvents">
             <StructureMainPageTitle />
-        </div>
+        </div> -->
 
         <div class="nuxtPageContainer relative noEvents grow">
            <slot></slot>

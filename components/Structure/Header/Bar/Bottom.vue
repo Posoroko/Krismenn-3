@@ -1,22 +1,24 @@
 <script setup>
 import { useI18n } from '#imports';
-const { t } = useI18n();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
+const appConfig = useAppConfig();
 
-const pageTitles = usePageTitles();
+const routes = appConfig.routes;
 const route = useRoute();
+
+const tabs = [
+    { id: 0, key: 'about' },
+    { id: 1, key: 'contact' },
+];
+
 </script>
 
 <template>
-    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected' : route.fullPath == `/${pageTitles.about.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/about" class="tabLinkText">
-            {{ $t('pages.about.title').toUpperCase() }}
-        </NuxtLink>
-    </li>
-
-    <li class="box glassSurface-onHover" :class="{ 'glassSurface_selected': route.fullPath == `/${pageTitles.contact.title[locale].toLowerCase()}` }">
-        <NuxtLink to="/contact" class="tabLinkText">
-            {{ $t('pages.contact.title').toUpperCase() }}
+    <li v-for="tab in tabs" :key="tab.id"
+        class="box glassSurface-onHover" 
+        :class="{ 'glassSurface_selected': route.fullPath.includes(routes[tab.key][locale]) }">
+        <NuxtLink :to="`/${tab.key}`" class="tabLinkText">
+            {{ $t(`pages.${tab.key}.title`).toUpperCase() }}
         </NuxtLink>
     </li>
 </template>
