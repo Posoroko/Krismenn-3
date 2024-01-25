@@ -1,19 +1,11 @@
 <script setup>
 const route = useRoute();
 
-const themes = useThemes();
-const activeThemeId = useActiveThemeId();
-
-const image = computed(() => {
-    return themes.value[activeThemeId.value].backgroundImage;
-});
-
-
 </script>
 
 <template>
     <div class="frame">
-        <img class="" :src="`/images/background/x-large/${image}`" alt="Krismenn">
+        <img class="" src="/images/background/xx-large/blue.webp" alt="Krismenn">
         <img 
             class="emptyBGI absolute full top0 left0" 
             :class="{ 'active': route.path.length > 4 }"
