@@ -9,6 +9,7 @@
 html {
     overflow: hidden;
     background-color: #1d1d1d;   
+    /* filter: grayscale(1) contrast(1.1) brightness(0.9); */
 }
 
 * {

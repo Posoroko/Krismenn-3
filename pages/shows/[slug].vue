@@ -1,7 +1,7 @@
 <script setup>
 const { t, locale } = useI18n();
 
-const icons = useIconStrings();
+const route = useRoute();
 
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
@@ -10,12 +10,17 @@ const directusAssets = appConfig.directus.assets;
 const fetchUrl = `${directusItems}Shows`;
 const fetchOptions = {
     query: {
-        fields: ["*, translations.*"]
+        fields: ["*, translations.*"],
+        filter: {
+            id: {
+                _eq: route.query.id
+            }
+        }
     }
 }
 
-const { data: shows } = await useAsyncData(
-    "shows",
+const { data: show } = await useAsyncData(
+    `show-${route.params.slug}`,
     async () => {
         const _items = await $fetch(fetchUrl, fetchOptions)
         let items = _items.data;
@@ -24,7 +29,7 @@ const { data: shows } = await useAsyncData(
 
             let _translations = {};
 
-            item.translations.forEach( obj => {
+            item.translations.forEach(obj => {
                 _translations[obj.languages_code] = obj;
 
             })
@@ -32,7 +37,7 @@ const { data: shows } = await useAsyncData(
 
         })
 
-        return items;
+        return items[0];
     }
     ,
     { server: true }
@@ -46,26 +51,29 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain page="shows" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
+    <PanelMain :title="show.translations[locale].title" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
 
         <template #content>
             <p>
 
-            </p>   
+            </p>
 
-            <ul class="flex column gap50">
-                <PanelCardMain class="card" v-for="show in shows" :key="show.id">
-                    <PanelCardShows :show="show" :fullSize="false" />
+            <div class="cardBox flex column gap50">
+                <PanelCardMain class="card" showStripeImage="false">
+                    <PanelCardShows :show="show" fullSize />
                 </PanelCardMain>
-            </ul>
+            </div>
         </template>
     </PanelMain>
 </template>
 
 <style scoped>
-ul {
+cardBox {
     padding-bottom: 30px;
-     
-}
 
+}
+/* fullWidth is set in <PanelMain /> for a full page effect in the panel */
+.fullWidth .cardBox {
+    padding-bottom: 0;
+}
 </style>

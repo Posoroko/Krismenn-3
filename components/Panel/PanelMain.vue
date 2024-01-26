@@ -7,8 +7,10 @@ const route = useRoute();
 
 const props = defineProps({
     page: String,
+    title: String,
     drawerPosition: String,
     pageName: String,
+    showStripeImage: Boolean,
     stripeImageDirectusUrl: String,
     showIntroText: Boolean,
     stripeImageSrc: String
@@ -17,14 +19,17 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="panel glassSurface allEvents relative flex" :class="drawerPosition">
-        <div class="frame relative">
+    <div class="panel glassSurface allEvents relative flex" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
+        <div v-if="showStripeImage" class="frame relative">
             <PanelStripeImage :src="stripeImageSrc" />
         </div>
 
         <div class="content relative grow flex column">
-            <h1 class="panelTitle centered">
+            <h1 v-if="page" class="panelTitle centered">
                 {{ $t( `pages.${page}.title`) }}
+            </h1>
+            <h1 v-if="title" class="panelTitle centered">
+                {{ title }}
             </h1>
 
             <div class="scrollBox w100">
@@ -124,8 +129,6 @@ const props = defineProps({
     color: rgb(205, 220, 222);
     font-weight: 700;
     flex-shrink: 0;
-    padding-top: 10px;
-    /* background: v-bind("activeTheme.panelTitleBackgroundColor"); */
     position: relative;
 }
 .panelTitle:after {
@@ -157,8 +160,14 @@ const props = defineProps({
     position: relative;
     box-shadow: inset ;
 }
-
+.fullWidth .scrollBox {
+    padding: 0;
+}
 .panelTextContent {
     margin-top: 20px;
 }
+.fullWidth .panelTextContent{
+    margin-top: 0px;
+}
+
 </style>
