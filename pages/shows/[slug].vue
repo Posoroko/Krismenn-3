@@ -10,7 +10,7 @@ const directusAssets = appConfig.directus.assets;
 const fetchUrl = `${directusItems}Shows`;
 const fetchOptions = {
     query: {
-        fields: ["*, translations.*"],
+        fields: ["*, translations.*,youtubes.*"],
         filter: {
             id: {
                 _eq: route.query.id

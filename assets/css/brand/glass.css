@@ -1,3 +1,5 @@
+
+
 .glass_corner,
 .glassSurface-onHover {
     background-color: transparent;
@@ -16,4 +18,12 @@
         0 0 10px hsla(199, 100%, 59%, 0.493),
         inset 0 0 10px hsla(199, 100%, 59%, 0.267);
     transition: 150ms ease;
+}
+
+.glass_button {
+    fill: white;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.055);
+    padding: 5px 20px;
+    border-radius: 100px;
 }

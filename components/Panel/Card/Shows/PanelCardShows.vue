@@ -26,16 +26,22 @@ const props = defineProps({
         <p v-if="fullSize" class="description cardText_format">{{ show.translations[locale].description }}</p>
         <!-- <p v-else class="description cardText_format">{{ show.translations[locale].synopsis }}</p> -->
 
-        <div v-if="fullSize">
+        <div class="marTop50" v-if="fullSize">
+            <PanelCardShowsMediaBox 
+                v-if="show.youtubes.length" 
+                :youtubes="show.youtubes" />
+
             <PanelCardContactBox 
                 v-if="show.telephone || show.email || show.website" 
                 :email="show.email" 
                 :telephone="show.telephne" 
                 :website="show.website"/>
+            
+            
         </div>
 
         <div class="flex justifyEnd" v-else>
-            <NuxtLink :to="`/shows/${show.translations[locale].slug}?id=${show.id}`" class="cardText_format">{{ t('readMore') }}</NuxtLink>
+            <NuxtLink :to="`/shows/${show.translations[locale].slug}?id=${show.id}`" class="glass_button cardText_format glassSurface-onHover">{{ t('global.readMore') }}</NuxtLink>
         </div>
     </div>
 </template>
