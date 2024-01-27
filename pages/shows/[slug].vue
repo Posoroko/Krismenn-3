@@ -51,8 +51,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain :title="show.translations[locale].title" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
-
+    <PanelMain :title="show.translations[locale].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
         <template #content>
             <p>
 

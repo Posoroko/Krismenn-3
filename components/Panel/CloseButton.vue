@@ -5,7 +5,7 @@ const { t, locale } = useI18n();
 </script>
 
 <template>
-    <NuxtLink :to="`${$t('pages.home.url')}`" class="absolute close pointer">
+    <NuxtLink :to="`${$t('pages.home.url')}`" class="close pointer">
         <svg xmlns="http://www.w3.org/2000/svg" :class="type" :height="48" viewBox="0 -960 960 960" :width="48">
             <!-- <path d="m330-288 150-150 150 150 42-42-150-150 150-150-42-42-150 150-150-150-42 42 150 150-150 150 42 42ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/> -->
             <path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
@@ -18,8 +18,6 @@ const { t, locale } = useI18n();
     width: 48px;
     height: 48px;
     padding: 5px;
-    top: 10px;
-    right: 0px;
     z-index: 5;
 }
 svg {

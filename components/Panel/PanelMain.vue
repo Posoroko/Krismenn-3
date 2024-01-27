@@ -13,7 +13,8 @@ const props = defineProps({
     showStripeImage: Boolean,
     stripeImageDirectusUrl: String,
     showIntroText: Boolean,
-    stripeImageSrc: String
+    stripeImageSrc: String,
+    backButtonURL: String,
 })
 
 </script>
@@ -25,12 +26,25 @@ const props = defineProps({
         </div>
 
         <div class="content relative grow flex column">
-            <h1 v-if="page" class="panelTitle centered">
-                {{ $t( `pages.${page}.title`) }}
-            </h1>
-            <h1 v-if="title" class="panelTitle centered">
-                {{ title }}
-            </h1>
+            <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter">
+                <PanelBackButton :href="backButtonURL" v-if="backButtonURL" />
+
+                <div v-else></div>
+
+                <h1 v-if="page" class="panelTitle centered">
+                
+                    {{ $t(`pages.${page}.title`) }}
+
+                    
+                </h1>
+
+                <h1 v-if="title" class="panelTitle centered">
+                    {{ title }}
+                </h1>
+
+                <PanelCloseButton />
+            </div>
+            
 
             <div class="scrollBox w100">
                 <p class="panelSubtitle" v-if="showIntroText">
@@ -41,7 +55,7 @@ const props = defineProps({
                 </div>
             </div>
 
-            <PanelCloseButton />
+            
         </div>
     </div>
 </template>
@@ -131,7 +145,7 @@ const props = defineProps({
     flex-shrink: 0;
     position: relative;
 }
-.panelTitle:after {
+.panelTitleBox:after {
     width: 100%;
     height: 20px;
     content: "";

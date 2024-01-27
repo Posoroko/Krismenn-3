@@ -46,7 +46,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain page="shows" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
+    <PanelMain :title="t('pages.shows.title')" :showBackButton="false" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
 
         <template #content>
             <p>

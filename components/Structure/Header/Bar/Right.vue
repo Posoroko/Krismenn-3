@@ -10,7 +10,8 @@ const route = useRoute();
 const tabs = [
     { id: 0, key: 'agenda'},
     { id: 1, key: 'listen'},
-    { id: 2, key: 'news'}
+    { id: 2, key: 'news'},
+
 ];
 
 </script>
