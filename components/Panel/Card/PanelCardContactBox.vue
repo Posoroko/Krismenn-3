@@ -56,7 +56,6 @@ const props = defineProps({
     padding-left: 20px;
 }
 .contactButton {
-    border-radius: 100px;
     margin-block: 5px;
     display: flex;
     align-items: center;

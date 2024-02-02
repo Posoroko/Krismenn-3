@@ -17,7 +17,7 @@ html {
 }
 
 .cardSubtitle_format {
-    font-size: clamp(2rem, 2vw + 0.1rem, 2.6rem);
+    font-size: clamp(1.8rem, 2vw + 0.1rem, 2.6rem);
     line-height: 1.5;
     font-weight: 300;
 }
@@ -26,4 +26,8 @@ html {
     font-size: clamp(1.6rem, 2vw + 0.1rem, 2rem);
     line-height: 1.5;
     font-weight: 300;
+}
+
+.fontColor_light {
+    color: white;
 }

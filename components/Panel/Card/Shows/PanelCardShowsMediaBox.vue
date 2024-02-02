@@ -1,4 +1,6 @@
 <script setup>
+const { t, locale } = useI18n();
+
 const dialog = ref(null);
 const video = ref(null);
 const props = defineProps({
@@ -29,7 +31,7 @@ function stopVideo() {
 
 <template>
     <section class="mediaBox ">
-        <h1 class="cardSubtitle_format">Vidéos</h1>
+        <h1 class="cardSubtitle_format">{{ t('global.videos') }}</h1>
         <ul class="youtubes flex wrap overflowHidden marTop20 gap5">
             <li class="youtube pointer relative" v-for="video in youtubes" :key="video.id">
                 <img :src="youteThumbnail(video.youtubeId)" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">
@@ -59,6 +61,9 @@ function stopVideo() {
 .mediaBox {
     border-top: 1px solid rgba(255, 255, 255, 0.247);
     padding: 1.5vw;
+}
+ul.youtubes {
+    padding: min(3vw, 20px) 0;
 }
 li.youtube {
     width: calc(50% - 3px);

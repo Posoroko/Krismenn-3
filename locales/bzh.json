@@ -1,7 +1,8 @@
 {
     "global": {
         "readMore": "Lenn muioc’h",
-        "infoAndContact": "Info ha kontakt"
+        "infoAndContact": "Info ha kontakt",
+        "videos": "Videoioù"
     },
     "info": {
         "legal": "Kemennadenn lezennel",
@@ -14,7 +15,13 @@
         },
         "agenda": {
             "title": "Implij amzer",
-            "url": "/implij-amzer"
+            "url": "/implij-amzer",
+            "introText": "Tout an deizoù adadenn, ha tout.",
+            "accessibitiy": {
+                "ariaLAbel": {
+                    "dateList": "List of upcomming dates"
+                }
+            }
         },
         "listen": {
             "title": "Selaoù",
@@ -47,7 +54,9 @@
         },
         "bastard": {
             "title": "Bastard",
-            "url": "/bastard"
+            "url": "/bastard",
+            "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
+            "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
         }
     }
 }

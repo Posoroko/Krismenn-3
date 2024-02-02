@@ -1,22 +1,34 @@
 <script setup>
 const route = useRoute();
+const appConfig = useAppConfig();
+
+const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.backgroundImage;
 
 </script>
 
 <template>
-    <div class="frame">
-        <img class="" src="/images/background/xx-large/blue.webp" alt="Krismenn">
+    <div class="frame allEvents">
+        <picture class="picture allEvents" v-if="folderUrl, fileName, fallbackFormat">
+            <source media="(min-height: 1441px)" :srcset="`${folderUrl}/xxl/${fileName}`" type="image/webp">
+            <source media="(min-height: 1080px)" :srcset="`${folderUrl}/xl/${fileName}`" type="image/webp">
+            <source media="(min-height: 721px)" :srcset="`${folderUrl}/l/${fileName}`" type="image/webp">
+            <source media="(min-height: 401px)" :srcset="`${folderUrl}/m/${fileName}`" type="image/webp">
+            <source media="(max-height: 400px)" :srcset="`${folderUrl}/s/${fileName}`" type="image/webp">
+
+            <img :src="`${folderUrl}/fallback/${fileName}.${fallbackFormat}`" :alt="fileName">
+        </picture>
+        
         <img 
-            class="emptyBGI" 
+            class="emptyBGI noEvents" 
             :class="{ 'active': route.path.length > 4 }"
-            src="/images/background/empty-blue.png" 
+            src="/images/background/blue-empty/fallback/blue-empty.jpg" 
             alt="">
     </div>
 </template>
 
 <style scoped>
 .frame {
-    z-index: -1;
+    /* z-index: -1; */
     position: absolute;
     width: 100%;
     height: 100%;

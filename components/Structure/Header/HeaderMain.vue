@@ -3,10 +3,10 @@ const route = useRoute();
 </script>
 
 <template>
-    <header class="absoluteFull" :class="{ 'panelOpen': route.path.length > 4 }" >
-        <nav class="w100 h100">
-            <ul class="w100 h100">
-                <li class="box corner topLeftBox centered">
+    <header class="absoluteFull noEvents" :class="{ 'panelOpen': route.path.length > 4 }" >
+        <nav class="w100 h100 noEvents">
+            <ul class="w100 h100 noEvents">
+                <li class="box corner topLeftBox centered allEvents">
                     <NuxtLink to="/" class="full centered glass_corner pointer">
                         <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
                     </NuxtLink>
@@ -20,23 +20,23 @@ const route = useRoute();
 
                 </div>
 
-                <div class="box centerLeftBox flex column">
+                <div class="box centerLeftBox flex column allEvents">
                     <StructureHeaderBarLeft />
                 </div>
         
-                <div class="box centerCenterBox"></div>
+                <div class="box centerCenterBox noEvents"></div>
 
-                <div class="box centerRightBox flex column">
+                <div class="box centerRightBox flex column allEvents">
                     <StructureHeaderBarRight />
                 </div>
             
                 <div class="box corner bottomLeftBox">
 
                 </div>
-                <div class="box bottomCenterBox flex">
+                <div class="box bottomCenterBox flex allEvents">
                     <StructureHeaderBarBottom />
                 </div>
-                <div class="box corner bottomRightBox"></div>
+                <div class="box corner bottomRightBox allEvents"></div>
             </ul>
         </nav>
     </header>

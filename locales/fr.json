@@ -1,7 +1,8 @@
 {
     "global": {
         "readMore": "Lire la suite",
-        "infoAndContact": "Infos et contact"
+        "infoAndContact": "Infos et contact",
+        "videos": "Vidéos" 
     },
     "info": {
         "legal": "Mentions légales",
@@ -18,7 +19,13 @@
         },
         "agenda": {
             "title": "Agenda",
-            "url": "/agenda"
+            "url": "/agenda",
+            "introText": "Toutes les dates de concert, de résidence ou d'atelier.",
+            "accessibitiy": {
+                "ariaLAbel": {
+                    "dateList": "Liste des prochaines dates de concert"
+                }
+            }
         },
         "news": {
             "title": "Actualités",
@@ -47,7 +54,9 @@
         },
         "bastard": {
             "title": "Bastard",
-            "url": "/bastard"
+            "url": "/bastard",
+            "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
+            "appPresentation": "Vous pouves suivre les explorations de Krismenn dans la créqtion de son nouveau spectacle en visitant l'application dédiée.  Il y poste régulièrement des textes, images et vidéos qu'il trouve sur le chemin de la création de Bastard."
         }
     }
 }

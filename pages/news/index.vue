@@ -8,7 +8,8 @@ const directusAssets = appConfig.directus.assets;
 const fetchUrl = `${directusItems}News`;
 const fetchOptions = {
     query: {
-        fields: ["*, translations.*"]
+        fields: ["*, translations.*"],
+        sort: "-date_published"
     }
 }
 
@@ -53,12 +54,10 @@ definePageMeta({
         :stripeImageDirectusUrl="activeImageUrl"
         showIntroText>
 
-        <template #content>
-            <ul>
-                <li v-for="n in news" :key="n.id">
-                    <PanelCardMain>
-                        <p class="cardTitle_format">{{ n.translations[locale].title }}</p>
-                    </PanelCardMain>
+        <template #content>            
+            <ul class="flex column gap20">
+                <li v-for="n in news" :key="n.id" class="card block">
+                    <PanelCardNews :article="n"  summary />
                 </li>
             </ul>
         </template>
@@ -66,11 +65,8 @@ definePageMeta({
 </template>
 
 <style scoped>
-p {
-    font-family: 'Nimbus Mono PS', 'Courier New', monospace; 
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
+ul {
+    padding: 3vw;
 }
 
 </style>

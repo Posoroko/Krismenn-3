@@ -1,16 +1,27 @@
 <script setup>
-console.log("news/[id].vue");
 const route = useRoute();
 
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
 const directusAssets = appConfig.directus.assets;
-const dateToLocale = useDateToLocale();
+
+const fetchUrl = `${directusItems}News`;
+const fetchOptions = {
+    query: {
+        filter: {
+            id: {
+                _eq: route.params.id
+            }
+        },
+        fields: ["*, translations.*"]
+    }
+}
+
 const { data: article } = await useAsyncData(
     "newsById",
     async () => {
-        const items = await $fetch(`${directusItems}News?filter[id][_eq]=${route.params.id}&fields=id,date_published,image,translations.*`);
+        const items = await $fetch(fetchUrl, fetchOptions);
 
         let temp = {
             id: `${items.data[0].id}`,
@@ -24,7 +35,7 @@ const { data: article } = await useAsyncData(
         items.data[0].translations.forEach((translation) => {
             temp[translation.languages_code] = translation;
         })
-       
+
         return temp;
     }
     ,

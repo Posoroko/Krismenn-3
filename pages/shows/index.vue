@@ -47,16 +47,15 @@ definePageMeta({
 
 <template>
     <PanelMain :title="t('pages.shows.title')" :showBackButton="false" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
-
         <template #content>
             <p>
 
             </p>   
 
             <ul class="flex column gap50">
-                <PanelCardMain class="card" v-for="show in shows" :key="show.id">
+                <li class="card" v-for="show in shows" :key="show.id">
                     <PanelCardShows :show="show" :fullSize="false" />
-                </PanelCardMain>
+                </li>
             </ul>
         </template>
     </PanelMain>
@@ -67,5 +66,8 @@ ul {
     padding-bottom: 30px;
      
 }
-
+li.card {
+    border-radius: 1px;
+    overflow: hidden;
+}
 </style>

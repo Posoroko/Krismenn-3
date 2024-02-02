@@ -40,7 +40,7 @@ const props = defineProps({
             
         </div>
 
-        <div class="flex justifyEnd" v-else>
+        <div class="flex justifyEnd marTop20" v-else>
             <NuxtLink :to="`/shows/${show.translations[locale].slug}?id=${show.id}`" class="glass_button cardText_format glassSurface-onHover">{{ t('global.readMore') }}</NuxtLink>
         </div>
     </div>
@@ -72,7 +72,7 @@ h1, p, a {
 }
 
 .contentBox{
-    padding: 3vw;
+    padding: max(3vw, 20px);
    
     border-top: none;
     background-color: #ffffff0b;
