@@ -46,11 +46,12 @@ const props = defineProps({
             </div>
             
 
-            <div class="scrollBox w100">
+            <div class="scrollBox w100 flex column">
                 <p class="panelSubtitle" v-if="showIntroText">
                     {{ $t(`pages.${page}.introText`) }}
                 </p>
-                <div class="panelTextContent">
+
+                <div class="panelTextContent relative grow">
                     <slot name="content"></slot>
                 </div>
             </div>

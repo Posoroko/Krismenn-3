@@ -58,5 +58,21 @@
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "Vous pouves suivre les explorations de Krismenn dans la créqtion de son nouveau spectacle en visitant l'application dédiée.  Il y poste régulièrement des textes, images et vidéos qu'il trouve sur le chemin de la création de Bastard."
         }
+    },
+    "dates": {
+        "months": [
+            "Janvier",
+            "Février",
+            "Mars",
+            "Avril",
+            "Mai",
+            "Juin",
+            "Juillet",
+            "Août",
+            "Septembre",
+            "Octobre",
+            "Novembre",
+            "Décembre"
+        ]
     }
 }

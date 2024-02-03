@@ -11,32 +11,30 @@ const fetchOptions = {
     query: {
         filter: {
             id: {
-                _eq: route.params.id
+                _eq: route.query.id
             }
         },
-        fields: ["*, translations.*"]
+        fields: ["*, translations.*,city.translations.name,city.translations.languages_code"]
     }
 }
 
 const { data: article } = await useAsyncData(
     "newsById",
     async () => {
-        const items = await $fetch(fetchUrl, fetchOptions);
+        const items = await $fetch(fetchUrl, fetchOptions)
+        let item = items.data[0];
 
-        let temp = {
-            id: `${items.data[0].id}`,
-            date: items.data[0].date_published,
-            image: items.data[0].image,
-            fr: {},
-            en: {},
-            bzh: {}
-        }
+        let _translations = {};
 
-        items.data[0].translations.forEach((translation) => {
-            temp[translation.languages_code] = translation;
+        item.translations.forEach(obj => {
+            _translations[obj.languages_code] = obj;
         })
+        item.city.translations.forEach(obj => {
+            _translations[obj.languages_code].city = obj.name;
+        })
+        item.translations = _translations;
 
-        return temp;
+        return item;
     }
     ,
     { server: true }
@@ -44,15 +42,9 @@ const { data: article } = await useAsyncData(
 
 </script>
 <template>
-    <PanelMain page="news" drawerPosition="right" v-if="article" :stripeImageDirectusUrl="`${directusAssets}${article.image}`">
+    <PanelMain :title="article.translations[locale].title" backButtonURL="/news" drawerPosition="right">
         <template #content>
-            <!-- {{article}} -->
-            <PanelArticleCard 
-                :articlePage="true"
-                :article="article"
-                :class="{ 'active': activeArticle_id == article.id }"
-                :data-id="article.id" 
-                :data-image="article.image"/>
+            <PanelCardNews :article="article"  :summary="false" />
         </template>
     </PanelMain>
 </template>
