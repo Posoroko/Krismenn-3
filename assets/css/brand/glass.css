@@ -1,5 +1,6 @@
 :root {
-    --frosty-color: #ffffff25;
+    --frosty-color: #ffffff30;
+    --frosty-bg-color: #ffffff20;
     --frosty-font-color: #ffffff81;
 }
 
@@ -8,7 +9,7 @@
 }
 
 .frosty_bg {
-    background-color: var(--frosty-color);
+    background-color: var(--frosty-bg-color);
 }
 
 

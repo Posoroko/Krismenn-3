@@ -85,5 +85,7 @@ ul {
         "centerLeftBox centerCenterBox centerRightBox"
         "bottomLeftBox bottomCenterBox bottomRightBox";
 }
-
+.bottomCenterBox {
+    /* z-index: 0; */
+}
 </style>

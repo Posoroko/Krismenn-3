@@ -25,7 +25,8 @@
         },
         "listen": {
             "title": "Listen",
-            "url": "/listen"
+            "url": "/listen",
+            "introText": "Listen to Krismenn's music, his albums and his collaborations.  You can also find here some videos of his shows and concerts."
         },
         "news": {
             "title": "News",

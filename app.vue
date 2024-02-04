@@ -8,11 +8,11 @@
 
     <StructureHeaderMain />
 
+    <StructureFooterMain />
+
     <StructureMainMain>
         <NuxtPage />
     </StructureMainMain>
-
-    <StructureFooterMain />
   </div>
 </template>
 
@@ -33,8 +33,6 @@
 }
 
 
-
-
 .slideFromRight-enter-from,
 .slideFromRight-leave-to {
     filter: blur(10px);
@@ -47,7 +45,6 @@
     opacity: 1;
     transform: translateX(0%);
 }
-
 
 
 .slideFromLeft-enter-from,

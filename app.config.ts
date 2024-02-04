@@ -65,5 +65,48 @@ export default defineAppConfig({
             fr: "/actualites",
             bzh: "/keleier"
         }
-    }
+    },
+    listeningPlatforms: [{
+            id: 0,
+            ref: 'spotify',
+            displayName: 'Spotify',
+            text: '',
+            href: 'spotify:artist:6PljAdsbh8lLwACcYLn8M8?si=4oLqxv3hTFypljo_8EBdHQ'
+        },
+        {
+            id: 1,
+            ref: 'deezer',
+            displayName: 'Deezer',
+            text: '',
+            href: 'https://www.deezer.com/fr/artist/123456'
+        },
+        {
+            id: 2,
+            ref: 'apple',
+            displayName: 'Apple Music',
+            text: '',
+            href: 'https://music.apple.com/fr/artist/123456'
+        },
+        // {
+        //     id: 3,
+        //     ref: 'amazonMusic',
+        //     displayName: 'Amazon Music',
+        //     text: '',
+        //     href: 'https://music.amazon.fr/artists/B08BZ3Z3Z3'
+        // },
+        // {
+        //     id: 4,
+        //     ref: 'youtubeMusic',
+        //     displayName: 'YouTube Music',
+        //     text: '',
+        //     href: 'https://music.youtube.com/channel/UC6PljAdsbh8lLwACcYLn8M8'
+        // },
+        {
+            id: 7,
+            ref: 'youtube',
+            displayName: 'YouTube',
+            text: '',
+            href: 'https://www.youtube.com/channel/UC6PljAdsbh8lLwACcYLn8M8'
+        }
+    ]
 })

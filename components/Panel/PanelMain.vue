@@ -24,7 +24,7 @@ const props = defineProps({
         </div>
 
         <div class="content relative grow flex column">
-            <div class="panelTitleBox relative w100 flex row justifyBetween alignStart ">
+            <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter ">
                 <PanelBackButton :href="backButtonURL" />
 
 
@@ -67,11 +67,11 @@ const props = defineProps({
     --frame-width: min(10vw, 100px);
 }
 @media (orientation: portrait) or (width < 850px) {
-    /* Full with when on mobile.  Otherwize, the tabs make
+    /* Full width when on mobile.  Otherwize, the tabs make
     the UI overcrowded and confusing */
     .panel {
         width: 100vw;
-        height: calc(100vh - var(--gutter-thickness));
+        height: 100vh;
     }
     .panel.left {
         translate: calc( var(--gutter-thickness) * -1 ) ;
@@ -125,28 +125,27 @@ const props = defineProps({
     
 }
 .panelTitleBox {
-    padding: 2vh 2vh 5vh 2vh;
+    /* padding: 0vh 2vh 1.5vh 2vh; */
 }
 .panelTitle {
     height: 75px;
-    /* font-size: clamp(2.4rem, 3vw + 1rem, 4rem); */
-    font-size: 6rem;
+    font-size: clamp(3rem, 4vw + 1rem, 5rem);
     color: rgb(205, 220, 222);
     font-weight: 500;
     
     flex-shrink: 0;
     position: relative;
 }
-/* .panelTitleBox:after {
+.panelTitleBox:after {
     width: 100%;
     height: 20px;
     content: "";
     position: absolute;
     top: 100%;
     left: 0;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(25, 40, 44, 0.39) 100%);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(25, 40, 44, 0.171) 100%);
     z-index: -1;
-} */
+}
 
 .panelSubtitle {
     font-size: clamp(1.4rem, 1vw + 1rem, 1.6rem);
