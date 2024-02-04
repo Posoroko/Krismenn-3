@@ -41,7 +41,7 @@ const props = defineProps({
         </div>
 
         <div class="flex justifyEnd marTop20" v-else>
-            <NuxtLink :to="`/shows/${show.translations[locale].slug}?id=${show.id}`" class="glass_button cardText_format glassSurface-onHover">{{ t('global.readMore') }}</NuxtLink>
+            <PanelButtonReadMore :href="`/shows/${show.translations[locale].slug}?id=${show.id}`" />
         </div>
     </div>
 </template>
@@ -67,15 +67,12 @@ const props = defineProps({
         scale: 1.1;
     }
 }
-h1, p, a {
+h1, p {
     color: white;
 }
 
 .contentBox{
     padding: max(3vw, 20px);
-   
-    border-top: none;
-    background-color: #ffffff0b;
 }
 
 p.description {

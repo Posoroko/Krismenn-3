@@ -6,7 +6,7 @@ const route = useRoute();
     <header class="absoluteFull noEvents" :class="{ 'panelOpen': route.path.length > 4 }" >
         <nav class="w100 h100 noEvents">
             <ul class="w100 h100 noEvents">
-                <li class="box corner topLeftBox centered allEvents">
+                <li class="box corner topLeftBox centered allEvents glowing_onHover">
                     <NuxtLink to="/" class="full centered glass_corner pointer">
                         <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
                     </NuxtLink>

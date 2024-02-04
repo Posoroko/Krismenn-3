@@ -77,7 +77,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain v-if="date" :title="t('pages.agenda.title')" backButtonURL="/agenda" drawerPosition="left">
+    <PanelMain v-if="date" class="panel" :title="t('pages.agenda.title')" backButtonURL="/agenda" drawerPosition="right">
         <template #content>
             <div class="card glassSurface h100">
                 <p class="category">

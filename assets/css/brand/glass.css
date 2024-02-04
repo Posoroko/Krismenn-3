@@ -1,6 +1,50 @@
+:root {
+    --frosty-color: #ffffff25;
+    --frosty-font-color: #ffffff81;
+}
+
+.frosty_border {
+    border: 2px solid var(--frosty-color);
+}
+
+.frosty_bg {
+    background-color: var(--frosty-color);
+}
 
 
-.glass_corner,
+
+.glowing_onHover {
+    background-color: transparent;
+    border: 2px solid transparent;
+}
+
+
+
+.glowing,
+.glowing_onHover:hover {
+    background-color: #455f7333;
+    border: 2px solid #ffffff36;
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 0 10px hsla(199, 100%, 59%, 0.493),
+        inset 0 0 10px hsla(199, 100%, 59%, 0.267);
+    transition: 150ms ease;
+}
+
+
+.frosty_font {
+    color: var(--frosty-font-color);
+    fill: var(--frosty-font-color);
+    transition: 300ms ease;
+}
+
+.frosty_font_hover:hover .frosty_font {
+    color: #ffffff;
+    fill: white;
+    transition: 300ms ease;
+}
+
+/* .glass_corner,
 .glassSurface-onHover {
     background-color: transparent;
     border: 1px solid transparent;  
@@ -12,7 +56,7 @@
 .glassSurface-onHover:hover,
 .glassSurface_selected {
     background-color: hsla(206, 25%, 36%, 0.199);
-    border: 1px solid hsla(0, 0%, 97%, 0.212);
+    border: 2px solid #ffffff36;
     backdrop-filter: blur(10px);
     box-shadow: 
         0 0 10px hsla(199, 100%, 59%, 0.493),
@@ -20,11 +64,10 @@
     transition: 150ms ease;
 }
 
-.glass_button {
-    fill: white;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.055);
-    padding: 5px 20px;
-    border-radius: 1px;
-    border: 1px solid hsla(0, 0%, 97%, 0.096);
-}
+ */
+
+
+
+
+
+

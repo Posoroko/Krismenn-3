@@ -12,7 +12,7 @@ const availableLocales = computed(() => {
 </script>
 
 <template>
-    <div class="languageBox full flex column alignCenter justifyEvenly">
+    <div class="languageBox full flex column alignCenter justifyEvenly glowing_onHover">
         <NuxtLink v-for="loc in availableLocales" :key="loc.code" :to="switchLocalePath(loc.code)" class="langBtn pointer">
             {{ loc.code }}
         </NuxtLink>

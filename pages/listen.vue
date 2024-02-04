@@ -1,5 +1,5 @@
 <script setup>
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 definePageMeta({
     pageTransition: {
@@ -9,7 +9,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain page="listen" drawerPosition="right">
+    <PanelMain :title="t('pages.listen.title')" drawerPosition="right">
         <template #content>
             <p>
                 Vous pouvez écouter les albums de Krismenn sur les plateformes de streaming suivantes :

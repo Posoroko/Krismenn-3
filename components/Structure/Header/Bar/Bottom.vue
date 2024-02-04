@@ -15,8 +15,8 @@ const tabs = [
 
 <template>
     <li v-for="tab in tabs" :key="tab.id"
-        class="box glassSurface-onHover" 
-        :class="{ 'glassSurface_selected': route.fullPath.includes(routes[tab.key][locale]) }">
+        class="box glowing_onHover" 
+        :class="{ 'glowing': route.fullPath.includes(routes[tab.key][locale]) }">
         <NuxtLink :to="`/${tab.key}`" class="tabLinkText">
             {{ $t(`pages.${tab.key}.title`).toUpperCase() }}
         </NuxtLink>

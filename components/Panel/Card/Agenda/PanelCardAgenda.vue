@@ -12,10 +12,10 @@ const props = defineProps({
 
 
 <template>
-    <NuxtLink :to="`/agenda/${date.id}`" class="card flex gap10 relative">
+    <NuxtLink :to="`/agenda/${date.id}`" class="card frosty_border flex gap10 relative">
         <!-- <time class="date fontColor_light" :datetime="date.date">{{ new Date(date.date).toLocaleDateString(locale).slice(0, 5) }}</time> -->
 
-        <time class="date fontColor_light" :datetime="date.date">{{ new Date(date.date).getDate() }}</time>
+        <time class="frosty_bg date fontColor_light" :datetime="date.date">{{ new Date(date.date).getDate() }}</time>
 
         <div class="infoBox flex column justifyCenter">
             <h2 class="cardSubtitle_format fontColor_light">{{ date.show.translations[locale].title }}</h2>
@@ -41,19 +41,16 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.card {
-    border: 2px solid #ffffff21;
-}
 .card:hover {
     filter: brightness(0.8);
 }
+
 time.date {
     font-size: 30px;
     letter-spacing: -0.1em;
     width: 50px;
     display: grid;
     place-items: center;
-    background-color: #ffffff21;
 }
 .infoBox {
     padding: 10px;
@@ -69,7 +66,7 @@ time.date {
 }
 .card:hover .moreBtn {
     opacity: 1;
-    transition: 300ms ease;
+    transition: 150ms ease;
 }
 .moreBtn svg {
     height: 20px;

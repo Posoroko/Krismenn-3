@@ -49,14 +49,14 @@ definePageMeta({
 <template>
     <PanelMain 
         v-if="news"
-        page="news" 
+        :title="t('pages.news.title')" 
         drawerPosition="right"  
         :stripeImageDirectusUrl="activeImageUrl"
         showIntroText>
 
         <template #content>            
             <ul class="flex column gap20">
-                <li v-for="n in news" :key="n.id" class="block">
+                <li v-for="n in news" :key="n.id" class="block frosty_border ">
                     <PanelCardNews :article="n"  summary />
                 </li>
             </ul>

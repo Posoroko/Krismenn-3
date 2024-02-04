@@ -6,13 +6,13 @@ const menuIsOpen = ref(false);
 </script>
 
 <template>
-    <div class="full relative">
-        <button @click="menuIsOpen = !menuIsOpen" class="centered full glass_corner pointer ">
+    <div class="full relative glowing_onHover">
+        <button @click="menuIsOpen = !menuIsOpen" class="centered full glowing_onHovers pointer ">
             <WidgetIcon name="info" type="homePageNavButton" size="24"/>
         </button>
 
-        <div class="menuBox glassSurface flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
-            <div class="content kText">
+        <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
+            <div class="content">
                 <p>{{ $t('info.legal') }}</p>
                 <p>{{ $t('info.credits') }}</p>
                 <p>posoroko.com</p>

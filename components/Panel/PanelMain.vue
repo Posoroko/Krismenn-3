@@ -6,10 +6,8 @@ const appConfig = useAppConfig();
 const route = useRoute();
 
 const props = defineProps({
-    page: String,
     title: String,
     drawerPosition: String,
-    pageName: String,
     showStripeImage: Boolean,
     stripeImageDirectusUrl: String,
     showIntroText: Boolean,
@@ -20,23 +18,15 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="panel glassSurface allEvents relative flex" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
+    <div class="panel glowing allEvents relative flex" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
         <div v-if="showStripeImage" class="frame relative">
             <PanelStripeImage :src="stripeImageSrc" />
         </div>
 
         <div class="content relative grow flex column">
-            <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter">
-                <PanelBackButton :href="backButtonURL" v-if="backButtonURL" />
+            <div class="panelTitleBox relative w100 flex row justifyBetween alignStart ">
+                <PanelBackButton :href="backButtonURL" />
 
-                <div v-else></div>
-
-                <h1 v-if="page" class="panelTitle centered">
-                
-                    {{ $t(`pages.${page}.title`) }}
-
-                    
-                </h1>
 
                 <h1 v-if="title" class="panelTitle centered">
                     {{ title }}
@@ -45,7 +35,6 @@ const props = defineProps({
                 <PanelCloseButton />
             </div>
             
-
             <div class="scrollBox w100 flex column">
                 <p class="panelSubtitle" v-if="showIntroText">
                     {{ $t(`pages.${page}.introText`) }}
@@ -55,8 +44,6 @@ const props = defineProps({
                     <slot name="content"></slot>
                 </div>
             </div>
-
-            
         </div>
     </div>
 </template>
@@ -137,16 +124,20 @@ const props = defineProps({
     transition: opacity 0.5s ease;
     
 }
-
+.panelTitleBox {
+    padding: 2vh 2vh 5vh 2vh;
+}
 .panelTitle {
     height: 75px;
-    font-size: clamp(2.4rem, 1.5vw + 1rem, 2.8rem);
+    /* font-size: clamp(2.4rem, 3vw + 1rem, 4rem); */
+    font-size: 6rem;
     color: rgb(205, 220, 222);
-    font-weight: 700;
+    font-weight: 500;
+    
     flex-shrink: 0;
     position: relative;
 }
-.panelTitleBox:after {
+/* .panelTitleBox:after {
     width: 100%;
     height: 20px;
     content: "";
@@ -155,7 +146,8 @@ const props = defineProps({
     left: 0;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(25, 40, 44, 0.39) 100%);
     z-index: -1;
-}
+} */
+
 .panelSubtitle {
     font-size: clamp(1.4rem, 1vw + 1rem, 1.6rem);
 

@@ -86,12 +86,15 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain class="panel" page="agenda" drawerPosition="right" showIntroText>
+    <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
         <template #content>
 
             <div class="box">
-                <ul class="years" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
-                    <li><h2 class="flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2></li>
+                <ul class="years frosty_border" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
+                    <li>
+                        <h2 class="frosty_bg flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
+                    </li>
+                    
                     <li>
                         <ul class="months" v-for="month in year.months" :key="month.month">
                             <li class="month"><h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month - 1}]`) }}</h3></li>
@@ -117,8 +120,6 @@ definePageMeta({
     color: #6e76811a;
 }
 ul.years {
-    border: 2px solid #ffffff21;
-    border-radius: 1px;
     margin-block: 30px;
 }
 ul.months {
@@ -136,9 +137,7 @@ ul.dates {
     gap: 10px;
 }
 h2.year {
-    
     color: white;
-    background-color: #ffffff21;
     padding: 10px;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.24); */
     

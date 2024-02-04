@@ -52,8 +52,8 @@ definePageMeta({
 
             </p>   
 
-            <ul class="flex column gap50">
-                <li class="card" v-for="show in shows" :key="show.id">
+            <ul class=" flex column gap50">
+                <li class="card frosty_border" v-for="show in shows" :key="show.id">
                     <PanelCardShows :show="show" :fullSize="false" />
                 </li>
             </ul>
