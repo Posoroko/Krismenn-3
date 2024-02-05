@@ -32,6 +32,7 @@ function stopVideo() {
 <template>
     <section class="mediaBox ">
         <h1 class="cardSubtitle_format">{{ t('global.videos') }}</h1>
+        
         <ul class="youtubes flex wrap overflowHidden marTop20 gap5">
             <li class="youtube pointer relative" v-for="video in youtubes" :key="video.id">
                 <img :src="youteThumbnail(video.youtubeId)" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">

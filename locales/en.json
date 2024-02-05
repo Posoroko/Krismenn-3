@@ -26,7 +26,14 @@
         "listen": {
             "title": "Listen",
             "url": "/listen",
-            "introText": "Listen to Krismenn's music, his albums and his collaborations.  You can also find here some videos of his shows and concerts."
+            "sections": {
+                "platforms": {
+                    "title": "Platforms"                
+                },
+                "discography": {
+                    "title": "Discography"                
+                }
+            }
         },
         "news": {
             "title": "News",
@@ -75,5 +82,8 @@
             "November",
             "December"
         ]
+    },
+    "album": {
+        "title": "’N Om Gustumiñ Deus AN DeñvAlijeNN"
     }
 }

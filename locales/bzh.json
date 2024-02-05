@@ -26,7 +26,14 @@
         "listen": {
             "title": "Selaoù",
             "url": "/selaou",
-                        "introText": "Klevit ar sonerezh a zo bet savet gant Krismenn, ha kinniget da glevet gant ar re all."
+            "sections": {
+                "platforms": {
+                    "title": "Platforms"
+                },
+                "discography": {
+                    "title": "Discography"
+                }
+            }
         },
         "news": {
             "title": "Keloù",

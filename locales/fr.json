@@ -16,7 +16,15 @@
         "listen": {
             "title": "Écouter",
             "url": "/ecouter",
-            "introText": "Retrouvez ici tous les albums de Krismenn, en écoute gratuite.  Vous pouvez aussi les acheter en ligne ou les télécharger."
+            "introText": "Retrouvez ici tous les albums de Krismenn, en écoute gratuite.  Vous pouvez aussi les acheter en ligne ou les télécharger.",
+            "sections": {
+                "platforms": {
+                    "title": "Platformes d'écoute"
+                },
+                "discography": {
+                    "title": "Discographie"
+                }
+            }
         },
         "agenda": {
             "title": "Agenda",
