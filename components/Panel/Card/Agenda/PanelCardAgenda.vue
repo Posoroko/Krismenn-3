@@ -8,14 +8,14 @@ const props = defineProps({
         required: true
     }
 })
+console.log(props.date)
 </script>
-
 
 <template>
     <NuxtLink :to="`/agenda/${date.id}`" class="card frosty_border flex gap10 relative">
         <!-- <time class="date fontColor_light" :datetime="date.date">{{ new Date(date.date).toLocaleDateString(locale).slice(0, 5) }}</time> -->
 
-        <time class="frosty_bg date fontColor_light" :datetime="date.date">{{ new Date(date.date).getDate() }}</time>
+        <time class="frosty_bg date fontColor_light" :datetime="date.date">{{ new Date(date.date).getUTCDate() }}</time>
 
         <div class="infoBox flex column justifyCenter">
             <h2 class="cardSubtitle_format fontColor_light">{{ date.show.translations[locale].title }}</h2>

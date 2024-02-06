@@ -27,9 +27,11 @@ const props = defineProps({
         <!-- <p v-else class="description cardText_format">{{ show.translations[locale].synopsis }}</p> -->
 
         <div class="marTop50" v-if="fullSize">
-            <PanelCardShowsMediaBox 
-                v-if="show.youtubes.length" 
-                :youtubes="show.youtubes" />
+            <PanelSection :title="t('global.videos')">
+                <template #content>
+                    <PanelSectionVideos :showSlug="show.mainSlug" />
+                </template>
+            </PanelSection>
 
             <PanelCardContactBox 
                 v-if="show.telephone || show.email || show.website" 

@@ -10,7 +10,12 @@ const directusAssets = appConfig.directus.assets;
 const fetchUrl = `${directusItems}Shows`;
 const fetchOptions = {
     query: {
-        fields: ["*, translations.*"]
+        fields: ["*, translations.*"],
+        filter: {
+            published: {
+                _eq: true
+            }
+        }
     }
 }
 

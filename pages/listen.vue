@@ -63,6 +63,12 @@ definePageMeta({
                         </ul>
                     </template>
                 </PanelSection>
+
+                <PanelSection :title="t('global.videos')">
+                    <template #content>
+                        <PanelSectionVideos />
+                    </template>
+                </PanelSection>
             </div>
         </template>
     </PanelMain>

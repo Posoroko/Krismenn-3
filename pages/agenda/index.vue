@@ -9,7 +9,12 @@ const directusItems = appConfig.directus.items;
 const fetchUrl = `${directusItems}Agenda`;
 const fetchOptions = {
     query: {
-        fields: ["*, city.*, city.translations.*,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*"]
+        fields: ["*, city.*, city.translations.*,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*"],
+        filter: {
+            published: {
+                _eq: true
+            }
+        },
     }
 }
 
