@@ -2,7 +2,8 @@
     "global": {
         "readMore": "Lenn muioc’h",
         "infoAndContact": "Info ha kontakt",
-        "videos": "Videoioù"
+        "videos": "Videoioù",
+        "selectLanguage": "Peseurt yezh peus c'hroant ?"
     },
     "info": {
         "legal": "Kemennadenn lezennel",

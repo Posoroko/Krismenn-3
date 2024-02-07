@@ -3,11 +3,24 @@ const route = useRoute();
 const appConfig = useAppConfig();
 
 const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.backgroundImage;
+const appState = useAppState();
 
+function handleClick() {
+    console.log(appState.value.languageSelectorOpen)
+    if(route.value !== '/') {
+        // go home
+    }
+    if(appState.value.languageSelectorOpen) {
+        appState.value.languageSelectorOpen = false;
+    }
+    if(appState.value.infoBoxOpen) {
+        appState.value.infoBoxOpen = false;
+    }
+}
 </script>
 
 <template>
-    <div class="frame allEvents">
+    <div class="frame allEvents" @click="handleClick">
         <picture class="picture allEvents" v-if="folderUrl, fileName, fallbackFormat">
             <source media="(min-height: 1441px)" :srcset="`${folderUrl}/xxl/${fileName}`" type="image/webp">
             <source media="(min-height: 1080px)" :srcset="`${folderUrl}/xl/${fileName}`" type="image/webp">
@@ -18,15 +31,21 @@ const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.background
             <img :src="`${folderUrl}/fallback/${fileName}.${fallbackFormat}`" :alt="fileName">
         </picture>
         
-        <img 
-            class="emptyBGI noEvents" 
-            :class="{ 'active': route.path.length > 4 }"
-            src="/images/background/blue-empty/fallback/blue-empty.jpg" 
-            alt="">
+        <div class="homeLink r full">
+            <img 
+                class="emptyBGI noEvents" 
+                :class="{ 'active': route.path.length > 4 }"
+                src="/images/background/blue-empty/fallback/blue-empty.jpg" 
+                alt="">
+        </div>
     </div>
 </template>
 
 <style scoped>
+.homeLink img {
+    pointer-events: all;
+    cursor: default;
+}
 .frame {
     /* z-index: -1; */
     position: absolute;

@@ -75,6 +75,7 @@ h1, p {
 
 .contentBox{
     padding: max(3vw, 20px);
+    background-color: #ffffff11;
 }
 
 p.description {

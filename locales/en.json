@@ -2,7 +2,8 @@
     "global": {
         "readMore": "Read more",
         "infoAndContact": "Info and contact",
-        "videos": "Videos"
+        "videos": "Videos",
+        "selectLanguage": "What language do you want to use?"
     },
     "info": {
         "legal": "Legal notice",

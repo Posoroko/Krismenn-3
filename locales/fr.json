@@ -2,7 +2,8 @@
     "global": {
         "readMore": "Lire la suite",
         "infoAndContact": "Infos et contact",
-        "videos": "Vidéos" 
+        "videos": "Vidéos",
+        "selectLanguage": "Quelle langue désirez-vous utiliser ?"
     },
     "info": {
         "legal": "Mentions légales",

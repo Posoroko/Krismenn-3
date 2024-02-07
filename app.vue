@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="appBox" class="appBox">
+  <div id="appBox" class="appBox" >
     <StructureBackgroundImage />
 
     <StructureHeaderMain />
