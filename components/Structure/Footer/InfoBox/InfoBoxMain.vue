@@ -1,17 +1,18 @@
 <script setup>
 import { useI18n } from '#imports';
 const { t } = useI18n();
+const appState = useAppState();
 
 const menuIsOpen = ref(false);
 </script>
 
 <template>
-    <div class="full relative glowing_onHover">
-        <button @click="menuIsOpen = !menuIsOpen" class="centered full glowing_onHovers pointer ">
+    <div class="full relative" :class="[ appState.infoBoxOpen ? 'glowing' : 'glowing_onHover']">
+        <button @click="appState.infoBoxOpen = !appState.infoBoxOpen" class="centered full pointer ">
             <WidgetIcon name="info" type="homePageNavButton" size="24"/>
         </button>
 
-        <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': menuIsOpen }">
+        <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
             <div class="content">
                 <p>{{ $t('info.legal') }}</p>
                 <p>{{ $t('info.credits') }}</p>

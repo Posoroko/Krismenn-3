@@ -25,14 +25,15 @@ function handleClick(e) {
     if(e.target.dataset.target === 'languageBox') {
         appState.value.languageSelectorOpen = !appState.value.languageSelectorOpen;
     }
-    
 }
-
 
 </script>
 
 <template>
-    <div class="languageBox  full flex column alignCenter justifyEvenly glowing_onHover pointer relative" @click="handleClick" data-target="languageBox">
+    <div class="languageBox  full flex column alignCenter justifyEvenly  pointer relative" 
+            :class="[ appState.languageSelectorOpen ? 'glowing' : 'glowing_onHover' ]" 
+            @click="handleClick" data-target="languageBox"
+    >
         <div class="window glowing" :class="{ 'open' : appState.languageSelectorOpen }">
             <NuxtLink @click.prevent v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)" class="language flex alignCenter gap10">
                 <WidgetLanguageSelectorRadioButton :locCode="loc.code" :activeLocale="locale"  />
@@ -52,20 +53,26 @@ function handleClick(e) {
 <style scoped>
 .window {
     position: absolute;
-    bottom: 50%;
-    right: 50%;
+    bottom: 0%;
+    right: 0%;
+    translate: 100% 100%;
     padding: 15px 30px;
     overflow: hidden;
     opacity: 0;
-    transition: 300ms ease;
+    filter: blur(5px);
+    scale: 0;
+    transition: 500ms ease;
     pointer-events: none;
 }
 .window.open {
     bottom: 100%;
     right: 100%;
+    translate: 0% 0%;
     pointer-events: all;
     opacity: 1;
-    transition: 300ms ease;
+    filter: blur(0px);
+    scale: 1;
+    transition: 500ms ease;
 }
 .language {
     height: 36px;
