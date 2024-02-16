@@ -56,7 +56,7 @@ definePageMeta({
                             <li class="albumCard">
                                 <img class="w100" src="/images/pochette.jpg" alt="">
 
-                                <div class="frosty_border">
+                                <div class="frosty_border frosty_bg">
 
                                 </div>
                             </li>

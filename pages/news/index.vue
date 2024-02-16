@@ -56,7 +56,7 @@ definePageMeta({
 
         <template #content>            
             <ul class="flex column gap20">
-                <li v-for="n in news" :key="n.id" class="block frosty_border ">
+                <li v-for="n in news" :key="n.id" class="block frosty_border frosty_bg">
                     <PanelCardNews :article="n"  summary />
                 </li>
             </ul>

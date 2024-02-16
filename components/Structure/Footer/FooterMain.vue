@@ -27,5 +27,6 @@ footer {
     height: var(--gutter-thickness);
     display: grid;
     grid-template-columns: var(--gutter-thickness) auto var(--gutter-thickness);
+    z-index: 1000;
 }
 </style>

@@ -1,4 +1,5 @@
 <script setup>
+const router = useRouter();
 const route = useRoute();
 const appConfig = useAppConfig();
 
@@ -8,7 +9,7 @@ const appState = useAppState();
 function handleClick() {
     console.log(appState.value.languageSelectorOpen)
     if(route.value !== '/') {
-        // go home
+        router.push({ path: "/" });
     }
     if(appState.value.languageSelectorOpen) {
         appState.value.languageSelectorOpen = false;
