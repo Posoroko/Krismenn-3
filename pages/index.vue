@@ -4,10 +4,12 @@
 </script>
 
 <template>
-    <h1></h1>
+    <main class="h100 noEvents">
+        <div class="musicPlayerBox">
+            <WidgetMusicPlayerMain />
+        </div>
+    </main>
 </template>
 
 <style scoped>
-
-
 </style>

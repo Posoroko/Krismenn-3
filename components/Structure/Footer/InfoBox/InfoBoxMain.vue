@@ -13,10 +13,10 @@ const menuIsOpen = ref(false);
         </button>
 
         <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
-            <div class="content">
-                <p>{{ $t('info.legal') }}</p>
-                <p>{{ $t('info.credits') }}</p>
-                <p>posoroko.com</p>
+            <div class="content flex column gap10">
+                <NuxtLink class="cardText_format fontColor_light" :to="`/${t('pages.legalNotice.url')}`">{{ $t('pages.legalNotice.title') }}</NuxtLink>
+                
+                <a class="cardText_format fontColor_light" href="https://posoroko.com">posoroko.com</a>
             </div>
         </div>
     </div>

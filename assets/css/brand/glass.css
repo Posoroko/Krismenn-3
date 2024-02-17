@@ -4,14 +4,7 @@
     --frosty-font-color: #ffffff81;
 }
 
-.frosty_border {
-    border: 2px solid var(--frosty-color);
-    box-shadow: 0 1px 3px 0 rgba(0, 32, 51, 0.473);
-}
 
-.frosty_bg {
-    background-color: var(--frosty-bg-color);
-}
 
 
 
@@ -19,8 +12,6 @@
     background-color: transparent;
     border: 2px solid transparent;
 }
-
-
 
 .glowing,
 .glowing_onHover:hover {
@@ -33,6 +24,14 @@
     transition: 150ms ease;
 }
 
+.frosty_border {
+    border: 2px solid var(--frosty-color);
+    box-shadow: 0 1px 3px 0 rgba(0, 32, 51, 0.473);
+}
+
+.frosty_bg {
+    background-color: var(--frosty-bg-color);
+}
 
 .frosty_font {
     color: var(--frosty-font-color);

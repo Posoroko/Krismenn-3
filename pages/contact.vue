@@ -1,5 +1,41 @@
 <script setup>
 const { t, locale } = useI18n();
+import { createDirectus, rest, readItems } from '@directus/sdk';
+
+const directus = createDirectus('https://krismenn.monsieuredgar.com').with(rest());
+
+const queryParams = {
+    fields: [ '*', 'translations.*'],
+    filter: {
+        published: {
+            _eq: true
+        },
+        
+    },
+    deep: {
+        translations: {
+            _filter: {
+                languages_code: {
+                    _eq: locale.value
+                }
+            }
+        }
+    }
+}
+
+const { data : contacts } = await useAsyncData(
+    'contacts',
+    async () => {
+        const items = await directus.request(
+            readItems('Contact', queryParams)
+        )
+
+        return items
+    },
+    { server: true }
+)
+
+
 
 definePageMeta({
     pageTransition: {
@@ -12,11 +48,68 @@ definePageMeta({
 <template>
     <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
         <template #content>
-            <p>
-                Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte. Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte Ils m’ont fait marcher sur un champ de sel Quel est ce jeu dont je ne connais pas les règles ? Ils ne me laisseront pas dormir Je ne sais combien de temps cela durera Mais il faut que je reste vivant Coûte que coûte
-            </p>
+            <ul class="flex column justifyCenter gap20 h100">
+                <li v-for="contact in contacts" :key="contact.id" class="flex column">
+                    <h3 class="cardTitle_format fontColor_light">{{ contact.translations[0].title }}</h3>
+
+                    <span class="flex column alignStart gap10">
+                        <span v-if="contact.telephone" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsCall />
+                            </span>
+                            <a class="cardSubtitle_format fontColor_light" :href="`call:${contact.telephone}`">{{ contact.telephone }}</a>
+                        </span >
+
+                        <span v-if="contact.email" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsEmail />
+                            </span>
+
+                            <a class="cardSubtitle_format fontColor_light" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+                        </span >
+
+                        <span v-if="contact.website" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsWebsite />
+                            </span>
+
+                            <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
+                        </span >
+                    </span>
+
+                    
+                </li>
+            </ul>
         </template>
     </PanelMain>
 </template>
 
-<style scoped></style>
+<style scoped>
+ul {
+    padding: 30px;
+}
+li {
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.288);
+}
+li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.288);
+}
+h3 {
+    margin-bottom: 30px;
+}
+.iconBox {
+    width: 30px;
+    height: 30px;
+
+}
+.iconBox:deep(svg) {
+    fill: white;
+    opacity: 0.5;
+}
+
+.infoLine {
+    padding: 10px 15px;
+    /* margin-left: 10px; */
+}
+</style>

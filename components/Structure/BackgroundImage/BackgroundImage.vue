@@ -32,7 +32,7 @@ function handleClick() {
             <img :src="`${folderUrl}/fallback/${fileName}.${fallbackFormat}`" :alt="fileName">
         </picture>
         
-        <div class="homeLink r full">
+        <div class="r full noEvents">
             <img 
                 class="emptyBGI noEvents" 
                 :class="{ 'active': route.path.length > 4 }"
@@ -48,7 +48,6 @@ function handleClick() {
     cursor: default;
 }
 .frame {
-    /* z-index: -1; */
     position: absolute;
     width: 100%;
     height: 100%;

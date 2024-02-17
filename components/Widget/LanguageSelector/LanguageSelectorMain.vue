@@ -2,6 +2,8 @@
 const { t, locale, locales } = useI18n();
 const appState = useAppState();
 
+const isPreferedLocaleSelected = localStorage.getItem('isPreferedLocaleSelected') === null;
+
 const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = computed(() => {
@@ -21,11 +23,23 @@ const cursorPosition = computed(() => {
 })
 
 function handleClick(e) {
-    console.log(e.target)
     if(e.target.dataset.target === 'languageBox') {
         appState.value.languageSelectorOpen = !appState.value.languageSelectorOpen;
     }
 }
+
+function localeClick(e) {
+    if (localStorage.getItem('isPreferedLocaleSelected') === null) {
+        localStorage.setItem('isPreferedLocaleSelected', true);
+    }
+}
+
+onMounted(() => {
+    if(localStorage.getItem('isPreferedLocaleSelected') === null) {
+        appState.value.languageSelectorOpen = true;
+    }
+})
+
 
 </script>
 
@@ -35,7 +49,7 @@ function handleClick(e) {
             @click="handleClick" data-target="languageBox"
     >
         <div class="window glowing" :class="{ 'open' : appState.languageSelectorOpen }">
-            <NuxtLink @click.prevent v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)" class="language flex alignCenter gap10">
+            <NuxtLink @click.stop="localeClick" v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)" class="language flex alignCenter gap10">
                 <WidgetLanguageSelectorRadioButton :locCode="loc.code" :activeLocale="locale"  />
 
                 <div class="grow flex alignCenter localeName frosty_font">

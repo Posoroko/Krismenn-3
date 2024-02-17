@@ -4,15 +4,17 @@
 
 <template>
   <div id="appBox" class="appBox" >
-    <StructureBackgroundImage />
+    <StructureBackgroundImage class="app_bgImage" />
 
-    <StructureHeaderMain />
+    <StructureHeaderMain class="app_header" />
 
-    <StructureFooterMain />
-
-    <StructureMainMain>
+    <StructureMainMain class="app_main">
         <NuxtPage />
     </StructureMainMain>
+
+    <StructureFooterMain class="app_footer" />
+
+    
   </div>
 </template>
 
@@ -74,10 +76,6 @@
     transform: translateX(0%);
 }
 
-
-
-
-
 .slideFromLeft-enter-active,
 .slideFromBottom-enter-active,
 .slideFromRight-enter-active
@@ -93,4 +91,19 @@
 
 
 
+</style>
+
+<style scoped>
+.app_bgImage {
+    z-index: 0;
+}
+.app_header {
+    z-index: 1;
+}
+.app_main {
+    z-index: 2;
+}
+.app_footer {
+    z-index: 3;
+}
 </style>

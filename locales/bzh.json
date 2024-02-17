@@ -7,7 +7,14 @@
     },
     "info": {
         "legal": "Kemennadenn lezennel",
-        "credits": "Crédits photos"
+        "credits": "Crédits photos",
+        "telephone": "Pelgomz",
+        "email": "Email",
+        "website": "Website"
+    },
+    "audioPlayer": {
+        "title": "Audio player",
+        "notSupported": "Neo ket possubl da selaou ar sonerezh gant. Da browserien brein a zo re koz."
     },
     "pages": {
         "home": {
@@ -42,7 +49,7 @@
             "url": "/kelou"
         },
         "contact": {
-            "title": "Kontaxt",
+            "title": "Kontakt",
             "url": "/kontakt"
         },
         "about": {
@@ -66,6 +73,10 @@
             "url": "/bastard",
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
+        },
+        "legalNotice": {
+            "title": "Kemennadenn lezennel",
+            "url": "/kemennadenn-lezennel"
         }
     },
     "dates": {
