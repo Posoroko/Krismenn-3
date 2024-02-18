@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <main class="h100 noEvents">
+    <main class="relative h100 noEvents">
         <div class="musicPlayerBox">
             <WidgetMusicPlayerMain />
         </div>

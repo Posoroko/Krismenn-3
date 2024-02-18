@@ -1,5 +1,9 @@
 <script setup>
+const { locale } = useI18n();
 
+watch(locale, () => {
+    console.log('locale changed: ', locale.value);
+})
 </script>
 
 <template>
@@ -14,7 +18,7 @@
 
     <StructureFooterMain class="app_footer" />
 
-    
+    <WidgetCookiePromptMain class="app_cookie" />
   </div>
 </template>
 
@@ -105,5 +109,8 @@
 }
 .app_footer {
     z-index: 3;
+}
+.app_cookie {
+    z-index: 4;
 }
 </style>

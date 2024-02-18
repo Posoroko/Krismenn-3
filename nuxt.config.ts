@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+    spaLoadingTemplate: false,
     app: {
         pageTransition: { name: 'page', mode: 'out-in' }
     },
@@ -30,8 +31,9 @@ export default defineNuxtConfig({
                 file: 'bzh.json'
             },
         ],
-        defaultLocale: 'en',
+        defaultLocale: 'fr',
         langDir: 'locales',
+        customRoutes: 'config',
         pages: {
             index: {
                 en: "/",
@@ -51,14 +53,14 @@ export default defineNuxtConfig({
             contact: {
                 en: "/contact",
                 fr: "/contact",
-                bzh: "/darempred"
+                bzh: "/kontakt"
             },
-            shows: {
+            "shows/index": {
                 en: "/shows",
                 fr: "/spectacles",
                 bzh: "/abadennou"
             },
-            agenda: {
+            "agenda/index": {
                 en: "/agenda",
                 fr: "/agenda",
                 bzh: "/deiziataer"
@@ -68,18 +70,13 @@ export default defineNuxtConfig({
                 fr: "/ecouter",
                 bzh: "/selaou"
             },
-            news: {
+            "news/index": {
                 en: "/news",
                 fr: "/actualites",
-                bzh: "/keleier"
+                bzh: "/kelou"
             }
         },
-        customRoutes: 'config',
-        strategy: 'prefix_and_default',
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'kouingig',
-            redirectOn: 'root'
-        }
+        strategy: 'prefix',
+        detectBrowserLanguage: false
     }
 })

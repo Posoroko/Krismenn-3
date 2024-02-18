@@ -1,26 +1,8 @@
 <script setup>
-const { t, locale, locales } = useI18n();
+const { t, locale, locales, setLocale } = useI18n();
 const appState = useAppState();
 
-const isPreferedLocaleSelected = localStorage.getItem('isPreferedLocaleSelected') === null;
-
 const switchLocalePath = useSwitchLocalePath();
-
-const availableLocales = computed(() => {
-    console.log((locales.value).filter(i => i.code !== locale.value));
-    return (locales.value).filter(i => i.code !== locale.value)
-})
-
-const cursorPosition = computed(() => {
-    switch (locale.value) {
-        case 'en':
-            return 'alignStart'
-        case 'fr':
-            return 'alignCenter'
-        case 'bzh':
-            return 'alignEnd'
-    }
-})
 
 function handleClick(e) {
     if(e.target.dataset.target === 'languageBox') {
@@ -28,18 +10,24 @@ function handleClick(e) {
     }
 }
 
-function localeClick(e) {
-    if (localStorage.getItem('isPreferedLocaleSelected') === null) {
-        localStorage.setItem('isPreferedLocaleSelected', true);
-    }
-}
 
-onMounted(() => {
-    if(localStorage.getItem('isPreferedLocaleSelected') === null) {
-        appState.value.languageSelectorOpen = true;
+watch(locale, () => {
+
+    if (localStorage.getItem('cookiesAccepted')) {
+        localStorage.setItem('preferedLocale', locale.value);
     }
+
 })
 
+onMounted(() => {
+
+    if (localStorage.getItem('preferedLocale') === null) {
+        
+        appState.value.languageSelectorOpen = true;
+    } else {
+        setLocale(localStorage.getItem('preferedLocale'));
+    }
+})
 
 </script>
 
@@ -49,13 +37,19 @@ onMounted(() => {
             @click="handleClick" data-target="languageBox"
     >
         <div class="window glowing" :class="{ 'open' : appState.languageSelectorOpen }">
-            <NuxtLink @click.stop="localeClick" v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)" class="language flex alignCenter gap10">
+            <a 
+                @click.prevent.stop="setLocale(loc.code)"
+                v-for="loc in locales" 
+                :key="loc.code" 
+                href="#" 
+                class="language flex alignCenter gap10">
+                
                 <WidgetLanguageSelectorRadioButton :locCode="loc.code" :activeLocale="locale"  />
 
                 <div class="grow flex alignCenter localeName frosty_font">
                     {{ loc.name }}
                 </div>
-            </NuxtLink>
+            </a>
         </div>
 
         <svg class="translateIcon noEvents" viewBox="0 -960 960 960">

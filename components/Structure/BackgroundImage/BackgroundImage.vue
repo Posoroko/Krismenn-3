@@ -3,13 +3,16 @@ const router = useRouter();
 const route = useRoute();
 const appConfig = useAppConfig();
 
+const { t, locale } = useI18n();
+const localePath = useLocalePath()
+
 const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.backgroundImage;
 const appState = useAppState();
 
 function handleClick() {
     console.log(appState.value.languageSelectorOpen)
     if(route.value !== '/') {
-        router.push({ path: "/" });
+        router.push({ path: localePath("/") });
     }
     if(appState.value.languageSelectorOpen) {
         appState.value.languageSelectorOpen = false;
@@ -23,11 +26,11 @@ function handleClick() {
 <template>
     <div class="frame allEvents" @click="handleClick">
         <picture class="picture allEvents" v-if="folderUrl, fileName, fallbackFormat">
-            <source media="(min-height: 1441px)" :srcset="`${folderUrl}/xxl/${fileName}`" type="image/webp">
-            <source media="(min-height: 1080px)" :srcset="`${folderUrl}/xl/${fileName}`" type="image/webp">
-            <source media="(min-height: 721px)" :srcset="`${folderUrl}/l/${fileName}`" type="image/webp">
-            <source media="(min-height: 401px)" :srcset="`${folderUrl}/m/${fileName}`" type="image/webp">
-            <source media="(max-height: 400px)" :srcset="`${folderUrl}/s/${fileName}`" type="image/webp">
+            <source media="(min-height: 1441px)" :srcset="`${folderUrl}/xxl/${fileName}.webp`" type="image/webp">
+            <source media="(min-height: 1080px)" :srcset="`${folderUrl}/xl/${fileName}.webp`" type="image/webp">
+            <source media="(min-height: 721px)" :srcset="`${folderUrl}/l/${fileName}.webp`" type="image/webp">
+            <source media="(min-height: 401px)" :srcset="`${folderUrl}/m/${fileName}.webp`" type="image/webp">
+            <source media="(max-height: 400px)" :srcset="`${folderUrl}/s/${fileName}.webp`" type="image/webp">
 
             <img :src="`${folderUrl}/fallback/${fileName}.${fallbackFormat}`" :alt="fileName">
         </picture>

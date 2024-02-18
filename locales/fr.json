@@ -16,6 +16,12 @@
         "title": "Audio player",
         "notSupported": "Votre navigateur ne supporte pas l'élément audio."
     },
+    "cookies": {
+        "title": "Cookies et stockage local",
+        "text": "Acceptez-vous qu'on stocke quelques informations sur votre appareil afin d'enregistrer votre choix de langue ?  Nous ne stockons aucune information personnelle sur notre serveur.",
+        "accept": "Accepter",
+        "refuse": "Refuser"
+    },
     "pages": {
         "home": {
             "title": "Accueil",
@@ -56,14 +62,6 @@
         "about": {
             "title": "A propos",
             "url": "/a-propos"
-        },
-        "projects": {
-            "title": "Projets",
-            "url": "/projets"
-        },
-        "teams": {
-            "title": "Formations",
-            "url": "/formations"
         },
         "shows": {
             "title": "spectacles",

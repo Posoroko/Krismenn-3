@@ -16,14 +16,20 @@
         "title": "Audio player",
         "notSupported": "Neo ket possubl da selaou ar sonerezh gant. Da browserien brein a zo re koz."
     },
+    "cookies": {
+        "title": "Cookies et stockage local",
+        "text": "Ma website-mañ a implij urzhiataerioù cookies evit ma labour. Ma c’hellit, e c’haller diorren an implij a zo graet gant ar cookies en urzhiataerioù ho merdeer.",
+        "accept": "Mad eo",
+        "refuse": "N'eo ket possubl"
+    },
     "pages": {
         "home": {
             "title": "Ger",
             "url": "/"
         },
         "agenda": {
-            "title": "Implij amzer",
-            "url": "/implij-amzer",
+            "title": "Deiziataer",
+            "url": "/deiziataer",
             "introText": "Tout an deizoù adadenn, ha tout.",
             "accessibitiy": {
                 "ariaLAbel": {
@@ -55,14 +61,6 @@
         "about": {
             "title": "Diwar-benn",
             "url": "/diwar-benn"
-        },
-        "projects": {
-            "title": "Raktressoù",
-            "url": "/raktressou"
-        },
-        "teams": {
-            "title": "Stroladoù",
-            "url": "/stroladou"
         },
         "shows": {
             "title": "abadennoù",

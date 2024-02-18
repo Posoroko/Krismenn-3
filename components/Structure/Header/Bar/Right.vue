@@ -2,6 +2,8 @@
 import { useI18n } from '#imports';
 
 const { t, locale } = useI18n();
+const localePath = useLocalePath()
+
 const appConfig = useAppConfig();
 const routes = appConfig.routes;
 
@@ -21,7 +23,8 @@ const tabs = [
         :data-test="tab.id"
         class="box glowing_onHover" 
         :class="{ 'glowing': route.fullPath.includes(routes[tab.key][locale]) }">
-        <NuxtLink :to="`/${tab.key}`" class="tabLinkText">
+        <NuxtLink :to="localePath(tab.key)" 
+        class="tabLinkText">
             {{ $t(`pages.${tab.key}.title`).toUpperCase() }}
         </NuxtLink>
     </li>

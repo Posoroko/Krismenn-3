@@ -16,10 +16,16 @@
         "title": "Audio player",
         "notSupported": "Your browser does not support the audio element."
     },
+    "cookies": {
+        "title": "Cookies and local storage",
+        "text": "May we store some data localy to remember you prefered language ? No personal data is stored on our server.",
+        "accept": "Accept",
+        "refuse": "Refuse"
+    },
     "pages": {
         "home": {
             "title": "Home",
-            "url": "/"
+            "url": "/en"
         },
         "agenda": {
             "title": "Agenda",
@@ -55,14 +61,6 @@
         "about": {
             "title": "About",
             "url": "/about"
-        },
-        "projects": {
-            "title": "Projects",
-            "url": "/projects"
-        },
-        "teams": {
-            "title": "Teams",
-            "url": "/teams"
         },
         "shows": {
             "title": "shows",

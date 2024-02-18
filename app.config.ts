@@ -18,7 +18,7 @@ export default defineAppConfig({
         available: ['blue'],
         blue: {
             backgroundImage: {
-                fileName: "blue.webp",
+                fileName: "blue",
                 folderUrl: "/images/background/blue",
                 fallbackFormat: "jpg"
             }
