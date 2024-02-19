@@ -24,7 +24,9 @@ const { data: tracks } = await useAsyncData(
 
 <template>
     <Section class="playerBox allEvents frosty_border glowing">
-        <ul class="flex column">
+        <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=small/bgcol=ffffff/linkcol=63b2cc/transparent=true/" seamless><a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a></iframe>
+
+        <!-- <ul class="flex column">
             <li v-for="track in tracks" :key="track.id">
                 <h2 class="cardText_format">
                     {{ track.title }}
@@ -34,7 +36,7 @@ const { data: tracks } = await useAsyncData(
                     {{ t('audioPlayer.notSupported') }}
                 </audio>
             </li>
-        </ul>
+        </ul> -->
     </Section>
 </template>
 

@@ -60,6 +60,11 @@ export default defineNuxtConfig({
                 fr: "/spectacles",
                 bzh: "/abadennou"
             },
+            "shows/index/[slug]": {
+                en: "/shows",
+                fr: "/spectacles",
+                bzh: "/abadennou"
+            },
             "agenda/index": {
                 en: "/agenda",
                 fr: "/agenda",

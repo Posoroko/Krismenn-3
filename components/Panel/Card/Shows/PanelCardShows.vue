@@ -19,12 +19,11 @@ const props = defineProps({
     </div>
 
     <div class="contentBox">
-        <h1 v-if="!fullSize" class="cardTitle_format ">{{ show.translations[locale].title }}</h1>
+        <h1 v-if="!fullSize" class="cardTitle_format ">{{ show.translations[0].title }}</h1>
 
-        <p class="cardSubtitle_format definition ktextFat">{{ show.translations[locale].definition }}</p>
+        <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
 
-        <p v-if="fullSize" class="description cardText_format">{{ show.translations[locale].description }}</p>
-        <!-- <p v-else class="description cardText_format">{{ show.translations[locale].synopsis }}</p> -->
+        <p v-if="fullSize" class="description cardText_format">{{ show.translations[0].description }}</p>
 
         <div class="marTop50" v-if="fullSize">
             <PanelSection :title="t('global.videos')">
@@ -43,7 +42,7 @@ const props = defineProps({
         </div>
 
         <div class="flex justifyEnd marTop20" v-else>
-            <PanelButtonReadMore :href="`/shows/${show.translations[locale].slug}?id=${show.id}`" />
+            <PanelButtonReadMore :href="`/shows/${show.translations[0].slug}`" />
         </div>
     </div>
 </template>

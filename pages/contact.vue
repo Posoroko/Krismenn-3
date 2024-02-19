@@ -1,8 +1,8 @@
 <script setup>
-const { t, locale } = useI18n();
-import { createDirectus, rest, readItems } from '@directus/sdk';
+import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
 
-const directus = createDirectus('https://krismenn.monsieuredgar.com').with(rest());
+const { t, locale } = useI18n();
 
 const queryParams = {
     fields: [ '*', 'translations.*'],
@@ -26,9 +26,7 @@ const queryParams = {
 const { data : contacts } = await useAsyncData(
     'contacts',
     async () => {
-        const items = await directus.request(
-            readItems('Contact', queryParams)
-        )
+        const items = await getItems('Contact', queryParams)
 
         return items
     },

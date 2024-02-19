@@ -1,7 +1,6 @@
 <script setup>
 const { t, locale } = useI18n();
 
-const dateToLocale = useDateToLocale();
 const props = defineProps({
     date: {
         type: Object,
@@ -12,18 +11,20 @@ console.log(props.date)
 </script>
 
 <template>
-    <NuxtLink :to="`/agenda/${date.id}`" class="card frosty_border flex gap10 relative">
-        <!-- <time class="date fontColor_light" :datetime="date.date">{{ new Date(date.date).toLocaleDateString(locale).slice(0, 5) }}</time> -->
-
+    <NuxtLink :to="`/agenda/${date.id}`" class="card frosty_border flex gap10 relative h100">
         <time class="frosty_bg date fontColor_light" :datetime="date.date">{{ new Date(date.date).getUTCDate() }}</time>
 
-        <div class="infoBox flex column justifyCenter">
-            <h2 class="cardSubtitle_format fontColor_light">{{ date.show.translations[locale].title }}</h2>
+        <div class="infoBox flex column justifyCenter alignStart">
+            <p class="category frosty_bg fontColor_light">
+                {{ date.category.translations[0].displayName }}
+            </p>
+
+            <h2 v-if="date.show" class="cardSubtitle_format fontColor_light">{{ date.show.translations[0].title }}</h2>
             
             <address>
-                <span class="cardText_format fontColor_light">{{ date.city.translations[locale].name }}, </span> 
+                <span class="cardText_format fontColor_light">{{ date.city.translations[0].name }}, </span> 
                 <span class="cardText_format fontColor_light">{{ date.city.region.depNumber }}, </span> 
-                <span class="cardText_format fontColor_light">{{ date.city.region.country.translations[locale].name }}</span>
+                <span class="cardText_format fontColor_light">{{ date.city.region.country.translations[0].name }}</span>
             </address>
         </div>
 
@@ -54,6 +55,9 @@ time.date {
 }
 .infoBox {
     padding: 10px;
+}
+.category {
+    padding: 3px 5px;
 }
 .moreBtn {
     width: 60px;

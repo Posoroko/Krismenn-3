@@ -1,45 +1,41 @@
 <script setup>
+import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
+
 const { t, locale } = useI18n();
 
 const route = useRoute();
 
-const appConfig = useAppConfig();
-const directusItems = appConfig.directus.items;
-const directusAssets = appConfig.directus.assets;
-
-const fetchUrl = `${directusItems}Shows`;
-const fetchOptions = {
-    query: {
-        fields: ["*, translations.*,youtubes.*"],
-        filter: {
-            id: {
-                _eq: route.query.id
+const queryParams = {
+    fields: ['*', 'translations.*'],
+    filter: {
+        published: {
+            _eq: true
+        },
+        translations: {
+            slug: {
+                _eq: route.params.slug
+            }
+        }
+    },
+    deep: {
+        translations: {
+            _filter: {
+                languages_code: {
+                    _eq: locale.value
+                }
             }
         }
     }
 }
 
 const { data: show } = await useAsyncData(
-    `show-${route.params.slug}`,
+    `show/${route.params.slug}`,
     async () => {
-        const _items = await $fetch(fetchUrl, fetchOptions)
-        let items = _items.data;
+        const items = await getItems('Shows', queryParams)
 
-        items.forEach(item => {
-
-            let _translations = {};
-
-            item.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.translations = _translations;
-
-        })
-
-        return items[0];
-    }
-    ,
+        return items[0]
+    },
     { server: true }
 )
 
@@ -51,7 +47,7 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain :title="show.translations[locale].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
+    <PanelMain :title="show.translations[0].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
         <template #content>
             <p>
                 

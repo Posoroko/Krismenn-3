@@ -1,45 +1,34 @@
 <script setup>
+import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
 const { t, locale } = useI18n();
 
-const icons = useIconStrings();
 
-const appConfig = useAppConfig();
-const directusItems = appConfig.directus.items;
-const directusAssets = appConfig.directus.assets;
+const queryParams = {
+    fields: ['*', 'translations.*'],
+    filter: {
+        published: {
+            _eq: true
+        },
 
-const fetchUrl = `${directusItems}Shows`;
-const fetchOptions = {
-    query: {
-        fields: ["*, translations.*"],
-        filter: {
-            published: {
-                _eq: true
+    },
+    deep: {
+        translations: {
+            _filter: {
+                languages_code: {
+                    _eq: locale.value
+                }
             }
         }
     }
 }
-
 const { data: shows } = await useAsyncData(
-    "shows",
+    'shows',
     async () => {
-        const _items = await $fetch(fetchUrl, fetchOptions)
-        let items = _items.data;
+        const items = await getItems('Shows', queryParams)
 
-        items.forEach(item => {
-
-            let _translations = {};
-
-            item.translations.forEach( obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.translations = _translations;
-
-        })
-
-        return items;
-    }
-    ,
+        return items
+    },
     { server: true }
 )
 

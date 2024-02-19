@@ -1,4 +1,6 @@
 <script setup>
+import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
 const { t } = useI18n();
 
 const dialog = ref(null);
@@ -8,33 +10,23 @@ const props = defineProps({
         type: String
     }
 })
-
-const appConfig = useAppConfig();
-
-const directusItems = appConfig.directus.items;
-
-const fetchUrl = `${directusItems}Youtube`;
-const fetchOptions = {
-    query: {
-        fields: ["*,show.mainSlug"],
-        filter: props.showSlug ? {
-            show: {
-                mainSlug: {
-                    _contains: props.showSlug
-                }
+const queryParams = {
+    fields: ["*", "show.mainSlug"],
+    filter: props.showSlug ? {
+        show: {
+            mainSlug: {
+                _contains: props.showSlug
             }
-        } : {}
-    }
+        }
+    } : {}
 }
-
 const { data: youtubes } = await useAsyncData(
-    `youtube-${props.mainSlug}`,
+    `youtube-${props.showSlug}`,
     async () => {
-        const items = await $fetch(fetchUrl, fetchOptions)
+        const items = await getItems('Youtube', queryParams)
 
-        return items.data;
-    }
-    ,
+        return items
+    },
     { server: true }
 )
 

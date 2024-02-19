@@ -1,53 +1,71 @@
 <script setup>
+import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
+
 const { t, locale } = useI18n();
 
-const dateToLocale = useDateToLocale();
-
-const appConfig = useAppConfig();
-const directusItems = appConfig.directus.items;
-
-const fetchUrl = `${directusItems}Agenda`;
-const fetchOptions = {
-    query: {
-        fields: ["*, city.*, city.translations.*,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*"],
-        filter: {
-            published: {
-                _eq: true
+const queryParams = {
+    fields: ['*', 'category.*, category.translations.*, show.*, show.translations.*, city.*, city.translations.*, city.region.*, city.region.translation.*, city.region.country.*, city.region.country.translations.*'],
+    sort: ['date'],
+    deep: {
+        show: {
+            translations: {
+                _filter: {
+                    languages_code: {
+                        _eq: locale.value
+                    }
+                }
             }
         },
+        category: {
+            translations: {
+                _filter: {
+                    languages_code: {
+                        _eq: locale.value
+                    }
+                }
+            }
+        },
+        city: {
+            translations: {
+                _filter: {
+                    languages_code: {
+                        _eq: locale.value
+                    }
+                }
+            }
+        },
+        city: {
+            region: {
+                translations: {
+                    _filter: {
+                        languages_code: {
+                            _eq: locale.value
+                        }
+                    }
+                }
+            }
+        },
+        city: {
+            region: {
+                country: {
+                    translations: {
+                        _filter: {
+                            languages_code: {
+                                _eq: locale.value
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 const { data: dates } = await useAsyncData(
-    "agendaDAtes",
+    'dates',
     async () => {
-        const _items = await $fetch(fetchUrl, fetchOptions)
-        let items = _items.data;
-
-        items.forEach(item => {
-
-            let _translations = {};
-
-            item.city.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.city.translations = _translations;
-
-            _translations = {};
-            item.show.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.show.translations = _translations;
-
-            _translations = {};
-            item.city.region.country.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.city.region.country.translations = _translations;
-        })
+        const items = await getItems('Agenda', queryParams)
 
         let reformatedItems = {};
 
@@ -76,8 +94,7 @@ const { data: dates } = await useAsyncData(
         }));
 
         return reformatedItems;
-    }
-    ,
+    },
     { server: true }
 )
 
@@ -93,7 +110,6 @@ definePageMeta({
 <template>
     <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
         <template #content>
-
             <div class="box">
                 <ul class="years frosty_border" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
                     <li>
@@ -140,6 +156,7 @@ ul.dates {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
+    align-items: stretch;
 }
 h2.year {
     color: white;
