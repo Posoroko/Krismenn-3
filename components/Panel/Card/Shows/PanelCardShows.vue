@@ -15,10 +15,13 @@ const props = defineProps({
 
 <template>
     <div class="frame relative">
-        <img class="image" :src="`${directusAssets}${show.mainImage}`" alt="">
+        <picture>
+            <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
+            <img class="image" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
+        </picture>
     </div>
 
-    <div class="contentBox">
+    <div class="contentBox" v-if="show.translations[0]">
         <h1 v-if="!fullSize" class="cardTitle_format ">{{ show.translations[0].title }}</h1>
 
         <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
@@ -39,9 +42,7 @@ const props = defineProps({
                 :website="show.website"/>
             
             
-        </div>
-
-        <div class="flex justifyEnd marTop20" v-else>
+        </div><div class="flex justifyEnd marTop20" v-else>
             <PanelButtonReadMore :href="`/shows/${show.translations[0].slug}`" />
         </div>
     </div>

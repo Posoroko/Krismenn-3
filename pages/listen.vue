@@ -16,8 +16,26 @@ definePageMeta({
     <PanelMain :title="t('pages.listen.title')" drawerPosition="right">
         <template #content>
             <div class="fullBox h100 flex column">
+                <PanelSection :title="t('pages.listen.sections.discography.title')" class="">
+                    <template #content>
+                        <ul class="">
+                            <li class="albumCard">
+                                <img class="w100" src="/images/pochette.jpg" alt="">
+
+                                <div class="frosty_border frosty_bg">
+
+                                </div>
+                            </li>
+                        </ul>
+                    </template>
+                </PanelSection>
+
+                <WidgetMusicPlayerMain />
+
                 <PanelSection :title="t('pages.listen.sections.platforms.title')" class="">
                     <template #content>
+                        
+
                         <nav class="w100 grow">
                             <ul class="w100 container platforms">
                                 <li class="platformCard flex alignCenter frosty_border frosty_bg" v-for="link in links" :key="link.id">
@@ -50,19 +68,7 @@ definePageMeta({
                     </template>
                 </PanelSection>
 
-                <PanelSection :title="t('pages.listen.sections.discography.title')" class="">
-                    <template #content>
-                        <ul class="">
-                            <li class="albumCard">
-                                <img class="w100" src="/images/pochette.jpg" alt="">
-
-                                <div class="frosty_border frosty_bg">
-
-                                </div>
-                            </li>
-                        </ul>
-                    </template>
-                </PanelSection>
+                
 
                 <PanelSection :title="t('global.videos')">
                     <template #content>
@@ -81,7 +87,7 @@ definePageMeta({
 }
 .container.platforms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 15px;
 }
 
@@ -89,7 +95,7 @@ definePageMeta({
     grid-column: 1 / -1;
 }
 .platformCard {
-    padding: 40px 10px;
+    padding: 10px;
     /* aspect-ratio: 1/1; */
 }
 

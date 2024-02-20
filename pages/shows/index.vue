@@ -3,14 +3,12 @@ import { directusGetItems } from '@/directus/directus.js';
 const getItems = directusGetItems();
 const { t, locale } = useI18n();
 
-
 const queryParams = {
     fields: ['*', 'translations.*'],
     filter: {
-        published: {
-            _eq: true
+        state: {
+            _eq: 'permanent'
         },
-
     },
     deep: {
         translations: {
@@ -22,6 +20,7 @@ const queryParams = {
         }
     }
 }
+
 const { data: shows } = await useAsyncData(
     'shows',
     async () => {

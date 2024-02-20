@@ -47,7 +47,7 @@ export default defineNuxtConfig({
             },
             about: {
                 en: "/about",
-                fr: "/a-propos",
+                fr: "/bio",
                 bzh: "/diwar-benn"
             },
             contact: {

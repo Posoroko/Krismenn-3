@@ -83,7 +83,7 @@ export default defineAppConfig({
         {
             id: 2,
             ref: 'apple',
-            displayName: 'Apple Music',
+            displayName: 'Apple',
             text: '',
             href: 'https://music.apple.com/fr/artist/123456'
         },

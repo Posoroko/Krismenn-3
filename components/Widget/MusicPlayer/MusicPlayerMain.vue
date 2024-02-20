@@ -1,5 +1,5 @@
 <script setup>
-import { directusBaseUrl, directusGetItems  } from '@/directus/directus.js';
+import { directusGetItems  } from '@/directus/directus.js';
 
 const { t } = useI18n();
 
@@ -23,31 +23,16 @@ const { data: tracks } = await useAsyncData(
 </script>
 
 <template>
-    <Section class="playerBox allEvents frosty_border glowing">
-        <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=small/bgcol=ffffff/linkcol=63b2cc/transparent=true/" seamless><a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a></iframe>
-
-        <!-- <ul class="flex column">
-            <li v-for="track in tracks" :key="track.id">
-                <h2 class="cardText_format">
-                    {{ track.title }}
-                </h2>
-                <audio controls class="">          
-                    <source :src="`https://krismenn-audio-tracks.netlify.app/${track.netlifyFileName}`" type="audio/mpeg">
-                    {{ t('audioPlayer.notSupported') }}
-                </audio>
-            </li>
-        </ul> -->
+    <Section class="playerBox centered">
+        <iframe style="border: 0; width: 75%; height: 472px; margin: auto;" src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" seamless><a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a></iframe>
     </Section>
 </template>
 
 <style scoped>
-.playerBox {
-    max-width: 100%;
-    padding: 20px;
-    position: absolute;
-    bottom: 25%;
-    right: 3vw;
+iframe {
+    box-shadow: 0px 0px 5px 0px #002c46;
 }
+
 h1 {
     margin-bottom: 20px;
 }

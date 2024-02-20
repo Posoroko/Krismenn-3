@@ -1,18 +1,80 @@
 <script setup>
+import { directusGetItems, directusBaseUrl } from '@/directus/directus.js';
+
+const getItems = directusGetItems();
+
 const { t, locale } = useI18n();
+
+const queryParams = {
+    fields: ['*', 'translations.*'],
+    deep: {
+        translations: {
+            _filter: {
+                languages_code: {
+                    _eq: locale.value
+                }
+            }
+        }
+    }
+}
+
+const { data: content } = await useAsyncData(
+    'bastard',
+    async () => {
+        const item = await getItems('Bastard_page', queryParams)
+
+        return item
+    },
+    { server: true }
+)
 
 </script>
 
 <template>
     <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false" >
         <template #content>
-            <div class="cardBox flex column gap50">    
-                <PanelCardBastard />
+            <div class="frame">
+                <img class="objectFitCover" :src="`${directusBaseUrl}assets/${content.mainImage}`" alt="">
+            </div>
+
+            <div class="contentBox">
+                <PanelSection title="" :showTopBorder="false">
+                    <template #content>
+                        <p class="cardText_format fontColor_light">
+                            {{ content.translations[0].text }}
+                        </p>
+                    </template>
+                </PanelSection>
+
+                <PanelSection title="En savoir plus" class="marTop50">
+                    <template #content>
+                        <p class=" cardText_format fontColor_light flex gap20 alignEnd">
+                            <span>Sur le site de Teatr Piba: </span>
+
+                            <a class="cardSubtitle_format underline" href="https://www.teatrpiba.bzh/project/bastard-2025/">
+                                www.teatrpiba.bzh
+                            </a>
+                        </p>
+                    </template>
+                </PanelSection>
+
+                <PanelSection title="Bastard Player" class="marTop50">
+                    <template #content>
+                        <PanelCardBastard />
+                    </template>
+                </PanelSection>
             </div>
         </template>
     </PanelMain>
 </template>
 
 <style scoped>
+.contentBox {
+    padding: 3vw;
+    padding-bottom: 10vh;
+}
+.frame {
+    aspect-ratio: 8/3;
+}
 
 </style>

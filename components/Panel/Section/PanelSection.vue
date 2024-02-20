@@ -1,13 +1,17 @@
 <script setup>
 const props = defineProps({
-    title: String
+    title: String,
+    showTopBorder: {
+        type: Boolean,
+        default: true
+    }
 })
 
 </script>
 
 
 <template>
-    <section class="mySection">
+    <section class="mySection" :class="{ 'showTopBorder' : showTopBorder }">
         <h1 class="sectionTitle">{{ title }}</h1>
         
         <div class="contentBox">
@@ -22,6 +26,8 @@ const props = defineProps({
 
 .mySection {
     padding: 1.4rem;
+}
+.mySection.showTopBorder {
     border-top: 1px solid var(--frosty-color);
 }
 .sectionTitle {
