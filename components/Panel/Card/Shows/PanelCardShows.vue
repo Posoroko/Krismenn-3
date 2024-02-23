@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
     <li class="">
-        <NuxtLink :to="`/shows/${show.translations[0].slug}`" class="card block h100 frosty_border flex column">
+        <NuxtLink :to="`/shows/${show.translations[0].slug}`" class="card block h100 flex">
             <div class="frame relative">
                 <picture>
                     <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
@@ -29,7 +29,10 @@ const props = defineProps({
 
                 <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
 
+
                 <p v-if="fullSize" class="description cardText_format">{{ show.translations[0].description }}</p>
+
+                <p v-else class="description cardText_format">{{ show.translations[0].description?.slice(0, 200) }}</p>
 
                 <div class="marTop50" v-if="fullSize">
                     <PanelSection :title="t('global.videos')">
@@ -57,14 +60,20 @@ const props = defineProps({
 </template>
 
 <style scoped>
+li {
+    padding: 40px 20px;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.164); */
+    
+}
 .card {
     border-radius: 1px;
     overflow: hidden;
 }
 .card  .frame {
-    /* width: min(500px, 100%); */
-    height: clamp(200px, 20vw, 300px);
+    width: min(400px, 100%);
+    aspect-ratio: 16/12;
     overflow: hidden;
+    flex-shrink: 0;
 }
 .card .frame .image {
     width: 100%;
@@ -86,8 +95,8 @@ h1, p {
 }
 
 .contentBox{
-    padding: max(2vw, 20px);
-    background-color: #ffffff11;
+    padding: max(2vw, 40px);
+    border: 1px solid #ffffff1f;
 }
 
 p.description {

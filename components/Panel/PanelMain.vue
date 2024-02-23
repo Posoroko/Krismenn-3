@@ -120,6 +120,7 @@ const props = defineProps({
     padding: 0;
 }
 .panelTextContent {
+    padding: 30px;
     margin-top: 20px;
 }
 .fullWidth .panelTextContent{

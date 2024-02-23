@@ -46,7 +46,7 @@ definePageMeta({
 
                 </p>   
 
-                <ul class="">
+                <ul class="flex column">
                     <PanelCardShows v-for="show in shows" :key="show.id" :show="show" :fullSize="false" />
                 </ul>
             </template>
@@ -57,16 +57,16 @@ definePageMeta({
 <style scoped>
 ul {
     padding-bottom: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: 20px; */
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     ul {
         grid-template-columns: 1fr;
     }
-}
+} */
 
 li.card {
     border-radius: 1px;
