@@ -39,7 +39,7 @@ const { data: news } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromRight'
+        name: 'pageSlide'
     }
 })
 
@@ -47,21 +47,23 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain 
-        v-if="news"
-        :title="t('pages.news.title')" 
-        drawerPosition="right"  
-        :stripeImageDirectusUrl="activeImageUrl"
-        showIntroText>
+    <div class="absoluteFull centered">
+        <PanelMain 
+            v-if="news"
+            :title="t('pages.news.title')" 
+            drawerPosition="right"  
+            :stripeImageDirectusUrl="activeImageUrl"
+            showIntroText>
 
-        <template #content>            
-            <ul class="flex column gap20">
-                <li v-for="n in news" :key="n.id" class="block frosty_border frosty_bg">
-                    <PanelCardNews :article="n"  summary />
-                </li>
-            </ul>
-        </template>
-    </PanelMain>
+            <template #content>            
+                <ul class="flex column gap20">
+                    <li v-for="n in news" :key="n.id" class="block frosty_border frosty_bg">
+                        <PanelCardNews :article="n"  summary />
+                    </li>
+                </ul>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>

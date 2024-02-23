@@ -28,7 +28,7 @@
             "url": "/" 
         },
         "listen": {
-            "title": "Écouter",
+            "title": "ÉCOUTER",
             "url": "/ecouter",
             "introText": "Retrouvez ici tous les albums de Krismenn, en écoute gratuite.  Vous pouvez aussi les acheter en ligne ou les télécharger.",
             "sections": {
@@ -41,7 +41,7 @@
             }
         },
         "agenda": {
-            "title": "Agenda",
+            "title": "AGENDA",
             "url": "/agenda",
             "introText": "Toutes les dates de concert, de résidence ou d'atelier.",
             "accessibitiy": {
@@ -51,24 +51,24 @@
             }
         },
         "news": {
-            "title": "Actualités",
+            "title": "ACTUALITÉS",
             "introText": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première.",
             "url": "/actualites"
         },
         "contact": {
-            "title": "Contact",
+            "title": "CONTACT",
             "url": "/contact"
         },
         "about": {
-            "title": "Bio",
+            "title": "BIO",
             "url": "/bio"
         },
         "shows": {
-            "title": "spectacles",
+            "title": "SPECTACLES",
             "url": "/spectacles"
         },
         "bastard": {
-            "title": "Bastard",
+            "title": "BASTARD",
             "url": "/bastard",
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "Vous pouves suivre les explorations de Krismenn dans la créqtion de son nouveau spectacle en visitant l'application dédiée.  Il y poste régulièrement des textes, images et vidéos qu'il trouve sur le chemin de la création de Bastard."

@@ -28,7 +28,7 @@
             "url": "/"
         },
         "agenda": {
-            "title": "Deiziataer",
+            "title": "DEIZIATAER",
             "url": "/deiziataer",
             "introText": "Tout an deizoù adadenn, ha tout.",
             "accessibitiy": {
@@ -38,7 +38,7 @@
             }
         },
         "listen": {
-            "title": "Selaoù",
+            "title": "SELAOU",
             "url": "/selaou",
             "sections": {
                 "platforms": {
@@ -50,24 +50,24 @@
             }
         },
         "news": {
-            "title": "Keloù",
+            "title": "KELOU",
             "introText":  "Oberit mat ganeoc’h e-barzh ma labour ha ma buhez bevañ bep devezh. Abadennoù, hentadoù, lec’hioù-staliañ, me a ra kont ha kinnig a-raok ar re all.",
             "url": "/kelou"
         },
         "contact": {
-            "title": "Kontakt",
+            "title": "KONTAKT",
             "url": "/kontakt"
         },
         "about": {
-            "title": "Diwar-benn",
+            "title": "DIWAR-BENN",
             "url": "/diwar-benn"
         },
         "shows": {
-            "title": "abadennoù",
+            "title": "ABADENNOU",
             "url": "/abadennou"
         },
         "bastard": {
-            "title": "Bastard",
+            "title": "BASTARD",
             "url": "/bastard",
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."

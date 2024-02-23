@@ -100,7 +100,7 @@ const { data: dates } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromRight',
+        name: 'pageSlide'
     }
 })
 
@@ -108,29 +108,31 @@ definePageMeta({
 </script>
 
 <template>
-    <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
-        <template #content>
-            <div class="box">
-                <ul class="years frosty_border" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
-                    <li>
-                        <h2 class="frosty_bg flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
-                    </li>
+    <div class="absoluteFull centered">
+        <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
+            <template #content>
+                <div class="box">
+                    <ul class="years" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
+                        <li>
+                            <h2 class="flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
+                        </li>
                     
-                    <li>
-                        <ul class="months" v-for="month in year.months" :key="month.month">
-                            <li class="month"><h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month - 1}]`) }}</h3></li>
+                        <li>
+                            <ul class="months" v-for="month in year.months" :key="month.month">
+                                <li class="month"><h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month - 1}]`) }}</h3></li>
 
-                            <ul class="dates">
-                                <li v-for="date in month.dates" :key="date.id" class="">
-                                    <PanelCardAgenda :date="date" />
-                                </li>
+                                <ul class="dates">
+                                    <li v-for="date in month.dates" :key="date.id" class="">
+                                        <PanelCardAgenda :date="date" />
+                                    </li>
+                                </ul>
                             </ul>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </template>
-    </PanelMain>
+                        </li>
+                    </ul>
+                </div>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>
@@ -139,6 +141,10 @@ definePageMeta({
 }
 .test {
     color: #6e76811a;
+}
+h2.year {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
 }
 ul.years {
     margin-block: 30px;
@@ -158,10 +164,5 @@ ul.dates {
     gap: 10px;
     align-items: stretch;
 }
-h2.year {
-    color: white;
-    padding: 10px;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.24); */
-    
-}
+
 </style>

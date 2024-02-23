@@ -37,32 +37,6 @@ const { data: date } = await useAsyncData(
             prop.translations = _translations;
         })
 
-        // let _translations = {};
-        // item.show.translations.forEach(obj => {
-        //     _translations[obj.languages_code] = obj;
-        // })
-        // item.show.translations = _translations;
-
-        // _translations = {};
-        // item.city.translations.forEach(obj => {
-        //     _translations[obj.languages_code] = obj;
-        // })
-        // item.city.translations = _translations;
-
-        // if(!item.city.region.isFrenchDepartment ) {
-        //     _translations = {};
-        //     item.city.region.translations.forEach(obj => {
-        //         _translations[obj.languages_code] = obj;
-        //     })
-        //     item.city.region.translations = _translations;
-        // }
-
-        // _translations = {};
-        // item.city.region.country.translations.forEach(obj => {
-        //     _translations[obj.languages_code] = obj;
-        // })
-        // item.city.region.country.translations = _translations;
-
         return item;
     }
     ,
@@ -71,35 +45,37 @@ const { data: date } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromRight'
+        name: 'pageSlide'
     }
 })
 </script>
 
 <template>
-    <PanelMain v-if="date" class="panel" :title="t('pages.agenda.title')" backButtonURL="/agenda" drawerPosition="right">
-        <template #content>
-            <div class="card glassSurface h100">
-                <p class="category">
-                    {{ date.category.translations[locale].displayName }}
-                </p>
+    <div class="absoluteFull centered">
+        <PanelMain v-if="date" class="panel" title="" backButtonURL="/agenda" drawerPosition="right">
+            <template #content>
+                <div class="card glassSurface h100">
+                    <p class="category">
+                        {{ date.category.translations[locale].displayName }}
+                    </p>
 
-                <div class="infoBox">
-                    <h2 class="cardTitle_format fontColor_light">
-                        {{ date.show.translations[locale].title }}
-                    </h2>
+                    <div class="infoBox">
+                        <h2 class="cardTitle_format fontColor_light">
+                            {{ date.show.translations[locale].title }}
+                        </h2>
 
-                    <address class="cardSubtitle_format fontColor_light">
-                        <span>{{ date.city.translations[locale].name }}, </span>
-                        <span>{{ date.city.region.depNumber }}, </span>
-                        <span>{{ date.city.region.country.translations[locale].name }}</span>
-                    </address>
+                        <address class="cardSubtitle_format fontColor_light">
+                            <span>{{ date.city.translations[locale].name }}, </span>
+                            <span>{{ date.city.region.depNumber }}, </span>
+                            <span>{{ date.city.region.country.translations[locale].name }}</span>
+                        </address>
+                    </div>
                 </div>
-            </div>
             
             
-        </template>
-    </PanelMain>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>

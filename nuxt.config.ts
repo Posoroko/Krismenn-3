@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     spaLoadingTemplate: false,
     app: {
-        pageTransition: { name: 'page', mode: 'out-in' }
+        pageTransition: { name: 'page', mode: 'in-out' }
     },
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],

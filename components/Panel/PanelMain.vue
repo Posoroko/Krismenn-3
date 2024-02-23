@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from '#imports';
 const { t } = useI18n();
+const localePath = useLocalePath()
 
 const appConfig = useAppConfig();
 const route = useRoute();
@@ -18,95 +19,54 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="panel glowing allEvents relative flex" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
-        <div v-if="showStripeImage" class="frame relative">
-            <PanelStripeImage :src="stripeImageSrc" />
-        </div>
-
+    <div class="panel frosty_panel allEvents flex relative" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
         <div class="content relative grow flex column">
             <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter ">
-                <PanelBackButton :href="backButtonURL" />
-
-
-                <h1 v-if="title" class="panelTitle centered">
+                <h1 v-if="title" class="w100 panelTitle centered">
                     {{ title }}
                 </h1>
-
-                <PanelCloseButton />
             </div>
             
             <div class="scrollBox w100 flex column">
-                <p class="panelSubtitle" v-if="showIntroText">
+                <!-- <p class="panelSubtitle" v-if="showIntroText">
                     {{ $t(`pages.${page}.introText`) }}
-                </p>
+                </p> -->
 
                 <div class="panelTextContent relative grow">
                     <slot name="content"></slot>
                 </div>
             </div>
         </div>
+
+        <NuxtLink :to="localePath('/')"  class="homeButton absolute centered glass_corner pointer centered allEvents glowing_onHover">
+            <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
+        </NuxtLink>
     </div>
 </template>
 
 <style scoped>
-.panel.right {
-    right: 0;
-    flex-direction: row-reverse;
-}
-.panel.left {
-    left: 0;
-}
 .panel {
-    width: min(900px, 100% - 0.1px);
-
+    width: min(1200px, 100%);
     height: 100%;
-    position: absolute;
-    top: 0;
     overflow: hidden;
 
-    --frame-width: min(10vw, 100px);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
-@media (orientation: portrait) or (width < 850px) {
-    /* Full width when on mobile.  Otherwize, the tabs make
-    the UI overcrowded and confusing */
+@media (orientation: portrait) and (width < 500px) {
     .panel {
         width: 100vw;
         height: 100vh;
     }
-    .panel.left {
-        translate: calc( var(--gutter-thickness) * -1 ) ;
-    }
-    .panel.right {
-        translate: var(--gutter-thickness) ;
-    }
-}
-@media (orientation: portrait) or (width < 599px) {
-    .frame {
-        display: none;
-    }
-}
-.frame {
-    width: min(10vw, 100px);
-    height: 100%;
-    overflow: hidden;
-    align-content: flex-start;
-    /* box-shadow:  */
-        /* v-bind("activeTheme.insetShadowColor"); */
 }
 
-/* FOR HIGH RES SCREENS - NEDDS TESTING */
-@media (screen) and (height > 2000) {
-    .frame {
-         width: 300px;
-    }
+.homeButton {
+    width: var(--gutter-thickness);
+    height: var(--gutter-thickness);
 }
-.stripeImage {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
+
 .content {
     width: calc(100% - var(--frame-width));
 }
@@ -124,27 +84,17 @@ const props = defineProps({
     transition: opacity 0.5s ease;
     
 }
-.panelTitleBox {
-    /* padding: 0vh 2vh 1.5vh 2vh; */
-}
+
 .panelTitle {
-    height: 75px;
-    font-size: clamp(3rem, 4vw + 1rem, 5rem);
-    color: rgb(205, 220, 222);
-    font-weight: 500;
+    font-family: var(--kTitle);
+    font-size: clamp(2.4rem, 4vw + 0.1rem, 3rem);
+    color: var(--tabs-text-color);
     
     flex-shrink: 0;
     position: relative;
 }
-.panelTitleBox:after {
-    width: 100%;
-    height: 20px;
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(25, 40, 44, 0.171) 100%);
-    z-index: -1;
+.panelTitleBox {
+    height: var(--gutter-thickness);
 }
 
 .panelSubtitle {

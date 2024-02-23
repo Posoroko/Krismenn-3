@@ -41,25 +41,27 @@ const { data: show } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromLeft'
+        name: 'pageSlide'
     }
 })
 </script>
 
 <template>
-    <PanelMain :title="show.translations[0].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
-        <template #content>
-            <p>
+    <div class="absoluteFull centered">
+        <PanelMain :title="show.translations[0].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
+            <template #content>
+                <p>
                 
-            </p>
+                </p>
 
-            <div class="cardBox flex column gap50">
-                <PanelCardMain class="card" showStripeImage="false">
-                    <PanelCardShows :show="show" fullSize />
-                </PanelCardMain>
-            </div>
-        </template>
-    </PanelMain>
+                <div class="cardBox flex column gap50">
+                    <PanelCardMain class="card" showStripeImage="false">
+                        <PanelCardShows :show="show" fullSize />
+                    </PanelCardMain>
+                </div>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>

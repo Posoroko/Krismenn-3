@@ -37,49 +37,51 @@ const { data : contacts } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromBottom'
+        name: 'pageSlide'
     }
 })
 
 </script>
 
 <template>
-    <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
-        <template #content>
-            <ul class="flex column justifyCenter gap20 h100">
-                <li v-for="contact in contacts" :key="contact.id" class="flex column">
-                    <h3 class="cardTitle_format fontColor_light">{{ contact.translations[0].title }}</h3>
+    <div class="absoluteFull centered">
+        <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
+            <template #content>
+                <ul class="flex column justifyCenter gap20 h100">
+                    <li v-for="contact in contacts" :key="contact.id" class="flex column">
+                        <h3 class="cardTitle_format fontColor_light">{{ contact.translations[0].title }}</h3>
 
-                    <span class="flex column alignStart gap10">
-                        <span v-if="contact.telephone" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                            <span class="iconBox">
-                                <WidgetIconsCall />
-                            </span>
-                            <a class="cardSubtitle_format fontColor_light" :href="`call:${contact.telephone}`">{{ contact.telephone }}</a>
-                        </span >
+                        <span class="flex column alignStart gap10">
+                            <span v-if="contact.telephone" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                                <span class="iconBox">
+                                    <WidgetIconsCall />
+                                </span>
+                                <a class="cardSubtitle_format fontColor_light" :href="`call:${contact.telephone}`">{{ contact.telephone }}</a>
+                            </span >
 
-                        <span v-if="contact.email" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                            <span class="iconBox">
-                                <WidgetIconsEmail />
-                            </span>
+                            <span v-if="contact.email" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                                <span class="iconBox">
+                                    <WidgetIconsEmail />
+                                </span>
 
-                            <a class="cardSubtitle_format fontColor_light" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
-                        </span >
+                                <a class="cardSubtitle_format fontColor_light" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+                            </span >
 
-                        <span v-if="contact.website" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                            <span class="iconBox">
-                                <WidgetIconsWebsite />
-                            </span>
+                            <span v-if="contact.website" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                                <span class="iconBox">
+                                    <WidgetIconsWebsite />
+                                </span>
 
-                            <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
-                        </span >
-                    </span>
+                                <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
+                            </span >
+                        </span>
 
                     
-                </li>
-            </ul>
-        </template>
-    </PanelMain>
+                    </li>
+                </ul>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>

@@ -19,6 +19,8 @@ watch(locale, () => {
     <StructureFooterMain class="app_footer" />
 
     <WidgetCookiePromptMain class="app_cookie" />
+
+    <!-- <WidgetCursor /> -->
   </div>
 </template>
 
@@ -43,7 +45,7 @@ watch(locale, () => {
 .slideFromRight-leave-to {
     filter: blur(10px);
     opacity: 0;
-    transform: translateX(100%);
+    /* transform: translateX(100%); */
 }
 .slideFromRight-enter-to,
 .slideFromRight-leave-from {
@@ -93,8 +95,23 @@ watch(locale, () => {
     transition: 300ms ease;
 }
 
+.pageSlide-enter-active,
+.pageSlide-leave-active {
+    transition: 700ms cubic-bezier(.79,.08,.39,1);
+}
+.pageSlide-enter-from {
+    transform: translateY(-100%);
+}
+.pageSlide-enter-to {
+    transform: translateY(0);
+}
+.pageSlide-leave-from {
+    transform: translateY(0);
+}
 
-
+.pageSlide-leave-to {
+    transform: translateY(100%);
+}
 </style>
 
 <style scoped>

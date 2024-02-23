@@ -38,13 +38,21 @@ const { data: article } = await useAsyncData(
     }
     ,
     { server: true }
-)
 
+    
+)
+definePageMeta({
+    pageTransition: {
+        name: 'pageSlide'
+    }
+})
 </script>
 <template>
-    <PanelMain :title="article.translations[locale].title" backButtonURL="/news" drawerPosition="right">
-        <template #content>
-            <PanelCardNews :article="article"  :summary="false" />
-        </template>
-    </PanelMain>
+    <div class="absoluteFull centered">
+        <PanelMain :title="article.translations[locale].title" backButtonURL="/news" drawerPosition="right">
+            <template #content>
+                <PanelCardNews :article="article"  :summary="false" />
+            </template>
+        </PanelMain>
+    </div>
 </template>

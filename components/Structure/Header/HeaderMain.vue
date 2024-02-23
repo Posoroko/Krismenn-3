@@ -10,9 +10,9 @@ const localePath = useLocalePath()
         <nav class="w100 h100 noEvents">
             <ul class="w100 h100 noEvents">
                 <li class="box corner topLeftBox centered allEvents glowing_onHover">
-                    <NuxtLink :to="localePath('/')"  class="full centered glass_corner pointer">
-                        <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
-                    </NuxtLink>
+                    <!-- <NuxtLink :to="localePath('/')"  class="full centered glass_corner pointer">
+                            <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
+                    </NuxtLink> -->
                 </li>
             
                 <div class="box topCenterBox centered">

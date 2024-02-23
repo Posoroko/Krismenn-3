@@ -9,7 +9,7 @@ const { t, locale } = useI18n();
             <img class="glowing_onHover" src="/images/bastard/bastard.webp" />
         </a>
 
-        <a href="https://krismenn-bastard.netlify.app " class="cardSubtitle_format centered marTop20 fontColor_light">
+        <a href="https://krismenn-bastard.netlify.app " class="link cardSubtitle_format centered marTop20 frosty_font">
                 www.bastard.krismenn.com
         </a>
 
@@ -23,5 +23,8 @@ const { t, locale } = useI18n();
 img {
     height: 40vh;
     margin: auto;
+}
+.link {
+    font-weight: 600;
 }
 </style>

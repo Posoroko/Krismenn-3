@@ -17,6 +17,7 @@ const props = defineProps({
     <div class="frame relative">
         <picture>
             <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
+            
             <img class="image" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
         </picture>
     </div>

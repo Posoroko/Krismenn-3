@@ -2,15 +2,16 @@
 const router = useRouter();
 const route = useRoute();
 const appConfig = useAppConfig();
+const appState = useAppState();
 
 const { t, locale } = useI18n();
 const localePath = useLocalePath()
 
 const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.backgroundImage;
-const appState = useAppState();
+
 
 function handleClick() {
-    console.log(appState.value.languageSelectorOpen)
+
     if(route.value !== '/') {
         router.push({ path: localePath("/") });
     }
@@ -21,26 +22,40 @@ function handleClick() {
         appState.value.infoBoxOpen = false;
     }
 }
+
+const backgroundImage = appConfig.backgroundImage;
+const directusAssets = appConfig.directus.assets;
+
 </script>
 
 <template>
-    <div class="frame allEvents" @click="handleClick">
-        <picture class="picture allEvents" v-if="folderUrl, fileName, fallbackFormat">
-            <source media="(min-height: 1441px)" :srcset="`${folderUrl}/xxl/${fileName}.webp`" type="image/webp">
-            <source media="(min-height: 1080px)" :srcset="`${folderUrl}/xl/${fileName}.webp`" type="image/webp">
-            <source media="(min-height: 721px)" :srcset="`${folderUrl}/l/${fileName}.webp`" type="image/webp">
-            <source media="(min-height: 401px)" :srcset="`${folderUrl}/m/${fileName}.webp`" type="image/webp">
-            <source media="(max-height: 400px)" :srcset="`${folderUrl}/s/${fileName}.webp`" type="image/webp">
+    <div class="frame" @click="handleClick">
+        <picture class="picture noEvents">
+            <source 
+                v-for="source in backgroundImage.sources" 
+                :key="source.id" 
+                :media="`(${source.media})`" 
+                :srcset="`${directusAssets}${backgroundImage.directusId.full}?key=${source.key}`"
+                :type="source.fileType">
 
-            <img :src="`${folderUrl}/fallback/${fileName}.${fallbackFormat}`" :alt="fileName">
+                <img :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" :alt="fileName">
         </picture>
         
-        <div class="r full noEvents">
-            <img 
-                class="emptyBGI noEvents" 
-                :class="{ 'active': route.path.length > 4 }"
-                src="/images/background/blue-empty/fallback/blue-empty.jpg" 
-                alt="">
+        <div class="r full ">
+            <picture class="noEvents">
+                <source 
+                    v-for="source in backgroundImage.sources" 
+                    :key="source.id" 
+                    :media="`(${source.media})`" 
+                    :srcset="`${directusAssets}${backgroundImage.directusId.empty}?key=${source.key}`"
+                    :type="source.fileType">
+
+                    <img 
+                        class="emptyBGI noEvents" 
+                        :class="{ 'active': appState.backgroundFaded }" 
+                        :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`" 
+                        :alt="fileName">
+            </picture>
         </div>
     </div>
 </template>
@@ -56,6 +71,7 @@ function handleClick() {
     height: 100%;
     top: 0;
     left: 0;
+    isolation: isolate;
 }
 img {
     width: 100%;

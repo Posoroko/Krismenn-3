@@ -28,7 +28,7 @@
             "url": "/en"
         },
         "agenda": {
-            "title": "Agenda",
+            "title": "AGENDA",
             "url": "/agenda",
             "introText": "All the dates of Krismenn's shows, concerts and workshops.",
             "accessibitiy": {
@@ -38,7 +38,7 @@
             }
         },
         "listen": {
-            "title": "Listen",
+            "title": "LISTEN",
             "url": "/listen",
             "sections": {
                 "platforms": {
@@ -50,24 +50,24 @@
             }
         },
         "news": {
-            "title": "News",
+            "title": "NEWS",
             "introText": "You will find here some news about what I'm up too, where I am in the world and what I'm wcurrently working on.",
             "url": "/news"
         },
         "contact": {
-            "title": "Contact",
+            "title": "CONTACT",
             "url": "/contact"
         },
         "about": {
-            "title": "About",
+            "title": "ABOUT",
             "url": "/about"
         },
         "shows": {
-            "title": "shows",
+            "title": "SHOWS",
             "url": "/shows"
         },
         "bastard": {
-            "title": "Bastard",
+            "title": "BASTARD",
             "url": "/bastard",
             "introText": "New show comming out end of 2024.  Bastard is a play written and played by Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."

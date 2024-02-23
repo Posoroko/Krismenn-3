@@ -11,9 +11,9 @@ html {
 }
 
 .cardTitle_format {
-    font-size: clamp(2.4rem, 3.5vw + 0.1rem, 3.8rem);
+    font-size: clamp(2.2rem, 3.1vw + 0.1rem, 3.2rem);
     line-height: 1;
-    font-weight: 700;
+    font-weight: 500;
 }
 .cardTitle_S_format {
     font-size: clamp(2rem, 3vw + 0.1rem, 3rem);
@@ -33,5 +33,5 @@ html {
 }
 
 .fontColor_light {
-    color: white;
+    color: rgba(255, 255, 255, 0.726);
 }

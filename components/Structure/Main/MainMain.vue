@@ -1,8 +1,6 @@
 <template>
-    <main class="absoluteFull noEvents flex column ">
-        <div class="nuxtPageContainer relative noEvents grow">
+    <main class="absoluteFull noEvents flex column">
            <slot></slot>
-        </div>
     </main>
 </template>
 
