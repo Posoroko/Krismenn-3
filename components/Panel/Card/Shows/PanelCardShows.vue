@@ -14,45 +14,56 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="frame relative">
-        <picture>
-            <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
+    <li class="">
+        <NuxtLink :to="`/shows/${show.translations[0].slug}`" class="card block h100 frosty_border flex column">
+            <div class="frame relative">
+                <picture>
+                    <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
             
-            <img class="image" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
-        </picture>
-    </div>
+                    <img class="image" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
+                </picture>
+            </div>
 
-    <div class="contentBox" v-if="show.translations[0]">
-        <h1 v-if="!fullSize" class="cardTitle_format ">{{ show.translations[0].title }}</h1>
+            <div class="contentBox grow flex column justifyBetween" v-if="show.translations[0]">
+                <h1 v-if="!fullSize" class="cardTitle_format ">{{ show.translations[0].title }}</h1>
 
-        <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
+                <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
 
-        <p v-if="fullSize" class="description cardText_format">{{ show.translations[0].description }}</p>
+                <p v-if="fullSize" class="description cardText_format">{{ show.translations[0].description }}</p>
 
-        <div class="marTop50" v-if="fullSize">
-            <PanelSection :title="t('global.videos')">
-                <template #content>
-                    <PanelSectionVideos :showSlug="show.mainSlug" />
-                </template>
-            </PanelSection>
+                <div class="marTop50" v-if="fullSize">
+                    <PanelSection :title="t('global.videos')">
+                        <template #content>
+                            <PanelSectionVideos :showSlug="show.mainSlug" />
+                        </template>
+                    </PanelSection>
 
-            <PanelCardContactBox 
-                v-if="show.telephone || show.email || show.website" 
-                :email="show.email" 
-                :telephone="show.telephne" 
-                :website="show.website"/>
+                    <PanelCardContactBox 
+                        v-if="show.telephone || show.email || show.website" 
+                        :email="show.email" 
+                        :telephone="show.telephne" 
+                        :website="show.website"/>
             
             
-        </div><div class="flex justifyEnd marTop20" v-else>
-            <PanelButtonReadMore :href="`/shows/${show.translations[0].slug}`" />
-        </div>
-    </div>
+                </div>
+                
+                <div class="flex justifyEnd marTop20" v-else>
+                    <PanelButtonReadMore :href="`/shows/${show.translations[0].slug}`" />
+                </div>
+            </div>
+        </NuxtLink>
+    </li>
+    
 </template>
 
 <style scoped>
+.card {
+    border-radius: 1px;
+    overflow: hidden;
+}
 .card  .frame {
-    width: 100%;
-    height: 200px;
+    /* width: min(500px, 100%); */
+    height: clamp(200px, 20vw, 300px);
     overflow: hidden;
 }
 .card .frame .image {
@@ -75,7 +86,7 @@ h1, p {
 }
 
 .contentBox{
-    padding: max(3vw, 20px);
+    padding: max(2vw, 20px);
     background-color: #ffffff11;
 }
 

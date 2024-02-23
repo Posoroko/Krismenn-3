@@ -46,10 +46,8 @@ definePageMeta({
 
                 </p>   
 
-                <ul class=" flex column gap50">
-                    <li class="card frosty_border" v-for="show in shows" :key="show.id">
-                        <PanelCardShows :show="show" :fullSize="false" />
-                    </li>
+                <ul class="">
+                    <PanelCardShows v-for="show in shows" :key="show.id" :show="show" :fullSize="false" />
                 </ul>
             </template>
         </PanelMain>
@@ -59,8 +57,17 @@ definePageMeta({
 <style scoped>
 ul {
     padding-bottom: 30px;
-     
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
+
+@media (max-width: 768px) {
+    ul {
+        grid-template-columns: 1fr;
+    }
+}
+
 li.card {
     border-radius: 1px;
     overflow: hidden;
