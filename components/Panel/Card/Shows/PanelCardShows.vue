@@ -29,7 +29,6 @@ const props = defineProps({
 
                 <p class="cardSubtitle_format definition ktextFat">{{ show.translations[0].definition }}</p>
 
-
                 <p v-if="fullSize" class="description cardText_format">{{ show.translations[0].description }}</p>
 
                 <p v-else class="description cardText_format">{{ show.translations[0].description?.slice(0, 200) }}</p>

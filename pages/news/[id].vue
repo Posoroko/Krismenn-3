@@ -44,7 +44,7 @@ const { data: article } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'right'
+        name: 'fade'
     }
 })
 </script>

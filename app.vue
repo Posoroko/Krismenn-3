@@ -45,45 +45,43 @@ watch(locale, () => {
     filter: saturate(1) contrast(1.1) brightness(1.1) hue-rotate(60deg);
     transition: all 300ms ease-in-out;
 }
+
+/* entering transition */
 .left-enter-active,
-.left-leave-active,
 .right-enter-active,
-.right-leave-active,
 .bottom-enter-active,
-.bottom-leave-active,
 .fade-enter-active,
-.fade-leave-active,
-.top-enter-active,
-.top-leave-active {
+.top-enter-active {
     transition: all 1.1s cubic-bezier(1,0,.35,1);
 }
 
-/* out of frame state */
+/* leaving transition */
+.left-leave-active,
+.right-leave-active,
+.bottom-leave-active,
+.fade-leave-active,
+.top-leave-active {
+    transition: all 0.5s cubic-bezier(1,0,.35,1);
+}
 
-/* .bottom-leave-to,
-.bottom-enter-from,
-.left-enter-from,
+/* leave in fade out */
+.bottom-leave-to,
 .left-leave-to,
 .right-leave-to,
-.right-enter-from {
-    filter: blur(5px);
-} */
+.fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-from {
+    opacity: 0;
+}
+.fade-enter-to {
+    opacity: 1;
+}
 
-/* in frame state */
-/* .bottom-leave-from,
-.bottom-enter-to,
-.left-enter-to,
-.left-leave-from,
-.right-leave-from,
-.right-enter-to {
-    filter: blur(0px);
-} */
-
-
-/* VErtical */
+/* Vertical slide in */
 
 /* bottom */
-.bottom-leave-to,
+
 .bottom-enter-from {
     transform: translateY(100%);
 }
@@ -94,9 +92,7 @@ watch(locale, () => {
 }
 
 
-
-
-/* horizontal */
+/* horizontal slide in */
 
 /* center */
 .left-enter-to,
@@ -107,12 +103,11 @@ watch(locale, () => {
 }
 
 /* left */
-.left-enter-from,
-.left-leave-to {
+.left-enter-from {
     transform: translateX(-100%);
 }
 /* right */
-.right-leave-to,
+
 .right-enter-from {
     transform: translateX(100%);
 }
