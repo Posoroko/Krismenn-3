@@ -7,7 +7,17 @@ const props = defineProps({
         required: true
     }
 })
-console.log(props.date)
+
+// Deep filters are not working for city, region and country, so we need to use computed properties to filter the translations
+const city = computed(() => {
+    return props.date.city.translations.find(item => item['languages_code'] === locale.value)
+})
+const region = computed(() => {
+    return props.date.city.region.translations.find(item => item['languages_code'] === locale.value)
+})
+const country = computed(() => {
+    return props.date.city.region.country.translations.find(item => item['languages_code'] === locale.value)
+})
 </script>
 
 <template>
@@ -21,10 +31,18 @@ console.log(props.date)
 
             <h2 v-if="date.show" class="cardSubtitle_format fontColor_light">{{ date.show.translations[0].title }}</h2>
             
-            <address>
-                <span class="cardText_format fontColor_light">{{ date.city.translations[0].name }}, </span> 
-                <span class="cardText_format fontColor_light">{{ date.city.region.depNumber }}, </span> 
-                <span class="cardText_format fontColor_light">{{ date.city.region.country.translations[0].name }}</span>
+            <address v-if="date">
+                <span class="cardText_format fontColor_light">
+                    {{ city ? `${city.name}, ` : '' }}
+                </span> 
+                <br>
+                <span class="cardText_format fontColor_light">
+                    {{ region ? `${region.name}, `: '' }}
+                </span> 
+                
+                <span class="cardText_format fontColor_light">
+                    {{ country ? country.name : '' }}
+                </span>
             </address>
         </div>
 
@@ -37,7 +55,6 @@ console.log(props.date)
             	<path d="m276.846-460 231.693 231.692L480-200 200-480l280-280 28.539 28.308L276.846-500H760v40H276.846Z"/>
             </svg>
         </div>
-        
     </NuxtLink>
 </template>
 
