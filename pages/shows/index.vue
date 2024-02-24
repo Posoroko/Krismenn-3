@@ -47,8 +47,12 @@ definePageMeta({
 
                 </p>   
 
-                <ul class="flex column">
-                    <PanelCardShows v-for="show in shows" :key="show.id" :show="show" :fullSize="false" />
+                <ul class="flex column gap50">
+                    <li v-for="show in shows" :key="show.id" class="">
+                        <NuxtLink :to="`/shows/${show.slug}`" class="card block h100 flex">
+                            <PanelCardShows :show="show" :fullSize="false" />
+                        </NuxtLink>
+                    </li>
                 </ul>
             </template>
         </PanelMain>

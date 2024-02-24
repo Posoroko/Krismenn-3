@@ -19,7 +19,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="panel frosty_panel allEvents flex relative" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
+    <div class="panel   allEvents flex relative" :class="[drawerPosition, { 'fullWidth': !showStripeImage }]">
         <div class="content relative grow flex column">
             <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter ">
                 <h1 v-if="title" class="w100 panelTitle centered">
@@ -27,11 +27,7 @@ const props = defineProps({
                 </h1>
             </div>
             
-            <div class="scrollBox w100 flex column">
-                <!-- <p class="panelSubtitle" v-if="showIntroText">
-                    {{ $t(`pages.${page}.introText`) }}
-                </p> -->
-
+            <div class="scrollBox w100 h100 flex column relative">
                 <div class="panelTextContent relative grow">
                     <slot name="content"></slot>
                 </div>
@@ -41,10 +37,13 @@ const props = defineProps({
         <NuxtLink :to="localePath('/')"  class="homeButton absolute centered glass_corner pointer centered allEvents glowing_onHover">
             <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
         </NuxtLink>
+
+        
     </div>
 </template>
 
 <style scoped>
+
 .panel {
     width: min(1200px, 100%);
     height: 100%;
@@ -110,6 +109,7 @@ const props = defineProps({
     margin-top: 10px;
 }
 .scrollBox {
+    background-color: #ffffff09;
     overflow-y: scroll;
     padding: 0 min(3vw, 30px);
     flex-grow: 1;

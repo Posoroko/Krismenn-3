@@ -12,10 +12,8 @@ const queryParams = {
         published: {
             _eq: true
         },
-        translations: {
-            slug: {
-                _eq: route.params.slug
-            }
+        slug: {
+            _eq: route.params.slug
         }
     },
     deep: {
@@ -55,9 +53,7 @@ definePageMeta({
                 </p>
 
                 <div class="cardBox flex column gap50">
-                    <PanelCardMain class="card" showStripeImage="false">
-                        <PanelCardShows :show="show" fullSize />
-                    </PanelCardMain>
+                    <PanelCardShows :show="show" :fullSize="true" />
                 </div>
             </template>
         </PanelMain>
