@@ -19,11 +19,9 @@ function changeColorMode() {
     <header class="absoluteFull noEvents" :class="{ 'panelOpen': route.path.length > 4 }" >
         <nav class="w100 h100 noEvents">
             <ul class="w100 h100 noEvents">
-                <li class="box corner topLeftBox centered allEvents glowing_onHover">
-                    <!-- <NuxtLink :to="localePath('/')"  class="full centered glass_corner pointer">
-                            <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
-                    </NuxtLink> -->
-                </li>
+                <div class="box corner topLeftBox centered allEvents glowing_onHover">
+
+                </div>
             
                 <div class="box topCenterBox centered">
                     <StructureMainPageTitle />
@@ -61,6 +59,7 @@ header li.box {
     display: grid;
     place-items: center;
     cursor: pointer;
+    overflow: hidden;
 }
 
 header .tabLinkText {
@@ -92,7 +91,7 @@ ul {
 
     display: grid;
     grid-template-columns: var(--gutter-thickness) auto var(--gutter-thickness);
-    grid-template-rows: var(--gutter-thickness) auto var(--gutter-thickness);
+    grid-template-rows: 48px auto var(--gutter-thickness);
     grid-template-areas: 
         "topLeftBox topCenterBox topRightBox"
         "centerLeftBox centerCenterBox centerRightBox"

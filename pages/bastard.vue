@@ -59,39 +59,37 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered">
         <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
-            <template #content>
-                <div class="frame">
-                    <img class="objectFitCover" :src="`${directusBaseUrl}assets/${content.mainImage}`" alt="">
-                </div>
+            <div class="frame">
+                <img class="objectFitCover" :src="`${directusBaseUrl}assets/${content.mainImage}`" alt="">
+            </div>
 
-                <div class="contentBox">
-                    <PanelSection title="" :showTopBorder="false">
-                        <template #content>
-                            <p class="cardText_format fontColor_light">
-                                {{ content.translations[0].text }}
-                            </p>
-                        </template>
-                    </PanelSection>
+            <div class="contentBox">
+                <PanelSection title="" :showTopBorder="false">
+                    <template #content>
+                        <p class="cardText_format fontColor_light">
+                            {{ content.translations[0].text }}
+                        </p>
+                    </template>
+                </PanelSection>
 
-                    <PanelSection title="En savoir plus" class="marTop50">
-                        <template #content>
-                            <p class=" cardText_format fontColor_light flex gap20 alignEnd">
-                                <span>Sur le site de Teatr Piba: </span>
+                <PanelSection title="En savoir plus" class="marTop50">
+                    <template #content>
+                        <p class=" cardText_format fontColor_light flex gap20 alignEnd">
+                            <span>Sur le site de Teatr Piba: </span>
 
-                                <a class="cardSubtitle_format underline" href="https://www.teatrpiba.bzh/project/bastard-2025/">
-                                    www.teatrpiba.bzh
-                                </a>
-                            </p>
-                        </template>
-                    </PanelSection>
+                            <a class="cardSubtitle_format underline" href="https://www.teatrpiba.bzh/project/bastard-2025/">
+                                www.teatrpiba.bzh
+                            </a>
+                        </p>
+                    </template>
+                </PanelSection>
 
-                    <PanelSection title="Bastard Player" class="marTop50">
-                        <template #content>
-                            <PanelCardBastard />
-                        </template>
-                    </PanelSection>
-                </div>
-            </template>
+                <PanelSection title="Bastard Player" class="marTop50">
+                    <template #content>
+                        <PanelCardBastard />
+                    </template>
+                </PanelSection>
+            </div>
         </PanelMain>
     </div>
 </template>

@@ -1,5 +1,6 @@
 :root {
     --gutter-thickness: 48px;
+    --panel-width: 1200px;
 }
 
 @media (max-width: 500px) {

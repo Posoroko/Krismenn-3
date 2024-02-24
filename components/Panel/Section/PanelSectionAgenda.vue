@@ -153,9 +153,9 @@ definePageMeta({
 </template>
 
 <style scoped>
-.box {
+/* .box {
     padding: min(3vw, 30px)
-}
+} */
 
 .test {
     color: #6e76811a;
@@ -164,10 +164,6 @@ definePageMeta({
 h2.year {
     padding: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-}
-
-ul.years {
-    margin-block: 30px;
 }
 
 ul.months {

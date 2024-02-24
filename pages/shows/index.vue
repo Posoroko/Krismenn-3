@@ -42,19 +42,17 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered">
         <PanelMain :title="t('pages.shows.title')" :showBackButton="false" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
-            <template #content>
-                <p>
+            <p>
 
-                </p>   
+            </p>   
 
-                <ul class="flex column gap50">
-                    <li v-for="show in shows" :key="show.id" class="">
-                        <NuxtLink :to="`/shows/${show.slug}`" class="card block h100 flex">
-                            <PanelCardShows :show="show" :fullSize="false" />
-                        </NuxtLink>
-                    </li>
-                </ul>
-            </template>
+            <ul class="flex column gap50">
+                <li v-for="show in shows" :key="show.id" class="">
+                    <NuxtLink :to="`/shows/${show.slug}`" class="card block h100 flex">
+                        <PanelCardShows :show="show" :fullSize="false" />
+                    </NuxtLink>
+                </li>
+            </ul>
         </PanelMain>
     </div>
 </template>

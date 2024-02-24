@@ -53,27 +53,23 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered">
         <PanelMain v-if="date" class="panel" title="" backButtonURL="/agenda" drawerPosition="right">
-            <template #content>
-                <div class="card glassSurface h100">
-                    <p class="category">
-                        {{ date.category.translations[locale].displayName }}
-                    </p>
+            <div class="card glassSurface h100">
+                <p class="category">
+                    {{ date.category.translations[locale].displayName }}
+                </p>
 
-                    <div class="infoBox">
-                        <h2 class="cardTitle_format fontColor_light">
-                            {{ date.show.translations[locale].title }}
-                        </h2>
+                <div class="infoBox">
+                    <h2 class="cardTitle_format fontColor_light">
+                        {{ date.show.translations[locale].title }}
+                    </h2>
 
-                        <address class="cardSubtitle_format fontColor_light">
-                            <span>{{ date.city.translations[locale].name }}, </span>
-                            <span>{{ date.city.region.depNumber }}, </span>
-                            <span>{{ date.city.region.country.translations[locale].name }}</span>
-                        </address>
-                    </div>
+                    <address class="cardSubtitle_format fontColor_light">
+                        <span>{{ date.city.translations[locale].name }}, </span>
+                        <span>{{ date.city.region.depNumber }}, </span>
+                        <span>{{ date.city.region.country.translations[locale].name }}</span>
+                    </address>
                 </div>
-            
-            
-            </template>
+            </div>
         </PanelMain>
     </div>
 </template>

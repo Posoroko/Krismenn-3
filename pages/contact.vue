@@ -45,45 +45,46 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="absoluteFull centered">
+    <div class="bogBox absoluteFull centered">
         <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
-            <template #content>
-                <ul class="flex column justifyCenter gap20 h100">
-                    <li v-for="contact in contacts" :key="contact.id" class="flex column">
-                        <h3 class="cardTitle_format fontColor_light">{{ contact.translations[0].title }}</h3>
+            <ul class="flex column justifyCenter gap20 h100">
+                <li v-for="contact in contacts" :key="contact.id" class="flex column">
+                    <h3 class="cardTitle_format fontColor_light">{{ contact.translations[0].title }}</h3>
 
-                        <span class="flex column alignStart gap10">
-                            <span v-if="contact.telephone" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                                <span class="iconBox">
-                                    <WidgetIconsCall />
-                                </span>
-                                <a class="cardSubtitle_format fontColor_light" :href="`call:${contact.telephone}`">{{ contact.telephone }}</a>
-                            </span >
+                    <span class="flex column alignStart gap10">
+                        <span v-if="contact.telephone" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsCall />
+                            </span>
+                            <a class="cardSubtitle_format fontColor_light" :href="`call:${contact.telephone}`">{{ contact.telephone }}</a>
+                        </span >
 
-                            <span v-if="contact.email" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                                <span class="iconBox">
-                                    <WidgetIconsEmail />
-                                </span>
+                        <span v-if="contact.email" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsEmail />
+                            </span>
 
-                                <a class="cardSubtitle_format fontColor_light" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
-                            </span >
+                            <a class="cardSubtitle_format fontColor_light" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+                        </span >
 
-                            <span v-if="contact.website" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
-                                <span class="iconBox">
-                                    <WidgetIconsWebsite />
-                                </span>
+                        <span v-if="contact.website" class="infoLine flex alignCenter gap20 frosty_border glowing_onHover">
+                            <span class="iconBox">
+                                <WidgetIconsWebsite />
+                            </span>
 
-                                <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
-                            </span >
-                        </span>
-                    </li>
-                </ul>
-            </template>
+                            <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
+                        </span >
+                    </span>
+                </li>
+            </ul>
         </PanelMain>
     </div>
 </template>
 
 <style scoped>
+.bigBox {
+    padding-bottom: var(--gutter-thickness)
+ }
 ul {
     padding: 30px;
 }

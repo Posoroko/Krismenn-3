@@ -25,7 +25,7 @@ const props = defineProps({
 <style scoped>
 
 .mySection {
-    padding: min(3vw, 30px) min(1vw, 20px);
+    /* padding: min(3vw, 30px) min(1vw, 20px); */
 }
 .mySection.showTopBorder {
     border-top: 1px solid var(--frosty-color);

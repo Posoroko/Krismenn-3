@@ -51,9 +51,7 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered">
         <PanelMain :title="article.translations[locale].title" backButtonURL="/news" drawerPosition="right">
-            <template #content>
-                <PanelCardNews :article="article"  :summary="false" />
-            </template>
+            <PanelCardNews :article="article"  :summary="false" />
         </PanelMain>
     </div>
 </template>

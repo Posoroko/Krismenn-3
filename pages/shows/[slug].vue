@@ -47,15 +47,13 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered">
         <PanelMain :title="show.translations[0].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
-            <template #content>
-                <p>
+            <p>
                 
-                </p>
+            </p>
 
-                <div class="cardBox flex column gap50">
-                    <PanelCardShows :show="show" :fullSize="true" />
-                </div>
-            </template>
+            <div class="cardBox flex column gap50">
+                <PanelCardShows :show="show" :fullSize="true" />
+            </div>
         </PanelMain>
     </div>
 </template>

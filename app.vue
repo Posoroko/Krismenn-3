@@ -32,6 +32,7 @@ watch(locale, () => {
     height: 100dvh;
     height: 100svh;
     position: relative;
+    overflow: hidden;
 }
 #appBox.blue {
     filter: saturate(1) contrast(1) brightness(1) hue-rotate(0deg);

@@ -12,7 +12,7 @@ const directusAssets = appConfig.directus.assets;
 </script>
 
 <template>
-    <div class="card flex" :class="{'absolute' : !summary }" v-if="article">
+    <div class="card flex relative" :class="{'absolute' : !summary }" v-if="article">
         <div class="frame">
             <img :src="`${directusAssets}${article.image}?key=stripe-h400`" alt="">
         </div>

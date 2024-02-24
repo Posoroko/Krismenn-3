@@ -77,6 +77,7 @@ onMounted(() => {
     top: 0;
     left: 0;
     isolation: isolate;
+    overflow: hidden;
 }
 img {
     width: 100%;
