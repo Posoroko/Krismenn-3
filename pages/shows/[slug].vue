@@ -41,7 +41,7 @@ const { data: show } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'pageSlide'
+        name: 'left'
     }
 })
 </script>

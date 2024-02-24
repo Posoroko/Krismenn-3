@@ -1,24 +1,26 @@
 <script setup>
 const appState = useAppState();
 
-const homePaths = [ '/en', '/fr', '/bzh', '/'];
-
 setTimeout(() => {
     appState.value.backgroundFaded = false;
-}, 500); // Delay for 2 seconds
+}, 500);
 
 onBeforeRouteLeave((to, from, next) => {
 
-    if (homePaths.includes(to.fullPath)) {
-        return;
+    if (!appState.value.homepageUrls.includes(to.fullPath)) {
+        appState.value.backgroundFaded = true;
     }
-    appState.value.backgroundFaded = true;
     
     setTimeout(() => {
         next();
-    }, 500); // Delay for 2 seconds
+    }, 500);
 })
 
+definePageMeta({
+    pageTransition: {
+        name: 'fade'
+    }
+})
 </script>
 
 <template>

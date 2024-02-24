@@ -2,6 +2,7 @@
 import { directusGetItems, directusBaseUrl } from '@/directus/directus.js';
 
 const getItems = directusGetItems();
+const appState = useAppState();
 
 const { t, locale } = useI18n();
 
@@ -10,16 +11,25 @@ const queryParams = {
     deep: {
         translations: {
             _filter: {
-                _or : [
+                _or: [
                     {
-                        default: {
-                            _eq: true
+                        state: {
+                            _eq: 'default'
                         }
                     },
                     {
-                        languages_code: {
-                            _eq: locale.value
-                        }
+                        _and: [
+                            {
+                                state: {
+                                    _eq: 'active'
+                                }
+                            },
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            }
+                        ]
                     }
                 ]
             }
@@ -36,11 +46,14 @@ const { data: content } = await useAsyncData(
     },
     { server: true }
 )
+
+
 definePageMeta({
     pageTransition: {
-        name: 'pageSlide'
+        name: 'left'
     }
 })
+
 </script>
 
 <template>

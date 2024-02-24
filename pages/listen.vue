@@ -4,9 +4,19 @@ const { t, locale } = useI18n();
 const appConfig = useAppConfig();
 const links = appConfig.listeningPlatforms;
 
+onBeforeRouteLeave((to, from, next) => {
+
+    console.log(to);
+
+
+    setTimeout(() => {
+        next();
+    }, 500);
+})
+
 definePageMeta({
     pageTransition: {
-        name: 'pageSlide'
+        name: 'right'
     }
 })
 </script>

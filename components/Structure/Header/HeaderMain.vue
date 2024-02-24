@@ -1,8 +1,18 @@
 <script setup>
 const route = useRoute();
-
+const appState = useAppState();
 const { t, locale } = useI18n();
-const localePath = useLocalePath()
+const localePath = useLocalePath();
+
+const colorModes = ref(['blue', 'gray', 'sepia']);
+const colorModeIndex = ref(0);
+
+function changeColorMode() {
+    
+    colorModeIndex.value = (colorModeIndex.value + 1) % colorModes.value.length;
+    appState.value.colorMode = colorModes.value[colorModeIndex.value];
+}
+
 </script>
 
 <template>
@@ -19,7 +29,7 @@ const localePath = useLocalePath()
                     <StructureMainPageTitle />
                 </div>
             
-                <div class="box corner topRightBox centered">
+                <div class="fontColor_light box corner topRightBox centered pointer allEvents" @click="changeColorMode">
 
                 </div>
 

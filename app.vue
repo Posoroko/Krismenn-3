@@ -1,13 +1,15 @@
 <script setup>
 const { locale } = useI18n();
+const appState = useAppState();
 
 watch(locale, () => {
     console.log('locale changed: ', locale.value);
 })
+
 </script>
 
 <template>
-  <div id="appBox" class="appBox" >
+  <div id="appBox" class="appBox" :class="appState.colorMode">
     <StructureBackgroundImage class="app_bgImage" />
 
     <StructureHeaderMain class="app_header" />
@@ -31,87 +33,90 @@ watch(locale, () => {
     height: 100svh;
     position: relative;
 }
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
+#appBox.blue {
+    filter: saturate(1) contrast(1) brightness(1) hue-rotate(0deg);
+    transition: all 300ms ease-in-out;
 }
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
+#appBox.gray {
+    filter: saturate(0) contrast(1.1) brightness(1.3) hue-rotate(0deg);
+    transition: all 300ms ease-in-out;
+}
+#appBox.sepia {
+    filter: saturate(1) contrast(1.1) brightness(1.1) hue-rotate(60deg);
+    transition: all 300ms ease-in-out;
+}
+.left-enter-active,
+.left-leave-active,
+.right-enter-active,
+.right-leave-active,
+.bottom-enter-active,
+.bottom-leave-active,
+.fade-enter-active,
+.fade-leave-active,
+.top-enter-active,
+.top-leave-active {
+    transition: all 1.1s cubic-bezier(1,0,.35,1);
 }
 
+/* out of frame state */
 
-.slideFromRight-enter-from,
-.slideFromRight-leave-to {
-    filter: blur(10px);
-    opacity: 0;
-    /* transform: translateX(100%); */
-}
-.slideFromRight-enter-to,
-.slideFromRight-leave-from {
+/* .bottom-leave-to,
+.bottom-enter-from,
+.left-enter-from,
+.left-leave-to,
+.right-leave-to,
+.right-enter-from {
+    filter: blur(5px);
+} */
+
+/* in frame state */
+/* .bottom-leave-from,
+.bottom-enter-to,
+.left-enter-to,
+.left-leave-from,
+.right-leave-from,
+.right-enter-to {
     filter: blur(0px);
-    opacity: 1;
+} */
+
+
+/* VErtical */
+
+/* bottom */
+.bottom-leave-to,
+.bottom-enter-from {
+    transform: translateY(100%);
+}
+/* center */
+.bottom-leave-from,
+.bottom-enter-to {
+    transform: translateY(0%);
+}
+
+
+
+
+/* horizontal */
+
+/* center */
+.left-enter-to,
+.left-leave-from,
+.right-enter-to,
+.right-leave-from {
     transform: translateX(0%);
 }
 
-
-.slideFromLeft-enter-from,
-.slideFromLeft-leave-to {
-    filter: blur(10px);
-    opacity: 0;
+/* left */
+.left-enter-from,
+.left-leave-to {
     transform: translateX(-100%);
 }
-.slideFromLeft-enter-to,
-.slideFromLeft-leave-from {
-    filter: blur(0px);
-    opacity: 1;
-    transform: translateX(0%);
+/* right */
+.right-leave-to,
+.right-enter-from {
+    transform: translateX(100%);
 }
 
-
-.slideFromBottom-enter-from,
-.slideFromBottom-leave-to {
-    filter: blur(10px);
-    opacity: 0;
-    transform: translateY(100%);
-}
-.slideFromBottom-enter-to,
-.slideFromBottom-leave-from {
-    filter: blur(0px);
-    opacity: 1;
-    transform: translateX(0%);
-}
-
-.slideFromLeft-enter-active,
-.slideFromBottom-enter-active,
-.slideFromRight-enter-active
- {
-    transition: 300ms ease;
-}
-
-.slideFromLeft-leave-active,
-.slideFromBottom-leave-active,
-.slideFromRight-leave-active {
-    transition: 300ms ease;
-}
-
-.pageSlide-enter-active,
-.pageSlide-leave-active {
-    transition: 700ms cubic-bezier(.79,.08,.39,1);
-}
-.pageSlide-enter-from {
-    transform: translateY(-100%);
-}
-.pageSlide-enter-to {
-    transform: translateY(0);
-}
-.pageSlide-leave-from {
-    transform: translateY(0);
-}
-
-.pageSlide-leave-to {
-    transform: translateY(100%);
-}
 </style>
 
 <style scoped>

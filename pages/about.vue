@@ -3,7 +3,7 @@ const { t, locale } = useI18n();
 
 definePageMeta({
     pageTransition: {
-    name: 'pageSlide'
+    name: 'bottom'
     }
 })
 

@@ -1,13 +1,19 @@
 export const useAppState = () => {
     return useState<{ 
+        colorMode: string,
         languageSelectorOpen: boolean; 
         infoBoxOpen: boolean,
-        backgroundFaded: boolean
-    }>('componentState', 
+        homepageUrls: Array<string>,
+        backgroundFaded: boolean,
+        pageTransition: string
+    }>('appState', 
         () => ({ 
+            colorMode: 'blue',
             languageSelectorOpen: false, 
             infoBoxOpen: false,
-            backgroundFaded: false
+            homepageUrls: [ '/en', '/fr', '/bzh', '/'],
+            backgroundFaded: false,
+            pageTransition: ''
         })
     );
 }

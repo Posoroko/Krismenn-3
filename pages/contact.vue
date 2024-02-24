@@ -1,5 +1,7 @@
 <script setup>
 import { directusGetItems } from '@/directus/directus.js';
+
+
 const getItems = directusGetItems();
 
 const { t, locale } = useI18n();
@@ -34,10 +36,9 @@ const { data : contacts } = await useAsyncData(
 )
 
 
-
 definePageMeta({
     pageTransition: {
-        name: 'pageSlide'
+        name: 'bottom'
     }
 })
 
@@ -75,8 +76,6 @@ definePageMeta({
                                 <a class="cardSubtitle_format fontColor_light" :href="contact.website">{{ contact.website }}</a>
                             </span >
                         </span>
-
-                    
                     </li>
                 </ul>
             </template>

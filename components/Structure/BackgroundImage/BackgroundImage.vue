@@ -26,6 +26,11 @@ function handleClick() {
 const backgroundImage = appConfig.backgroundImage;
 const directusAssets = appConfig.directus.assets;
 
+onMounted(() => {
+    if(!appState.value.homepageUrls.includes(route.fullPath)) {
+        appState.value.backgroundFaded = true;
+    }
+})
 </script>
 
 <template>

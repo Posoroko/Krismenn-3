@@ -1,9 +1,9 @@
 <script setup>
 const { t, locale } = useI18n();
-
+const appState = useAppState();
 const appConfig = useAppConfig();
 const directusItems = appConfig.directus.items;
-const directusAssets = appConfig.directus.assets;
+
 
 const fetchUrl = `${directusItems}News`;
 const fetchOptions = {
@@ -39,10 +39,15 @@ const { data: news } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'pageSlide'
-    }
-})
+        name: 'right'
+    },
+    // middleware(to, from) {
+    //     console.log(this.pageTransition.name);
+    //     // if(to.meta.pageTransition === 'right') {
 
+    //     // }
+    // }
+})
 
 </script>
 

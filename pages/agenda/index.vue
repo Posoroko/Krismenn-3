@@ -103,46 +103,38 @@ const { data: dates } = await useAsyncData(
 
 definePageMeta({
     pageTransition: {
-        name: 'slideFromRight',
+        name: 'right'
     }
 })
-
 
 </script>
 
 <template>
-    <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
-        <template #content>
-             <!-- <p class="cardText_format frosty_font">{{ dates[0].category.translations [0].displayName }}</p>
-             gg 
-             <p class="cardText_format frosty_font">{{ dates[0].show.translations[0].title }}</p>
-             gg 
-            <p class="cardText_format frosty_font">{{ dates[0].city.translations[0].name }}</p>
-            gg 
-            <p class="cardText_format frosty_font">{{ dates[0].city.region.translations[0].name }}</p>
-            gg 
-            <p class="cardText_format frosty_font">{{ dates[0].city.region.country.translations[0].name }}</p> -->
-            <div class="box">
-                <ul class="years" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
-                    <li>
-                        <h2 class="flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
-                    </li>
+    <div class="absoluteFull centered">
+        <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
+            <template #content>
+                <div class="box">
+                    <ul class="years" v-for="year in dates" :key="year.year" :aria-label="t('pages.agenda.dateList')" >
+                        <li>
+                            <h2 class="flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
+                        </li>
                     
-                    <li>
-                        <ul class="months" v-for="month in year.months" :key="month.month">
-                            <li class="month"><h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month - 1}]`) }}</h3></li>
+                        <li>
+                            <ul class="months" v-for="month in year.months" :key="month.month">
+                                <li class="month"><h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month - 1}]`) }}</h3></li>
 
-                            <ul class="dates">
-                                <li v-for="date in month.dates" :key="date.id" class="">
-                                    <PanelCardAgenda :date="date" />
-                                </li>
+                                <ul class="dates">
+                                    <li v-for="date in month.dates" :key="date.id" class="">
+                                        <PanelCardAgenda :date="date" />
+                                    </li>
+                                </ul>
                             </ul>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </template>
-    </PanelMain>
+                        </li>
+                    </ul>
+                </div>
+            </template>
+        </PanelMain>
+    </div>
 </template>
 
 <style scoped>
