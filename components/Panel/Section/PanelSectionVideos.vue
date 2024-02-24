@@ -1,5 +1,8 @@
 <script setup>
+import { PanelSectionScroller } from '#components';
+
 import { directusGetItems } from '@/directus/directus.js';
+import { withSearch } from '@directus/sdk';
 const getItems = directusGetItems();
 const { t } = useI18n();
 
@@ -40,11 +43,16 @@ function openMediaInDialog(e) {
 function stopVideo() {
     video.value.src = '';
 }
+const viewPortWidth = ref(window.innerWidth);
 
 </script>
 
 <template>
-    <ul class="youtubes flex wrap overflowHidden marTop20 gap5">
+    <component
+        :is="viewPortWidth < 750 ? PanelSectionScroller : 'ul'"
+        class="scroller gap10"
+        :class="viewPortWidth < 750 ? 'scroller_youtubes' : 'noScroll_youtubes'">
+
         <li class="youtube pointer relative" v-for="video in youtubes" :key="video.id">
             <img :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">
 
@@ -52,10 +60,10 @@ function stopVideo() {
                 <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
             </svg>
         </li>
-    </ul>
+    </component>
 
     <dialog ref="dialog" class="dialog" @close="stopVideo">
-        <div class=" flex justifyEnd" @click="dialog.close()">
+        <div class="flex justifyEnd" @click="dialog.close()">
             <svg class="closeButton pointer" viewBox="0 -960 960 960">
                 <path d="M256-227.692 227.692-256l224-224-224-224L256-732.308l224 224 224-224L732.308-704l-224 224 224 224L704-227.692l-224-224-224 224Z"/>
             </svg>
@@ -66,8 +74,20 @@ function stopVideo() {
 </template>
 
 <style scoped>
-li.youtube {
-    width: calc(50% - 3px);
+.scroller_youtubes {
+    width: min(750px, 90vw);
+    margin: auto;
+}
+.scroller_youtubes .youtube {
+    width: 300px;
+    flex-shrink: 0;
+}
+.noScroll_youtubes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+} 
+.youtube {
     aspect-ratio: 16/9;
 }
 li.youtube:hover {
@@ -76,9 +96,6 @@ li.youtube:hover {
     transition: all 300ms ease-in-out;
 }
 @media (min-width: 650px) {
-    li.youtube {
-        width: calc(33.333% - 4px);
-    }
 }
 li.youtube img {
     width: 100%;
@@ -119,5 +136,18 @@ iframe {
     aspect-ratio: 16/9;
     border: none;
     display: block;
+}
+@media (min-width: 751px) {
+    .scroller_youtubes {
+        display: none;
+    }
+}
+@media (max-width: 750px) {
+    .noScroll_youtubes {
+        display: none;
+    }
+    .scroller_youtubes {
+        display: flex;
+    }
 }
 </style>

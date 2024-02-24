@@ -1,35 +1,21 @@
 <script setup>
-import { directusGetItems  } from '@/directus/directus.js';
-
-const { t } = useI18n();
-
-const getItems = directusGetItems();
-
-const queryParams = {
-    fields: ['*']
-}
-
-const { data: tracks } = await useAsyncData(
-    'audioTracks',
-    async () => {
-        const items = await getItems('Audio_tracks', queryParams );
-
-        return items
-    },
-    { server: true }
-)
 
 
 </script>
 
 <template>
-    <Section class="playerBox centered">
-        <iframe style="border: 0; width: 75%; height: 472px; margin: auto;" src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" seamless><a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a></iframe>
+    <Section class="playerBox w100 flex h100">
+        <iframe style="border: 0; margin: auto;" 
+            src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=4ec5ec/artwork=small/transparent=true/" seamless>
+            <a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a>
+        </iframe>
     </Section>
 </template>
 
 <style scoped>
 iframe {
+    width: 100%;
+    height: 100%;
     box-shadow: 0px 0px 5px 0px #002c46;
 }
 

@@ -6,7 +6,7 @@
 
 <style scoped>
 main {
-    margin: var(--gutter-thickness);
+    /* margin: var(--gutter-thickness); */
     margin-top: 0;
 }
 .topBar {

@@ -25,7 +25,7 @@ const props = defineProps({
 <style scoped>
 
 .mySection {
-    padding: 1.4rem;
+    padding: min(3vw, 30px) min(1vw, 20px);
 }
 .mySection.showTopBorder {
     border-top: 1px solid var(--frosty-color);
@@ -42,6 +42,6 @@ const props = defineProps({
 }
 
 .contentBox {
-    margin-top: 3rem;
+    margin-top: min(2vw, 30px);
 }
 </style>

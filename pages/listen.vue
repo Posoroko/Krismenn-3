@@ -1,8 +1,28 @@
 <script setup>
+import { PanelSectionScroller } from '#components';
+import { directusGetItems, directusBaseUrl } from '@/directus/directus.js';
 const { t, locale } = useI18n();
 
 const appConfig = useAppConfig();
 const links = appConfig.listeningPlatforms;
+
+const getItems = directusGetItems();
+
+const queryParams = {
+    fields: ['*', 'quotes.*']
+}
+
+const { data: albums } = await useAsyncData(
+    'albums',
+    async () => {
+        const items = await getItems('Albums', queryParams);
+
+        return items
+    },
+    { server: true }
+)
+
+const viewPortWidth = ref(window.innerWidth);
 
 definePageMeta({
     pageTransition: {
@@ -15,29 +35,52 @@ definePageMeta({
     <div class="absoluteFull centered">
         <PanelMain :title="t('pages.listen.title')" drawerPosition="right">
             <template #content>
-                <div class="fullBox h100 flex column">
+                <div class="fullBox h100 flex column w100">
                     <PanelSection :title="t('pages.listen.sections.discography.title')" class="">
                         <template #content>
                             <ul class="">
-                                <li class="albumCard">
-                                    <img class="w100" src="/images/pochette.jpg" alt="">
+                                <li class="albumCard" v-for="album in albums" :key="album.id">
+                                    <h2 class="w100 cardTitle_format frosty_font flex column wrap">
+                                        <span class="w100">{{ album.title }}</span> <span class="cardSubtitle_format">{{ album.year }}</span>
+                                    </h2>
 
-                                    <div class="frosty_border frosty_bg">
+                                    <div class="content">
+                                        <img class="cover" :src="`${directusBaseUrl}assets/${album.cover}`" alt="">
 
+                                        <div class="playerBox grow frosty_border frosty_bg">
+                                            <WidgetMusicPlayerMain />
+                                        </div>
+                                    </div>
+
+                                    <div class="centered">
+                                        <component 
+                                            v-if="album.quotes.length"
+                                            :is=" viewPortWidth < 750 ? PanelSectionScroller : 'ul'"
+                                             class="quotes"
+                                            :class="viewPortWidth < 750 ? 'scroller_quotes' : 'noScroll_quotes'">
+                                            
+                                            <li v-for="quote in album.quotes" :key="quote.ids" class="quote frosty_border">
+                                                <img :src="`${directusBaseUrl}assets/${quote.logo}`" alt="">
+
+                                                <p class="text fontColor_light">{{ quote.text }}</p>
+
+                                                <p class="author fontColor_light">- {{ quote.author }}</p>
+                                            </li>
+                                        </component>
                                     </div>
                                 </li>
                             </ul>
                         </template>
                     </PanelSection>
 
-                    <WidgetMusicPlayerMain />
-
                     <PanelSection :title="t('pages.listen.sections.platforms.title')" class="">
                         <template #content>
-                        
+                            <nav class="w100 centered">
+                                <component 
+                                    :is=" viewPortWidth < 750 ? PanelSectionScroller : 'ul'" 
+                                    class="platforms" 
+                                    :class="viewPortWidth < 750 ? 'scroller_platforms' : 'noScroll_platforms'">
 
-                            <nav class="w100 grow">
-                                <ul class="w100 container platforms">
                                     <li class="platformCard flex alignCenter frosty_border frosty_bg" v-for="link in links" :key="link.id">
                                         <a class="full flex column justifyCenter alignCenter" :href="link.href">
                                             <WidgetIcon :name="link.ref" type="homePageNavButton" size="75"/>
@@ -49,26 +92,24 @@ definePageMeta({
                                         <a class="full flex column justifyCenter alignCenter" href="https://soundcloud.com/krismenn">
                                             <svg class="soundcloud" viewBox="0 0 24 24" width="75" height="75" x="0px" y="0px">
                                                 <path d="M4.81,9.71c-0.37-0.01-0.7,0.32-0.69,0.69v6.36c0,0.39,0.32,0.54,0.69,0.55c0.37,0,0.7-0.15,0.7-0.55V10.4
-                                    C5.51,10.03,5.18,9.7,4.81,9.71z"/>
+                                C5.51,10.03,5.18,9.7,4.81,9.71z"/>
                                                 <path d="M21.11,12.19c-0.89-0.92-2.31-1.18-3.48-0.69c-0.19-2.83-2.74-5.16-5.58-5.11c-0.41,0-0.83,0.05-1.25,0.15
-                                    C10.6,6.6,10.5,6.8,10.5,7.12v10.24c0,0.08,0.07,0.21,0.17,0.24l8.19,0.01C21.65,17.64,23.13,14.14,21.11,12.19z"/>
+                                C10.6,6.6,10.5,6.8,10.5,7.12v10.24c0,0.08,0.07,0.21,0.17,0.24l8.19,0.01C21.65,17.64,23.13,14.14,21.11,12.19z"/>
                                                 <path d="M3.34,12.87c-0.02-0.92-1.36-0.92-1.38,0v2.73c-0.03,0.92,1.49,0.99,1.38,0C3.34,15.59,3.34,12.87,3.34,12.87z"/>
                                                 <path d="M9,6.79c-0.49,0-0.7,0.37-0.7,0.89v9.41c0,0.34,0.23,0.52,0.7,0.52c0.46,0,0.7-0.17,0.7-0.52V7.68
-                                    C9.7,7.15,9.52,6.79,9,6.79z"/>
+                                C9.7,7.15,9.52,6.79,9,6.79z"/>
                                                 <path d="M6.98,10.55c-0.38-0.01-0.72,0.33-0.71,0.71v5.81c0,0.18,0.07,0.32,0.2,0.41c0.37,0.25,1.22,0.18,1.2-0.41
-                                    v-5.81C7.68,10.88,7.35,10.54,6.98,10.55z"/>
+                                v-5.81C7.68,10.88,7.35,10.54,6.98,10.55z"/>
                                             </svg>
 
                                             <span class="cardText_format frosty_font">Soundcloud</span>
                                         </a>
                                     </li>
-                                
-                                </ul>
+                    
+                                </component>
                             </nav>
                         </template>
                     </PanelSection>
-
-                
 
                     <PanelSection :title="t('global.videos')">
                         <template #content>
@@ -82,38 +123,102 @@ definePageMeta({
 </template>
 
 <style scoped>
-.fullBox {
-    padding: max(20px, 5vw);
-    gap: 5vh;
+.noScroll_platforms {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
-.container.platforms {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
+.scroller_platforms {
+    width: 100%;
 }
-
-.full-width-row {
-    grid-column: 1 / -1;
+.noScroll_quotes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+    margin: 20px 0;
 }
 .platformCard {
+    width: 100px;
     padding: 10px;
-    /* aspect-ratio: 1/1; */
+    margin-inline: 10px;
+    flex-shrink: 0;
+}
+.quote {
+    width: min(300px, 60%);
+    padding: min(5vw, 30px);
+    border-radius: 10px;
+    background-color: #75b9dd0c;
+    margin-inline: 10px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column ;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+.quote img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+.quote .text {
+    font-size: clamp(1.6rem, 3vw + 1rem, 1.8rem);
+    font-weight: 500;
+}
+.quote .author {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: right;
+}
+.fullBox {
+    /* padding: max(20px, 2vw); */
+    gap: 5vh;
 }
 
-.albumCard {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+
+
+.albumCard .content {
+    padding: min(1vw, 30px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-.soundcloud {
-    fill: rgba(255, 255, 255, 0.493);
+.cover {
+    width: min(350px, 80%);
+    margin: auto;
 }
-@media (width < 630px) {
-    .container.platforms {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 750px) {
+    .cover {
+        display: none;
     }
-    .platformCard {
-        padding: 20px 10px;
+}
+.playerBox {
+    min-height: 300px;
+}
+
+
+.soundcloud {
+    /* the svg is not made the same way as the others */
+    fill: var(--frosty-font-color);
+}
+@media (min-width: 751px) {
+    .noScroll.quotes {
+        display: flex;
+    }
+    .scroller_quotes {
+        display: none;
+    }
+}
+@media (max-width: 750px) {
+    .noScroll.quotes {
+        display: none;
+    }
+    .scroller_quotes {
+        display: flex;
     }
 }
 </style>

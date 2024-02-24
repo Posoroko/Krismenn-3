@@ -28,7 +28,7 @@ const props = defineProps({
             </div>
             
             <div class="scrollBox w100 h100 flex column relative">
-                <div class="panelTextContent relative grow">
+                <div class="panelTextContent relative grow w100">
                     <slot name="content"></slot>
                 </div>
             </div>
@@ -53,6 +53,7 @@ const props = defineProps({
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    backdrop-filter: blur(10px);
 }
 @media (orientation: portrait) and (width < 500px) {
     .panel {
@@ -120,7 +121,7 @@ const props = defineProps({
     padding: 0;
 }
 .panelTextContent {
-    padding: 30px;
+    padding: min(2vw, 30px);
     margin-top: 20px;
 }
 .fullWidth .panelTextContent{

@@ -46,7 +46,7 @@ onMounted(() => {
                 <img :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" :alt="fileName">
         </picture>
         
-        <div class="r full ">
+        <div class="full">
             <picture class="noEvents">
                 <source 
                     v-for="source in backgroundImage.sources" 
