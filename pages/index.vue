@@ -6,11 +6,9 @@ setTimeout(() => {
 }, 500);
 
 onBeforeRouteLeave((to, from, next) => {
-
     if (!appState.value.homepageUrls.includes(to.fullPath)) {
         appState.value.backgroundFaded = true;
     }
-    
     setTimeout(() => {
         next();
     }, 500);
@@ -24,11 +22,7 @@ definePageMeta({
 </script>
 
 <template>
-    <main class="relative h100 noEvents">
+    <main class="h100 relative noEvents">
         
     </main>
 </template>
-
-<style scoped>
-
-</style>

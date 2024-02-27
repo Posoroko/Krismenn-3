@@ -4,11 +4,7 @@ const route = useRoute();
 const appConfig = useAppConfig();
 const appState = useAppState();
 
-const { t, locale } = useI18n();
 const localePath = useLocalePath()
-
-const { folderUrl, fileName, fallbackFormat } = appConfig.themes.blue.backgroundImage;
-
 
 function handleClick() {
 
@@ -43,7 +39,7 @@ onMounted(() => {
                 :srcset="`${directusAssets}${backgroundImage.directusId.full}?key=${source.key}`"
                 :type="source.fileType">
 
-                <img :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" :alt="fileName">
+                <img :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" alt="Krismenn">
         </picture>
         
         <div class="full">
@@ -59,17 +55,13 @@ onMounted(() => {
                         class="emptyBGI noEvents" 
                         :class="{ 'active': appState.backgroundFaded }" 
                         :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`" 
-                        :alt="fileName">
+                        alt="Krismenn">
             </picture>
         </div>
     </div>
 </template>
 
 <style scoped>
-.homeLink img {
-    pointer-events: all;
-    cursor: default;
-}
 .frame {
     position: absolute;
     width: 100%;
@@ -78,6 +70,7 @@ onMounted(() => {
     left: 0;
     isolation: isolate;
     overflow: hidden;
+    isolation: isolate;
 }
 img {
     width: 100%;

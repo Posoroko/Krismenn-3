@@ -20,9 +20,7 @@ watch(locale, () => {
 })
 
 onMounted(() => {
-
     if (localStorage.getItem('preferedLocale') === null) {
-        
         appState.value.languageSelectorOpen = true;
     } else {
         setLocale(localStorage.getItem('preferedLocale'));
@@ -32,17 +30,20 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="languageBox  full flex column alignCenter justifyEvenly  pointer relative" 
+    <div class="languageBox
+                full relative 
+                flex column alignCenter justifyEvenly 
+                pointer"
             :class="[ appState.languageSelectorOpen ? 'glowing' : 'glowing_onHover' ]" 
             @click="handleClick" data-target="languageBox"
     >
-        <div class="window glowing" :class="{ 'open' : appState.languageSelectorOpen }">
-            <a 
-                @click.prevent.stop="setLocale(loc.code)"
+        <div class="window glowing noEvents" :class="{ 'open' : appState.languageSelectorOpen }">
+            <a href="#"
                 v-for="loc in locales" 
                 :key="loc.code" 
-                href="#" 
-                class="language flex alignCenter gap10">
+                @click.prevent.stop="setLocale(loc.code)"
+                class=" language 
+                        flex alignCenter gap10">
                 
                 <WidgetLanguageSelectorRadioButton :locCode="loc.code" :activeLocale="locale"  />
 
@@ -60,18 +61,18 @@ onMounted(() => {
 
 <style scoped>
 .window {
+    padding: 15px 30px;
+    overflow: hidden;
     position: absolute;
     bottom: 0%;
     right: 0%;
     translate: 100% 100%;
-    padding: 15px 30px;
-    overflow: hidden;
     opacity: 0;
     filter: blur(5px);
     scale: 0;
     transition: 500ms ease;
-    pointer-events: none;
 }
+
 .window.open {
     bottom: 100%;
     right: 100%;
@@ -82,13 +83,16 @@ onMounted(() => {
     scale: 1;
     transition: 500ms ease;
 }
+
 .language {
     height: 36px;
 }
+
 .localeName {
     font-size: 1.6rem;
     font-weight: 600;
 }
+
 .translateIcon {
     width: 48%;
     height: 48%;

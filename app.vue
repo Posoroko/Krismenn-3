@@ -21,8 +21,6 @@ watch(locale, () => {
     <StructureFooterMain class="app_footer" />
 
     <WidgetCookiePromptMain class="app_cookie" />
-
-    <!-- <WidgetCursor /> -->
   </div>
 </template>
 

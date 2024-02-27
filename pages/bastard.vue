@@ -1,11 +1,9 @@
 <script setup>
 import { directusGetItems, directusBaseUrl } from '@/directus/directus.js';
-
-const getItems = directusGetItems();
-const appState = useAppState();
-
 const { t, locale } = useI18n();
 
+//  fetching items from directus
+const getItems = directusGetItems();
 const queryParams = {
     fields: ['*', 'translations.*'],
     deep: {
@@ -47,7 +45,6 @@ const { data: content } = await useAsyncData(
     { server: true }
 )
 
-
 definePageMeta({
     pageTransition: {
         name: 'left'
@@ -60,7 +57,8 @@ definePageMeta({
     <div class="absoluteFull centered">
         <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
             <div class="frame">
-                <img class="objectFitCover" :src="`${directusBaseUrl}assets/${content.mainImage}`" alt="">
+                <img :src="`${directusBaseUrl}assets/${content.mainImage}`"
+                    class="objectFitCover"  alt="Bastard, de Krismenn">
             </div>
 
             <div class="contentBox">
@@ -72,7 +70,7 @@ definePageMeta({
                     </template>
                 </PanelSection>
 
-                <PanelSection title="En savoir plus" class="marTop50">
+                <PanelSection :title="t('global.moreInfo')" class="marTop50">
                     <template #content>
                         <p class=" cardText_format fontColor_light flex gap20 alignEnd">
                             <span>Sur le site de Teatr Piba: </span>

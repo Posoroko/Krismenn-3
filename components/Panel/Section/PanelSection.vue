@@ -3,15 +3,21 @@ const props = defineProps({
     title: String,
     showTopBorder: {
         type: Boolean,
-        default: true
+        default: false
+    },
+    showBottomBorder: {
+        type: Boolean,
+        default: false
     }
 })
-
 </script>
 
-
 <template>
-    <section class="mySection" :class="{ 'showTopBorder' : showTopBorder }">
+    <section
+            :class="[
+                        { 'showTopBorder': showTopBorder }, 
+                        { 'showBottomBorder': showBottomBorder }
+            ]">
         <h1 class="sectionTitle">{{ title }}</h1>
         
         <div class="contentBox">
@@ -24,21 +30,18 @@ const props = defineProps({
 
 <style scoped>
 
-.mySection {
-    /* padding: min(3vw, 30px) min(1vw, 20px); */
-}
-.mySection.showTopBorder {
+section.showTopBorder,
+section.showBottomBorder {
+    padding-top: 0.8rem;
     border-top: 1px solid var(--frosty-color);
 }
+
 .sectionTitle {
     font-size: clamp(1.8rem, 2.8vw + 0.1rem, 2.8rem);
-    line-height: 1;
+    line-height: 1.8;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.773);
-
-}
-.introText {
-    margin-top: 2rem;
+    padding-left: 0.8rem;
 }
 
 .contentBox {
