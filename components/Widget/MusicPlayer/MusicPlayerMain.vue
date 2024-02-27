@@ -17,6 +17,7 @@ iframe {
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 5px 0px #002c46;
+    border: none;
 }
 
 h1 {

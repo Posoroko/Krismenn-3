@@ -38,49 +38,35 @@ definePageMeta({
                         full flex column ">
                 <PanelSection :title="t('pages.listen.sections.discography.title')">
                     <template #content>
-                        <ul class="">
-                            <li v-for="album in albums" :key="album.id" 
-                                class="albumCard" >
-                                <h2 class=" w100 
-                                            cardTitle_format frosty_font 
-                                            flex column wrap">
-                                    <span class="w100">{{ album.title }}</span> 
+                        <ul class="flex column">
+                            <li v-for="album in albums" :key="album.id" class="albumCard">
+                                <div class="contentBox">
+                                    <div class="coverBox flex column">
+                                        <img class="w100" :src="`${directusBaseUrl}assets/${album.cover}`" alt="">
+                                    </div>
 
-                                    <span class="cardSubtitle_format">{{ album.year }}</span>
-                                </h2>
-
-                                <div class="content">
-                                    <img class="cover" :src="`${directusBaseUrl}assets/${album.cover}`" alt="">
-
-                                    <div class="playerBox 
-                                                frosty_border frosty_bg
-                                                grow">
-                                        <WidgetMusicPlayerMain />
+                                    <div class="playerBox">
+                                        <iframe class="player" style="border: 0; width: 100%; height: 100%;" src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/" seamless>
+                                            <a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a>
+                                        </iframe>
                                     </div>
                                 </div>
 
-                                <div class="centered">
-                                    <component 
-                                        v-if="album.quotes.length"
-                                        :is=" viewPortWidth < horizontalcrollerBreakpoint ? PanelSectionScroller : 'ul'"
-                                        class="quotes"
-                                        :class="viewPortWidth < horizontalcrollerBreakpoint ? 'scroller_quotes' : 'noScroll_quotes'">
-                                        
-                                        <li v-for="quote in album.quotes" :key="quote.ids" class="quote frosty_border">
-                                            <img :src="`${directusBaseUrl}assets/${quote.logo}`" alt="">
+                                <ul class="quotes centered marTop50">
+                                    <li v-for="quote in album.quotes" :key="quote.ids" class="quote">
+                                        <img :src="`${directusBaseUrl}assets/${quote.logo}`" alt="">
 
-                                            <p class="text fontColor_light">{{ quote.text }}</p>
+                                        <p class="text fontColor_light">{{ quote.text }}</p>
 
-                                            <p class="author fontColor_light">- {{ quote.author }}</p>
-                                        </li>
-                                    </component>
-                                </div>
+                                        <p class="author fontColor_light">- {{ quote.author }}</p>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </template>
                 </PanelSection>
 
-                <PanelSection :title="t('pages.listen.sections.platforms.title')" class="">
+                <PanelSection :title="t('pages.listen.sections.platforms.title')" class="" showTopBorder>
                     <template #content>
                         <nav class="w100 centered">
                             <component 
@@ -116,7 +102,7 @@ definePageMeta({
                     </template>
                 </PanelSection>
 
-                <PanelSection :title="t('global.videos')">
+                <PanelSection :title="t('global.videos')" showBottomBorder>
                     <template #content>
                         <PanelSectionVideos />
                     </template>
@@ -127,6 +113,34 @@ definePageMeta({
 </template>
 
 <style scoped>
+.contentBox {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.coverBox {
+    width: 35%;
+}
+.playerBox {
+    width: 35%;
+    height: 510px;
+    flex-grow: 1;
+}
+@media(max-width: 700px) {
+    .coverBox {
+        width: min(450px, 90%);
+    }
+    .contentBox {
+        flex-direction: column;
+        align-items: center;
+    }
+    .playerBox {
+        width: min(450px, 90%);
+    }
+}
 .noScroll_platforms {
     width: 100%;
     display: flex;
@@ -155,10 +169,10 @@ definePageMeta({
 }
 
 .quote {
-    width: min(300px, 60%);
-    background-color: #75b9dd0c;
+    width: min(500px, 90%);
     padding: min(5vw, 30px);
-    border-radius: 10px;
+    border-color:  rgba(255, 255, 255, 0.219);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.219);
     margin-inline: 10px;
     flex-shrink: 0;
     display: flex;
@@ -166,6 +180,9 @@ definePageMeta({
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
+}
+.quote:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.219);
 }
 
 .quote img {
@@ -175,7 +192,7 @@ definePageMeta({
 }
 
 .quote .text {
-    font-size: clamp(1.6rem, 3vw + 1rem, 1.8rem);
+    font-size: 1.6rem;
     font-weight: 500;
 }
 
@@ -190,33 +207,13 @@ definePageMeta({
     gap: 5vh;
 }
 
-.albumCard .content {
-    padding: min(1vw, 30px);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.cover {
-    width: min(350px, 80%);
-    margin: auto;
-}
-@media (max-width: 750px) {
-    .cover {
-        display: none;
-    }
-}
-
-.playerBox {
-    min-height: 300px;
-}
 
 .soundcloud {
     /* the svg is not made the same way as the others */
     fill: var(--frosty-font-color);
 }
 
-@media (min-width: 751px) {
+/* @media (min-width: 751px) {
     .noScroll.quotes {
         display: flex;
     }
@@ -232,6 +229,6 @@ definePageMeta({
     .scroller_quotes {
         display: flex;
     }
-}
+} */
 
 </style>
