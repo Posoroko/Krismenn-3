@@ -4,19 +4,21 @@ const appState = useAppState();
 
 const switchLocalePath = useSwitchLocalePath();
 
-function handleClick(e) {
+function openLanguageSelector(e) {
     if(e.target.dataset.target === 'languageBox') {
         appState.value.languageSelectorOpen = !appState.value.languageSelectorOpen;
     }
 }
 
+function handleLocaleSection(e) {
+    setLocale(e.currentTarget.dataset.locale);
+    appState.value.languageSelectorOpen = false;
+}
 
 watch(locale, () => {
-
     if (localStorage.getItem('cookiesAccepted')) {
         localStorage.setItem('preferedLocale', locale.value);
     }
-
 })
 
 onMounted(() => {
@@ -35,13 +37,13 @@ onMounted(() => {
                 flex column alignCenter justifyEvenly 
                 pointer"
             :class="[ appState.languageSelectorOpen ? 'glowing' : 'glowing_onHover' ]" 
-            @click="handleClick" data-target="languageBox"
-    >
+            @click="openLanguageSelector" data-target="languageBox">
         <div class="window glowing noEvents" :class="{ 'open' : appState.languageSelectorOpen }">
             <a href="#"
                 v-for="loc in locales" 
                 :key="loc.code" 
-                @click.prevent.stop="setLocale(loc.code)"
+                :data-locale="loc.code"
+                @click.prevent.stop="handleLocaleSection"
                 class=" language 
                         flex alignCenter gap10">
                 

@@ -49,17 +49,17 @@ const props = defineProps({
                     :telephone="show.telephne" 
                     :website="show.website"/>
                 
-            <PanelSection v-if="fullSize && showSlug" :title="t('pages.agenda.title')">
-                <template #content>
-                    <PanelSectionAgenda :filter="{ 
-                        show: {
-                            slug: {
-                                _eq: showSlug
+                <PanelSection v-if="fullSize && showSlug" :title="t('pages.agenda.title')">
+                    <template #content>
+                        <PanelSectionAgenda :filter="{ 
+                            show: {
+                                slug: {
+                                    _eq: showSlug
+                                }
                             }
-                        }
-                    }" />
-                </template>
-            </PanelSection>
+                        }" />
+                    </template>
+                </PanelSection>
 
             </div>
             

@@ -7,7 +7,6 @@ const props = defineProps({
 
 
 <template>
-
     <!-- to do : transform into real radio buttons -->
     <div class="radio" :class="{'selected': locCode === activeLocale }">
 
