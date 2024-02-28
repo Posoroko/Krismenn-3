@@ -9,9 +9,27 @@ const queryParams = {
     deep: {
         translations: {
             _filter: {
-                languages_code: {
-                    _eq: locale.value
-                }
+                _or: [
+                    {
+                        defaultLocale: {
+                            _eq: 'default'
+                        }
+                    },
+                    {
+                        _and: [
+                            {
+                                defaultLocale: {
+                                    _eq: 'noDefault'
+                                }
+                            },
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            }
+                        ]
+                    }
+                ]
             }
         }
     }

@@ -6,19 +6,44 @@ const { t, locale } = useI18n();
 const queryParams = {
     fields: ['*', 'translations.*'],
     filter: {
-        state: {
-            _eq: 'permanent'
-        },
-    },
-    deep: {
-        translations: {
-            _filter: {
-                languages_code: {
-                    _eq: locale.value
+        _or: [
+            {
+                state: {
+                    _eq: 'permanent'
+                }
+            },
+            {
+                state: {
+                    _eq: 'occasional'
                 }
             }
-        }
-    }
+        ]
+    },
+    // deep: {
+    //     translations: {
+    //         _filter: {
+    //             _or: [
+    //                 {
+    //                     dafaultLocale: {
+    //                         _eq: 'default'
+    //                     }
+    //                 },
+    //                 {
+    //                     _and: [
+    //                         {
+    //                             languages_code: locale.value
+    //                         },
+    //                         {
+    //                             dafaultLocale: {
+    //                                 _eq: 'noDefault'
+    //                             }
+    //                         }
+    //                     ]
+    //                 }
+    //             ]
+    //         }
+    //     }
+    // }
 }
 
 const { data: shows } = await useAsyncData(

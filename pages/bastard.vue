@@ -100,5 +100,7 @@ definePageMeta({
 .frame {
     height: 450px;
 }
-
+.frame img {
+    object-position: center;
+}
 </style>
