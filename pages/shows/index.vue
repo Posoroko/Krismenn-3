@@ -46,9 +46,9 @@ definePageMeta({
 
             </p>   
 
-            <ul class="flex column gap50">
-                <li v-for="show in shows" :key="show.id" class="">
-                    <NuxtLink :to="`/shows/${show.slug}`" class="card block h100 flex">
+            <ul class="">
+                <li v-for="show in shows" :key="show.id" class="block">
+                    <NuxtLink :to="`/shows/${show.slug}`" class="card block full">
                         <PanelCardShows :show="show" :fullSize="false" />
                     </NuxtLink>
                 </li>
@@ -59,23 +59,25 @@ definePageMeta({
 
 <style scoped>
 ul {
-    padding-bottom: 30px;
-    /* display: grid; */
-    /* grid-template-columns: repeat(2, 1fr); */
-    /* gap: 20px; */
+    display: flex;
+    flex-direction: column;
 }
-
-/* @media (max-width: 768px) {
+@media (min-width: 900px) {
     ul {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 40px;
     }
-} */
-
-li.card {
-    border-radius: 1px;
-    overflow: hidden;
 }
-/* .card {
-    box-shadow: 0 1px 3px 0 rgba(0, 32, 51, 0.473);
-} */
+@media (max-width: 899px) {
+    ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+    }
+    li {
+        width: min(350px, 100%);
+    }
+}
 </style>

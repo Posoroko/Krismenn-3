@@ -21,7 +21,7 @@ const { t, locale } = useI18n();
 
 <style scoped>
 img {
-    height: 40vh;
+    width: min(400px, 80%);
     margin: auto;
 }
 .link {

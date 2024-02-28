@@ -18,7 +18,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="card block h100 flex grow relative" :class="{ 'fullSize' : fullSize }" v-if="show">
+    <div class="card relative h100" :class="{ 'fullSize' : fullSize }" v-if="show">
         <div class="frame relative">
             <picture>
                 <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
@@ -27,10 +27,12 @@ const props = defineProps({
             </picture>
         </div>
 
-        <div class="contentBox grow flex column justifyBetween" v-if="show.translations[0]">
-            <h1 class="cardTitle_format fontColor_light">{{ show.translations[0].title }}</h1>
+        <div class="contentBox flex column justifyBetween" v-if="show.translations[0]">
+            <div>
+                <h2 class="cardTitle_format fontColor_light">{{ show.translations[0].title }}</h2>
 
-            <p class="cardSubtitle_format definition fontColor_light">{{ show.translations[0].definition }}</p>
+                <p class="cardSubtitle_format definition fontColor_light">{{ show.translations[0].definition }}</p>
+            </div>
 
             <p v-if="fullSize" class="description cardText_format fontColor_light">{{ show.translations[0].description }}</p>
 
@@ -72,62 +74,55 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.fullSize {
-    flex-direction: column;
-    gap: 40px;
-}
-li {
-    padding: 40px 20px;    
-}
 .card {
-    border-radius: 1px;
-    overflow: hidden;
+    width: 100%;
+    display: flex;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
+    transition: 300ms ease;
 }
 .frame {
-    width: min(400px, 100%);
-    aspect-ratio: 16/12;
-    overflow: hidden;
+    width: 350px;
+    height: 300px;
     flex-shrink: 0;
 }
-.fullSize .frame {
-    width: 60%;
-    margin: auto;
-    height: 300px;
-}
-
-.card .frame .image {
+.frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    animation: zoom 1500ms ease-in-out forwards;
 }
-@keyframes zoom {
-    from {
-        scale: 1;
+
+@media (max-width: 899px) {
+    .card {
+        flex-direction: column;
     }
-    to {
-        scale: 1.1;
+    .frame {
+        width: 100%;
+        height: 200px;
     }
 }
 
-.contentBox{
-    padding: max(2vw, 40px);
-    border: 1px solid rgba(255, 255, 255, 0.171);
+.contentBox {
+    flex-grow: 1;
+    padding: min(4vw, 30px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-top: none;
 }
-
-p.description {
-    margin-top: 25px;
+.description {
+    margin-top: min(3vw, 25px);
 }
 
 @media (hover : hover) {
     .moreButton {
-    opacity: 0;
-    transition: opacity 300ms;
-}
-.card:hover .moreButton{
-    opacity: 1;
-
-}
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .card:hover {
+        background-color: #ffffff0a;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.644);
+    }
+    .card:hover .moreButton {
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
 }
 </style>

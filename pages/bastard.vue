@@ -70,7 +70,7 @@ definePageMeta({
                     </template>
                 </PanelSection>
 
-                <PanelSection :title="t('global.moreInfo')" class="marTop50">
+                <PanelSection :title="t('global.moreInfo')" class="marTop50" showTopBorder>
                     <template #content>
                         <p class=" cardText_format fontColor_light flex gap20 alignEnd">
                             <span>Sur le site de Teatr Piba: </span>
@@ -82,7 +82,7 @@ definePageMeta({
                     </template>
                 </PanelSection>
 
-                <PanelSection title="Bastard Player" class="marTop50">
+                <PanelSection title="Bastard Player" class="marTop50" showTopBorder>
                     <template #content>
                         <PanelCardBastard />
                     </template>
@@ -98,7 +98,7 @@ definePageMeta({
     padding-bottom: 10vh;
 }
 .frame {
-    aspect-ratio: 8/3;
+    height: 450px;
 }
 
 </style>
