@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from '#imports';
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const localePath = useLocalePath()
 const appState = useAppState();
 
 const menuIsOpen = ref(false);
@@ -14,7 +15,9 @@ const menuIsOpen = ref(false);
 
         <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
             <div class="content flex column gap10">
-                <NuxtLink class="cardText_format fontColor_light" :to="`/${t('pages.legalNotice.url')}`">{{ $t('pages.legalNotice.title') }}</NuxtLink>
+                <NuxtLink class="cardText_format fontColor_light" :to="localePath('terms')">{{ $t('pages.terms.link') }}</NuxtLink>
+
+                <NuxtLink class="cardText_format fontColor_light" :to="localePath('cookies')">{{ $t('pages.cookies.link') }}</NuxtLink>
                 
                 <a class="cardText_format fontColor_light" href="https://posoroko.com">posoroko.com</a>
             </div>

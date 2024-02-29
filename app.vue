@@ -2,10 +2,6 @@
 const { locale } = useI18n();
 const appState = useAppState();
 
-watch(locale, () => {
-    console.log('locale changed: ', locale.value);
-})
-
 </script>
 
 <template>
@@ -19,8 +15,11 @@ watch(locale, () => {
     </StructureMainMain>
 
     <StructureFooterMain class="app_footer" />
-
-    <WidgetCookiePromptMain class="app_cookie" />
+    
+    <ClientOnly>
+        <WidgetCookiePromptMain class="app_cookie" />
+    </ClientOnly>
+    
   </div>
 </template>
 

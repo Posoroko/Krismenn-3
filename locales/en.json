@@ -73,9 +73,15 @@
             "introText": "New show comming out end of 2024.  Bastard is a play written and played by Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
         },
-        "legalNotice": {
-            "title": "Legal notice",
-            "url": "/legal-notice"
+        "terms": {
+            "title": "LEGAL TERMS",
+            "link": "Legal terms",
+            "url": "/terms"
+        },
+        "cookies": {
+            "title": "COOKIES",
+            "link": "Cookies",
+            "url": "/cookies"
         }
     },
     "dates": {

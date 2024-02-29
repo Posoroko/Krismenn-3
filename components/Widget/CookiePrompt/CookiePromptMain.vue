@@ -1,7 +1,7 @@
 <script setup>
 const { t, locale } = useI18n();
 
-const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+const cookiesAccepted = localStorage ? localStorage.getItem('cookiesAccepted') : false;
 
 function acceptCookies() {
     localStorage.setItem('cookiesAccepted', 'true');

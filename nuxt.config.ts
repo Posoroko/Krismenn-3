@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     },
     devtools: { enabled: false },
     css: ['@/assets/css/main.css'],
-    ssr: false,
+    ssr: true,
     modules: [
         '@nuxtjs/i18n'
     ],
@@ -79,6 +79,16 @@ export default defineNuxtConfig({
                 en: "/news",
                 fr: "/actualites",
                 bzh: "/kelou"
+            },
+            terms: {
+                en: "/legal-terms",
+                fr: "/mentions-legales",
+                bzh: "/kemennadennou-lezennel"
+            },
+            cookies: {
+                en: "/cookies",
+                fr: "/cookies",
+                bzh: "/cookies"
             }
         },
         strategy: 'prefix',

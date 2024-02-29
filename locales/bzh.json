@@ -73,9 +73,15 @@
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
         },
-        "legalNotice": {
-            "title": "Kemennadenn lezennel",
-            "url": "/kemennadenn-lezennel"
+        "terms": {
+            "title": "KEMENNADENN LEZENNEL",
+            "link": "Kemennadenn lezennel",
+            "url": "/kemennadenn"
+        },
+        "cookies": {
+            "title": "Cookies",
+            "link": "Cookies",
+            "url": "/cookies"
         }
     },
     "dates": {
