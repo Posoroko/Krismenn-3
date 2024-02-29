@@ -52,9 +52,9 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="absoluteFull centered">
+    <div class="absoluteFull" v-if="content">
         <PanelMain :title="t('pages.about.title')">
-            <div class="bibBox">
+            <div class="bigBox">
                 <div class="images aside">
                     <img class="aboutImage " v-for="image in content.images" :key="image.id" :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
                 </div>
@@ -78,11 +78,10 @@ definePageMeta({
 </template>
 
 <style scoped>
-.bibBox {
-    width: 95vw;
+.bigBox {
+    /* width: 95vw; */
     display: flex;
     flex-direction: row;
-    flex-grow: 0;
     padding-bottom: 50px;
 }
 .images.scroller {
@@ -92,14 +91,17 @@ definePageMeta({
 }
 
 .images.aside {
-    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
+.aboutImage {
+    width: 400px;
+
+}
 .textContent {
-    flex-grow: 1;
-    padding: 0 min(2vw, 30px);
+    /* flex-grow: 1; */
+    padding: 0 min(3vw, 40px);
 }
 .text {
     white-space: pre-wrap;
