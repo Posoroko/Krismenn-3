@@ -77,13 +77,14 @@ const props = defineProps({
 .card {
     width: 100%;
     display: flex;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
-    transition: 300ms ease;
+    gap: 5px;
+    transition: 300ms ease; 
 }
 .frame {
     width: 350px;
     height: 300px;
     flex-shrink: 0;
+    box-shadow: 2px 0px 5px rgb(0, 0, 0);
 }
 .frame img {
     width: 100%;
@@ -106,6 +107,8 @@ const props = defineProps({
     padding: min(4vw, 30px);
     border: 1px solid rgba(255, 255, 255, 0.11);
     border-top: none;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
 }
 .description {
     margin-top: min(3vw, 25px);
@@ -116,7 +119,7 @@ const props = defineProps({
         opacity: 0;
         transition: opacity 0.3s;
     }
-    .card:hover {
+    .card:hover .contentBox{
         background-color: #ffffff0a;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.644);
     }

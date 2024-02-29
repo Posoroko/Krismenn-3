@@ -1,4 +1,6 @@
 <script setup>
+import { directusBaseUrl, directusGetItems } from '@/directus/directus.js';
+
 const { t, locale } = useI18n();
 
 const route = useRoute();
@@ -11,7 +13,7 @@ const directusAssets = appConfig.directus.assets;
 const fetchUrl = `${directusItems}Agenda`;
 const fetchOptions = {
     query: {
-        fields: ["*,city.*,category.*,category.translations.*,city.translations.*,city.region.isFrenchDepartment,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*"],
+        fields: ["*,city.*,category.*,category.translations.*,city.translations.*,city.region.isFrenchDepartment,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*, show.mainImage"],
         filter: {
             id: {
                 _eq: route.params.id
@@ -54,20 +56,48 @@ definePageMeta({
     <div class="absoluteFull centered">
         <PanelMain v-if="date" class="panel" title="" backButtonURL="/agenda" drawerPosition="right">
             <div class="card glassSurface h100">
-                <p class="category">
-                    {{ date.category.translations[locale].displayName }}
-                </p>
+                <div class="dateBox frosty_bg flex alignCenter justifyCenter" >
+                    <p class="date">
+                        {{ new Date(date.date).getDate() }}
+                        {{ t(`dates.months[${new Date(date.date).getMonth()}]`) }}
+                        {{ new Date(date.date).getFullYear() }}
+                    </p>
+                </div>
 
-                <div class="infoBox">
-                    <h2 class="cardTitle_format fontColor_light">
-                        {{ date.show.translations[locale].title }}
-                    </h2>
+                <div class="infoBox fontColor_light grow
+                            flex column justifyBetween gap20">
+                    <div class="frame">
+                        <img :src="`${directusBaseUrl}assets/${date.show.mainImage}?key=fit-content-300-jpg`" 
+                            class="objectFitContain"
+                            :alt="`Krismenn | ${date.show.title}`">
+                    </div>
+                    
+                    <p class="cardTitle_format">
+                        {{ date.show.title }}
+                    </p>
+
+                    <PanelCardAgendaCategory :categorySlug="date.category.slug" />
+
+                    <p v-if="date.event" class="cardTitle_format">
+                        {{ date.event }}
+                    </p>
+
+                    <p v-if="date.event_website">
+                        {{ date.event_Website }}
+                    </p>
 
                     <address class="cardSubtitle_format fontColor_light">
-                        <span>{{ date.city.translations[locale].name }}, </span>
-                        <span>{{ date.city.region.depNumber }}, </span>
-                        <span>{{ date.city.region.country.translations[locale].name }}</span>
+                        <p v-if="date.venue">
+                            {{ date.venue }}
+                        </p>
+
+                        <p>
+                            <span>{{ date.city.translations[locale].name }}, </span>
+                            <span>{{ date.city.region.depNumber }}, </span>
+                            <span>{{ date.city.region.country.translations[locale].name }}</span>
+                        </p>
                     </address>
+                    
                 </div>
             </div>
         </PanelMain>
@@ -77,15 +107,57 @@ definePageMeta({
 <style scoped>
 .card {
     margin: min(3vw, 30px);
+    border: 3px solid var(--frosty-bg-color);
+    display: flex;
+    overflow: scroll;
 }
-.category {
-    text-align: center;
-    line-height: 0.8;
-    font-size: min(20vw, 20rem);
+
+.dateBox {
+    width: clamp(80px, 7vw, 120px);
+    overflow: visible;
+}
+.date {
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.103);
+    color: rgba(255, 255, 255, 0.705);
+    transform: rotate(-90deg);
+    white-space: nowrap;
+}
+
+.frame {
+    width: 250px;
+    height: 250px;
+}
+.frame img {
+    object-position: left;
 }
 .infoBox {
-    margin: min(5vw, 50px);
+    padding: min(4vw, 40px);
 }
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column;
+    }
+    .dateBox {
+        width: 100%;
+        height: 80px;
+        display: grid;
+        place-items: center;
+    }
+
+    .date {
+        transform: rotate(0deg);
+        white-space: nowrap;
+    }
+    
+    .frame {
+        width: 200px;
+        height: 200px;
+    }
+}
+@media (max-width : 800px) and (orientation: landscape) {
+        .date {
+            font-size: 2rem;
+        }
+    }
 </style>
