@@ -23,13 +23,13 @@ const props = defineProps({
             <picture>
                 <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
         
-                <img class="image" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
+                <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
             </picture>
         </div>
 
         <div class="contentBox flex column justifyBetween" v-if="show.translations[0]">
             <div>
-                <h2 class="cardTitle_format fontColor_light">{{ show.translations[0].title }}</h2>
+                <h2 class="cardTitle_format fontColor_light">{{ show.title }}</h2>
 
                 <p class="cardSubtitle_format definition fontColor_light">{{ show.translations[0].definition }}</p>
             </div>
@@ -77,14 +77,14 @@ const props = defineProps({
 .card {
     width: 100%;
     display: flex;
-    gap: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
     transition: 300ms ease; 
 }
 .frame {
     width: 350px;
-    height: 300px;
+    min-height: 300px;
     flex-shrink: 0;
-    box-shadow: 2px 0px 5px rgb(0, 0, 0);
+    /* box-shadow: 2px 0px 5px rgb(0, 0, 0); */
 }
 .frame img {
     width: 100%;
@@ -104,11 +104,7 @@ const props = defineProps({
 
 .contentBox {
     flex-grow: 1;
-    padding: min(4vw, 30px);
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    border-top: none;
-    margin: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
+    padding: min(4vw, 30px);    
 }
 .description {
     margin-top: min(3vw, 25px);
@@ -119,7 +115,7 @@ const props = defineProps({
         opacity: 0;
         transition: opacity 0.3s;
     }
-    .card:hover .contentBox{
+    .card:hover {
         background-color: #ffffff0a;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.644);
     }
