@@ -4,20 +4,33 @@ const { t, locale } = useI18n();
 const localePath = useLocalePath()
 const appState = useAppState();
 
-const menuIsOpen = ref(false);
+const links = [
+    {
+        id: 0,
+        ref: 'terms',
+    },
+    {
+        id: 1,
+        ref: 'cookies'
+    }
+]
 </script>
 
 <template>
     <div class="full relative" :class="[ appState.infoBoxOpen ? 'glowing' : 'glowing_onHover']">
         <button @click="appState.infoBoxOpen = !appState.infoBoxOpen" class="centered full pointer ">
-            <WidgetIcon name="info" type="homePageNavButton" size="24"/>
+            <WidgetIcon name="info" type="homePageNavButton" :size="24"/>
         </button>
 
         <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
             <div class="content flex column gap10">
-                <NuxtLink class="cardText_format fontColor_light" :to="localePath('terms')">{{ $t('pages.terms.link') }}</NuxtLink>
-
-                <NuxtLink class="cardText_format fontColor_light" :to="localePath('cookies')">{{ $t('pages.cookies.link') }}</NuxtLink>
+                <NuxtLink 
+                    v-for="link in links" :key="link.id"
+                    @click="appState.infoBoxOpen = false"
+                    :to="localePath(link.ref)" 
+                    class="cardText_format fontColor_light">
+                        {{ $t(`pages.${link.ref}.link`) }}
+                </NuxtLink>
                 
                 <a class="cardText_format fontColor_light" href="https://posoroko.com">posoroko.com</a>
             </div>

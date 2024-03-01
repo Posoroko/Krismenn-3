@@ -1,11 +1,3 @@
-
-@import url('@/assets/css/architecture/main.css');
-@import url('@/assets/css/brand/main.css');
-@import url('@/assets/css/base/main.css');
-
-
-
-
 html {
     overflow: hidden;
     background-color: #1d1d1d;   
@@ -14,4 +6,15 @@ html {
 
 * {
     user-select: none;
+}
+
+:root {
+    --gutter-thickness: 48px;
+    --panel-width: 1200px;
+}
+
+@media (max-width: 500px) {
+    :root {
+        --gutter-thickness: 36px;
+    }
 }

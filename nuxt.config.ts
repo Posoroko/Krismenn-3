@@ -4,7 +4,14 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'in-out' }
     },
     devtools: { enabled: false },
-    css: ['@/assets/css/main.css'],
+    css: [
+        '~/assets/css/main.css',
+        '~/assets/css/base/utility.css',
+        '~/assets/css/base/reset.css',
+        '~/assets/css/brand/colors.css',
+        '~/assets/css/brand/fonts.css',
+        '~/assets/css/brand/glass.css'
+    ],
     ssr: true,
     modules: [
         '@nuxtjs/i18n'
