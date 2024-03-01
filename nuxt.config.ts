@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         '~/assets/css/brand/fonts.css',
         '~/assets/css/brand/glass.css'
     ],
-    ssr: true,
+    ssr: false,
     modules: [
         '@nuxtjs/i18n'
     ],
@@ -67,11 +67,6 @@ export default defineNuxtConfig({
                 fr: "/spectacles",
                 bzh: "/abadennou"
             },
-            "shows/index/[slug]": {
-                en: "/shows",
-                fr: "/spectacles",
-                bzh: "/abadennou"
-            },
             "agenda/index": {
                 en: "/agenda",
                 fr: "/agenda",
@@ -83,6 +78,11 @@ export default defineNuxtConfig({
                 bzh: "/selaou"
             },
             "news/index": {
+                en: "/news",
+                fr: "/actualites",
+                bzh: "/kelou"
+            },
+            "news/index/[slug]": {
                 en: "/news",
                 fr: "/actualites",
                 bzh: "/kelou"

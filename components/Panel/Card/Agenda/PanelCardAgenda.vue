@@ -1,5 +1,6 @@
 <script setup>
 const { t, locale } = useI18n();
+const localePath = useLocalePath()
 
 const props = defineProps({
     date: {
@@ -21,7 +22,7 @@ const country = computed(() => {
 </script>
 
 <template>
-    <NuxtLink :to="`/agenda/${date.id}`" class="card frosty_border flex gap10 relative h100">
+    <NuxtLink :to="localePath(`/agenda/${date.id}`)" class="card frosty_border flex gap10 relative h100">
         <time class="frosty_bg date fontColor_light" :datetime="date.date">{{ new Date(date.date).getUTCDate() }}</time>
 
         <div class="infoBox flex column justifyCenter alignStart">

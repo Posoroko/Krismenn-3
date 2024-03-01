@@ -1,39 +1,62 @@
 <script setup>
+import { directusGetItems } from '@/directus/directus.js';
 const { t, locale } = useI18n();
-const appState = useAppState();
-const appConfig = useAppConfig();
-const directusItems = appConfig.directus.items;
+const localePath = useLocalePath()
 
-
-const fetchUrl = `${directusItems}News`;
-const fetchOptions = {
-    query: {
-        fields: ["*, translations.*"],
-        sort: "-date_published"
+const getItems = directusGetItems();
+const queryParams = {
+    fields: ['*', 'translations.*', 'city.translations.*'],
+    filter: {
+        status: {
+            _eq: 'published'
+        },
+    },
+    sort: '-date_published',
+    deep: {
+        translations: {
+            _filter: {
+                _or: [
+                    {
+                        defaultLocale: {
+                            _eq: 'default'
+                        }
+                    },
+                    {
+                        _and: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                defaultLocale: {
+                                    _eq: 'noDefault'
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        city: {
+            translations: {
+                _filter: {
+                    languages_code: {
+                        _eq: locale.value
+                    }
+                }
+            }
+        }
     }
 }
 
 const { data: news } = await useAsyncData(
-    "news",
+    'News',
     async () => {
-        const _items = await $fetch(fetchUrl, fetchOptions)
-        let items = _items.data;
+        const items = await getItems('News', queryParams)
 
-        items.forEach(item => {
-
-            let _translations = {};
-
-            item.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-
-            })
-            item.translations = _translations;
-
-        })
-
-        return items;
-    }
-    ,
+        return items
+    },
     { server: true }
 )
 
@@ -55,8 +78,12 @@ definePageMeta({
             showIntroText>
 
             <ul class="flex column gap20">
-                <li v-for="n in news" :key="n.id" class="block frosty_border frosty_bg">
-                    <PanelCardNews :article="n"  summary />
+                <li v-for="article in news" :key="article.id" 
+                    class="block frosty_border frosty_bg">
+
+                    <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)">
+                        <PanelCardNews :article="article"  summary />
+                    </NuxtLink>
                 </li>
             </ul>
         </PanelMain>
