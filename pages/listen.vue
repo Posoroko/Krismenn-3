@@ -29,6 +29,17 @@ definePageMeta({
         name: 'right'
     }
 })
+
+useHead({
+    title: t('pages.listen.ogTitle'),
+    meta: [
+        {
+            name: 'description',
+            content: t('pages.listen.description')
+        }
+    ]
+})
+
 </script>
 
 <template>

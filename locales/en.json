@@ -1,4 +1,8 @@
 {
+    "app": {
+        "ogTitle": "Krismenn",
+        "ogDescription": "Krismenn's official website.  You will find here all the information about his shows, concerts, workshops and discography."
+    },
     "global": {
         "readMore": "Read more",
         "infoAndContact": "Info and contact",
@@ -26,10 +30,14 @@
     "pages": {
         "home": {
             "title": "Home",
-            "url": "/en"
+            "url": "/en",
+            "ogTitle": "Accueil",
+            "ogDescription": "Welcome to Krismenn's official website.  You will find here all the information about his shows, concerts, workshops and discography."
         },
         "agenda": {
             "title": "AGENDA",
+            "ogTitle": "Agenda",
+            "ogDescription": "All de upcomming concerts, workshops and fest-nozoù featuring Krismenn.",
             "url": "/agenda",
             "introText": "All the dates of Krismenn's shows, concerts and workshops.",
             "accessibitiy": {
@@ -40,6 +48,8 @@
         },
         "listen": {
             "title": "LISTEN",
+            "ogTitle": "Listen",
+            "ogDescription": "Listen to Krismenn's music.  You will find here all the information about his discography and where to listen to his music.",
             "url": "/listen",
             "sections": {
                 "platforms": {
@@ -52,34 +62,48 @@
         },
         "news": {
             "title": "NEWS",
+            "ogTitle": "News",
+            "ogDescription": "All the news about Krismenn.  You will find here some news about what he's up too, where he is in the world and what he's currently working on.",
             "introText": "You will find here some news about what I'm up too, where I am in the world and what I'm wcurrently working on.",
             "url": "/news"
         },
         "contact": {
             "title": "CONTACT",
+            "ogTitle": "Contact",
+            "ogDescription": "Contact Krismenn.  You will find here all the information to contact Krismenn.",
             "url": "/contact"
         },
         "about": {
             "title": "ABOUT",
+            "ogTitle": "About",
+            "ogDescription": "Biography of Krismenn.  You will find here all the information about Krismenn.",
             "url": "/about"
         },
         "shows": {
             "title": "SHOWS",
+            "ogTitle": "Shows",
+            "ogDescription": "All the information about Krismenn's bands and projects.",
             "url": "/shows"
         },
         "bastard": {
             "title": "BASTARD",
+            "ogTitle": "Bastard",
+            "ogDescription": "New show comming out end of 2024.  Bastard is a play written and played by Krismenn.",
             "url": "/bastard",
             "introText": "New show comming out end of 2024.  Bastard is a play written and played by Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
         },
         "terms": {
             "title": "LEGAL TERMS",
+            "ogTitle": "Legal terms",
+            "ogDescription": "Legal terms of Krismenn's website.",
             "link": "Legal terms",
             "url": "/terms"
         },
         "cookies": {
             "title": "COOKIES",
+            "ogTitle": "Cookies",
+            "ogDescription": "Information about our use of cookies and local storage",
             "link": "Cookies",
             "url": "/cookies"
         }

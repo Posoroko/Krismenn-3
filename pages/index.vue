@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n();
 const appState = useAppState();
 
 setTimeout(() => {
@@ -19,6 +20,23 @@ definePageMeta({
         name: 'fade'
     }
 })
+
+const pageRef = "home";
+useHead({
+    title: t(`pages.${pageRef}.ogTitle`),
+    description: t(`pages.${pageRef}.ogDescription`),
+    meta: [
+        {
+            property: 'og:title',
+            content: t(`pages.${pageRef}.ogTitle`)
+        },
+        {
+            property: 'og:description',
+            content: t(`pages.${pageRef}.ogDescription`)
+        }
+    ]
+})
+
 </script>
 
 <template>

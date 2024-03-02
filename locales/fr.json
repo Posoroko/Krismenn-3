@@ -1,4 +1,8 @@
 {
+    "app": {
+        "ogTitle": "Krismenn",
+        "ogDescription": "Site officiel de Krismenn, artiste breton, chanteur, musicien, poète, comédien, auteur, compositeur, interprète."
+    },
     "global": {
         "readMore": "Lire la suite",
         "infoAndContact": "Infos et contact",
@@ -26,10 +30,14 @@
     "pages": {
         "home": {
             "title": "Accueil",
+            "ogTitle": "Accueil",
+            "ogDescription": "Bienvenue sur le site de Krismenn, artiste breton, chanteur, musicien, poète, comédien, auteur, compositeur, interprète.",
             "url": "/" 
         },
         "listen": {
             "title": "ÉCOUTER",
+            "ogTitle": "Écouter",
+            "ogDescription": "Retrouvez ici tous les albums de Krismenn, en écoute gratuite.  Vous pouvez aussi les acheter en ligne ou les télécharger.",
             "url": "/ecouter",
             "introText": "Retrouvez ici tous les albums de Krismenn, en écoute gratuite.  Vous pouvez aussi les acheter en ligne ou les télécharger.",
             "sections": {
@@ -43,6 +51,8 @@
         },
         "agenda": {
             "title": "AGENDA",
+            "ogTitle": "Agenda",
+            "ogDescription": "Toutes les dates de concert, de résidence, d'atelier et de fest-noz avec Krismenn.",
             "url": "/agenda",
             "introText": "Toutes les dates de concert, de résidence ou d'atelier.",
             "accessibitiy": {
@@ -53,34 +63,48 @@
         },
         "news": {
             "title": "ACTUALITÉS",
+            "ogTitle": "Actualités",
+            "ogDescription": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première.",
             "introText": "Suivez moi dans mon travail et ma vie au jour le jour.  Concerts, voyages, résidences, je vous raconte et vous dévoile mes projets en avant première.",
             "url": "/actualites"
         },
         "contact": {
             "title": "CONTACT",
+            "ogTitle": "Contact",
+            "ogDescription": "Toutes les infos de contact pour joindre Krismenn",
             "url": "/contact"
         },
         "about": {
             "title": "BIO",
+            "ogTitle": "Bio",
+            "ogDescription": "Biographie de Krismenn, artiste breton, chanteur, musicien, poète, comédien, auteur, compositeur, interprète.",
             "url": "/bio"
         },
         "shows": {
             "title": "SPECTACLES",
+            "ogTitle": "Spectacles",
+            "ogDescription": "Retrouvez ici tous les spectacles et projets de Krismenn.",
             "url": "/spectacles"
         },
         "bastard": {
             "title": "BASTARD",
+            "ogTitle": "Bastard",
+            "ogDescription": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "url": "/bastard",
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "Vous pouves suivre les explorations de Krismenn dans la créqtion de son nouveau spectacle en visitant l'application dédiée.  Il y poste régulièrement des textes, images et vidéos qu'il trouve sur le chemin de la création de Bastard."
         },
         "terms": {
             "title": "MENTIONS LEGALES",
+            "ogTitle": "Mentions légales",
+            "ogDescription": "Mentions légales du site de Krismenn",
             "link": "Mentions légales",
             "url": "/mentions"
         },
         "cookies": {
             "title": "Cookies",
+            "ogTitle": "Cookies",
+            "ogDescription": "Informations sur notre utilisation des cookies et du stockage local",
             "link": "Cookies",
             "url": "/cookies"
         }

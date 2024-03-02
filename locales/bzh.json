@@ -1,4 +1,8 @@
 {
+    "app": {
+        "ogTitle": "Krismenn",
+        "ogDescription": "Krismenn, ar sonerezh, ar ger"
+    },
     "global": {
         "readMore": "Lenn muioc’h",
         "infoAndContact": "Info ha kontakt",
@@ -26,10 +30,14 @@
     "pages": {
         "home": {
             "title": "Ger",
+            "ogTitle": "Ar ger",
+            "ogDescription": "Ar ger, ar sonerezh",
             "url": "/"
         },
         "agenda": {
             "title": "DEIZIATAER",
+            "ogTitle": "Deiziataer",
+            "ogDescription": "Tout an deizoù adadenn, ha tout.",
             "url": "/deiziataer",
             "introText": "Tout an deizoù adadenn, ha tout.",
             "accessibitiy": {
@@ -40,6 +48,8 @@
         },
         "listen": {
             "title": "SELAOU",
+            "ogTitle": "Selaou",
+            "ogDescription": "Selaou ar sonerezh",
             "url": "/selaou",
             "sections": {
                 "platforms": {
@@ -52,34 +62,48 @@
         },
         "news": {
             "title": "KELOU",
+            "ogTitle": "Kelou",
+            "ogDescription": "Keloù diwezhañ",
             "introText":  "Oberit mat ganeoc’h e-barzh ma labour ha ma buhez bevañ bep devezh. Abadennoù, hentadoù, lec’hioù-staliañ, me a ra kont ha kinnig a-raok ar re all.",
             "url": "/kelou"
         },
         "contact": {
             "title": "KONTAKT",
+            "ogTitle": "Kontakt",
+            "ogDescription": "Kontakt",
             "url": "/kontakt"
         },
         "about": {
             "title": "DIWAR-BENN",
+            "ogTitle": "Diwar-benn",
+            "ogDescription": "Diwar-benn",
             "url": "/diwar-benn"
         },
         "shows": {
             "title": "ABADENNOU",
+            "ogTitle": "Abadennou",
+            "ogDescription": "Abadennou",
             "url": "/abadennou"
         },
         "bastard": {
             "title": "BASTARD",
+            "ogTitle": "Bastard",
+            "ogDescription": "Bastard",
             "url": "/bastard",
             "introText": "Bastard est un nouveau spectacle qui sortira fin 2024.  C'est une pièce de théâtre écrite et interprétée par Krismenn.",
             "appPresentation": "You can visit the app to follow Krismenn in his exploration that will lead to the creation of this play.  He regularly posts texts, images and vidoes that he finds on his creative journey."
         },
         "terms": {
             "title": "KEMENNADENN LEZENNEL",
+            "ogTitle": "Kemennadenn lezennel",
+            "ogDescription": "Kemennadenn lezennel",
             "link": "Kemennadenn lezennel",
             "url": "/kemennadenn"
         },
         "cookies": {
             "title": "Cookies",
+            "ogTitle": "Cookies",
+            "ogDescription": "Cookies",
             "link": "Cookies",
             "url": "/cookies"
         }
