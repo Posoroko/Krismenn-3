@@ -135,6 +135,9 @@ useHead( useHeadContent );
     align-items: center;
     gap: 20px;
 }
+.quote:first-child {
+    border-top: none;
+}
 
 .quote img {
     width: 50px;

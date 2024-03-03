@@ -32,7 +32,6 @@ const { data: youtubes } = await useAsyncData(
     { server: true }
 )
 
-
 function openMediaInDialog(e) {
     let url = e.currentTarget.dataset.url;
     let youtubeEmberUrl = url.replace("watch?v=", "embed/");
@@ -72,7 +71,6 @@ function stopVideo() {
 </template>
 
 <style scoped>
-
 ul {
     --spacing: 10px;
     --perLine: 4;
@@ -83,11 +81,13 @@ ul {
     padding: var(--spacing);
     gap: var(--spacing);
 }
+
 @media (max-width:799px) {
     ul {
         --perLine: 3;
     }
 }
+
 .youtube {
     flex-shrink: 0;
     width: calc(
@@ -102,6 +102,7 @@ ul {
     cursor: pointer;
     transition: all 50ms ease-in-out;
 }
+
 @media (max-width: 499px) {
     ul {
         flex-wrap: nowrap;
@@ -114,7 +115,6 @@ ul {
     }
 }
 
-
 @media (min-width: 650px) {
 }
 li.youtube img {
@@ -123,6 +123,7 @@ li.youtube img {
     object-fit: cover;
     object-position: center;
 }
+
 .playIcon {
     position: absolute;
     top: 50%;
@@ -134,13 +135,16 @@ li.youtube img {
     transition: all 50ms ease-in-out;
     pointer-events: none;
 }
+
 .youtube:hover {
     transform: scale(1.01);
     box-shadow: 0 0 10px 0 rgba(0, 37, 54, 0.582);
 }
+
 .youtube:hover .playIcon{
     opacity: 1;
 }
+
 .dialog {
     width: min(98vw, 800px);
     background-color: transparent;
@@ -150,14 +154,17 @@ li.youtube img {
     left: 0;
     
 }
+
 .closeButton {
     width: 32px;
     height: 32px;
     fill: white;
 }
+
 .dialog::backdrop {
     background-color: rgba(13, 23, 27, 0.89);
 }
+
 iframe {
     width: 100%;
     aspect-ratio: 16/9;

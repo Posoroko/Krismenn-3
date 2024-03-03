@@ -6,29 +6,22 @@ const { t, locale } = useI18n();
 const getItems = directusGetItems();
 const queryParams = {
     fields: ['*', 'translations.*'],
+    sort: 'translations.languages_code',
     deep: {
         translations: {
             _filter: {
                 _or: [
                     {
-                        state: {
-                            _eq: 'default'
+                        languages_code: {
+                            _eq: locale.value
                         }
                     },
                     {
-                        _and: [
-                            {
-                                state: {
-                                    _eq: 'active'
-                                }
-                            },
-                            {
-                                languages_code: {
-                                    _eq: locale.value
-                                }
-                            }
-                        ]
-                    }
+                        isDefault: {
+                            _eq: true
+                        }
+                    },
+                    
                 ]
             }
         }
@@ -39,6 +32,10 @@ const { data: content } = await useAsyncData(
     'bastard',
     async () => {
         const item = await getItems('Bastard_page', queryParams)
+
+        if(item.translations.length > 1) {
+            item.translations = item.translations.filter( t => t.languages_code === locale.value)
+        }
 
         return item
     },
@@ -63,8 +60,12 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
+    <div class="absoluteFull centered" v-if="content">
+        <h1 class="fontColor_light cardText_format">
+            <span v-for="t in content.translations">{{ t.languages_code }}</span>
+
+        </h1>
+        <!-- <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
             <div class="frame">
                 <img :src="`${directusBaseUrl}assets/${content.mainImage}`"
                     class="objectFitCover"  alt="Bastard, de Krismenn">
@@ -97,7 +98,7 @@ useHead( useHeadContent );
                     </template>
                 </PanelSection>
             </div>
-        </PanelMain>
+        </PanelMain> -->
     </div>
 </template>
 
