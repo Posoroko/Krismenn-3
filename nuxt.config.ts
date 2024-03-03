@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-    ssr: true,
+    ssr: false,
     spaLoadingTemplate: false,
     devtools: { enabled: false },
     css: [
@@ -15,7 +15,8 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxtjs/sitemap',
         'nuxt-simple-robots',
-        'nuxt-schema-org'
+        'nuxt-schema-org',
+        'nuxt-og-image'
     ],
     i18n: {
         lazy: true,
@@ -121,6 +122,7 @@ export default defineNuxtConfig({
                 { rel: 'shortcut icon', href: '/images/webContent/favicon.ico' }
             ],
             meta: [
+                
                 // { name: 'og:image' , property: 'og:image', content: '/seo-assets/og-banner.jpg' },
                 // { name: 'og:image:width' , property: 'og:image:width', content: '1200' },
                 // { name: 'og:image:height' , property: 'og:image:height', content: '630' },

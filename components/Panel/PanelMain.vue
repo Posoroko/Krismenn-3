@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
     <div class="panel noEvents flex relative">
-        <div class="content relative grow flex column">
+        <div class="content relative grow flex column w100">
             <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter">
                 <h1 v-if="title" class="w100 panelTitle centered">
                     {{ title }}
@@ -31,6 +31,9 @@ const props = defineProps({
 
                 </slot>
 
+                <!-- <div class="paddingBot r">
+                    hello
+                </div> -->
             </div>
         </div>      
     </div>
@@ -41,6 +44,7 @@ const props = defineProps({
 .panel {
     width: 1200px;
     height: 100%;
+    
     position: absolute;
     top: 0;
     left: 50%;
@@ -79,10 +83,11 @@ const props = defineProps({
     position: relative;
 }
 .scrollBox {
-    
     background-color: #ffffff09;
     backdrop-filter: blur(10px);
-    padding: min(6vw, 60px) min(2vw, 30px);
+    padding: 0 min(2vw, 30px);
+    padding-top: 30px;
+    padding-bottom: 80px;
     border: 1px solid rgba(255, 255, 255, 0.055);
     box-shadow: 
         0 0 3px 2px rgba(0, 33, 48, 0.103),
@@ -93,6 +98,12 @@ const props = defineProps({
     flex-grow: 1;
     position: relative;
 }
+/* .paddingBot {
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    height: 400px;
+} */
 @media (max-width: 1296px) {
     .scrollBox {
         margin-bottom: 0;

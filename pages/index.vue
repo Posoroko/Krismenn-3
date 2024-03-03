@@ -1,6 +1,7 @@
 <script setup>
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const appState = useAppState();
+
 
 setTimeout(() => {
     appState.value.backgroundFaded = false;
@@ -21,21 +22,16 @@ definePageMeta({
     }
 })
 
+// SEO, meta tags, head content
+
 const pageRef = "home";
-useHead({
-    title: t(`pages.${pageRef}.ogTitle`),
-    description: t(`pages.${pageRef}.ogDescription`),
-    meta: [
-        {
-            property: 'og:title',
-            content: t(`pages.${pageRef}.ogTitle`)
-        },
-        {
-            property: 'og:description',
-            content: t(`pages.${pageRef}.ogDescription`)
-        }
-    ]
+const ogUrl = computed(() => {
+    let url = t(`pages.${pageRef}.url`);
+
+    return `https://krismenn.com/${locale.value}${url}`
 })
+const useHeadContent = useCreateUseHead( pageRef, ogUrl, t);
+useHead( useHeadContent );
 
 </script>
 

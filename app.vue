@@ -2,7 +2,12 @@
 const { t, locale } = useI18n();
 const appState = useAppState();
 
+
+
 useHead({
+    htmlAttrs: {
+        lang: locale.value
+    },
     // pageTitle === title defined in useHead in other pages
     titleTemplate: (pageTitle) => {
         return pageTitle ? `${pageTitle} - ${t('app.ogTitle')}` : t('app.ogTitle');

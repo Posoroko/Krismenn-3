@@ -30,7 +30,7 @@
     "pages": {
         "home": {
             "title": "Home",
-            "url": "/en",
+            "url": "/",
             "ogTitle": "Accueil",
             "ogDescription": "Welcome to Krismenn's official website.  You will find here all the information about his shows, concerts, workshops and discography."
         },

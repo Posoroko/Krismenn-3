@@ -1,8 +1,7 @@
 <script setup>
-import { PanelSectionScroller } from '#components';
 
 import { directusGetItems } from '@/directus/directus.js';
-import { withSearch } from '@directus/sdk';
+
 const getItems = directusGetItems();
 const { t } = useI18n();
 
@@ -17,7 +16,7 @@ const queryParams = {
     fields: ["*", "show.mainSlug"],
     filter: props.showSlug ? {
         show: {
-            mainSlug: {
+            slug: {
                 _contains: props.showSlug
             }
         }
@@ -43,24 +42,21 @@ function openMediaInDialog(e) {
 function stopVideo() {
     video.value.src = '';
 }
-const viewPortWidth = ref(window.innerWidth);
 
 </script>
 
 <template>
-    <component
-        :is="viewPortWidth < 750 ? PanelSectionScroller : 'ul'"
-        class="scroller gap10"
-        :class="viewPortWidth < 750 ? 'scroller_youtubes' : 'noScroll_youtubes'">
+    <nav class="w100">
+        <ul class="w100">
+            <li class="youtube relative" v-for="video in youtubes" :key="video.id">
+                <img :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">
 
-        <li class="youtube pointer relative" v-for="video in youtubes" :key="video.id">
-            <img :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">
-
-            <svg class="playIcon" viewBox="0 -960 960 960">
-                <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-            </svg>
-        </li>
-    </component>
+                <svg class="playIcon" viewBox="0 -960 960 960">
+                    <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+                </svg>
+            </li>
+        </ul>
+    </nav>
 
     <dialog ref="dialog" class="dialog" @close="stopVideo">
         <div class="flex justifyEnd" @click="dialog.close()">
@@ -74,27 +70,50 @@ const viewPortWidth = ref(window.innerWidth);
 </template>
 
 <style scoped>
-.scroller_youtubes {
-    width: min(750px, 90vw);
-    margin: auto;
+
+
+ul {
+    --spacing: 10px;
+    --perLine: 4;
+
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: var(--spacing);
+    gap: var(--spacing);
 }
-.scroller_youtubes .youtube {
-    width: 300px;
-    flex-shrink: 0;
+@media (max-width:799px) {
+    ul {
+        --perLine: 3;
+    }
 }
-.noScroll_youtubes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-} 
 .youtube {
+    flex-shrink: 0;
+    width: calc(
+        (100% - 
+            (var(--perLine) - 1) 
+            * var(--spacing)
+        ) 
+        / var(--perLine)
+    );
     aspect-ratio: 16/9;
+    background-color: gray;
+    cursor: pointer;
+    transition: all 50ms ease-in-out;
 }
-li.youtube:hover {
-    filter: grayscale(0%) contrast(1);
-    opacity: 1;
-    transition: all 300ms ease-in-out;
+@media (max-width: 499px) {
+    ul {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        border: 2px solid rgba(0, 37, 54, 0.582);
+        box-shadow: inset 0 0 10px 0 rgb(0, 37, 54);
+    }
+    .youtube {
+        width: 250px;
+    }
 }
+
+
 @media (min-width: 650px) {
 }
 li.youtube img {
@@ -111,8 +130,15 @@ li.youtube img {
     height: 40%;
     fill: white;
     opacity: 0.7;
-    transition: all 300ms ease-in-out;
+    transition: all 50ms ease-in-out;
     pointer-events: none;
+}
+.youtube:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px 0 rgba(0, 37, 54, 0.582);
+}
+.youtube:hover .playIcon{
+    opacity: 1;
 }
 .dialog {
     width: min(98vw, 800px);
@@ -137,17 +163,5 @@ iframe {
     border: none;
     display: block;
 }
-@media (min-width: 751px) {
-    .scroller_youtubes {
-        display: none;
-    }
-}
-@media (max-width: 750px) {
-    .noScroll_youtubes {
-        display: none;
-    }
-    .scroller_youtubes {
-        display: flex;
-    }
-}
+
 </style>

@@ -18,7 +18,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="card relative h100" :class="{ 'fullSize' : fullSize }" v-if="show">
+    <div class="card relative h100" :class="[ fullSize ? 'fullSize' : 'small']" v-if="show">
         <div class="frame relative">
             <picture>
                 <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
@@ -39,19 +39,19 @@ const props = defineProps({
             <p v-else class="description cardText_format fontColor_light">{{ show.translations[0].description?.slice(0, 200) }}</p>
 
             <div class="marTop50" v-if="fullSize">
-                <PanelSection :title="t('global.videos')" v-if="show.youtubes.length">
+                <PanelSection :title="t('global.videos')" v-if="show.youtubes.length" showTopBorder>
                     <template #content>
-                        <PanelSectionVideos :showSlug="show.slug" />
+                        <PanelSectionContentVideos :showSlug="show.slug" />
                     </template>
                 </PanelSection>
 
                 <PanelCardContactBox 
                     v-if="show.telephone || show.email || show.website" 
                     :email="show.email" 
-                    :telephone="show.telephne" 
+                    :telephone="show.telephone" 
                     :website="show.website"/>
                 
-                <PanelSection v-if="fullSize && showSlug" :title="t('pages.agenda.title')">
+                <PanelSection v-if="fullSize && showSlug" :title="t('pages.agenda.title')" showTopBorder>
                     <template #content>
                         <PanelSectionAgenda :filter="{ 
                             show: {
@@ -77,14 +77,24 @@ const props = defineProps({
 .card {
     width: 100%;
     display: flex;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
     transition: 300ms ease; 
 }
+.card.small {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
+}
+.card.fullSize {
+    box-shadow: none;
+    flex-direction: column;
+}
+
 .frame {
     width: 350px;
-    min-height: 300px;
+    min-height: 250px;
     flex-shrink: 0;
-    /* box-shadow: 2px 0px 5px rgb(0, 0, 0); */
+}
+.card.fullSize .frame{
+    width: min(100%, 500px);
+    margin: auto;
 }
 .frame img {
     width: 100%;
@@ -115,11 +125,11 @@ const props = defineProps({
         opacity: 0;
         transition: opacity 0.3s;
     }
-    .card:hover {
+    .card.small:hover {
         background-color: #ffffff0a;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.644);
     }
-    .card:hover .moreButton {
+    .card.small:hover .moreButton {
         opacity: 1;
         transition: opacity 0.3s;
     }

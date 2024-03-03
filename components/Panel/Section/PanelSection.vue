@@ -13,14 +13,14 @@ const props = defineProps({
 </script>
 
 <template>
-    <section
+    <section class="w100"
             :class="[
                         { 'showTopBorder': showTopBorder }, 
                         { 'showBottomBorder': showBottomBorder }
             ]">
         <h1 class="sectionTitle">{{ title }}</h1>
         
-        <div class="contentBox">
+        <div class="contentBox w100">
             <slot name="content">
 
             </slot>
@@ -34,6 +34,7 @@ section.showTopBorder,
 section.showBottomBorder {
     padding-top: 0.8rem;
     border-top: 1px solid var(--frosty-color);
+    margin-top: 50px;
 }
 
 .sectionTitle {

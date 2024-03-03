@@ -9,9 +9,6 @@ const route = useRoute();
 const queryParams = {
     fields: ['*', 'translations.*'],
     filter: {
-        published: {
-            _eq: true
-        },
         slug: {
             _eq: route.params.slug
         }
@@ -45,12 +42,8 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain :title="show.translations[0].title" backButtonURL="/shows" drawerPosition="left" stripeImageSrc="/images/stripes/xl/brown.webp">
-            <p>
-                
-            </p>
-
+    <div class="absoluteFull centered" v-if="show">
+        <PanelMain :title="show.translations[0].title" backButtonURL="/shows">
             <div class="cardBox flex column gap50">
                 <PanelCardShows :show="show" :fullSize="true" />
             </div>
