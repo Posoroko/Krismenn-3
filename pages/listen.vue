@@ -102,15 +102,16 @@ useHead( useHeadContent );
 
 .coverBox {
     width: 35%;
+    aspect-ratio: 1/1;
 }
 .playerBox {
     width: 35%;
-    height: 510px;
+    /* height: 510px; */
     flex-grow: 1;
 }
 @media(max-width: 700px) {
     .coverBox {
-        width: min(450px, 90%);
+        width: min(200px, 90%);
     }
     .contentBox {
         flex-direction: column;
@@ -118,17 +119,14 @@ useHead( useHeadContent );
     }
     .playerBox {
         width: min(450px, 90%);
+        height: 400px;
     }
 }
-
-
-
-
 .quote {
     width: min(500px, 90%);
     padding: min(5vw, 30px);
     border-color:  rgba(255, 255, 255, 0.219);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+    border-top: 1px solid rgba(255, 255, 255, 0.219);
     margin-inline: 10px;
     flex-shrink: 0;
     display: flex;
@@ -136,9 +134,6 @@ useHead( useHeadContent );
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
-}
-.quote:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.219);
 }
 
 .quote img {

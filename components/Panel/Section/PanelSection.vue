@@ -34,7 +34,7 @@ section.showTopBorder,
 section.showBottomBorder {
     padding-top: 0.8rem;
     border-top: 1px solid var(--frosty-color);
-    margin-top: 50px;
+    margin-top: min(5vw, 50px);
 }
 
 .sectionTitle {
