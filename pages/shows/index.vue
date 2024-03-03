@@ -62,6 +62,17 @@ definePageMeta({
         name: 'left'
     }
 })
+
+// SEO, meta tags, head content
+
+const pageRef = "shows";
+const ogUrl = computed(() => {
+    let url = t(`pages.${pageRef}.url`);
+
+    return `https://krismenn.com/${locale.value}${url}`
+})
+const useHeadContent = useCreateUseHead( pageRef, ogUrl, t);
+useHead( useHeadContent );
 </script>
 
 <template>

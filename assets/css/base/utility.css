@@ -78,7 +78,7 @@
 .bottom0 {bottom: 0;}
 .bottom50 {bottom: 0;}
 
-/* .pointer {cursor: pointer;} */
+.pointer {cursor: pointer;}
 .noPointer {cursor: not-allowed;}
 .noSelection {user-select: none;}
 

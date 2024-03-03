@@ -42,14 +42,16 @@ function openMediaInDialog(e) {
 function stopVideo() {
     video.value.src = '';
 }
-
 </script>
 
 <template>
     <nav class="w100">
         <ul class="w100">
             <li class="youtube relative" v-for="video in youtubes" :key="video.id">
-                <img :src="`https://img.youtube.com/vi/${video.youtubeId}/0.jpg`" :alt="video.title" :data-url="video.url" @click="openMediaInDialog">
+                <img 
+                    :src="`https://img.youtube.com/vi/${video.url.substring(video.url.indexOf('=') + 1)}/0.jpg`" 
+                    :alt="video.title" :data-url="video.url" 
+                    @click="openMediaInDialog">
 
                 <svg class="playIcon" viewBox="0 -960 960 960">
                     <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
@@ -70,7 +72,6 @@ function stopVideo() {
 </template>
 
 <style scoped>
-
 
 ul {
     --spacing: 10px;
