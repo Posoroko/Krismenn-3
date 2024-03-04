@@ -5,7 +5,7 @@ const { t, locale } = useI18n();
 
 <template>
     <div class="box">
-        <a href="https://krismenn-bastard.netlify.app block" class="frame centered">
+        <a href="https://krismenn-bastard.netlify.app" class="frame centered">
             <img class="glowing_onHover" src="/images/bastard/bastard.webp" />
         </a>
 
