@@ -74,7 +74,7 @@ const { data: article } = await useAsyncData(
                 item.translations = item.translations.filter( t => t.languages_code === locale.value)
             }
 
-            if(item.city.translations.length > 1) {
+            if(item.city && item.city.translations.length > 1) {
                 item.city.translations = item.city.translations.filter( t => t.languages_code === locale.value)
                 }
             })

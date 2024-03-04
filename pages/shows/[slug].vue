@@ -7,7 +7,11 @@ const { t, locale } = useI18n();
 const route = useRoute();
 
 const queryParams = {
-    fields: ['*', 'translations.*'],
+    fields: [
+        '*', 
+        'translations.*',
+        'images.*'
+    ],
     filter: {
         slug: {
             _eq: route.params.slug

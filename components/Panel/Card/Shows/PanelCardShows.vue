@@ -25,6 +25,10 @@ const props = defineProps({
         
                 <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
             </picture>
+
+            <div class="imagesFrame" v-if="fullSize">
+                <img class="image" v-for="img in show.images" :key="img.id" :src="`${directusAssets}${img.directus_files_id}`" alt="">
+            </div>
         </div>
 
         <div class="contentBox flex column justifyBetween" v-if="show.translations[0]">
@@ -84,24 +88,33 @@ const props = defineProps({
 }
 .card.fullSize {
     box-shadow: none;
-    flex-direction: column;
 }
 
-.frame {
+.card.small .frame {
     width: 350px;
     min-height: 250px;
     flex-shrink: 0;
 }
-.card.fullSize .frame{
-    width: min(100%, 500px);
-    margin: auto;
+
+.card.fullSize .frame {
+    width: 400px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-.frame img {
+
+.imagesFrame {
+    width: 100%;
+}
+.card.small .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
+.card.fullSize .image {
+    width: 100%;
+}
 @media (max-width: 899px) {
     .card {
         flex-direction: column;
@@ -132,6 +145,11 @@ const props = defineProps({
     .card.small:hover .moreButton {
         opacity: 1;
         transition: opacity 0.3s;
+    }
+}
+@media (max-width: 899px) {
+    .card.small {
+        margin-bottom: 20px;
     }
 }
 </style>
