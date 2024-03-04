@@ -8,7 +8,13 @@ console.log(route.params.slug);
 
 const getItems = directusGetItems();
 const queryParams = {
-    fields: ['*', 'translations.*', 'city.translations.*'],
+    fields: [
+        '*', 
+        'links.*',
+        'links.Links_id.*',
+        'translations.*', 
+        'city.translations.*'
+    ],
     filter: {
         status: {
             _eq: 'published'
@@ -90,13 +96,11 @@ definePageMeta({
     }
 })
 </script>
+
 <template>
     <div class="absoluteFull centered" v-if="article">
         <PanelMain :title="t('pages.news.title')" backButtonURL="/news">
             <PanelCardNews :article="article"  :summary="false" />
-            
         </PanelMain>
-
-        
     </div>
 </template>

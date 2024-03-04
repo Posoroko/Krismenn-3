@@ -34,15 +34,15 @@ const country = computed(() => {
             
             <address class="w100 flex wrap" v-if="date">
                 <span class="cardText_format fontColor_light">
-                    {{ city ? `${city.name}, ` : '' }}
+                    {{ city ? `${city.name},&nbsp` : '' }}
                 </span> 
 
                 <span class="cardText_format fontColor_light">
-                    {{ region ? `${region.name}, `: '' }}
+                     {{ region ? `${region.name},&nbsp`: '' }}
                 </span> 
                 
                 <span class="cardText_format fontColor_light">
-                    {{ country ? country.name : '' }}
+                     {{ country ? country.name : '' }}
                 </span>
             </address>
         </div>

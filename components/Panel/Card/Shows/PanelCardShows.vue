@@ -19,7 +19,7 @@ const props = defineProps({
 
 <template>
     <div class="card relative h100" :class="[ fullSize ? 'fullSize' : 'small']" v-if="show">
-        <div class="frame relative">
+        <div class="frame relative r">
             <!-- <picture>
                 <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
         
@@ -152,6 +152,20 @@ const props = defineProps({
 @media (max-width: 899px) {
     .card.small {
         margin-bottom: 20px;
+    }
+}
+@media (max-width: 900px) {
+    .image {
+        width: 350px;
+    }
+    .card.fullSize .frame {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+    .card.fullSize .imagesFrame {
+        flex-direction: row;
+        flex-shrink: 0;
     }
 }
 </style>
