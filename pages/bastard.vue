@@ -61,11 +61,7 @@ useHead( useHeadContent );
 
 <template>
     <div class="absoluteFull centered" v-if="content">
-        <h1 class="fontColor_light cardText_format">
-            <span v-for="t in content.translations">{{ t.languages_code }}</span>
-
-        </h1>
-        <!-- <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
+        <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
             <div class="frame">
                 <img :src="`${directusBaseUrl}assets/${content.mainImage}`"
                     class="objectFitCover"  alt="Bastard, de Krismenn">
@@ -98,7 +94,7 @@ useHead( useHeadContent );
                     </template>
                 </PanelSection>
             </div>
-        </PanelMain> -->
+        </PanelMain>
     </div>
 </template>
 

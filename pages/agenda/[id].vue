@@ -1,43 +1,161 @@
 <script setup>
 import { directusBaseUrl, directusGetItems } from '@/directus/directus.js';
-
+const getItems = directusGetItems();
 const { t, locale } = useI18n();
 
 const route = useRoute();
-console.log(route.path)
 
-const appConfig = useAppConfig();
-const directusItems = appConfig.directus.items;
-const directusAssets = appConfig.directus.assets;
-
-const fetchUrl = `${directusItems}Agenda`;
-const fetchOptions = {
-    query: {
-        fields: ["*,city.*,category.*,category.translations.*,city.translations.*,city.region.isFrenchDepartment,city.region.depNumber,city.region.country.translations.*,show.*,show.translations.*, show.mainImage"],
-        filter: {
-            id: {
-                _eq: route.params.id
-            }
+const queryParams = {
+    fields: [ 
+        "*",
+        "show.*",
+        "category.*",
+        "category.translations.*",
+        "show.translations.*",
+        "city.*", "city.translations.*",
+        "city.region.*", "city.region.translations.*",
+        "city.region.country.*", "city.region.country.translations.*"
+    ],
+    filter: {
+        id: {
+            _eq: route.params.id
         }
-    }
+    },
+    deep: [
+        {
+            show: {
+                translations: {
+                    _filter: {
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            category: {
+                translations: {
+                    _filter: {
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            city: {
+                translations: {
+                    _filter: {
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            },
+        },
+        {
+            city: {
+                region: {
+                    translations: {
+                        _filter: {
+                            _or: [
+                                {
+                                    languages_code: {
+                                        _eq: locale.value
+                                    }
+                                },
+                                {
+                                    isDefault: {
+                                        _eq: true
+                                    }
+                                },
+                                
+                            ]
+                        }
+                    }
+                }
+            },
+        },
+        {
+            city: {
+                region: {
+                    country: {
+                        translations: {
+                            _filter: {
+                                _or: [
+                                    {
+                                        languages_code: {
+                                            _eq: locale.value
+                                        }
+                                    },
+                                    {
+                                        isDefault: {
+                                            _eq: true
+                                        }
+                                    },
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    ]
 }
 
 const { data: date } = await useAsyncData(
     "`date-${route.params.id}`",
     async () => {
-        const _items = await $fetch(fetchUrl, fetchOptions)
-        let item = _items.data[0];
+        const items = await getItems("Agenda", queryParams)
+        let item = items[0];
 
-        const propsWithTranslations = [item.show, item.category, item.city, item.city.region.country];
-
-        propsWithTranslations.forEach(prop => {
-
-            let _translations = {};
-            prop.translations.forEach(obj => {
-                _translations[obj.languages_code] = obj;
-            })
-            prop.translations = _translations;
-        })
+        if(item.show.translations.length > 1) {
+            item.show.translations = item.show.translations.filter( t => t.languages_code === locale.value)
+        }
+        if(item.category.translations.length > 1) {
+            item.category.translations = item.category.translations.filter( t => t.languages_code === locale.value)
+        }
+        if(item.city.translations.length > 1) {
+            item.city.translations = item.city.translations.filter( t => t.languages_code === locale.value)
+        }
+        if(item.city.region.translations.length > 1) {
+            item.city.region.translations = item.city.region.translations.filter( t => t.languages_code === locale.value)
+        }
+        if(item.city.region.country.translations.length > 1) {
+            item.city.region.country.translations = item.city.region.country.translations.filter( t => t.languages_code === locale.value)
+        }
 
         return item;
     }
@@ -77,14 +195,14 @@ definePageMeta({
                             {{ date.show.title }}
                         </p>
 
-                        <PanelCardAgendaCategory :categorySlug="date.category.slug" />
+                        <PanelCardAgendaCategory :categoryId="date.category.id" />
 
                         <p v-if="date.event" class="cardTitle_format">
                             {{ date.event }}
                         </p>
 
                         <p v-if="date.event_website">
-                            {{ date.event_Website }}
+                            {{ date.event_website }}
                         </p>
 
                         <address class="cardSubtitle_format fontColor_light">
@@ -93,9 +211,9 @@ definePageMeta({
                             </p>
 
                             <p>
-                                <span>{{ date.city.translations[locale].name }}, </span>
+                                <span>{{ date.city.translations[0].name }}, </span>
                                 <span>{{ date.city.region.depNumber }}, </span>
-                                <span>{{ date.city.region.country.translations[locale].name }}</span>
+                                <span>{{ date.city.region.country.translations[0].name }}</span>
                             </p>
                         </address>
                     </div>

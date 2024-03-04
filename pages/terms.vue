@@ -12,19 +12,37 @@ const queryParams = {
         }
     },
     deep: {
-        transitions: {
+        translations: {
             _filter: {
-                languages_code: {
-                    _eq: 'fr'
-                }
+                _or: [
+                    {
+                        languages_code: {
+                            _eq: locale.value
+                        }
+                    },
+                    {
+                        isDefault: {
+                            _eq: true
+                        }
+                    },
+                    
+                ]
             }
         }
     }
 }
+
 const { data: terms } = await useAsyncData(
-    'albums',
+    'legal',
     async () => {
         const items = await getItems('Legal_notes', queryParams);
+
+        items.forEach( item => {
+            if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+        })
+
         return items
     },
     { server: true }
@@ -49,12 +67,12 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <PanelMain :title="t('pages.terms.title')">
+    <PanelMain :title="t('pages.terms.title')" v-if="terms">
         <div class="bigBox fontColor_light ">
             <div v-for="term in terms" :key="term.id">
-                <h2 class="cardTitle_format marTop50">{{ term.translations[0].title }}</h2>
+                <h2 class="cardTitle_format marTop50" v-if="term.translations[0]">{{ term.translations[0].title }}</h2>
 
-                <p class="cardText_format marTop20">{{ term.translations[0].text }}</p>
+                <p class="cardText_format marTop20" v-if="term.translations[0]">{{ term.translations[0].text }}</p>
             </div>
         </div>
     </PanelMain>

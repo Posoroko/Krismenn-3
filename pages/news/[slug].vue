@@ -26,33 +26,16 @@ const queryParams = {
                 _filter: {
                     _or: [
                         {
-                            defaultLocale: {
-                                _eq: 'default'
+                            languages_code: {
+                                _eq: locale.value
                             }
                         },
                         {
-                            _and: [
-                                {
-                                    languages_code: {
-                                        _eq: locale.value
-                                    }
-                                },
-                                {
-                                    _or: [
-                                        {
-                                            defaultLocale: {
-                                                _eq: 'noDefault'
-                                            }
-                                        },
-                                        {
-                                            defaultLocale: {
-                                                _eq: null
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                            isDefault: {
+                                _eq: true
+                            }
+                        },
+                        
                     ]
                 }
             }
@@ -61,9 +44,19 @@ const queryParams = {
             city: {
                 translations: {
                     _filter: {
-                        languages_code: {
-                            _eq: locale.value
-                        }
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
                     }
                 }
             }
@@ -76,6 +69,16 @@ const { data: article } = await useAsyncData(
     async () => {
         const items = await getItems('News', queryParams)
 
+        items.forEach( item => {
+            if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+
+            if(item.city.translations.length > 1) {
+                item.city.translations = item.city.translations.filter( t => t.languages_code === locale.value)
+                }
+            })
+        
         return items[0]
     },
     { server: true }
@@ -91,6 +94,9 @@ definePageMeta({
     <div class="absoluteFull centered" v-if="article">
         <PanelMain :title="t('pages.news.title')" backButtonURL="/news">
             <PanelCardNews :article="article"  :summary="false" />
+            
         </PanelMain>
+
+        
     </div>
 </template>

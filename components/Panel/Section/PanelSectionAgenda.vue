@@ -15,67 +15,143 @@ const queryParams = {
     fields: ['*', 'category.*, category.translations.*, show.*, show.translations.*, city.*, city.translations.*, city.region.*, city.region.translations.*, city.region.country.*, city.region.country.translations.*'],
     sort: ['date'],
     filter: props.filter ? props.filter : {},
-    deep:
-    {
-        show: {
-            translations: {
-                _filter: {
-                    languages_code: {
-                        _eq: locale.value
-                    }
-                }
-            }
-        },
-        category: {
-            translations: {
-                _filter: {
-                    languages_code: {
-                        _eq: locale.value
-                    }
-                }
-            }
-        },
-        city: {
-            translations: {
-                _filter: {
-                    languages_code: {
-                        _eq: locale.value
-                    }
-                }
-            }
-        },
-        city: {
-            region: {
+    deep: [
+        {
+            show: {
                 translations: {
                     _filter: {
-                        languages_code: {
-                            _eq: locale.value
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            category: {
+                translations: {
+                    _filter: {
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            city: {
+                translations: {
+                    _filter: {
+                        _or: [
+                            {
+                                languages_code: {
+                                    _eq: locale.value
+                                }
+                            },
+                            {
+                                isDefault: {
+                                    _eq: true
+                                }
+                            },
+                            
+                        ]
+                    }
+                }
+            },
+        },
+        {
+             city: {
+                region: {
+                    translations: {
+                        _filter: {
+                            _or: [
+                                {
+                                    languages_code: {
+                                        _eq: locale.value
+                                    }
+                                },
+                                {
+                                    isDefault: {
+                                        _eq: true
+                                    }
+                                },
+                                
+                            ]
                         }
                     }
                 }
-            }
+            },
         },
-        city: {
-            region: {
-                country: {
-                    translations: {
-                        _filter: {
-                            languages_code: {
-                                _eq: locale.value
+        {
+            city: {
+                region: {
+                    country: {
+                        translations: {
+                            _filter: {
+                                _or: [
+                                    {
+                                        languages_code: {
+                                            _eq: locale.value
+                                        }
+                                    },
+                                    {
+                                        isDefault: {
+                                            _eq: true
+                                        }
+                                    },
+                                    
+                                ]
                             }
                         }
                     }
                 }
             }
-        }
-    }
-
+        }        
+    ]
 }
 
 const { data: dates } = await useAsyncData(
     'dates',
     async () => {
         const items = await getItems('Agenda', queryParams)
+
+        items.forEach( item => {
+            if(item.show.translations.length > 1) {
+                item.show.translations = item.show.translations.filter( t => t.languages_code === locale.value)
+            }
+            if(item.category.translations.length > 1) {
+                item.category.translations = item.category.translations.filter( t => t.languages_code === locale.value)
+            }
+            if(item.city.translations.length > 1) {
+                item.city.translations = item.city.translations.filter( t => t.languages_code === locale.value)
+            }
+            if(item.city.region.translations.length > 1) {
+                item.city.region.translations = item.city.region.translations.filter( t => t.languages_code === locale.value)
+            }
+            if(item.city.region.country.translations.length > 1) {
+                item.city.region.country.translations = item.city.region.country.translations.filter( t => t.languages_code === locale.value)
+            }
+        })
 
         let reformatedItems = {};
 
@@ -102,6 +178,8 @@ const { data: dates } = await useAsyncData(
             year: parseInt(year, 10),
             months: reformatedItems[year]
         }));
+
+        
 
         return reformatedItems;
         // return items;
@@ -130,13 +208,14 @@ definePageMeta({
             <li>
                 <ul class="months" v-for="month in year.months" :key="month.month">
                     <li class="month">
-                        <h3 class="month cardTitle_S_format fontColor_light">{{ t(`dates.months[${month.month -
-                            1}]`) }}</h3>
+                        <h3 class="month cardTitle_S_format fontColor_light">
+                            {{ t(`dates.months[${month.month - 1}]`) }}
+                        </h3>
                     </li>
 
                     <ul class="dates">
                         <li v-for="date in month.dates" :key="date.id" class="">
-                            <PanelCardAgenda :date="date" />
+                            <PanelCardAgenda :date="date" v-if="date.show.translations[0]"/>
                         </li>
                     </ul>
                 </ul>

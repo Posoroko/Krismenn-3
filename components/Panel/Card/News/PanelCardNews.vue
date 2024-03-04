@@ -19,14 +19,13 @@ const directusAssets = appConfig.directus.assets;
         </div>
 
         <div class="contentBox">
-            <p class="date cardSubtitle_format fontColor_light">
+            <p class="date cardSubtitle_format fontColor_light" v-if="article.city.translations[0]">
                 <span class="cardSubtitle_format">{{ new Date(article.date_published).toLocaleDateString(0) }}, </span>
                 <span>{{ article.city.translations[0].name }}</span>
             </p>
-            <h1 v-if="summary" class="title cardTitle_format fontColor_light">{{ article.translations[0].title }}</h1>
+            <h1 class="title cardTitle_format fontColor_light">{{ article.translations[0].title }}</h1>
             <p v-if="summary" class="content cardText_format fontColor_light summary">{{ article.translations[0].content.slice(0, 200) }} ...</p>
             <p v-else class="content cardText_format fontColor_light">{{ article.translations[0].content }}</p>
-
 
             <PanelButtonReadMore class="readMore" v-if="summary" />
         </div>

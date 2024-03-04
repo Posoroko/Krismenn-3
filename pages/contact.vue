@@ -13,9 +13,19 @@ const queryParams = {
     deep: {
         translations: {
             _filter: {
-                languages_code: {
-                    _eq: locale.value
-                }
+                _or: [
+                    {
+                        languages_code: {
+                            _eq: locale.value
+                        }
+                    },
+                    {
+                        isDefault: {
+                            _eq: true
+                        }
+                    },
+                    
+                ]
             }
         }
     }
@@ -26,11 +36,16 @@ const { data : contacts } = await useAsyncData(
     async () => {
         const items = await getItems('Contact', queryParams)
 
+        items.forEach( item => {
+            if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+        })
+
         return items
     },
     { server: true }
 )
-
 
 definePageMeta({
     pageTransition: {

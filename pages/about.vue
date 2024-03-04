@@ -5,30 +5,26 @@ const { t, locale } = useI18n();
 // data fetching
 const getItems = directusGetItems();
 const queryParams = {
-    fields: ['*', '*.*'],
+    fields: [
+            '*', 
+            'translations.*',
+            'images.*'
+    ],
     deep: {
         translations: {
             _filter: {
                 _or: [
                     {
-                        defaultLocale: {
-                            _eq: 'default'
+                        languages_code: {
+                            _eq: locale.value
                         }
                     },
                     {
-                        _and: [
-                            {
-                                defaultLocale: {
-                                    _eq: 'noDefault'
-                                }
-                            },
-                            {
-                                languages_code: {
-                                    _eq: locale.value
-                                }
-                            }
-                        ]
-                    }
+                        isDefault: {
+                            _eq: true
+                        }
+                    },
+                    
                 ]
             }
         }
@@ -37,8 +33,13 @@ const queryParams = {
 const { data: content } = await useAsyncData(
     'about',
     async () => {
-        const items = await getItems('About', queryParams);
-        return items
+        const item = await getItems('About', queryParams);
+
+        if(item.translations.length > 1) {
+            item.translations = item.translations.filter( t => t.languages_code === locale.value)
+        }
+        
+        return item
     },
     { server: true }
 )
@@ -61,16 +62,12 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull" v-if="content">
+    <div class="absoluteFull centered">
         <PanelMain :title="t('pages.about.title')">
             <div class="bigBox">
-                <div class="images aside">
+                <div class="images">
                     <img class="aboutImage " v-for="image in content.images" :key="image.id" :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
                 </div>
-
-                <PanelSectionScroller class="images scroller">
-                    <img class="aboutImage " v-for="image in content.images" :key="image.id" :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
-                </PanelSectionScroller>
 
                 <div class="textContent">
                     <h2 class="cardTitle_format fontColor_light">
@@ -99,7 +96,7 @@ useHead( useHeadContent );
     display: none;
 }
 
-.images.aside {
+.images {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -116,18 +113,20 @@ useHead( useHeadContent );
     white-space: pre-wrap;
     margin-top: 20px;
 }
-@media (max-width: 768px) {
-    .bibBox {
+@media (max-width: 850px) {
+    .bigBox {
         flex-direction: column;
         gap: 30px;
     }
 
-    .images.aside {
-        display: none;
+    .images {
+        flex-direction: row;
+        padding: 10px;
+        border: 2px solid rgba(0, 37, 54, 0.582);
+        box-shadow: inset 0 0 10px 0 rgb(0, 37, 54);
+        overflow-x: scroll;
     }
-    .images.scroller {
-        display: flex;
-    }
+
     .aboutImage {
         width: auto;
         height: 200px;

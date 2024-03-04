@@ -19,37 +19,36 @@ const queryParams = {
             }
         ]
     },
-    // deep: {
-    //     translations: {
-    //         _filter: {
-    //             _or: [
-    //                 {
-    //                     dafaultLocale: {
-    //                         _eq: 'default'
-    //                     }
-    //                 },
-    //                 {
-    //                     _and: [
-    //                         {
-    //                             languages_code: locale.value
-    //                         },
-    //                         {
-    //                             dafaultLocale: {
-    //                                 _eq: 'noDefault'
-    //                             }
-    //                         }
-    //                     ]
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // }
+    deep: {
+        translations: {
+            _filter: {
+                _or: [
+                    {
+                        languages_code: {
+                            _eq: locale.value
+                        }
+                    },
+                    {
+                        isDefault: {
+                            _eq: true
+                        }
+                    }
+                ]
+            }
+        }
+    }
 }
 
 const { data: shows } = await useAsyncData(
     'shows',
     async () => {
         const items = await getItems('Shows', queryParams)
+
+        items.forEach((item) => {
+            if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+        })
 
         return items
     },
@@ -77,7 +76,7 @@ useHead( useHeadContent );
 
 <template>
     <div class="absoluteFull centered">
-        <PanelMain :title="t('pages.shows.title')" :showBackButton="false" drawerPosition="left" showStripeImage stripeImageSrc="/images/stripes/xl/brown.webp">
+        <PanelMain :title="t('pages.shows.title')" :showBackButton="false" v-if="shows">
             <p>
 
             </p>   

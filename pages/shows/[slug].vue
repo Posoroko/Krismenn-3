@@ -16,9 +16,18 @@ const queryParams = {
     deep: {
         translations: {
             _filter: {
-                languages_code: {
-                    _eq: locale.value
-                }
+                _or: [
+                    {
+                        languages_code: {
+                            _eq: locale.value
+                        }
+                    },
+                    {
+                        isDefault: {
+                            _eq: true
+                        }
+                    }
+                ]
             }
         }
     }
@@ -28,8 +37,13 @@ const { data: show } = await useAsyncData(
     `show/${route.params.slug}`,
     async () => {
         const items = await getItems('Shows', queryParams)
+        let item = items[0];
 
-        return items[0]
+        if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+
+        return item
     },
     { server: true }
 )

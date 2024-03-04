@@ -12,48 +12,63 @@ const queryParams = {
         },
     },
     sort: '-date_published',
-    deep: {
-        translations: {
-            _filter: {
-                _or: [
-                    {
-                        defaultLocale: {
-                            _eq: 'default'
+    deep:  [
+        {
+            translations: {
+                _filter: {
+                    _or: [
+                        {
+                            languages_code: {
+                                _eq: locale.value
+                            }
+                        },
+                        {
+                            isDefault: {
+                                _eq: true
+                            }
                         }
-                    },
-                    {
-                        _and: [
+                    ]
+                }
+            }
+        },
+        {
+            city: {
+                translations: {
+                    _filter: {
+                        _or: [
                             {
                                 languages_code: {
                                     _eq: locale.value
                                 }
                             },
                             {
-                                defaultLocale: {
-                                    _eq: 'noDefault'
+                                isDefault: {
+                                    _eq: true
                                 }
-                            }
+                            },
+                            
                         ]
-                    }
-                ]
-            }
-        },
-        city: {
-            translations: {
-                _filter: {
-                    languages_code: {
-                        _eq: locale.value
                     }
                 }
             }
         }
-    }
+    ]
 }
 
 const { data: news } = await useAsyncData(
     'News',
     async () => {
         const items = await getItems('News', queryParams)
+
+        items.forEach((item) => {
+            if(item.translations.length > 1) {
+                item.translations = item.translations.filter( t => t.languages_code === locale.value)
+            }
+
+            if(item.city.translations.length > 1) {
+                item.city.translations = item.city.translations.filter( t => t.languages_code === locale.value)
+            }
+        })
 
         return items
     },
@@ -90,7 +105,7 @@ useHead( useHeadContent );
                 <li v-for="article in news" :key="article.id" 
                     class="block frosty_border frosty_bg">
 
-                    <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)">
+                    <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
                         <PanelCardNews :article="article"  summary />
                     </NuxtLink>
                 </li>

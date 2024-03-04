@@ -30,13 +30,13 @@ const country = computed(() => {
                 {{ date.category.translations[0].displayName }}
             </p>
 
-            <h2 v-if="date.show" class="cardSubtitle_format fontColor_light">{{ date.show.translations[0].title }}</h2>
+            <h2 v-if="date.show" class="cardSubtitle_format fontColor_light">{{ date.show.title }}</h2>
             
-            <address v-if="date">
+            <address class="w100 flex wrap" v-if="date">
                 <span class="cardText_format fontColor_light">
                     {{ city ? `${city.name}, ` : '' }}
                 </span> 
-                <br>
+
                 <span class="cardText_format fontColor_light">
                     {{ region ? `${region.name}, `: '' }}
                 </span> 
@@ -60,6 +60,9 @@ const country = computed(() => {
 </template>
 
 <style scoped>
+h2 {
+    font-weight: 500;
+}
 .card:hover {
     filter: brightness(0.8);
 }

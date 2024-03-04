@@ -3,7 +3,7 @@ import { directusBaseUrl, directusGetItems } from '~/directus/directus';
 const { t, locale } = useI18n();
 
 const props = defineProps({
-    categorySlug: {
+    categoryId: {
         type: String,
         required: true
     }
@@ -39,7 +39,7 @@ const { data: cats } = await useAsyncData(
     <div class="box flex wrap">
         <p v-for="cat in cats" :key="cat.id" 
             class="tag"
-            :class="{ 'active' : categorySlug === cat.slug }">
+            :class="{ 'active' : categoryId === cat.id }">
             {{ cat.translations[0].displayName }}
         </p>
     </div>

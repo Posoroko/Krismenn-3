@@ -16,11 +16,6 @@ const { data: albums } = await useAsyncData(
     { server: true }
 )
 
-// keep track of the viewport width for the horizonal scrollers
-// const viewPortWidth = ref(window.innerWidth);
-const horizontalcrollerBreakpoint = 750;
-
-
 definePageMeta({
     pageTransition: {
         name: 'right'
