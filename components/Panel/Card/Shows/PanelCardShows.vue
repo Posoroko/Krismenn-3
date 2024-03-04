@@ -20,11 +20,13 @@ const props = defineProps({
 <template>
     <div class="card relative h100" :class="[ fullSize ? 'fullSize' : 'small']" v-if="show">
         <div class="frame relative">
-            <picture>
+            <!-- <picture>
                 <source :srcset="`${directusAssets}${show.mainImage}?key=panel-head-800x400-webp`">
         
                 <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
-            </picture>
+            </picture> -->
+
+            <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
 
             <div class="imagesFrame" v-if="fullSize">
                 <img class="image" v-for="img in show.images" :key="img.id" :src="`${directusAssets}${img.directus_files_id}`" alt="">
