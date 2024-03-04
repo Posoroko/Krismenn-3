@@ -28,7 +28,7 @@ const props = defineProps({
 
             <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
 
-            <div class="imagesFrame" v-if="fullSize">
+            <div class="imagesFrame flex column gap20" v-if="fullSize">
                 <img class="image" v-for="img in show.images" :key="img.id" :src="`${directusAssets}${img.directus_files_id}`" alt="">
             </div>
         </div>
