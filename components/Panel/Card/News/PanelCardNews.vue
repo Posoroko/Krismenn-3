@@ -1,7 +1,5 @@
 <script setup>
 const { t, locale } = useI18n();
-const localePath = useLocalePath()
-const dateToLacale = useDateToLocale();
 
 const props = defineProps({
     article: Object,
@@ -29,14 +27,15 @@ const directusAssets = appConfig.directus.assets;
             <p v-if="summary" class="content cardText_format fontColor_light summary">{{ article.translations[0].content.slice(0, 200) }} ...</p>
             <p v-else class="content cardText_format fontColor_light">{{ article.translations[0].content }}</p>
 
-            <nav class="links" v-if="!summary && article.links">
-                <ul>
-                    <li v-for="link in article.links" :key="link.Links_id.id" >
-                        <p class=" cardSubtitle_format fontColor_light">{{ link.Links_id.title }}</p>
-                        <a class="link cardText_format fontColor_light underline" :href="link.Links_id.url">{{ link.Links_id.url }}</a>
-                    </li>
-                </ul>
-            </nav>
+            <PanelSection 
+                :title="t('global.links')" 
+                showTopBorder 
+                v-if="!summary && article.links.length">
+                
+                <template #content>
+                    <PanelCardLinks :links="article.links" />
+                </template>
+            </PanelSection>
 
             <PanelButtonReadMore class="readMore" v-if="summary" />
         </div>
@@ -44,14 +43,6 @@ const directusAssets = appConfig.directus.assets;
 </template>
 
 <style scoped>
-.links {
-    padding: min(2vw, 20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.233);
-    margin-top: 50px;
-}
-.links .link {
-    padding-left: 20px;
-}
 .card {
     width: 100%;
     /* height: 100%; */

@@ -15,8 +15,8 @@ const props = defineProps({
 <template>
     <section class="w100"
             :class="[
-                        { 'showTopBorder': showTopBorder }, 
-                        { 'showBottomBorder': showBottomBorder }
+                { 'showTopBorder': showTopBorder }, 
+                { 'showBottomBorder': showBottomBorder }
             ]">
         <h1 class="sectionTitle">{{ title }}</h1>
         
@@ -29,6 +29,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
+section {
+    padding: min(2vw, 10px);
+}
 
 section.showTopBorder,
 section.showBottomBorder {
@@ -42,10 +45,10 @@ section.showBottomBorder {
     line-height: 1.8;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.773);
-    padding-left: 0.8rem;
+    /* padding-left: 0.8rem; */
 }
 
 .contentBox {
-    margin-top: min(2vw, 30px);
+    margin-top: min(2vw, 20px);
 }
 </style>

@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="panel noEvents flex relative">
+    <div class="panel noEvents flex relative w100">
         <div class="content relative grow flex column w100">
             <div class="panelTitleBox relative w100 flex row justifyBetween alignCenter">
                 <h1 v-if="title" class="w100 panelTitle centered">
@@ -30,10 +30,6 @@ const props = defineProps({
                 <slot>
 
                 </slot>
-
-                <!-- <div class="paddingBot r">
-                    hello
-                </div> -->
             </div>
         </div>      
     </div>

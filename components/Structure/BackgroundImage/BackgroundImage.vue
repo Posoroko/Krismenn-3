@@ -31,46 +31,46 @@ onMounted(() => {
 
 <template>
     <div class="frame" @click="handleClick">
+        <picture class="noEvents">
+            <source 
+                v-for="source in backgroundImage.sources" 
+                :key="source.id" 
+                :media="`(${source.media})`" 
+                :srcset="`${directusAssets}${backgroundImage.directusId.empty}?key=${source.key}`"
+                :type="source.fileType">
+
+                <img 
+                    class="emptyBGI allEvents" 
+                    :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`" 
+                    alt="Krismenn">
+        </picture>
+
         <picture class="picture noEvents">
             <source 
+                
                 v-for="source in backgroundImage.sources" 
                 :key="source.id" 
                 :media="`(${source.media})`" 
                 :srcset="`${directusAssets}${backgroundImage.directusId.full}?key=${source.key}`"
                 :type="source.fileType">
 
-                <img :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" alt="Krismenn">
+                <img 
+                    class="fullBGI allEvents" 
+                    :class="{ 'active': appState.backgroundFaded }"
+                    :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" alt="Krismenn">
         </picture>
-        
-        <div class="full">
-            <picture class="noEvents">
-                <source 
-                    v-for="source in backgroundImage.sources" 
-                    :key="source.id" 
-                    :media="`(${source.media})`" 
-                    :srcset="`${directusAssets}${backgroundImage.directusId.empty}?key=${source.key}`"
-                    :type="source.fileType">
-
-                    <img 
-                        class="emptyBGI noEvents" 
-                        :class="{ 'active': appState.backgroundFaded }" 
-                        :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`" 
-                        alt="Krismenn">
-            </picture>
-        </div>
     </div>
 </template>
 
 <style scoped>
 .frame {
-    position: absolute;
     width: 100%;
     height: 100%;
+    position: absolute;
     top: 0;
     left: 0;
     isolation: isolate;
     overflow: hidden;
-    isolation: isolate;
 }
 img {
     width: 100%;
@@ -80,21 +80,20 @@ img {
     transition: 600ms ease;
 }
 
-img.emptyBGI {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.emptyBGI {
+    opacity: 1;
+}
+.fullBGI {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
-    transition: 600ms ease;
-}
-.emptyBGI.active {
-    /* filter: brightness(0.6) contrast(1) saturate(1); */
-    transition: 600ms ease;
     opacity: 1;
-    transition: 600ms ease;
+    filter: blur(0px);
+    transition:  1000ms ease;
+}
+.fullBGI.active {
+    transition: 1000ms ease;
+    opacity: 0;
+    filter: blur(5px);
 }
 </style>
