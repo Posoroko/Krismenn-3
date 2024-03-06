@@ -3,13 +3,6 @@ export default defineAppConfig({
         items: "https://krismenn.monsieuredgar.com/items/",
         assets: "https://krismenn.monsieuredgar.com/assets/",
     },
-    panelStripeImages: {
-        teams: "louise.webp",
-        projects: "brown2.webp",
-        agenda: "scene-god-rays.webp",
-        listen: "folklore.webp",
-        contact: "brown.webp"
-    },
     backgroundImage: {
         directusId: {
             full: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',
@@ -74,59 +67,8 @@ export default defineAppConfig({
             
         ]
     },
-    themes: {
-        available: ['blue'],
-        blue: {
-            backgroundImage: {
-                fileName: "blue",
-                folderUrl: "/images/background/blue",
-                fallbackFormat: "jpg"
-            }
-        }
-    },
-    routes: {
-        index: {
-            en: "/",
-            fr: "/",
-            bzh: "/"
-        },
-        about: {
-            en: "/about",
-            fr: "/a-propos",
-            bzh: "/diwar-benn"
-        },
-        bastard: {
-            en: "/bastard",
-            fr: "/bastard",
-            bzh: "/bastard"
-        },
-        contact: {
-            en: "/contact",
-            fr: "/contact",
-            bzh: "/darempred"
-        },
-        shows: {
-            en: "/shows",
-            fr: "/spectacles",
-            bzh: "/abadennou"
-        },
-        agenda: {
-            en: "/agenda",
-            fr: "/agenda",
-            bzh: "/deiziataer"
-        },
-        listen: {
-            en: "/listen",
-            fr: "/ecouter",
-            bzh: "/selaou"
-        },
-        news: {
-            en: "/news",
-            fr: "/actualites",
-            bzh: "/keleier"
-        }
-    },
-    listeningPlatforms: [{
+    listeningPlatforms: [
+        {
             id: 0,
             ref: 'spotify',
             displayName: 'Spotify',
