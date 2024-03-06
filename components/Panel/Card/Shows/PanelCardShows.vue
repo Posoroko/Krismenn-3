@@ -92,7 +92,7 @@ const props = defineProps({
     transition: 300ms ease; 
 }
 .card.small {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.253);
+    box-shadow: var(--card-shadow);
 }
 .card.fullSize {
     box-shadow: none;

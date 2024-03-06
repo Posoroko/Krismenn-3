@@ -2,7 +2,14 @@
     --frosty-color: #ffffff30;
     --frosty-bg-color: #ffffff20;
     --frosty-font-color: #ffffff81;
+    --card-shadow: 0px 0px 5px #002b3641;
+    --card-shadow-hover: 0px 0px 8px #002b367e;
 }
+.card_shodow {
+    box-shadow: var(--card-shadow);
+    transition: 150ms ease;
+}
+
 .frosty_panel {
     background-color: #2b6a9733;
     backdrop-filter: blur(10px);

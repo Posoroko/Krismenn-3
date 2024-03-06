@@ -100,7 +100,7 @@ definePageMeta({
 <template>
     <div class="absoluteFull centered" v-if="article">
         <PanelMain :title="t('pages.news.title')" backButtonURL="/news">
-            <PanelCardNews :article="article"  :summary="false" />
+            <PanelCardNews :article="article"  fullSize />
         </PanelMain>
     </div>
 </template>

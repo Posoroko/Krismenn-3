@@ -103,10 +103,10 @@ useHead( useHeadContent );
 
             <ul class="flex column gap20">
                 <li v-for="article in news" :key="article.id" 
-                    class="block frosty_border frosty_bg">
+                    class="block frosty_bg">
 
                     <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
-                        <PanelCardNews :article="article"  summary />
+                        <PanelCardNews :article="article"  :fullSize="false" />
                     </NuxtLink>
                 </li>
             </ul>
