@@ -11,7 +11,7 @@ const directusAssets = appConfig.directus.assets;
 </script>
 
 <template>
-    <article class="card flex relative" v-if="article">
+    <article class="card relative" v-if="article">
         <div class="frame" :class="{ 'stripe' : summary === true }">
             <img :src="`${directusAssets}${article.image}?key=stripe-h400`" alt="">
         </div>
@@ -45,7 +45,7 @@ const directusAssets = appConfig.directus.assets;
 <style scoped>
 .card {
     width: 100%;
-    /* height: 100%; */
+    display: flex;
 }
 @media (hover : hover) {
     .readMore {
@@ -62,11 +62,7 @@ const directusAssets = appConfig.directus.assets;
     height: 500px;
     flex-shrink: 0;
 }
-.frame.stripe {
-    width: clamp(50px, 8vw, 100px);
-    height: auto;
-    flex-shrink: 0;
-}
+
 .frame img {
     width: 100%;
     height: 100%;
@@ -87,5 +83,19 @@ const directusAssets = appConfig.directus.assets;
 .content {
     margin-top: 20px;
     white-space: pre-wrap;
+}
+@media (max-width: 899px) {
+    .frame {
+        width: min(300px, 100%);
+        height: 250px;
+    }
+
+    .card {
+        padding: 20px;
+        flex-direction: column;
+    }
+    .contentBox {
+        padding-left: 0;
+    }
 }
 </style>

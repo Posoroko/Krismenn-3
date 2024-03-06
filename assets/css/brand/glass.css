@@ -41,10 +41,11 @@
 
 .frosty_font {
     color: var(--frosty-font-color);
-    fill: var(--frosty-font-color);
     transition: 300ms ease;
 }
-
+.frosty_fill {
+    fill: var(--frosty-font-color);
+}
 .frosty_font_hover:hover .frosty_font {
     color: #ffffff;
     fill: white;

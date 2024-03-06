@@ -9,6 +9,7 @@ const route = useRoute();
 const queryParams = {
     fields: [
         '*', 
+        'links.*',
         'translations.*',
         'images.*'
     ],
@@ -81,10 +82,6 @@ useHead( useHeadContent );
 </template>
 
 <style scoped>
-cardBox {
-    padding-bottom: 30px;
-
-}
 /* fullWidth is set in <PanelMain /> for a full page effect in the panel */
 .fullWidth .cardBox {
     padding-bottom: 0;

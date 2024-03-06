@@ -29,7 +29,8 @@ const props = defineProps({
             <img class="image block" :src="`${directusAssets}${show.mainImage}?key=panel-head-800x400-jpg`" alt="">
 
             <div class="imagesFrame flex column gap20" v-if="fullSize">
-                <img class="image" v-for="img in show.images" :key="img.id" :src="`${directusAssets}${img.directus_files_id}`" alt="">
+                <img class="image" v-for="img in show.images" :key="img.id"
+                    :src="`${directusAssets}${img.directus_files_id}`" alt="">
             </div>
         </div>
 
@@ -40,9 +41,11 @@ const props = defineProps({
                 <p class="cardSubtitle_format definition fontColor_light">{{ show.translations[0].definition }}</p>
             </div>
 
-            <p v-if="fullSize" class="description cardText_format fontColor_light">{{ show.translations[0].description }}</p>
+            <p v-if="fullSize" class="description cardText_format fontColor_light">{{ show.translations[0].description
+                }}</p>
 
-            <p v-else class="description cardText_format fontColor_light">{{ show.translations[0].description?.slice(0, 200) }}</p>
+            <p v-else class="description cardText_format fontColor_light">{{ show.translations[0].description?.slice(0,
+                200) }}</p>
 
             <div class="marTop50" v-if="fullSize">
                 <PanelSection :title="t('global.videos')" v-if="show.youtubes.length" showTopBorder>
@@ -51,12 +54,15 @@ const props = defineProps({
                     </template>
                 </PanelSection>
 
-                <PanelCardContactBox 
-                    v-if="show.telephone || show.email || show.website" 
-                    :email="show.email" 
-                    :telephone="show.telephone" 
-                    :website="show.website"/>
-                
+                <PanelSection :title="t('global.links')" v-if="fullSize && show.links" showTopBorder>
+                    <template #content>
+                        <PanelCardLinks :links="show.links" />
+                    </template>
+                </PanelSection>
+
+                <PanelCardContactBox v-if="show.telephone || show.email || show.website" :email="show.email"
+                    :telephone="show.telephone" :website="show.website" />
+
                 <PanelSection v-if="fullSize && showSlug" :title="t('pages.agenda.title')" showTopBorder>
                     <template #content>
                         <PanelSectionAgenda :filter="{ 
@@ -70,13 +76,13 @@ const props = defineProps({
                 </PanelSection>
 
             </div>
-            
-            <div class="flex justifyEnd marTop20" v-else >
+
+            <div class="flex justifyEnd marTop20" v-else>
                 <PanelButtonReadMore :href="`/shows/${show.slug}`" class="moreButton" />
             </div>
         </div>
     </div>
-    
+
 </template>
 
 <style scoped>

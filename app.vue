@@ -32,7 +32,7 @@ useHead({
         <WidgetCookiePromptMain class="app_cookie" />
     </ClientOnly>
     
-    <WidgetSocialMeida />
+    <WidgetSocialMedia />
   </div>
 </template>
 
