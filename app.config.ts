@@ -3,6 +3,19 @@ export default defineAppConfig({
         items: "https://krismenn.monsieuredgar.com/items/",
         assets: "https://krismenn.monsieuredgar.com/assets/",
     },
+    colorMode: {
+        mode: 'black',
+        backgroundImage: {
+            full: {
+                blue: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',
+                black:"758ab1b4-6e02-4798-83d3-f8db1c05cece"
+            },
+            empty: {
+                blue: "44959362-a309-49b2-a7ff-273393d2fd98",
+                black: "0e9a1d15-6d76-4fae-8587-7fc2d06e5028"
+            }
+        }
+    },
     backgroundImage: {
         directusId: {
             // full: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',,
