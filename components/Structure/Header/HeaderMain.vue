@@ -67,7 +67,8 @@ header .tabLinkText {
     height: 100%;
     font-family: var(--kText);
     font-size: clamp(1.5rem, 0.9vw + 0.1rem, 2rem);
-    color: rgb(225, 237, 245);
+    font-weight: 600;
+    color: rgb(210, 199, 212);
     display: flex;
     justify-content: center;
     align-items: center;

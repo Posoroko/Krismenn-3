@@ -2,9 +2,7 @@
 const { t, locale } = useI18n();
 
 definePageMeta({
-    pageTransition: {
-        name: 'right'
-    }
+    enterFrom: 'right'
 })
 // SEO, meta tags, head content
 
@@ -21,7 +19,9 @@ useHead( useHeadContent );
 <template>
     <div class="absoluteFull centered">
         <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
-            <PanelSectionAgenda />
+            <template #contentContainer>
+                <PanelSectionAgenda />
+            </template>
         </PanelMain>
     </div>
 </template>

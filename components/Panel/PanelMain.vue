@@ -10,7 +10,6 @@ const props = defineProps({
     title: String,
     backButtonURL: String,
 })
-
 </script>
 
 <template>
@@ -21,22 +20,48 @@ const props = defineProps({
                     {{ title }}
                 </h1>
 
-                <NuxtLink :to="localePath('/')"  class="homeButton absolute centered glass_corner pointer centered allEvents glowing_onHover">
-                    <WidgetIcon name="home" :size="24" type="homePageNavButton"/>
+                <NuxtLink :to="localePath('/')"
+                    class="homeButton absolute centered glass_corner pointer centered allEvents glowing_onHover">
+                    <WidgetIcon name="home" :size="24" type="homePageNavButton" />
                 </NuxtLink>
             </div>
-            
-            <div class="scrollBox w100 h100 flex column relative allEvents">
-                <slot>
+
+            <div class="scrollBox w100 h100 flex column relative allEvents" v-if="$slots.scrollBox">
+                <slot name="scrollBox">
 
                 </slot>
             </div>
-        </div>      
+
+            <div class="contentContainer grow" v-if="$slots.contentContainer">
+                <slot name="contentContainer">
+
+                </slot>
+            </div>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.slideFromLeft-enter-from {
+    opacity: 0;
+}
+.slideFromLeft-enter-to {
+    opacity: 1;
+}
+.slideFromLeft-enter-active {
+    transition: 500ms ease;
+}
+.slideFromLeft-leave-from {
+    opacity: 1;
+}
 
+.slideFromLeft-leave-to {
+    opacity: 0;
+}
+
+.slideFromLeft-leave-active {
+    transition: 500ms ease;
+}
 .panel {
     width: 1200px;
     height: 100%;
@@ -45,6 +70,7 @@ const props = defineProps({
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    background-color: #000000ab;
 }
 @media (max-width: 1296px) {
     /* 
@@ -77,6 +103,11 @@ const props = defineProps({
     color: var(--tabs-text-color);
     flex-shrink: 0;
     position: relative;
+}
+.contentContainer {
+    background-color: #ffffff09;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
 }
 .scrollBox {
     background-color: #ffffff09;

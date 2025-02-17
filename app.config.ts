@@ -5,8 +5,10 @@ export default defineAppConfig({
     },
     backgroundImage: {
         directusId: {
-            full: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',
-            empty: '44959362-a309-49b2-a7ff-273393d2fd98.png'
+            // full: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',,
+            full: "758ab1b4-6e02-4798-83d3-f8db1c05cece.jpg",
+            // empty: '44959362-a309-49b2-a7ff-273393d2fd98.png'
+            empty: "0e9a1d15-6d76-4fae-8587-7fc2d06e5028.jpg"
         },
         defaultSource: {
                 key: 'bgi-1080-jpg',

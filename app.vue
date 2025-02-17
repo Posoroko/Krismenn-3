@@ -2,8 +2,6 @@
 const { t, locale } = useI18n();
 const appState = useAppState();
 
-
-
 useHead({
     htmlAttrs: {
         lang: locale.value
@@ -17,26 +15,102 @@ useHead({
 </script>
 
 <template>
-  <div id="appBox" class="appBox" :class="appState.colorMode">
-    <StructureBackgroundImage class="app_bgImage" />
+    <div id="appBox" class="appBox" :class="appState.colorMode">
+        <StructureBackgroundImage class="app_bgImage" />
 
-    <StructureHeaderMain class="app_header" />
+        <StructureHeaderMain class="app_header" />
 
-    <StructureMainMain class="app_main">
-        <NuxtPage />
-    </StructureMainMain>
+        <StructureMainMain class="app_main">
 
-    <StructureFooterMain class="app_footer" />
-    
-    <ClientOnly>
-        <WidgetCookiePromptMain class="app_cookie" />
-    </ClientOnly>
-    
-    <WidgetSocialMedia />
-  </div>
+            <NuxtPage />
+
+        </StructureMainMain>
+
+        <StructureFooterMain class="app_footer" />
+
+        <ClientOnly>
+            <WidgetCookiePromptMain class="app_cookie" />
+        </ClientOnly>
+
+        <WidgetSocialMedia />
+    </div>
 </template>
 
 <style>
+.left-enter-from,
+.left-leave-to {
+    transform: translateX(-100%);
+}
+.left-enter-to,
+.left-leave-from,
+.right-enter-to,
+.right-leave-from {
+    transform: translateX(0%);
+}
+
+.right-enter-from,
+.right-leave-to {
+    transform: translateX(100%);
+}
+.bottom-enter-to,
+.bottom-leave-from {
+    transform: translateY(0%);
+}
+.bottom-enter-from,
+.bottom-leave-to {
+    transform: translateY(100%);
+}
+.top-enter-to,
+.top-leave-from {
+    transform: translateY(0%);
+}
+
+.top-enter-from,
+.top-leave-to {
+    transform: translateY(-100%);
+}
+
+
+.left-enter-active,
+.left-leave-active,
+.right-leave-active,
+.right-enter-active,
+.fade-leave-active,
+.fade-enter-active,
+.top-enter-active,
+.top-leave-active,
+.bottom-enter-active,
+.bottom-leave-active {
+    transition: 500ms ease;
+}
+
+.left-enter-from,
+.left-leave-to,
+.right-enter-from,
+.right-leave-to,
+.bottom-enter-from,
+.bottom-leave-to,
+.top-enter-from,
+.top-leave-to,
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.left-enter-to,
+.left-leave-from,
+.right-enter-to,
+.right-leave-from,
+.bottom-enter-to,
+.bottom-leave-from,
+.top-enter-to,
+.top-leave-from,
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+
+
 #appBox {
     height: 100vh;
     height: 100dvh;
@@ -55,72 +129,6 @@ useHead({
 #appBox.sepia {
     filter: saturate(1) contrast(1.1) brightness(1.1) hue-rotate(60deg);
     transition: all 300ms ease-in-out;
-}
-
-/* entering transition */
-.left-enter-active,
-.right-enter-active,
-.bottom-enter-active,
-.fade-enter-active,
-.top-enter-active {
-    transition: all 1.1s cubic-bezier(1,0,.35,1);
-}
-
-/* leaving transition */
-.left-leave-active,
-.right-leave-active,
-.bottom-leave-active,
-.fade-leave-active,
-.top-leave-active {
-    transition: all 0.5s cubic-bezier(1,0,.35,1);
-}
-
-/* leave in fade out */
-.bottom-leave-to,
-.left-leave-to,
-.right-leave-to,
-.fade-leave-to {
-    opacity: 0;
-}
-.fade-enter-from {
-    opacity: 0;
-}
-.fade-enter-to {
-    opacity: 1;
-}
-
-/* Vertical slide in */
-
-/* bottom */
-
-.bottom-enter-from {
-    transform: translateY(100%);
-}
-/* center */
-.bottom-leave-from,
-.bottom-enter-to {
-    transform: translateY(0%);
-}
-
-
-/* horizontal slide in */
-
-/* center */
-.left-enter-to,
-.left-leave-from,
-.right-enter-to,
-.right-leave-from {
-    transform: translateX(0%);
-}
-
-/* left */
-.left-enter-from {
-    transform: translateX(-100%);
-}
-/* right */
-
-.right-enter-from {
-    transform: translateX(100%);
 }
 
 </style>

@@ -49,6 +49,16 @@ export default {
             fr: "/spectacles",
             bzh: "/abadennou"
         },
+        "live/index": {
+            en: "/live",
+            fr: "/live",
+            bzh: "/live"
+        },
+        "studio/index": {
+            en: "/studio",
+            fr: "/studio",
+            bzh: "/studio"
+        },
         "agenda/index": {
             en: "/agenda",
             fr: "/agenda",

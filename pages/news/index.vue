@@ -76,9 +76,7 @@ const { data: news } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'right'
-    }
+    enterFrom: 'right'
 })
 // SEO, meta tags, head content
 
@@ -101,15 +99,17 @@ useHead( useHeadContent );
             :stripeImageDirectusUrl="activeImageUrl"
             showIntroText>
 
-            <ul class="flex column gap20">
-                <li v-for="article in news" :key="article.id" 
-                    class="block frosty_bg">
+            <template #scrollBox>
+                <ul class="flex column gap20">
+                    <li v-for="article in news" :key="article.id" 
+                        class="block frosty_bg">
 
-                    <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
-                        <PanelCardNews :article="article"  :fullSize="false" />
-                    </NuxtLink>
-                </li>
-            </ul>
+                        <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
+                            <PanelCardNews :article="article"  :fullSize="false" />
+                        </NuxtLink>
+                    </li>
+                </ul>
+            </template>
         </PanelMain>
     </div>
 </template>

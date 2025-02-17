@@ -164,9 +164,7 @@ const { data: date } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'fade'
-    }
+    enterFrom: 'fade'
 })
 </script>
 

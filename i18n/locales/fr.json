@@ -87,6 +87,18 @@
             "ogDescription": "Retrouvez ici tous les spectacles et projets de Krismenn.",
             "url": "/spectacles"
         },
+        "live": {
+            "title": "LIVE",
+            "ogTitle": "Live projects",
+            "ogDescription": "Live projects",
+            "url": "/live"
+        },
+        "studio": {
+            "title": "STUDIO",
+            "ogTitle": "Studio project",
+            "ogDescription": "Studio projects",
+            "url": "/studio"
+        },
         "bastard": {
             "title": "BASTARD",
             "ogTitle": "Bastard",

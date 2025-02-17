@@ -54,9 +54,7 @@ const { data: show } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'fade'
-    }
+    enterFrom: 'fade'
 })
 
 // SEO, meta tags, head content

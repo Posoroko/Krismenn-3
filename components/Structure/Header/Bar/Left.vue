@@ -7,7 +7,8 @@ const route = useRoute();
 
 const tabs = [
     { id: 0, key: 'bastard' },
-    { id: 1, key: 'shows' },
+    { id: 1, key: 'live' },
+    { id: 2, key: 'studio' },
 ];
 
 </script>

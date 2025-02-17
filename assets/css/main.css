@@ -18,3 +18,11 @@ html {
         --gutter-thickness: 36px;
     }
 }
+
+
+
+:root {
+    --panel-transition-delay-start: 250ms;
+    --panel-transition-delay-end: 250ms;
+    --panel-transition-duration: 500ms;
+}

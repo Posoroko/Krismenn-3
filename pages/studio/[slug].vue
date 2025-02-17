@@ -1,14 +1,21 @@
 <script setup>
 import { directusGetItems } from '@/directus/directus.js';
+const getItems = directusGetItems();
+
 const { t, locale } = useI18n();
 
-// data fetching
-const getItems = directusGetItems();
+const route = useRoute();
+
 const queryParams = {
-    fields: ['*', 'translations.*'],
+    fields: [
+        '*', 
+        'links.*',
+        'translations.*',
+        'images.*'
+    ],
     filter: {
-        category: {
-            _eq: 'legalTerms'
+        slug: {
+            _eq: route.params.slug
         }
     },
     deep: {
@@ -24,26 +31,24 @@ const queryParams = {
                         isDefault: {
                             _eq: true
                         }
-                    },
-                    
+                    }
                 ]
             }
         }
     }
 }
 
-const { data: terms } = await useAsyncData(
-    'legal',
+const { data: show } = await useAsyncData(
+    `show/${route.params.slug}`,
     async () => {
-        const items = await getItems('Legal_notes', queryParams);
+        const items = await getItems('Shows', queryParams)
+        let item = items[0];
 
-        items.forEach( item => {
-            if(item.translations.length > 1) {
+        if(item.translations.length > 1) {
                 item.translations = item.translations.filter( t => t.languages_code === locale.value)
             }
-        })
 
-        return items
+        return item
     },
     { server: true }
 )
@@ -54,7 +59,7 @@ definePageMeta({
 
 // SEO, meta tags, head content
 
-const pageRef = "terms";
+const pageRef = ref( show.title);
 const ogUrl = computed(() => {
     let url = t(`pages.${pageRef}.url`);
 
@@ -65,15 +70,19 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <PanelMain :title="t('pages.terms.title')" v-if="terms">
-        <template #scrollBox>
-            <div class="bigBox fontColor_light ">
-                <div v-for="term in terms" :key="term.id">
-                    <h2 class="cardTitle_format marTop50" v-if="term.translations[0]">{{ term.translations[0].title }}
-                    </h2>
-
-                    <p class="cardText_format marTop20" v-if="term.translations[0]">{{ term.translations[0].text }}</p>
-                </div>
-            </div></template>
-    </PanelMain>
+    <div class="absoluteFull centered" v-if="show">
+        <PanelMain :title="show.translations[0].title" backButtonURL="/shows">
+            <div class="cardBox flex column gap50">
+                <PanelCardShows :show="show" :fullSize="true" />
+            </div>
+        </PanelMain>
+    </div>
 </template>
+
+<style scoped>
+/* fullWidth is set in <PanelMain /> for a full page effect in the panel */
+.fullWidth .cardBox {
+    padding-bottom: 0;
+}
+
+</style>

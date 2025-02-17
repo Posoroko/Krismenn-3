@@ -48,9 +48,7 @@ const { data : contacts } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'bottom'
-    }
+    enterFrom: 'bottom'
 })
 // SEO, meta tags, head content
 
@@ -65,63 +63,57 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="bigBox 
-                absoluteFull centered">
+    <div class="bigBox absoluteFull centered">
         <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
-            <ul class="h100 flex column justifyCenter gap20">
-                <li v-for="contact in contacts" :key="contact.id" 
-                    class="flex column">
-                    <h3 class="cardTitle_format fontColor_light">
-                        {{ contact.translations[0].title }}
-                    </h3>
+            <template #scrollBox>
+                <ul class="h100 flex column justifyCenter gap20">
+                    <li v-for="contact in contacts" :key="contact.id" class="flex column">
+                        <h3 class="cardTitle_format fontColor_light">
+                            {{ contact.translations[0].title }}
+                        </h3>
 
-                    <span class="flex column alignStart gap10">
-                        <span v-if="contact.telephone" 
-                                class=" infoLine 
+                        <span class="flex column alignStart gap10">
+                            <span v-if="contact.telephone" class=" infoLine 
                                 frosty_border glowing_onHover
                                 flex alignCenter gap20">
 
-                            <span class="iconBox">
-                                <WidgetIconsCall />
+                                <span class="iconBox">
+                                    <WidgetIconsCall />
+                                </span>
+
+                                <a :href="`call:${contact.telephone}`" class="cardSubtitle_format fontColor_light">
+                                    {{ contact.telephone }}
+                                </a>
                             </span>
 
-                            <a  :href="`call:${contact.telephone}`"
-                                class="cardSubtitle_format fontColor_light">
-                                {{ contact.telephone }}
-                            </a>
-                        </span >
-
-                        <span v-if="contact.email" 
-                                    class=" infoLine 
+                            <span v-if="contact.email" class=" infoLine 
                                             frosty_border glowing_onHover
                                             flex alignCenter gap20">
-                            <span class="iconBox">
-                                <WidgetIconsEmail />
+                                <span class="iconBox">
+                                    <WidgetIconsEmail />
+                                </span>
+
+                                <a :href="`mailto:${contact.email}`" class="cardSubtitle_format fontColor_light">
+                                    {{ contact.email }}
+                                </a>
                             </span>
 
-                            <a :href="`mailto:${contact.email}`" 
-                                class="cardSubtitle_format fontColor_light" >
-                                {{ contact.email }}
-                            </a>
-                        </span >
-
-                        <span v-if="contact.website" 
-                            class=" infoLine 
+                            <span v-if="contact.website" class=" infoLine 
                                     frosty_border glowing_onHover
                                     flex alignCenter gap20 ">
 
-                            <span class="iconBox">
-                                <WidgetIconsWebsite />
-                            </span>
+                                <span class="iconBox">
+                                    <WidgetIconsWebsite />
+                                </span>
 
-                            <a :href="contact.website" 
-                                class="cardSubtitle_format fontColor_light" >
-                                {{ contact.website }}
-                            </a>
-                        </span >
-                    </span>
-                </li>
-            </ul>
+                                <a :href="contact.website" class="cardSubtitle_format fontColor_light">
+                                    {{ contact.website }}
+                                </a>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </template>
         </PanelMain>
     </div>
 </template>

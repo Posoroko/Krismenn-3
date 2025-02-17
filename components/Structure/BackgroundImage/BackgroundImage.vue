@@ -30,35 +30,17 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="frame" @click="handleClick">
-        <picture class="noEvents">
-            <source 
-                v-for="source in backgroundImage.sources" 
-                :key="source.id" 
-                :media="`(${source.media})`" 
-                :srcset="`${directusAssets}${backgroundImage.directusId.empty}?key=${source.key}`"
-                :type="source.fileType">
+    <div class="frame background" @click="handleClick" :class="{ 
+            'faded': appState.backgroundFaded 
+        }">
 
-                <img 
-                    class="emptyBGI allEvents" 
-                    :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`" 
-                    alt="Krismenn">
-        </picture>
+        <img class="faded allEvents"
+            :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`"
+            alt="Krismenn">
 
-        <picture class="picture noEvents">
-            <source 
-                
-                v-for="source in backgroundImage.sources" 
-                :key="source.id" 
-                :media="`(${source.media})`" 
-                :srcset="`${directusAssets}${backgroundImage.directusId.full}?key=${source.key}`"
-                :type="source.fileType">
-
-                <img 
-                    class="fullBGI allEvents" 
-                    :class="{ 'active': appState.backgroundFaded }"
-                    :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`" alt="Krismenn">
-        </picture>
+        <img class="notFaded allEvents"
+            :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`"
+            alt="Krismenn">
     </div>
 </template>
 
@@ -73,27 +55,41 @@ onMounted(() => {
     overflow: hidden;
 }
 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: 600ms ease;
-}
-
-.emptyBGI {
-    opacity: 1;
-}
-.fullBGI {
+    
     position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    filter: blur(0px);
-    transition:  1000ms ease;
+    
+    /* object-fit: cover;
+    object-position: center; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-.fullBGI.active {
-    transition: 1000ms ease;
+img.notFaded {
+    z-index: 1;
+    width:  100%;
+    scale: 1;
+    /* No delay */
+    transition: scale 500ms ease; 
+}
+.background.faded img.notFaded {
+    scale: 1.02;
+    /* with delay */
+    transition: scale 500ms ease 800ms;
+}
+img.faded {
+    width: 100%;
+    scale: 1;
+    z-index: 2;
+    filter: brightness(0.4);
     opacity: 0;
-    filter: blur(5px);
+    /* No delay for scale transition*/
+    transition: opacity var(--panel-transition-duration) ease, scale 500ms ease;
+}
+.background.faded img.faded {
+    /* width: 100%; */
+    scale: 1.02;
+    opacity: 1;
+    /* with delay for scale transition*/
+    transition: opacity var(--panel-transition-duration) ease, scale 500ms ease 800ms;
 }
 </style>

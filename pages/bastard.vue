@@ -43,9 +43,7 @@ const { data: content } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'left'
-    }
+    enterFrom: 'left'
 })
 // SEO, meta tags, head content
 
@@ -61,39 +59,43 @@ useHead( useHeadContent );
 
 <template>
     <div class="absoluteFull centered" v-if="content">
-        <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left" :showStripeImage="false">
-            <div class="frame">
-                <img :src="`${directusBaseUrl}assets/${content.mainImage}`"
-                    class="objectFitCover"  alt="Bastard, de Krismenn">
-            </div>
+        <PanelMain :title="t('pages.bastard.title')" :showBackButton="false" drawerPosition="left"
+            :showStripeImage="false">
+            <template #scrollBox>
+                <div class="frame">
+                    <img :src="`${directusBaseUrl}assets/${content.mainImage}`" class="objectFitCover"
+                        alt="Bastard, de Krismenn">
+                </div>
 
-            <div class="contentBox">
-                <PanelSection title="" :showTopBorder="false">
-                    <template #content>
-                        <p class="cardText_format fontColor_light">
-                            {{ content.translations[0].text }}
-                        </p>
-                    </template>
-                </PanelSection>
+                <div class="contentBox">
+                    <PanelSection title="" :showTopBorder="false">
+                        <template #content>
+                            <p class="cardText_format fontColor_light">
+                                {{ content.translations[0].text }}
+                            </p>
+                        </template>
+                    </PanelSection>
 
-                <PanelSection :title="t('global.moreInfo')" class="marTop50" showTopBorder>
-                    <template #content>
-                        <p class=" cardText_format fontColor_light flex gap20 alignEnd">
-                            <span>Sur le site de Teatr Piba: </span>
+                    <PanelSection :title="t('global.moreInfo')" class="marTop50" showTopBorder>
+                        <template #content>
+                            <p class=" cardText_format fontColor_light flex gap20 alignEnd">
+                                <span>Sur le site de Teatr Piba: </span>
 
-                            <a class="cardSubtitle_format underline" href="https://www.teatrpiba.bzh/project/bastard-2025/">
-                                www.teatrpiba.bzh
-                            </a>
-                        </p>
-                    </template>
-                </PanelSection>
+                                <a class="cardSubtitle_format underline"
+                                    href="https://www.teatrpiba.bzh/project/bastard-2025/">
+                                    www.teatrpiba.bzh
+                                </a>
+                            </p>
+                        </template>
+                    </PanelSection>
 
-                <PanelSection title="Bastard Player" class="marTop50" showTopBorder>
-                    <template #content>
-                        <PanelCardBastard />
-                    </template>
-                </PanelSection>
-            </div>
+                    <PanelSection title="Bastard Player" class="marTop50" showTopBorder>
+                        <template #content>
+                            <PanelCardBastard />
+                        </template>
+                    </PanelSection>
+                </div>
+            </template>
         </PanelMain>
     </div>
 </template>

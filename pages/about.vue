@@ -45,9 +45,7 @@ const { data: content } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-    name: 'bottom'
-    }
+    enterFrom: 'bottom'
 })
 // SEO, meta tags, head content
 
@@ -64,21 +62,24 @@ useHead( useHeadContent );
 <template>
     <div class="absoluteFull centered">
         <PanelMain :title="t('pages.about.title')">
-            <div class="bigBox">
-                <div class="images">
-                    <img class="aboutImage " v-for="image in content.images" :key="image.id" :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
-                </div>
+            <template #scrollBox>
+                <div class="bigBox">
+                    <div class="images">
+                        <img class="aboutImage " v-for="image in content.images" :key="image.id"
+                            :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
+                    </div>
 
-                <div class="textContent">
-                    <h2 class="cardTitle_format fontColor_light">
-                        {{ content.translations[0].title }}
-                    </h2>
+                    <div class="textContent">
+                        <h2 class="cardTitle_format fontColor_light">
+                            {{ content.translations[0].title }}
+                        </h2>
 
-                    <p class="text cardText_format fontColor_light">
-                        {{ content.translations[0].text }}
-                    </p>
+                        <p class="text cardText_format fontColor_light">
+                            {{ content.translations[0].text }}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </template>
         </PanelMain>
     </div>
 </template>

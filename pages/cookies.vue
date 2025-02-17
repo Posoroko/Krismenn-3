@@ -48,9 +48,7 @@ const { data: items } = await useAsyncData(
 )
 
 definePageMeta({
-    pageTransition: {
-        name: 'fade'
-    }
+    enterFrom: 'fade'
 })
 
 // SEO, meta tags, head content
@@ -67,12 +65,15 @@ useHead( useHeadContent );
 
 <template>
     <PanelMain :title="t('pages.cookies.title')">
-        <div class="bigBox fontColor_light ">
-            <div v-for="item in items" :key="item.id">
-                <h2 class="cardTitle_format marTop50" v-if="item.translations[0]">{{ item.translations[0].title }}</h2>
+        <template #scrollBox>
+            <div class="bigBox fontColor_light ">
+                <div v-for="item in items" :key="item.id">
+                    <h2 class="cardTitle_format marTop50" v-if="item.translations[0]">{{ item.translations[0].title }}
+                    </h2>
 
-                <p class="cardText_format marTop20" v-if="item.translations[0]">{{ item.translations[0].text }}</p>
+                    <p class="cardText_format marTop20" v-if="item.translations[0]">{{ item.translations[0].text }}</p>
+                </div>
             </div>
-        </div>
+        </template>
     </PanelMain>
 </template>

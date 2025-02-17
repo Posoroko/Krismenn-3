@@ -27,9 +27,15 @@
     background-color: #455f7333;
     border: 2px solid #ffffff36;
     backdrop-filter: blur(10px);
+    /* blue */
     box-shadow:
         0 0 10px hsla(199, 100%, 59%, 0.493),
         inset 0 0 10px hsla(199, 100%, 59%, 0.267);
+
+    /* black */
+    box-shadow:
+        0 0 10px hsla(0, 0%, 19%, 0.493),
+        inset 0 0 10px hsla(0, 0%, 19%, 0.267);
     transition: 150ms ease;
 }
 
