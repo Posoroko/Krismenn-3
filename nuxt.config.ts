@@ -9,7 +9,9 @@ export default defineNuxtConfig({
           ]
       }
   },
-
+  nitro: {
+    preset: 'netlify'
+  },
   ssr: true,
   spaLoadingTemplate: false,
   devtools: { enabled: false },
@@ -36,7 +38,7 @@ export default defineNuxtConfig({
   i18n,
 
   site: {
-      url: 'https://krismenn.com',
+    //   url: 'https://krismenn.com',
       name: 'Krismenn',
   },
 
