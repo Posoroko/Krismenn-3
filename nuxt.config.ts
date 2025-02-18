@@ -3,7 +3,10 @@ import i18n from './i18n.config';
 export default defineNuxtConfig({
   vite: {
       server: {
-          allowedHosts: true
+          allowedHosts: [
+            'http://localhost:3000',
+            'https://krismenn.netlify.app'
+          ]
       }
   },
 
