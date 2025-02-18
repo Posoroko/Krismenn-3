@@ -38,7 +38,6 @@ const currentIndex = defineModel()
 .arrow {
     width: 48px;
     aspect-ratio: 1;
-    color: white;
     font-size: 32px;
     cursor: pointer;
     display: block;
@@ -48,9 +47,6 @@ const currentIndex = defineModel()
 }
 .arrow.right {
     transform: rotate(180deg);
-}
-.arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Pagination dots */
