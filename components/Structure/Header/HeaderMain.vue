@@ -42,8 +42,10 @@ function handleShake(event) {
     }
 }
 
-// Add event listener for device motion
-window.addEventListener("devicemotion", handleShake);
+onMounted(() => {
+    // Add event listener for device motion
+    window.addEventListener("devicemotion", handleShake);
+})
 
 </script>
 
