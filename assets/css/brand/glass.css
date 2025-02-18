@@ -11,6 +11,12 @@
     --frosty-surface-shadow-color: hsla(0, 0%, 56%, 0.493);
     --frosty-surface-inset-shadow-color: hsla(0, 0%, 52%, 0.329);
 }
+.appBox.white {
+    --frosty-font-color: #ffffff81;
+    --frosty-surface-hove-bg-color: #455f7333;
+    --frosty-surface-shadow-color: hsla(0, 0%, 100%, 0.493);
+    --frosty-surface-inset-shadow-color: hsla(0, 0%, 100%, 0.329);
+}
 .frosty_surface {
     color: var(--frosty-font-color);
     fill: var(--frosty-font-color);

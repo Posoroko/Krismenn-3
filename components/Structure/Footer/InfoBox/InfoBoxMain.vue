@@ -55,6 +55,13 @@ function toggleColorMode(mode) {
                     >
                         black
                     </button>
+
+                    <button @click="toggleColorMode('white')"
+                        class="frosty_surface pointer"
+                        :class="[appState.colorMode === 'white' ? 'glow_always' : 'glow_on_hover']"
+                    >
+                        white
+                    </button>
                 </div>
             </div>
         </div>
