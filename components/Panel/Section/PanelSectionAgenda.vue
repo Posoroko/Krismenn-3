@@ -197,7 +197,7 @@ definePageMeta({
 
 <template>
     <div class="box">
-        <ul v-if="dates.length > 0"
+        <ul v-if="dates?.length > 0"
             v-for="year in dates" :key="year.year" 
             class="years" 
             :aria-label="t('pages.agenda.dateList')">

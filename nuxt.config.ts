@@ -7,9 +7,9 @@ export default defineNuxtConfig({
       }
   },
 
-  ssr: true,
+  ssr: false,
   spaLoadingTemplate: false,
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: [
       '~/assets/css/base/reset.css',
