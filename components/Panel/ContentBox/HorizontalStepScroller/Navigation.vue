@@ -17,7 +17,7 @@ const currentIndex = defineModel()
 
 <template>
     <div class="navBox flex gap20 marTop20">
-        <button class="arrow glowing box glowing_onHover left" @click.stop.prevent="handleClick($event, 'previous')">
+        <button class="arrow frosty_surface glow_on_hover frosty_border box left" @click.stop.prevent="handleClick($event, 'previous')">
             <WidgetIconsLeftCheveron />
         </button>
 
@@ -28,7 +28,7 @@ const currentIndex = defineModel()
             </span>
         </div>
 
-        <button class="arrow glowing box glowing_onHover right" @click.stop.prevent="handleClick($event, 'next')">
+        <button class="arrow frosty_surface glow_on_hover frosty_border box  right" @click.stop.prevent="handleClick($event, 'next')">
             <WidgetIconsLeftCheveron />
         </button>
     </div>
@@ -41,7 +41,6 @@ const currentIndex = defineModel()
     color: white;
     font-size: 32px;
     cursor: pointer;
-    border: 1px solid rgb(80, 80, 80);
     display: block;
 }
 .arrow * {

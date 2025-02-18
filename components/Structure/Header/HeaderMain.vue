@@ -19,7 +19,7 @@ function changeColorMode() {
     <header class="absoluteFull noEvents" :class="{ 'panelOpen': route.path.length > 4 }" >
         <nav class="w100 h100 noEvents">
             <ul class="w100 h100 noEvents">
-                <div class="box corner topLeftBox centered allEvents glowing_onHover">
+                <div class="box corner topLeftBox centered allEvents frosty_surface glow_on_hover">
 
                 </div>
             

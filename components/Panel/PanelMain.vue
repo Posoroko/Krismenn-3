@@ -21,7 +21,7 @@ const props = defineProps({
                 </h1>
 
                 <NuxtLink :to="localePath('/')"
-                    class="homeButton absolute centered glass_corner pointer centered allEvents glowing_onHover">
+                    class="homeButton absolute centered pointer centered allEvents frosty_surface glow_on_hover">
                     <WidgetIcon name="home" :size="24" type="homePageNavButton" />
                 </NuxtLink>
             </div>
@@ -70,7 +70,7 @@ const props = defineProps({
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #000000ab;
+   
 }
 @media (max-width: 1296px) {
     /* 
@@ -104,6 +104,7 @@ const props = defineProps({
     flex-shrink: 0;
     position: relative;
 }
+
 .contentContainer {
     background-color: #ffffff09;
     backdrop-filter: blur(10px);

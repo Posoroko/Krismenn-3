@@ -1,94 +1,35 @@
-:root {
-    --frosty-color: #ffffff30;
-    --frosty-bg-color: #ffffff20;
+
+.appBox.blue {
     --frosty-font-color: #ffffff81;
-    --card-shadow: 0px 0px 5px #002b3641;
-    --card-shadow-hover: 0px 0px 8px #002b367e;
+    --frosty-surface-hove-bg-color: #455f7333;
+    --frosty-surface-shadow-color: hsla(199, 100%, 59%, 0.493);
+    --frosty-surface-inset-shadow-color: hsla(199, 100%, 59%, 0.329);
 }
-.card_shodow {
-    box-shadow: var(--card-shadow);
-    transition: 150ms ease;
+.appBox.black {
+    --frosty-font-color: #ffffff81;
+    --frosty-surface-hove-bg-color: #455f7333;
+    --frosty-surface-shadow-color: hsla(0, 0%, 56%, 0.493);
+    --frosty-surface-inset-shadow-color: hsla(0, 0%, 52%, 0.329);
 }
-
-.frosty_panel {
-    background-color: #2b6a9733;
-    backdrop-filter: blur(10px);
-    box-shadow:
-            0 1px 3px 0 rgba(0, 32, 51, 0.288),
-            inset 0 0px 5px 2px rgba(115, 204, 255, 0.048);
-}
-.glowing_onHover {
-    background-color: transparent;
+.frosty_surface {
+    color: var(--frosty-font-color);
+    fill: var(--frosty-font-color);
     border: 2px solid transparent;
-}
-
-.glowing,
-.glowing_onHover:hover {
-    background-color: #455f7333;
-    border: 2px solid #ffffff36;
-    backdrop-filter: blur(10px);
-    /* blue */
-    box-shadow:
-        0 0 10px hsla(199, 100%, 59%, 0.493),
-        inset 0 0 10px hsla(199, 100%, 59%, 0.267);
-
-    /* black */
-    box-shadow:
-        0 0 10px hsla(0, 0%, 19%, 0.493),
-        inset 0 0 10px hsla(0, 0%, 19%, 0.267);
     transition: 150ms ease;
 }
 
 .frosty_border {
     border: 2px solid var(--frosty-color);
-    box-shadow: 
-        0 1px 3px 0 rgba(0, 32, 51, 0.473)
-        ,
-        inset 0 0px 5px 2px rgba(115, 204, 255, 0.068)
-        ;
+    box-shadow:
+        0 1px 3px 0 rgba(0, 32, 51, 0.473),
+        inset 0 0px 5px 2px rgba(115, 204, 255, 0.068);
 }
 
-.frosty_bg {
-    background-color: var(--frosty-bg-color);
+.frosty_surface.glow_on_hover:hover,
+.frosty_surface.glow_always {
+    border: 2px solid var(--frosty-color);
+    box-shadow:
+        0 0 10px var(--frosty-surface-shadow-color),
+        inset 0 0 10px var(--frosty-surface-inset-shadow-color);
 }
-
-.frosty_font {
-    color: var(--frosty-font-color);
-    transition: 300ms ease;
-}
-.frosty_fill {
-    fill: var(--frosty-font-color);
-}
-.frosty_font_hover:hover .frosty_font {
-    color: #ffffff;
-    fill: white;
-    transition: 300ms ease;
-}
-
-/* .glass_corner,
-.glassSurface-onHover {
-    background-color: transparent;
-    border: 1px solid transparent;  
-    transition: 1500ms ease;
-}
-
-.glass_corner:hover,
-.glassSurface,
-.glassSurface-onHover:hover,
-.glassSurface_selected {
-    background-color: hsla(206, 25%, 36%, 0.199);
-    border: 2px solid #ffffff36;
-    backdrop-filter: blur(10px);
-    box-shadow: 
-        0 0 10px hsla(199, 100%, 59%, 0.493),
-        inset 0 0 10px hsla(199, 100%, 59%, 0.267);
-    transition: 150ms ease;
-}
-
- */
-
-
-
-
-
 

@@ -6,7 +6,7 @@ const { t, locale } = useI18n();
 <template>
     <div class="box">
         <a href="https://krismenn-bastard.netlify.app" class="frame centered">
-            <img class="glowing_onHover" src="/images/bastard/bastard.webp" />
+            <img class="frosty_surface glow_on_hover" src="/images/bastard/bastard.webp" />
         </a>
 
         <a href="https://krismenn-bastard.netlify.app " class="link cardSubtitle_format centered marTop20 frosty_font">
@@ -22,7 +22,11 @@ const { t, locale } = useI18n();
 <style scoped>
 img {
     width: min(400px, 80%);
+    scale: 1;
     margin: auto;
+}
+img:hover {
+   scale: 1.005;
 }
 .link {
     font-weight: 600;

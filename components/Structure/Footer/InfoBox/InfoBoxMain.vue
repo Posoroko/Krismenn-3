@@ -14,15 +14,22 @@ const links = [
         ref: 'cookies'
     }
 ]
+
+function toggleColorMode(mode) {
+    appState.value.colorMode = mode
+}
 </script>
 
 <template>
-    <div class="full relative" :class="[ appState.infoBoxOpen ? 'glowing' : 'glowing_onHover']">
+    <div 
+        class="full relative frosty_surface" 
+        :class="[appState.infoBoxOpen ? 'glow_always' : 'glow_on_hover']">
+
         <button @click="appState.infoBoxOpen = !appState.infoBoxOpen" class="centered full pointer ">
             <WidgetIcon name="info" type="homePageNavButton" :size="24"/>
         </button>
 
-        <div class="menuBox glowing flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
+        <div class="menuBox frosty_surface glow_always flex justifyEnd alignEnd" :class="{ 'open': appState.infoBoxOpen }">
             <div class="content flex column gap10">
                 <NuxtLink 
                     v-for="link in links" :key="link.id"
@@ -33,6 +40,22 @@ const links = [
                 </NuxtLink>
                 
                 <a class="cardText_format fontColor_light" href="https://posoroko.com">posoroko.com</a>
+
+                <div class="colorModeBox flex column">
+                    <button @click="toggleColorMode('blue')"
+                        class="frosty_surface pointer"
+                        :class="[appState.colorMode === 'blue' ? 'glow_always' : 'glow_on_hover']"
+                    >
+                        blue
+                    </button>
+
+                    <button @click="toggleColorMode('black')"
+                        class="frosty_surface pointer"
+                        :class="[appState.colorMode === 'black' ? 'glow_always' : 'glow_on_hover']"
+                    >
+                        black
+                    </button>
+                </div>
             </div>
         </div>
     </div>

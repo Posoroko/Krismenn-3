@@ -15,8 +15,8 @@ const tabs = [
 
 <template>
     <li v-for="tab in tabs" :key="tab.id"
-        class="box glowing_onHover" 
-        :class="{ 'glowing': route.fullPath.includes(t(`pages.${tab.key}.title`).toLowerCase()) }">
+        class="box frosty_surface glow_on_hover" 
+        :class="{ 'glow_always': route.fullPath.includes(t(`pages.${tab.key}.title`).toLowerCase()) }">
 
         <NuxtLink 
         :to="localePath(tab.key)"

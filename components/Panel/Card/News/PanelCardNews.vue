@@ -52,10 +52,10 @@ const directusAssets = appConfig.directus.assets;
 }
 
 .card.smallSize {
-    box-shadow: var(--card-shadow);
+    box-shadow: var(--box-shadow);
 }
 .card.smallSize:hover {
-    box-shadow: var(--card-shadow-hover);
+    box-shadow: var(--box-shadow-hover);
 }
 @media (hover : hover) {
     .readMore {

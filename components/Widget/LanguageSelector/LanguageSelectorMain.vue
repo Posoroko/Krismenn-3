@@ -35,10 +35,11 @@ onMounted(() => {
     <div class="languageBox
                 full relative 
                 flex column alignCenter justifyEvenly 
-                pointer"
-            :class="[ appState.languageSelectorOpen ? 'glowing' : 'glowing_onHover' ]" 
+                pointer
+                frosty_surface"
+            :class="[ appState.languageSelectorOpen ? 'glow_always' : 'glow_on_hover' ]" 
             @click="openLanguageSelector" data-target="languageBox">
-        <div class="window glowing noEvents" :class="{ 'open' : appState.languageSelectorOpen }">
+        <div class="window frosty_surface glow_always noEvents" :class="{ 'open' : appState.languageSelectorOpen }">
             <a href="#"
                 v-for="loc in locales" 
                 :key="loc.code" 

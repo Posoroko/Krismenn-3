@@ -74,7 +74,7 @@ useHead( useHeadContent );
 
                         <span class="flex column alignStart gap10">
                             <span v-if="contact.telephone" class=" infoLine 
-                                frosty_border glowing_onHover
+                                frosty_border frosty_surface glow_on_hover
                                 flex alignCenter gap20">
 
                                 <span class="iconBox">
@@ -87,7 +87,7 @@ useHead( useHeadContent );
                             </span>
 
                             <span v-if="contact.email" class=" infoLine 
-                                            frosty_border glowing_onHover
+                                            frosty_border frosty_surface glow_on_hover
                                             flex alignCenter gap20">
                                 <span class="iconBox">
                                     <WidgetIconsEmail />
@@ -99,7 +99,7 @@ useHead( useHeadContent );
                             </span>
 
                             <span v-if="contact.website" class=" infoLine 
-                                    frosty_border glowing_onHover
+                                    frosty_border frosty_surface glow_on_hover
                                     flex alignCenter gap20 ">
 
                                 <span class="iconBox">

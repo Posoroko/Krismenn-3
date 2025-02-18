@@ -27,6 +27,8 @@ onMounted(() => {
         appState.value.backgroundFaded = true;
     }
 })
+
+
 </script>
 
 <template>
@@ -35,11 +37,11 @@ onMounted(() => {
         }">
 
         <img class="faded allEvents"
-            :src="`${directusAssets}${backgroundImage.directusId.empty}?key=${backgroundImage.defaultSource.key}`"
+            :src="`${directusAssets}${appConfig.colorMode.backgroundImage.empty[appState.colorMode]}?key=${backgroundImage.defaultSource.key}`"
             alt="Krismenn">
 
         <img class="notFaded allEvents"
-            :src="`${directusAssets}${backgroundImage.directusId.full}?key=${backgroundImage.defaultSource.key}`"
+            :src="`${directusAssets}${appConfig.colorMode.backgroundImage.full[appState.colorMode]}?key=${backgroundImage.defaultSource.key}`"
             alt="Krismenn">
     </div>
 </template>

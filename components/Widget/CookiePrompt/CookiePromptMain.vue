@@ -16,7 +16,7 @@ function refuseCookies() {
 </script>
 
 <template>
-    <section v-if="!cookiesAccepted" class="fontColor_light frosty_bg frosty_border glowing flex column gap20">
+    <section v-if="!cookiesAccepted" class="frosty_surface glow_always flex column gap20">
         <h2>
             {{ t('cookies.title') }}
         </h2>
@@ -26,11 +26,11 @@ function refuseCookies() {
         </p>
 
         <div class="flex justifyEvenly ">
-            <button @click="acceptCookies" class="fontColor_light frosty_border frosty_bg glowing_onHover pointer">
+            <button @click="acceptCookies" class="frosty_surface glow_always pointer">
                 {{ t('cookies.accept') }}
             </button>
 
-            <button @click="refuseCookies" class="fontColor_light frosty_border frosty_bg glowing_onHover pointer">
+            <button @click="refuseCookies" class="frosty_surface glow_always pointer">
                 {{ t('cookies.refuse') }}
             </button>
         </div>
