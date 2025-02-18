@@ -28,11 +28,7 @@ export default defineNuxtConfig({
 
   modules: [
       '@nuxtjs/i18n',
-      '@nuxtjs/sitemap',
-      // 'nuxt-simple-robots',
-      // 'nuxt-schema-org',
-      // 'nuxt-og-image',
-      
+      '@nuxtjs/sitemap'
   ],
 
   i18n,
