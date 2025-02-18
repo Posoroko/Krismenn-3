@@ -16,7 +16,7 @@ const currentIndex = defineModel()
 </script>
 
 <template>
-    <div class="navBox flex gap20 marTop20">
+    <div class="navBox flex gap20">
         <button class="arrow frosty_surface glow_on_hover frosty_border box left" @click.stop.prevent="handleClick($event, 'previous')">
             <WidgetIconsLeftCheveron />
         </button>
@@ -55,6 +55,8 @@ const currentIndex = defineModel()
 
 /* Pagination dots */
 .navBox {
+    padding-top: 30px;
+    margin: 0 3px;
     pointer-events: none;
 }
 

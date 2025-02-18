@@ -1,22 +1,21 @@
 <script setup>
 const route = useRoute();
 const appState = useAppState();
-const { t, locale } = useI18n();
-const localePath = useLocalePath();
 
-const colorModes = ref(['blue', 'gray', 'sepia']);
-const colorModeIndex = ref(0);
+const colorModeEffects = ref(['none', 'gray', 'sepia']);
+const colorModeEffectsIndex = ref(0);
 
 function changeColorMode() {
     
-    colorModeIndex.value = (colorModeIndex.value + 1) % colorModes.value.length;
-    appState.value.colorMode = colorModes.value[colorModeIndex.value];
+    colorModeEffectsIndex.value = (colorModeEffectsIndex.value + 1) % colorModeEffects.value.length;
+    appState.value.colorModeEffect = colorModeEffects.value[colorModeEffectsIndex.value];
 }
 
 </script>
 
 <template>
-    <header class="absoluteFull noEvents" :class="{ 'panelOpen': route.path.length > 4 }" >
+    <header class="absoluteFull noEvents" 
+        :class="{ 'panelOpen': route.path.length > 4 }" >
         <nav class="w100 h100 noEvents">
             <ul class="w100 h100 noEvents">
                 <div class="box corner topLeftBox centered allEvents frosty_surface glow_on_hover">

@@ -90,51 +90,41 @@ const handleTouchEnd = (e) => {
     align-items: center;
     width: 100%;
     height: 100%;
+    overflow: visible;
 }
 
-/* Allow vertical scrolling, but control horizontal behavior */
 .horizontalScroller {
     padding-bottom: 10px;
     display: flex;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-behavior: smooth;
 
 }
 
-/* Thin, non-expanding horizontal scrollbar */
+
 .horizontalScroller::-webkit-scrollbar {
     height: 6px;
-    /* Set the scrollbar thickness */
 }
 
-/* Scrollbar track */
 .horizontalScroller::-webkit-scrollbar-track {
     background: transparent;
-    /* Keeps it subtle */
 }
 
-/* Scrollbar thumb (the draggable part) */
 .horizontalScroller::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
-    /* Light color for visibility */
     border-radius: 3px;
     min-height: 6px;
-    /* Prevents expansion */
 }
 
-/* Prevent scrollbar from changing size on hover */
 .horizontalScroller::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
-    /* Slightly more visible on hover */
     height: 6px !important;
-    /* Ensures it does NOT change size */
 }
 
 /* For Firefox */
 .horizontalScroller {
     scrollbar-width: thin;
-    /* Forces a thin scrollbar */
     scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 

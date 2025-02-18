@@ -31,7 +31,7 @@ const props = defineProps({
                 </div>
 
                 <p class="description cardText_format fontColor_light marTop20">
-                    {{ show.translations[0].description}}
+                    {{ show.translations[0].description.slice(0,300)}} ...
                 </p>
 
                 <div class="marTop50" v-if="fullSize">

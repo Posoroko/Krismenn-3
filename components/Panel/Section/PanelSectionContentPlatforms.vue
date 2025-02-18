@@ -7,7 +7,10 @@ const links = appConfig.listeningPlatforms;
 <template>
     <nav class="w100 centered">
         <ul class="">
-            <li v-for="link in links" :key="link.id" class="platformCard flex alignCenter frosty_border frosty_bg">
+            <li 
+                v-for="link in links" :key="link.id" 
+                class="platformCard flex alignCenter frosty_surface frosty_base glow_on_hover"
+            >
                 <a class="full flex column justifyCenter alignCenter" :href="link.href">
                     <WidgetIcon :name="link.ref" type="homePageNavButton" :size="75"/>
 
@@ -16,7 +19,7 @@ const links = appConfig.listeningPlatforms;
             </li>
 
             <li class=" platformCard 
-                        frosty_border frosty_bg
+                        frosty_surface frosty_base glow_on_hover
                         flex alignCenter">
                 <a class="full flex column justifyCenter alignCenter" href="https://soundcloud.com/krismenn">
                     <svg class="soundcloud" viewBox="0 0 24 24" width="75" height="75" x="0px" y="0px">

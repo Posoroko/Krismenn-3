@@ -40,7 +40,8 @@ onMounted(() => {
             :src="`${directusAssets}${appConfig.colorMode.backgroundImage.empty[appState.colorMode]}?key=${backgroundImage.defaultSource.key}`"
             alt="Krismenn">
 
-        <img class="notFaded allEvents"
+        <img 
+        class="notFaded allEvents"
             :src="`${directusAssets}${appConfig.colorMode.backgroundImage.full[appState.colorMode]}?key=${backgroundImage.defaultSource.key}`"
             alt="Krismenn">
     </div>
@@ -57,30 +58,27 @@ onMounted(() => {
     overflow: hidden;
 }
 img {
-    
+    height: 100%;
+    width: 100%;
     position: absolute;
     
-    /* object-fit: cover;
-    object-position: center; */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    object-fit: cover;
+    object-position: center;
 }
 img.notFaded {
     z-index: 1;
     width:  100%;
-    scale: 1;
+
     /* No delay */
     transition: scale 500ms ease; 
 }
 .background.faded img.notFaded {
-    scale: 1.02;
+
     /* with delay */
     transition: scale 500ms ease 800ms;
 }
 img.faded {
     width: 100%;
-    scale: 1;
     z-index: 2;
     filter: brightness(0.4);
     opacity: 0;
@@ -89,7 +87,7 @@ img.faded {
 }
 .background.faded img.faded {
     /* width: 100%; */
-    scale: 1.02;
+
     opacity: 1;
     /* with delay for scale transition*/
     transition: opacity var(--panel-transition-duration) ease, scale 500ms ease 800ms;

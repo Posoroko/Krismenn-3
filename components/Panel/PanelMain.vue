@@ -65,7 +65,6 @@ const props = defineProps({
 .panel {
     width: 1200px;
     height: 100%;
-    
     position: absolute;
     top: 0;
     left: 50%;
@@ -120,18 +119,16 @@ const props = defineProps({
     box-shadow: 
         0 0 3px 2px rgba(0, 33, 48, 0.103),
         0 0 3px 0px rgba(255, 255, 255, 0.055) inset;
-    margin-bottom: var(--gutter-thickness);
+    
     overflow-y: scroll;
     box-shadow: inset ;
     flex-grow: 1;
     position: relative;
 }
-/* .paddingBot {
-    display: block;
-    flex-shrink: 0;
-    width: 100%;
-    height: 400px;
-} */
+.scrollBox,
+.contentContainer {
+    margin-bottom: var(--gutter-thickness);
+}
 @media (max-width: 1296px) {
     .scrollBox {
         margin-bottom: 0;

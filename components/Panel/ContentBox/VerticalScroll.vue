@@ -78,6 +78,7 @@ const handleScroll = (e) => {
   overflow-y: scroll;
   scroll-behavior: smooth;
   height: 100%;
+  
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -85,49 +86,9 @@ const handleScroll = (e) => {
 .stepScroller::-webkit-scrollbar {
   display: none;
 }
-</style>
 
-<style>
 .stepScroller .stepBox {
-  height: 100%; /* Uses full parent height, NOT vh */
+  height: 100%;
   padding: 50px;
 }
 </style>
-
-
-
-
-<!-- <script setup>
-const props = defineProps({
-    stepScroll: Boolean
-})
-</script>
-
-<template>
-    <div v-if="!stepScroll" class="scroller allEvents h100">
-        <slot />
-    </div>
-
-    <div v-else class="stepScroller h100 allEvents">
-        <slot />
-    </div>
-</template>
-
-<style scoped>
-.scroller {
-    flex-grow: 0;
-    padding: 20px 30px 150px 20px;
-    overflow-y: scroll;
-}
-.stepScroller {
-    overflow: scroll;
-}
-
-</style>
-
-<style>
-.stepScroller .stepBox {
-    height: 100%;
-    padding: 50px;
-}
-</style> -->

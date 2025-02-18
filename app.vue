@@ -15,7 +15,14 @@ useHead({
 </script>
 
 <template>
-    <div id="appBox" class="appBox" :class="appState.colorMode">
+    <div 
+        id="appBox" 
+        class="appBox" 
+        :class="[
+            appState.colorMode, 
+            appState.colorModeEffect
+        ]"
+    >
         <StructureBackgroundImage class="app_bgImage" />
 
         <StructureHeaderMain class="app_header" />
@@ -118,7 +125,7 @@ useHead({
     position: relative;
     overflow: hidden;
 }
-#appBox.blue {
+#appBox.none {
     filter: saturate(1) contrast(1) brightness(1) hue-rotate(0deg);
     transition: all 300ms ease-in-out;
 }
@@ -141,10 +148,10 @@ useHead({
     z-index: 1;
 }
 .app_main {
-    z-index: 2;
+    z-index: 10;
 }
 .app_footer {
-    z-index: 3;
+    z-index: 1;
 }
 .app_cookie {
     z-index: 4;

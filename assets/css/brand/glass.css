@@ -14,12 +14,12 @@
 .frosty_surface {
     color: var(--frosty-font-color);
     fill: var(--frosty-font-color);
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
     transition: 150ms ease;
 }
-
+.frosty_base,
 .frosty_border {
-    border: 2px solid var(--frosty-color);
+    outline: 2px solid var(--frosty-color);
     box-shadow:
         0 1px 3px 0 rgba(0, 32, 51, 0.473),
         inset 0 0px 5px 2px rgba(115, 204, 255, 0.068);
@@ -27,9 +27,8 @@
 
 .frosty_surface.glow_on_hover:hover,
 .frosty_surface.glow_always {
-    border: 2px solid var(--frosty-color);
+    outline: 2px solid var(--frosty-color);
     box-shadow:
         0 0 10px var(--frosty-surface-shadow-color),
         inset 0 0 10px var(--frosty-surface-inset-shadow-color);
 }
-
