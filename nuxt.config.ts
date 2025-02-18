@@ -9,9 +9,6 @@ export default defineNuxtConfig({
           ]
       }
   },
-  nitro: {
-    preset: 'netlify'
-  },
   ssr: true,
   spaLoadingTemplate: false,
   devtools: { enabled: false },
