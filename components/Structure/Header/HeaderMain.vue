@@ -14,7 +14,7 @@ function changeColorMode() {
 
 let shakeCount = 0;
 let lastShakeTime = 0;
-const SHAKE_THRESHOLD = 25; // Adjust sensitivity
+const SHAKE_THRESHOLD = 20; // Adjust sensitivity
 const SHAKE_TIMEOUT = 1000; // Maximum time between shakes (1 second)
 const REQUIRED_SHAKES = 5;
 
