@@ -2,7 +2,7 @@
 const route = useRoute();
 const appState = useAppState();
 
-const colorModeEffects = ref(['blue', 'black', 'white']);
+const colorModeEffects = ref(['blue', 'black', 'white', 'cartoon']);
 const colorModeEffectsIndex = ref(0);
 
 
@@ -11,41 +11,6 @@ function changeColorMode() {
     colorModeEffectsIndex.value = (colorModeEffectsIndex.value + 1) % colorModeEffects.value.length;
     appState.value.colorMode = colorModeEffects.value[colorModeEffectsIndex.value];
 }
-
-let shakeCount = 0;
-let lastShakeTime = 0;
-const SHAKE_THRESHOLD = 20; // Adjust sensitivity
-const SHAKE_TIMEOUT = 1000; // Maximum time between shakes (1 second)
-const REQUIRED_SHAKES = 5;
-
-function handleShake(event) {
-    const { accelerationIncludingGravity } = event;
-    if (!accelerationIncludingGravity) return;
-
-    const acceleration = Math.abs(accelerationIncludingGravity.x) +
-        Math.abs(accelerationIncludingGravity.y) +
-        Math.abs(accelerationIncludingGravity.z);
-
-    if (acceleration > SHAKE_THRESHOLD) {
-        const now = Date.now();
-        if (now - lastShakeTime > SHAKE_TIMEOUT) {
-            shakeCount = 0; // Reset if too much time has passed
-        }
-
-        lastShakeTime = now;
-        shakeCount++;
-
-        if (shakeCount >= REQUIRED_SHAKES) {
-            console.log("Phone shaken 5 times!");
-            changeColorMode()
-        }
-    }
-}
-
-onMounted(() => {
-    // Add event listener for device motion
-    window.addEventListener("devicemotion", handleShake);
-})
 
 </script>
 

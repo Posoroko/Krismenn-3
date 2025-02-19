@@ -8,6 +8,15 @@
     --tabs-text-color: rgb(172, 194, 202);
 }
 
+.appBox.blue {
+    --tabs-text-color: rgb(221, 197, 188);
+}
+.appBox.black {
+    --tabs-text-color: rgb(173, 173, 173);
+}
+.appBox.white {
+    --tabs-text-color: #c9b49f;
+}
 
 .lightText {
     color: var(--light-color);

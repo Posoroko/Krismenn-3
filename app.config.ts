@@ -9,12 +9,14 @@ export default defineAppConfig({
             full: {
                 blue: 'b72e0ac4-d6a8-4e44-af20-1c362434e3e2',
                 black:"758ab1b4-6e02-4798-83d3-f8db1c05cece",
-                white: "26cace45-e0d1-4b27-b924-385fb92b88ed"
+                white: "26cace45-e0d1-4b27-b924-385fb92b88ed",
+                cartoon: "44e53ba2-6a9f-44a0-a80b-10fe0af5aad0.png"
             },
             empty: {
                 blue: "44959362-a309-49b2-a7ff-273393d2fd98",
                 black: "0e9a1d15-6d76-4fae-8587-7fc2d06e5028",
-                white: "ef8440f5-3764-4dbd-8a5c-f03ab1042725"
+                white: "ef8440f5-3764-4dbd-8a5c-f03ab1042725",
+                cartoon: "daacee17-502d-4b74-8692-f1f737c96edc"
             }
         }
     },
