@@ -70,13 +70,11 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered" v-if="show">
-        <PanelMain :title="show.translations[0].title" backButtonURL="/shows">
-            <div class="cardBox flex column gap50">
-                <PanelCardShows :show="show" :fullSize="true" />
-            </div>
-        </PanelMain>
-    </div>
+    <PanelMain :title="show.translations[0].title" backButtonURL="/shows" v-if="show">
+        <div class="cardBox flex column gap50">
+            <PanelCardShows :show="show" :fullSize="true" />
+        </div>
+    </PanelMain>
 </template>
 
 <style scoped>

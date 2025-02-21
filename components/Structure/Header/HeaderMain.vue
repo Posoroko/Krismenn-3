@@ -72,17 +72,17 @@ header .tabLinkText {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 150ms ease;
+    transition: color 150ms ease;
 }
 
 header.panelOpen .tabLinkText {
     color: rgba(225, 237, 245, 0.496);
-    transition: 300ms ease;
+    transition: color 300ms ease;
 }
 
 header.panelOpen .tabLinkText:hover {
     color: rgb(225, 237, 245);
-    transition: 150ms ease;
+    transition: color 150ms ease;
 }
 
 </style>

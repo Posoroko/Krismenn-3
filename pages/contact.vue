@@ -63,65 +63,60 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="bigBox absoluteFull centered">
-        <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
-            <template #scrollBox>
-                <ul class="h100 flex column justifyCenter gap20">
-                    <li v-for="contact in contacts" :key="contact.id" class="flex column">
-                        <h3 class="cardTitle_format fontColor_light">
-                            {{ contact.translations[0].title }}
-                        </h3>
+    <PanelMain :title="t('pages.contact.title')" drawerPosition="right">
+        <template #scrollBox>
+            <ul class="h100 flex column justifyCenter gap20">
+                <li v-for="contact in contacts" :key="contact.id" class="flex column">
+                    <h3 class="cardTitle_format fontColor_light">
+                        {{ contact.translations[0].title }}
+                    </h3>
 
-                        <span class="flex column alignStart gap10">
-                            <span v-if="contact.telephone" class=" infoLine 
-                                frosty_border frosty_surface glow_on_hover
-                                flex alignCenter gap20">
+                    <span class="flex column alignStart gap10">
+                        <span v-if="contact.telephone" class=" infoLine 
+                            frosty_border frosty_surface glow_on_hover
+                            flex alignCenter gap20">
 
-                                <span class="iconBox">
-                                    <WidgetIconsCall />
-                                </span>
-
-                                <a :href="`call:${contact.telephone}`" class="cardSubtitle_format fontColor_light">
-                                    {{ contact.telephone }}
-                                </a>
+                            <span class="iconBox">
+                                <WidgetIconsCall />
                             </span>
 
-                            <span v-if="contact.email" class=" infoLine 
-                                            frosty_border frosty_surface glow_on_hover
-                                            flex alignCenter gap20">
-                                <span class="iconBox">
-                                    <WidgetIconsEmail />
-                                </span>
-
-                                <a :href="`mailto:${contact.email}`" class="cardSubtitle_format fontColor_light">
-                                    {{ contact.email }}
-                                </a>
-                            </span>
-
-                            <span v-if="contact.website" class=" infoLine 
-                                    frosty_border frosty_surface glow_on_hover
-                                    flex alignCenter gap20 ">
-
-                                <span class="iconBox">
-                                    <WidgetIconsWebsite />
-                                </span>
-
-                                <a :href="contact.website" class="cardSubtitle_format fontColor_light">
-                                    {{ contact.website }}
-                                </a>
-                            </span>
+                            <a :href="`call:${contact.telephone}`" class="cardSubtitle_format fontColor_light">
+                                {{ contact.telephone }}
+                            </a>
                         </span>
-                    </li>
-                </ul>
-            </template>
-        </PanelMain>
-    </div>
+
+                        <span v-if="contact.email" class=" infoLine 
+                                        frosty_border frosty_surface glow_on_hover
+                                        flex alignCenter gap20">
+                            <span class="iconBox">
+                                <WidgetIconsEmail />
+                            </span>
+
+                            <a :href="`mailto:${contact.email}`" class="cardSubtitle_format fontColor_light">
+                                {{ contact.email }}
+                            </a>
+                        </span>
+
+                        <span v-if="contact.website" class=" infoLine 
+                                frosty_border frosty_surface glow_on_hover
+                                flex alignCenter gap20 ">
+
+                            <span class="iconBox">
+                                <WidgetIconsWebsite />
+                            </span>
+
+                            <a :href="contact.website" class="cardSubtitle_format fontColor_light">
+                                {{ contact.website }}
+                            </a>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </template>
+    </PanelMain>
 </template>
 
 <style scoped>
-.bigBox {
-    padding-bottom: var(--gutter-thickness)
-}
 
 ul {
     padding: 30px;

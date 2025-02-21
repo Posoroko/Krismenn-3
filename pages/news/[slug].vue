@@ -96,9 +96,7 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="absoluteFull centered" v-if="article">
-        <PanelMain :title="t('pages.news.title')" backButtonURL="/news">
-            <PanelCardNews :article="article"  fullSize />
-        </PanelMain>
-    </div>
+    <PanelMain :title="t('pages.news.title')" backButtonURL="/news" v-if="article">
+        <PanelCardNews :article="article"  fullSize />
+    </PanelMain>
 </template>

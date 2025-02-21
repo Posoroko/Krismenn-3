@@ -15,29 +15,27 @@ useHead({
 </script>
 
 <template>
-    <div 
-        id="appBox" 
-        class="appBox" 
-        :class="[
+    <div id="appBox" class="appBox" :class="[
             appState.colorMode, 
             appState.colorModeEffect
-        ]"
-    >
+        ]">
         <StructureBackgroundImage class="app_bgImage" />
 
         <StructureHeaderMain class="app_header" />
 
-        <StructureMainMain class="app_main">
 
-            <NuxtPage />
-
-        </StructureMainMain>
 
         <StructureFooterMain class="app_footer" />
 
         <ClientOnly>
             <WidgetCookiePromptMain class="app_cookie" />
         </ClientOnly>
+
+        <StructureMainMain class="app_main relative">
+
+            <NuxtPage />
+
+        </StructureMainMain>
 
         <WidgetSocialMedia />
     </div>
@@ -88,7 +86,8 @@ useHead({
 .top-leave-active,
 .bottom-enter-active,
 .bottom-leave-active {
-    transition: 500ms ease;
+    transition: 
+        transform 500ms ease
 }
 
 .left-enter-from,
@@ -124,36 +123,28 @@ useHead({
     height: 100svh;
     position: relative;
     overflow: hidden;
-}
-#appBox.none {
-    filter: saturate(1) contrast(1) brightness(1) hue-rotate(0deg);
-    transition: all 300ms ease-in-out;
-}
-#appBox.gray {
-    filter: saturate(0) contrast(1.1) brightness(1.3) hue-rotate(0deg);
-    transition: all 300ms ease-in-out;
-}
-#appBox.sepia {
-    filter: saturate(1) contrast(1.1) brightness(1.1) hue-rotate(60deg);
-    transition: all 300ms ease-in-out;
+    isolation: isolate;
 }
 
 </style>
 
 <style scoped>
-.app_bgImage {
+
+/* .app_bgImage {
     z-index: 0;
 }
 .app_header {
     z-index: 1;
 }
-.app_main {
-    z-index: 10;
-}
+
 .app_footer {
     z-index: 1;
 }
 .app_cookie {
     z-index: 4;
 }
+
+.app_main {
+    z-index: 10;
+} */
 </style>

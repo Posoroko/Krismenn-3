@@ -17,16 +17,9 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain class="panel" :title="t('pages.agenda.title')" drawerPosition="right" showIntroText>
-            <template #contentContainer>
-                <PanelSectionAgenda />
-            </template>
-        </PanelMain>
-    </div>
+    <PanelMain :title="t('pages.agenda.title')">
+        <template #contentContainer>
+            <PanelSectionAgenda />
+        </template>
+    </PanelMain>
 </template>
-
-<style scoped>
-
-
-</style>

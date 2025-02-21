@@ -60,28 +60,26 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain :title="t('pages.about.title')">
-            <template #scrollBox>
-                <div class="bigBox">
-                    <div class="images">
-                        <img class="aboutImage " v-for="image in content.images" :key="image.id"
-                            :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
-                    </div>
-
-                    <div class="textContent">
-                        <h2 class="cardTitle_format fontColor_light">
-                            {{ content.translations[0].title }}
-                        </h2>
-
-                        <p class="text cardText_format fontColor_light">
-                            {{ content.translations[0].text }}
-                        </p>
-                    </div>
+    <PanelMain :title="t('pages.about.title')">
+        <template #scrollBox>
+            <div class="bigBox">
+                <div class="images">
+                    <img class="aboutImage " v-for="image in content.images" :key="image.id"
+                        :src="`${directusBaseUrl}assets/${image.directus_files_id}`" alt="">
                 </div>
-            </template>
-        </PanelMain>
-    </div>
+
+                <div class="textContent">
+                    <h2 class="cardTitle_format fontColor_light">
+                        {{ content.translations[0].title }}
+                    </h2>
+
+                    <p class="text cardText_format fontColor_light">
+                        {{ content.translations[0].text }}
+                    </p>
+                </div>
+            </div>
+        </template>
+    </PanelMain>
 </template>
 
 <style scoped>

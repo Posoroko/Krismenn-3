@@ -80,31 +80,29 @@ useHead(useHeadContent)
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain :title="t('pages.live.title')" :showBackButton="false" v-if="shows">
-            <template #contentContainer>
-                <PanelContentBoxVerticalScroll stepScroll>
-                    <div class="stepBox flex column justifyEnd">
-                        <div class="frame grow relative">
-                            <div class="absoluteFull">
-                                <slot name="topImage" />
-                            </div>
+    <PanelMain :title="t('pages.live.title')" :showBackButton="false" v-if="shows">
+        <template #contentContainer>
+            <PanelContentBoxVerticalScroll stepScroll>
+                <div class="h100 stepBox flex column justifyEnd">
+                    <div class="frame grow relative">
+                        <div class="absoluteFull">
+                            <slot name="topImage" />
                         </div>
-
-                        <p class="cardSubtitle_format lightText pad20">
-                            <slot name="topSectionText" />
-                        </p>
                     </div>
 
-                    <ul class="stepBox flex w100">
-                        <PanelContentBoxHorizontalStepScrollerMain class="overflowHidden">
-                            <PanelCardShows v-for="show in shows" :key="show.id" :show="show" />
-                        </PanelContentBoxHorizontalStepScrollerMain>
-                    </ul>
-                </PanelContentBoxVerticalScroll>
-            </template>
-        </PanelMain>
-    </div>
+                    <p class="cardSubtitle_format lightText pad20">
+                        <slot name="topSectionText" />
+                    </p>
+                </div>
+
+                <ul class="h100 stepBox flex w100">
+                    <PanelContentBoxHorizontalStepScrollerMain class="overflowHidden">
+                        <PanelCardShows v-for="show in shows" :key="show.id" :show="show" />
+                    </PanelContentBoxHorizontalStepScrollerMain>
+                </ul>
+            </PanelContentBoxVerticalScroll>
+        </template>
+    </PanelMain>
 </template>
 
 <style scoped>

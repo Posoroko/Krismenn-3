@@ -169,56 +169,54 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain v-if="date" class="panel " :title="t('pages.agenda.title')" backButtonURL="/agenda" drawerPosition="right">
-            <div class="h100 flex alignCenter">
-                <div class="card grow">
-                    <div class="dateBox frosty_bg flex alignCenter justifyCenter" >
-                        <p class="date">
-                            {{ new Date(date.date).getDate() }}
-                            {{ t(`dates.months[${new Date(date.date).getMonth()}]`) }}
-                            {{ new Date(date.date).getFullYear() }}
-                        </p>
+    <PanelMain v-if="date" class="panel " :title="t('pages.agenda.title')" backButtonURL="/agenda" drawerPosition="right">
+        <div class="h100 flex alignCenter">
+            <div class="card grow">
+                <div class="dateBox frosty_bg flex alignCenter justifyCenter" >
+                    <p class="date">
+                        {{ new Date(date.date).getDate() }}
+                        {{ t(`dates.months[${new Date(date.date).getMonth()}]`) }}
+                        {{ new Date(date.date).getFullYear() }}
+                    </p>
+                </div>
+
+                <div class="infoBox fontColor_light grow
+                        flex column justifyBetween gap20">
+                    <div class="frame">
+                        <img :src="`${directusBaseUrl}assets/${date.show.mainImage}?key=fit-content-300-jpg`" 
+                            class="objectFitContain"
+                            :alt="`Krismenn | ${date.show.title}`">
                     </div>
+                
+                    <p class="cardTitle_format">
+                        {{ date.show.title }}
+                    </p>
 
-                    <div class="infoBox fontColor_light grow
-                            flex column justifyBetween gap20">
-                        <div class="frame">
-                            <img :src="`${directusBaseUrl}assets/${date.show.mainImage}?key=fit-content-300-jpg`" 
-                                class="objectFitContain"
-                                :alt="`Krismenn | ${date.show.title}`">
-                        </div>
-                    
-                        <p class="cardTitle_format">
-                            {{ date.show.title }}
+                    <PanelCardAgendaCategory :categoryId="date.category.id" />
+
+                    <p v-if="date.event" class="cardTitle_format">
+                        {{ date.event }}
+                    </p>
+
+                    <p v-if="date.event_website">
+                        {{ date.event_website }}
+                    </p>
+
+                    <address class="cardSubtitle_format fontColor_light">
+                        <p v-if="date.venue">
+                            {{ date.venue }}
                         </p>
 
-                        <PanelCardAgendaCategory :categoryId="date.category.id" />
-
-                        <p v-if="date.event" class="cardTitle_format">
-                            {{ date.event }}
+                        <p>
+                            <span>{{ date.city.translations[0].name }}, </span>
+                            <span>{{ date.city.region.depNumber }}, </span>
+                            <span>{{ date.city.region.country.translations[0].name }}</span>
                         </p>
-
-                        <p v-if="date.event_website">
-                            {{ date.event_website }}
-                        </p>
-
-                        <address class="cardSubtitle_format fontColor_light">
-                            <p v-if="date.venue">
-                                {{ date.venue }}
-                            </p>
-
-                            <p>
-                                <span>{{ date.city.translations[0].name }}, </span>
-                                <span>{{ date.city.region.depNumber }}, </span>
-                                <span>{{ date.city.region.country.translations[0].name }}</span>
-                            </p>
-                        </address>
-                    </div>
+                    </address>
                 </div>
             </div>
-        </PanelMain>
-    </div>
+        </div>
+    </PanelMain>
 </template>
 
 <style scoped>

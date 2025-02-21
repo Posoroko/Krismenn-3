@@ -201,15 +201,15 @@ definePageMeta({
             v-for="year in dates" :key="year.year" 
             class="years" 
             :aria-label="t('pages.agenda.dateList')">
-            <li>
+            <!-- <li>
                 <h2 class="flex justifyCenter year cardTitle_format fontColor_light">{{ year.year }}</h2>
-            </li>
+            </li> -->
 
             <li>
                 <ul class="months" v-for="month in year.months" :key="month.month">
                     <li class="month">
                         <h3 class="month cardTitle_S_format fontColor_light">
-                            {{ t(`dates.months[${month.month - 1}]`) }}
+                            {{ t(`dates.months[${month.month - 1}]`) }} {{ year.year }}
                         </h3>
                     </li>
 
@@ -250,8 +250,8 @@ ul.months {
 }
 
 h3.month {
-    padding-left: 10vw;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 ul.dates {

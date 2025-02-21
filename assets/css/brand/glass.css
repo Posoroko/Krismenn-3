@@ -23,8 +23,7 @@
     /* border: 2px solid transparent; */
     transition: 150ms ease;
 }
-.frosty_base,
-.frosty_border {
+.frosty_base {
     outline: 2px solid var(--frosty-color);
     box-shadow:
         0 1px 3px 0 rgba(0, 32, 51, 0.473),

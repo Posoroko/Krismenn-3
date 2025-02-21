@@ -91,27 +91,25 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain 
-            v-if="news"
-            :title="t('pages.news.title')" 
-            drawerPosition="right"  
-            :stripeImageDirectusUrl="activeImageUrl"
-            showIntroText>
+    <PanelMain 
+        v-if="news"
+        :title="t('pages.news.title')" 
+        drawerPosition="right"  
+        :stripeImageDirectusUrl="activeImageUrl"
+        showIntroText>
 
-            <template #scrollBox>
-                <ul class="flex column gap20">
-                    <li v-for="article in news" :key="article.id" 
-                        class="block frosty_bg">
+        <template #scrollBox>
+            <ul class="flex column gap20">
+                <li v-for="article in news" :key="article.id" 
+                    class="block frosty_bg">
 
-                        <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
-                            <PanelCardNews :article="article"  :fullSize="false" />
-                        </NuxtLink>
-                    </li>
-                </ul>
-            </template>
-        </PanelMain>
-    </div>
+                    <NuxtLink class="block" :to="localePath(`/news/${article.translations[0].slug}`)" v-if="article.translations[0]">
+                        <PanelCardNews :article="article"  :fullSize="false" />
+                    </NuxtLink>
+                </li>
+            </ul>
+        </template>
+    </PanelMain>
 </template>
 
 <style scoped>

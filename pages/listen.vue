@@ -34,58 +34,55 @@ useHead( useHeadContent );
 </script>
 
 <template>
-    <div class="absoluteFull centered">
-        <PanelMain :title="t('pages.listen.title')">
-            <template #scrollBox>
-                <div class="fullBox w100
-                         flex column ">
-                    <PanelSection :title="t('pages.listen.sections.discography.title')">
-                        <template #content>
-                            <ul class="flex column">
-                                <li v-for="album in albums" :key="album.id" class="albumCard">
-                                    <div class="contentBox">
-                                        <div class="coverBox flex column">
-                                            <img class="w100" :src="`${directusBaseUrl}assets/${album.cover}`" alt="">
-                                        </div>
-
-                                        <div class="playerBox">
-                                            <iframe class="player" style="border: 0; width: 100%; height: 100%;"
-                                                src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/"
-                                                seamless>
-                                                <!-- <a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a> -->
-                                            </iframe>
-                                        </div>
+    <PanelMain :title="t('pages.listen.title')">
+        <template #scrollBox>
+            <div class="fullBox w100 flex column ">
+                <PanelSection :title="t('pages.listen.sections.discography.title')">
+                    <template #content>
+                        <ul class="flex column">
+                            <li v-for="album in albums" :key="album.id" class="albumCard">
+                                <div class="contentBox">
+                                    <div class="coverBox flex column">
+                                        <img class="w100" :src="`${directusBaseUrl}assets/${album.cover}`" alt="">
                                     </div>
 
-                                    <ul class="quotes centered marTop50">
-                                        <li v-for="quote in album.quotes" :key="quote.ids" class="quote">
-                                            <img :src="`${directusBaseUrl}assets/${quote.logo}`" alt="">
+                                    <div class="playerBox">
+                                        <iframe class="player" style="border: 0; width: 100%; height: 100%;"
+                                            src="https://bandcamp.com/EmbeddedPlayer/album=4116606029/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/"
+                                            seamless>
+                                            <!-- <a href="https://krismenn.bandcamp.com/album/n-om-gustumi-deus-an-de-valijenn">&#39;N om gustumiñ deus an deñvalijenn de Krismenn</a> -->
+                                        </iframe>
+                                    </div>
+                                </div>
 
-                                            <p class="text fontColor_light">{{ quote.text }}</p>
+                                <ul class="quotes centered marTop50">
+                                    <li v-for="quote in album.quotes" :key="quote.ids" class="quote">
+                                        <img :src="`${directusBaseUrl}assets/${quote.logo}`" alt="">
 
-                                            <p class="author fontColor_light">- {{ quote.author }}</p>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </template>
-                    </PanelSection>
+                                        <p class="text fontColor_light">{{ quote.text }}</p>
 
-                    <PanelSection :title="t('pages.listen.sections.platforms.title')" class="" showTopBorder>
-                        <template #content>
-                            <PanelSectionContentPlatforms />
-                        </template>
-                    </PanelSection>
+                                        <p class="author fontColor_light">- {{ quote.author }}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </template>
+                </PanelSection>
 
-                    <PanelSection :title="t('global.videos')" showBottomBorder>
-                        <template #content>
-                            <PanelSectionContentVideos />
-                        </template>
-                    </PanelSection>
-                </div>
-            </template>
-        </PanelMain>
-    </div>
+                <PanelSection :title="t('pages.listen.sections.platforms.title')" class="" showTopBorder>
+                    <template #content>
+                        <PanelSectionContentPlatforms />
+                    </template>
+                </PanelSection>
+
+                <PanelSection :title="t('global.videos')" showBottomBorder>
+                    <template #content>
+                        <PanelSectionContentVideos />
+                    </template>
+                </PanelSection>
+            </div>
+        </template>
+    </PanelMain>
 </template>
 
 <style scoped>
